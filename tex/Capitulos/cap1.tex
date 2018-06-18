@@ -1,0 +1,856 @@
+\chapter{Introducción}
+\begin{flushright}
+\textit{``Matchmaker, matchmaker,
+Make me a match, Find me a find,
+Catch me a catch''}
+\end{flushright}
+\section{Descripción del problema}
+Imaginemos que en una ciudad tenemos $m$ universidades y $n$ personas que desean ir a una de estas escuelas, cada universidad tiene un límite alumnos que puede admitir y por esto no todas las personas pueden asistir a su universidad ''favorita''. Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a esta, este tipo de cota puede ser común si dos o más escuelas comparten recursos o personal. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias exhaustiva de que universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
+\\ En notación matemática lo que hacemos es suponer que tenemos $n$ alumnos $\alpha_1, \alpha_2, \ldots, \alpha_n$ y $m$ universidades $a_1, a_2, \ldots, a_m$, con las restricciones 
+
+\begin{enumerate}
+\item \begin{equation} \label{r1}
+x_{i,j}= 
+\begin{cases}
+1 & \qquad \text{si $i$ asiste a la universidad $j$.} \\
+0 &\qquad\text{en otro caso.}\ \\ 
+\end{cases} \end{equation}
+\item \begin{equation} y_{j}= 
+\begin{cases}
+1 & \qquad \text{si la universidad $j$ abre.} \\
+0 &\qquad\text{en otro caso.} \\ 
+\end{cases} \end{equation}
+\item \begin{equation} \label{r2}
+\sum_{j=1}^{m}x_{i,j} \leq1 \ \text{ para toda $i=1,2,\ldots,n$. }
+\end{equation} Cada estudiante es admitido en máximo una universidad. 
+\item \begin{equation} \label{r3}
+\sum_{i=1}^{n} x_{i,j} \leq M_j\ \text{ para toda $j=1,2,\dots,m$.} 
+\end{equation}
+Cada universidad tiene un límite de alumnos que puede admitir.
+\item \begin{equation} \label{r4}
+\sum_{i=1}^{n} x_{i,j} \geq\ m_j\times y_j 
+\end{equation}
+Cada universidad necesita admitir a una cantidad considerable de alumnos para abrir.
+\item \begin{equation} \label{r5}
+\sum_{i=1}^{n} (x_{i,j}+x_{i,j'}) 
+\begin{cases}
+\geq m_{j,j'} \times y_j \\
+\geq m_{j,j'} \times y_{j'} \\
+\end{cases}
+\end{equation} \\
+para toda $(j,j')$, con $j$ distinto de $j'$. \\
+La cota inferior de las universidades puede ser común.
+\item \begin{equation} \label{r6}
+x_{i,j} \leq y_j \ \text{ para toda $i=1,2,\ldots,n$ y para toda $j=1,2,\ldots,m$.}
+\end{equation}
+Los solicitantes únicamente pueden asistir a universidades abiertas.
+
+\end{enumerate}
+
+Es importante mencionar que no hay garantía de que todos los alumnos sean admitidos en alguna universidad, algunos se pueden quedar sin estudiar. No todas las universidades necesariamente tienen cotas superiores, inferiores o comunes; en ciertas situaciones se puede considerar que para cierta universidad $j$, $M_{j}$ puede ser igual a infinito o $m_j$ puede ser igual a cero y de igual manera para cierto par de universidades $(j,j')$, $m_{j,j'}$ puede ser igual a cero. 
+
+Para definir las preferencias de una forma un poco más formal, hacemos uso de la matriz de preferencias
+
+\begin{dfn}
+\label{matpref}
+Definimos la \textbf{matriz de preferencias} para un problema con $n$ estudiantes y con $m$ universidades como una matriz con $n$ filas y $m$ columnas donde la primera entrada de la celda $(i,j)$ represente el orden de preferencia que le asigna el solicitante $i$ a la universidad $j$ y análogamente la segunda entrada representa el orden de preferencia que le da la universidad $j$ a la persona $i$.
+\end{dfn}
+
+Para que dejar más clara la definición es necesario mostrar un ejemplo. 
+
+\begin{eje}
+\label{ejemplo matrimonio 1}
+Supongamos que contamos con tres solicitantes $\alpha$, $\beta$ y $\gamma$ y con tres universidades $A$, $B$ y $C$ y la matriz de preferencias
+$$\begin{pmatrix}
+& A & B & C \\
+\alpha & 1,3 & 2,2 & 3,1 \\
+\beta & 3,1 & 1,3 & 2,2 \\
+\gamma & 2,2 & 3,1 & 1,3 
+\end{pmatrix}$$
+aquí por ejemplo el orden preferencias de $\alpha$ es $(A,B,C)$ y el orden de preferencias de $C$ es $(\gamma, \beta, \alpha)$.
+\fin
+\end{eje}
+
+
+Para continuar es necesario introducir un criterio de estabilidad y otro de optimalidad, para ello enunciamos dos definiciones. 
+
+\begin{dfn}{\cite{GaleShapley}}
+\label{Estable}
+Decimos que una asignación de solicitantes a universidades es inestable si existen dos solicitantes $\alpha$ y $\beta$ asignados a universidades $A$ y $B$ respectivamente, con la propiedad de que $\alpha$ prefiere estar en $B$ que en $A$ y $B$ prefiere tener a $\alpha$ que a $B$. Es decir, existen una universidad y un solicitante que se prefieren entre ellos a sus respectivas asignaciones. Alternativamente una asignación de solicitantes a universidades es \textbf{estable} si no es inestable.
+\end{dfn}
+
+\begin{dfn}{\cite{GaleShapley}}
+\label{optima}
+Una asignación es considera \textbf{optima} si cada solicitante esta mejor o igual respecto a sus preferencias que en cualquier otra asignación estable. 
+\end{dfn}
+
+Un par de ejemplos de estos conceptos son 
+
+\begin{eje}
+Retomando el ejemplo \ref{ejemplo matrimonio 1}. \\
+El conjunto de parejas $(\alpha, A), \; (\beta, B)\; y\; (\gamma, C)$ es estable porque a pesar de las preferencias de las universidades cada persona esta con su primera opción, es decir, los solicitantes prefieren a su universidad más que a cualquier otra. Esta además es óptima porque cada solicitante está en su primera opción.
+\fin
+\end{eje}
+\begin{eje}
+Retomando el ejemplo \ref{ejemplo matrimonio 1}. \\
+El conjunto de parejas $(\alpha, A)$, $(\gamma, B)$ y $(\beta, C)$ es inestable porque $\gamma$ prefiere a $A$ que a su universidad actual ($B$) y A prefiere a $\gamma$ que a su universidad actual $(\alpha)$.
+\fin
+\end{eje}
+
+
+Surgen algunas preguntas de aquí ¿siempre existe un emparejamiento estable? ¿cómo se encuentra? Para resolverlas primero consideraremos el caso en el que $M_j=1$ para toda universidad $j$ y donde además no hay cotas inferiores o comunes, que es mejor conocido como el problema del matrimonio estable. 
+
+
+%Descripción
+%Definiciones
+%Chane esto jala mejor como capitulo y no sección
+%Comentario que explique cómo abajo es caso particular
+
+\section{El problema del matrimonio estable}
+%\begin{flushright}
+%\textit{``Even the worst husband, God forbid, is better than no husband, God forbid.''}
+%\end{flushright}
+En el pequeño Shtetl de Anatevka, había muchos hombres y muchas mujeres jóvenes con el deseo de casarse. Yenta, la casamentera del pueblo, tenía el trabajo y la obligación de emparejar a todos estos jóvenes. Esta tarea sonara fácil pero no lo es, cada joven tenía distintas preferencias y cada uno de ellos necesitaba un trato especial, "el matrimonio es para toda la vida y no es algo que hay que tomar como si fuera cualquier cosa" decía Yenta. Retomando los conceptos de la última sección, se desea que el emparejamiento de estos jóvenes sea estable y optimo si es que es posible.\footnote{Este problema hace el supuesto de que las relaciones solo pueden ser entre un hombre y una mujer y que esto es reflejado por sus preferencias. Esto no manifiesta la realidad o las opiniones del autor y se hace unicamente con fines matemáticos.}
+En terminos matemáticos, supongamos que tenemos $n$ hombres $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ mujeres $$a_1, a_2,\ldots,a_m$$ con las restricciones
+\begin{enumerate}
+\item \begin{equation} \label{1r1}
+x_{i,j}= 
+\begin{cases}
+1 & \qquad \text{si $i$ se casa con $j$.} \\
+0 &\qquad\text{en otro caso.}\ \\ 
+\end{cases} \end{equation}
+\item \begin{equation} \label{1r2}
+\sum_{j=1}^{m}x_{i,j} \leq1 \ \text{ para toda $i=1,2,\ldots,n$. }
+\end{equation} Cada hombre se casa con máximo una mujer. 
+\item \begin{equation} \label{1r3}
+\sum_{i=1}^{n} x_{i,j} \leq 1\ \text{ para toda $j=1,2,\dots,m$.} 
+\end{equation}
+Cada mujer se casa con máximo una hombre. 
+\end{enumerate}
+
+Es claro, a partir de la definición del problema que este es un caso particular del problema original. Aprovechando lo que se hizo en la sección anterior la definición de la matrz de preferencias, un emparejamiento estable y de un emparejamiento optimo son analogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}. Existen diversos resultados sobre el problema del matrimonio estable, uno de los más famosos es por Gale y Shapley que encontraron un algoritmo que siempre encuentra un emparejamiento estable y además lo hace sin muchas complicaciones. 
+
+Un supuesto adicional que haremos es que el número de hombres es exactamente igual al numero de mujeres. Esto se vera despues que es relativamente sencillo de generalizar al caso en el que el número de hombres y de mujeres no es igual. 
+
+%Definición del problema
+%Definiciones alternativas
+%
+
+%Ejemplos
+
+\subsection{Algoritmo de Gale Shapley}
+En 1962 David Gale y Lloyd Stowell Shapley demostraron que para el problema del matrimonio estable siempre se puede encontrar un emparejamiento estable óptimo para los hombres, esto se hizo enunciando un algoritmo y mostrando su convergencia. El algoritmo queda representado por el siguiente codigo y es conocido como el algoritmo de Gale Shapley.
+
+\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley}, captionpos=b, label=code:ACE_Method]
+Input : Una matriz de preferencias para (*$n$*) hombres y (*$n$*) mujeres 
+Output: Un emparejamiento. 
+Cada hombre le propone a la primera mujer de su lista. Cada mujer que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto. 
+repeat{ #hasta que todos los hombres tengan pareja
+Los hombres no emparejados le proponen a la siguiente mujer en su lista. 
+Cada mujer que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual.
+Las mujeres rechazan las propuestas que no aceptaron.
+}
+\end{lstlisting}
+Para dejar la explicación un poco más clara es importante mostrar un ejemplo de cómo funciona el algoritmo y cuál es su resultado final.
+\begin{eje}{\cite{GaleShapley}}
+\label{ejemploGS}
+Supongamos que para 4 hombres y 4 mujeres tenemos la matriz de preferencias 
+$$\begin{pmatrix}
+& A & B & C & D \\
+\alpha & 1,3 & 2,2 & 3,1 & 4,3 \\
+\beta & 1,4 & 2,3 & 3,2 & 4,4 \\
+\gamma & 3,1 & 1,4 & 2,3 & 4,2 \\
+\delta & 2,2&3,1 &1,4 & 4,1 
+\end{pmatrix}.$$
+En primera estancia, $\alpha$ le propone matrimonio a $A$, $\beta$ le propone matrimonio a $A$, $\gamma$ le propone matrimonio a $B$ y $\delta$ le propone matrimonio a $C$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (e);
+\path[-stealth] (c) edge (f);
+\path[-stealth] (d) edge (g);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Primera iteración.}
+\end{figure}
+
+En segunda instancia, $A$ acepta la propuesta de $\alpha$ y $\beta$ le propone matrimonio a $B$.
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (f);
+\path[-stealth] (c) edge (f);
+\path[-stealth] (d) edge (g);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Segunda iteración.}
+\end{figure}
+
+
+En tercera instancia, $B$ acepta la propuesta de $\beta$ y $\gamma$ le propone matrimonio a $C$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (f);
+\path[-stealth] (c) edge (g);
+\path[-stealth] (d) edge (g);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Tercera iteración.}
+\end{figure}
+
+En cuarta instancia, $C$ acepta la propuesta de $\gamma$ y $\beta$ le propone matrimonio a $A$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (f);
+\path[-stealth] (c) edge (g);
+\path[-stealth] (d) edge (e);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Cuarta iteración.}
+\end{figure}
+
+
+En quinta instancia, $A$ acepta la propuesta de $\delta$ y $\alpha$ le propone matrimonio a $B$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (f);
+\path[-stealth] (b) edge (f);
+\path[-stealth] (c) edge (g);
+\path[-stealth] (d) edge (e);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Quinta iteración.}
+\end{figure}
+
+En sexta instancia, $B$ acepta la propuesta de $\alpha$ y $\beta$ le propone matrimonio a $C$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (f);
+\path[-stealth] (b) edge (g);
+\path[-stealth] (c) edge (g);
+\path[-stealth] (d) edge (e);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Sexta iteración.}
+\end{figure}
+
+En séptima instancia, $C$ acepta la propuesta de $\beta$ y $\gamma$ le propone matrimonio a $A$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (f);
+\path[-stealth] (b) edge (g);
+\path[-stealth] (c) edge (e);
+\path[-stealth] (d) edge (e);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Séptima iteración.}
+\end{figure}
+
+
+En octava instancia, $A$ acepta la propuesta de $\gamma$ y $\delta$ le propone matrimonio a $B$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (f);
+\path[-stealth] (b) edge (g);
+\path[-stealth] (c) edge (e);
+\path[-stealth] (d) edge (f);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Octava iteración.}
+\end{figure}
+
+En novena instancia, $B$ acepta la propuesta de $\delta$ y $\alpha$ le propone matrimonio a $C$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (g);
+\path[-stealth] (b) edge (g);
+\path[-stealth] (c) edge (e);
+\path[-stealth] (d) edge (f);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Novena iteración.}
+\end{figure}
+
+
+En decima instancia, $C$ acepta la propuesta de $\alpha$, $\beta$ le propone matrimonio a $D$ y $D$ acepta la propuesta de $\beta$. Después de 10 pasos en el algoritmo, todos los hombres ya están emparejados, es decir, el algoritmo convergió en un emparejamiento. Cabe mencionar que el número total de propuestas fue 13. 
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,2.5) ellipse (.8 and 2);
+\filldraw[color=red!60, fill=red!5, very thick](4,2.5) ellipse (.8 and 2);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+\node[vertex] (d) at (0,1) {$\delta$};
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+\node [vertex] (h) at (4,1) {$D$};
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (g);
+\path[-stealth] (b) edge (h);
+\path[-stealth] (c) edge (e);
+\path[-stealth] (d) edge (f);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Decima iteración.}
+\end{figure}
+\fin
+\end{eje}
+
+Lo imprtante de este algoritmo no es solo que produce un emparejamiento, adicional a esto como lo muestra el siguiente teorema, el emparejamiento resultante es estable. 
+\begin{teo}[Teorema de Gale Shaley] \cite{GaleShapley} \\
+\label{teorema de Gale Shapley}
+El algoritmo de Gale Shapley termina en un emparejamiento estable.
+\end{teo}
+\begin{proof}
+Supongamos que el emparejamiento producido por el algoritmo no es estable. Esto es, un hombre $\alpha$ y una mujer $A$ se prefieren entre ellos que a sus respectivas parejas. \\
+Como $\alpha$ prefiere a $A$ más que a su esposa entonces, $\alpha$ le propuso matrimonio primero a $A$ que a su propia esposa. 
+Además, como $A$ prefiere a $\alpha$ que a su esposo entonces, $A$ hubiera rechazado a su esposo y se hubiera quedado casada con $\alpha$ lo cual es una contradicción. \\
+Por lo tanto, el algoritmo de Gale Shapley termina siempre en un emparejamiento estable. 
+\end{proof}
+Un resultado inmediato de esto es que siempre, sin importar como sean las preferencias, existe un emparejamiento estable. 
+\begin{cor}
+\label{corexiste}
+Dada una matriz de preferencias arbitraria existe un emparejamiento estable. 
+\end{cor}
+\begin{proof}
+Si aplicamos el algoritmo de Gale Shapley, sabemos por el teorema \ref{teorema de Gale Shapley} que este siempre acaba en un emparejamiento estable. Por lo tanto, siempre existe un emparejamiento estable.
+\end{proof}
+
+Una vez que sabemos que el algoritmo siempre converge, nos interesa conocer que tan rapido lo hace y si tiene algunas ventajas el emparejamiento resultante. El lema \ref{lema 1} nos ayuda a llegar a estos resultados y los corolarios \ref{cor1} y \ref{cor2} nos dan una idea de que tan bueno es el algoritmo. 
+\begin{lem} 
+\label{lema 1} \cite{Knuth} \\
+Bajo el emparejamiento obtenido por Gale Shapley, solo un hombre puede terminar con la última mujer de su lista como pareja. 
+\end{lem}
+
+\begin{proof}
+
+Supongamos que en el emparejamiento de Gale Shapley $m$ ($m\geq2$) hombres terminan con la última mujer de su lista como pareja, eso significa que cada uno de esos $m$ hombres invitó a salir a todas las mujeres. Entonces cada mujer fue invita a salir por lo menos $m$ veces, lo cual es una contradicción porque el algoritmo acaba cuando invitan a salir a la última mujer y a esta solo la invitan a salir una vez. Por lo tanto, solo un hombre puede terminar con la última mujer de su lista como pareja. 
+\end{proof}
+
+Dos consecuencias casi inmediatas de esto son que bajo el algoritmo la gran mayoria de los hombres no terminan con su ultima opción y que el algoritmo converge relativamente rapido. 
+\begin{cor}
+\label{cor1}
+Si en un emparejamiento estable por lo menos dos hombres están emparejados con la última mujer de sus respectivas listas, entonces existe dos o más emparejamientos estables en el problema.
+\end{cor}
+
+\begin{proof}
+Llamemos $m$ al emparejamiento estable donde por lo menos dos hombres están emparejados con la última mujer de sus respectivas listas y llamemos $m'$ al emparejamiento de Gale Shapley.
+Por el teorema \ref{teorema de Gale Shapley} sabemos que el algoritmo de Gale Shapley siempre acaba en un emparejamiento estable y además en ese emparejamiento estable solo un hombre puede terminar con la última mujer de su lista como pareja por el lema \ref{lema 1}.
+Por lo tanto $m$ y $m'$ son diferentes y como ambos son emparejamientos estables entonces el número de emparejamientos estables en el problema es mayor o igual a dos. 
+\end{proof}
+
+\begin{cor}
+\label{cor2}
+El número máximo de propuestas en el algoritmo es $n^2-n+1$
+\end{cor}
+
+\begin{proof}
+Por el lema \ref{lema 1} sabemos que a lo más un hombre acaba emparejado con la última mujer de su lista, por lo tanto, el peor emparejamiento posible para el algoritmo es uno donde $n-1$ hombres terminan con la penúltima mujer de sus respectivas listas y un hombre termina con la última. Para llegar a esta situación de acuerdo con el algoritmo, los $n-1$ hombres deben de realizar $n-1$ propuestas cada uno y el otro hombre debe de realizar $n$ propuestas. Esto es $(n-1)(n-1)+n$ propuestas que es igual a $n^2-n+1$ propuestas.
+\end{proof}
+
+\begin{obs}
+La complejidad del algoritmo de Gale Shapley es del orden de $n^2$.
+\end{obs}
+
+\begin{eje}
+Si retomamos el ejemplo \ref{ejemploGS} podemos ver que para 4 personas hubo $4^{2}-4+1=13$ propuestas que es el máximo número posible de estas de acuerdo al corolario \ref{cor2}.
+\fin
+\end{eje}
+
+A partir de esto ya podemos resolver el problema en el que la cantidad de hombres y de mujeres es distinta. El siguiente resultado muestra que sin importar el número de hombres o de mujeres, el algoritmo igual converge. 
+
+\begin{teo} \cite{GaleShapley} \\
+Dada una matriz de preferencias arbitraria con $n$ hombres y $m$ mujeres, el algortimo de Gale Shapley converge a un emparejamiento estable
+\end{teo}
+\begin{proof}
+Supongamos que la cantidad de hombres es más chica que la cantidad de mujeres ($n<m$), en este caso el algoritmo acaba cuando $n$ de las $m$ mujeres reciben una propuesta. Si suponemos que la cantidad de hombres es mayor a la cantidad de mujeres ($n>m$), en este caso el algoritmo acaba despues de que $n-m$ hombres son rechazados por todas las mujeres y las propuestas de $m$ de los hombres son aceptadas. 
+
+Además de forma analoga al teorema \ref{teorema de Gale Shapley} se puede ver que el emparejamiento producido es estable.
+\end{proof}
+
+El algoritmo de Gale Shapley no es el unico algoritmo que existe para producir un emparejamiento estable, y si se cambia el algoritmo el emparejamiento producido podría ser totalmente diferente al producido por el primero. De forma inmediata se puede crear un algoritmo igual al de Gale Shapley con la unica diferencia de que las mujeres le proponen a lo hombres, el siguiente ejemplo ilustra que el emparejamiento obtenido es distinto en ciertas situaciones y que por lo tanto los emparejamientos estables no son unicos. 
+
+\begin{eje}
+\label{ejeunico}
+Retomando el ejemplo \ref{ejemplo matrimonio 1}. \\
+Si aplicamos el algoritmo de Gale Shapley para los hombres obtenemos en primera estancia el siguiente emparejamiento estable. 
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=red!60, fill=red!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (f);
+\path[-stealth] (c) edge (g);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Resultado del algoritmo si los hombres proponen.}
+\end{figure}
+
+Si aplicamos el algoritmo de Gale Shapley para las mujeres obtenemos en primera estancia el siguiente emparejamiento estable. 
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=red!60, fill=red!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (g) edge (a);
+\path[-stealth] (f) edge (b);
+\path[-stealth] (e) edge (c);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Resultado del algoritmo si las mujeres proponen.}
+\end{figure}
+
+Es facil ver que los dos emparejamientos estables son distintos.
+\fin
+\end{eje}
+
+\begin{cor}
+Dada una matriz de preferencias arbitraria, la cantidad de emparejamientos estables es mayor o igual a 1. 
+\end{cor}
+\begin{proof}
+Con el corolario \ref{corexiste} podemos garantizar la existencia y con el ejemplo \ref{ejeunico} mostramos que no podemos garantizar la unicidad de este.
+\end{proof}
+
+Para continuar, podemos generalizar el problema del matrimonio estable a uno que permite a los hombres casarse con varias mujeres cambiando su cota superior de uno a cualquier otro número. Este es conocido como el problema de admisión a universidades. 
+
+\section{El problema de admisión a universidades}
+Supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a que universidades prefieren entrar y de forma analoga las universidades tienen una lista preferencias con la información de a quien prefieren admitir. Adicional a esto para cada universidad existe un numero máximo de alumnos que pueden admitir, esta restricción es natural porque la cantidad de personal y de espacio en las universidades es limitado. 
+En terminos matemáticos, supongamos que tenemos $n$ solicitantes $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ universidades $$a_1, a_2,\ldots,a_m$$ con las restricciones
+\begin{enumerate}
+\item \begin{equation} \label{2r1}
+x_{i,j}= 
+\begin{cases}
+1 & \qquad \text{si $i$ entra a estudiar a $j$.} \\
+0 &\qquad\text{en otro caso.}\ \\ 
+\end{cases} \end{equation}
+\item \begin{equation} \label{2r2}
+\sum_{j=1}^{m}x_{i,j} \leq1 \ \text{ para toda $i=1,2,\ldots,n$. }
+\end{equation} Cada solicitante entra solo a una universidad. 
+\item \begin{equation} \label{2r3}
+\sum_{i=1}^{n} x_{i,j} \leq M_j\ \text{ para toda $j=1,2,\dots,m$.} 
+\end{equation}
+Cada universidad tiene un limite de alumnos que puede admitir. 
+\end{enumerate}
+
+Es claro que esto es una generalización del problema del matrimonio estable y un caso particular del problema de admisión a universidades con cotas inferiores y comunes. Podemos retomar las definiciones la matrz de preferencias, un emparejamiento estable y de un emparejamiento optimo como analogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}.
+
+En el siguiente código exhibimos un análogo al algoritmo de Gale Shapley para este problema, el cual encuentra un emparejamiento estable y que además lo hace relativamente rapido. Para el caso general este algoritmo es conocido como el de ``'aceptación diferida''.
+\pagebreak
+\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades}, captionpos=b, label=code:ACE_Method]
+Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*).
+Output: Un emparejamiento. 
+Cada solicitante aplica a la primera universidad de su lista. Cada universidad que recibe más de solicitudes a su cota superior acepta las que solicitudes que estan más arriba en su lista y rechaza al resto. 
+repeat{ #hasta que cada uno de los solicitantes sea admitido por alguna universidad o rechazado por todas.
+	Los solicitantes no emparejados solicitan entrar a la siguiente universidad en su lista. 
+	Cada universidad que recibe alguna solicitud acepta hasta (*$M_j$*) solicitantes de los primeros de su lista entre los que aplicaron a ella y sus admitidos actuales.
+	Las universidades rechazan a los alumnos no aceptados.
+}
+\end{lstlisting}
+
+Este algoritmo al igual que su análogo en el matrimonio estable encuentra siempre un emparejamiento estable.
+\begin{cor}
+Dada una matriz de preferencias arbitraria y un vector $M$ de cotas superiores arbitrario, el algoritmo de Gale Shapley siempre encuentra un emparejamiento estable.
+\end{cor}
+\begin{proof}
+Al igual que en la demostración del teorema \ref{teorema de Gale Shapley}, supongamos que el emparejamiento producido por el algoritmo no es estable. 
+Esto es, un solicitante $\alpha$ que esta admitido en una universidad $B$ (o en ninguna) prefiere estar en una universidad $A$ y simultáneamente una universidad $A$ tiene admitido a un alumno $\beta$ y preferiría tener a $\alpha$ que a $\beta$ como estudiante. \\
+Como $\alpha$ prefiere a $A$ más que a su universidad entonces, $\alpha$ solicito entrar primero a $A$ que a su propia universidad. 
+Además, como $A$ prefiere a $\alpha$ que a $\beta$ entonces de acuerdo con el algoritmo, $A$ hubiera rechazado a $\beta$ y se hubiera quedado con $\alpha$ como alumno lo cual es una contradicción (el argumento para cuando $\alpha$ no fue aceptado en ninguna universidad es el mismo). \\
+Por lo tanto, el algoritmo de Gale Shapley termina siempre en un emparejamiento estable. 
+\end{proof}
+
+Este algoritmo además de ser producir un emparejamiento estable también cada solicitante esta mejor o igual en este emparejamiento que en cualquier otro emparejamiento estable. Para hacer la demostración primero introducimos una definición y un lema. 
+
+\begin{dfn}{\cite{GaleShapley}}
+\label{Posible}
+Decimos que una universidad es \textbf{posible} para un aplicante si existe una asignación estable en la que esta persona asiste a esa universidad.
+\end{dfn}
+
+\begin{lem} 
+\label{lema optimo} 
+\cite{GaleShapley} \\
+Supongamos que en un paso arbitrario del algoritmo ningun estudiante a sido rechazado por una universidad posible para el, además supongamos que una universidad $A$ despues de llenarse recibiendo a los estudiantes $\beta_1,\beta_2,\dots,\beta_q$ rechaza a $\alpha$, entonces $A$ no es posible para $\alpha$.
+\end{lem}
+\begin{proof}
+Sabemos por hipotesis que para toda $i=1,\dots,q$, $\beta_i$ prefiere a $A$ que a todas las universidades que no lo han rechazado y además que cualquier universidad que lo rechazo previamente no es posible para el. Supongamos que existe un emparejamiento estable en el que $\alpha$ asiste a $A$, entonces  alguna $\beta_i$ no asiste a $A$ porque $\alpha$ tomo su lugar. Este emparejamiento es inestable porque $\beta_i$ prefiere a $A$ que a su asignación actual porque $A$ es su mejor asignación posible y $A$ prefiere tener a $\beta_i$ que a $\alpha$, lo cual es claramente una contradicción y por lo tanto $A$ no es posible para $\alpha$.
+\end{proof}
+
+\begin{teo}
+\cite{GaleShapley}  \\
+Dada una matriz de preferencias arbitraria y un vector de cotas superiores arbitrario, el emparejamiento producido por el algoritmo es óptimo para los solicitantes.
+\end{teo}
+\begin{proof}
+La prueba es por inducción. Primero que nada sabemos que si en el primer paso del algoritmo una universidad rechaza a un alumno es porque esta universidad no es posible para el aplicante, si suponomes que esta universidad es posible para el llegamos rapidamente a una contradicción porque esto quisiera decir que la universidad rechazo a un mejor estudiante que la tenia como primer opción para meterlo a el y por lo tanto el emparejamiento no seria estable. Luego por el lema \ref{lema optimo} sabemos que en los siguientes pasos del algoritmo ningun estudiante es rechazado por una universidad posible para el y por lo tanto el emparejamiento obtenido es optimo. 
+\end{proof}
+
+

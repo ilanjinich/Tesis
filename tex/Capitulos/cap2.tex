@@ -1,0 +1,62 @@
+\chapter{Problemas NP-Completos}
+
+\section{Clases de complejidad}
+Algo que nos interesa mucho cuando atacamos un problema de computación es que tan dificíl es de resolver y si existe una mejor manera de hacerlo. La complejidad computacional nos permite estudiar esto. Para encarrilarnos hay que empezar con algunas definiciones y ejemplos.
+\begin{dfn}
+Se dice que un problema es un problema de decisón si admite dos posibles respuestas ``Si'' o ``No''. Resolverlo es encontrar todas las soluciones en las que la respuesta es ``Si''.
+\end{dfn}
+Existen dos clases de problemas de decisión que nos interesan, los que son faciles de verificar (NP) y los que son faciles de resolver (P)-
+\begin{dfn}
+Un problema esta en la clase NP si existe un algoritmo polinomial para verificar que la respuesta de una solución dada es ``Si''.
+\end{dfn}
+
+\begin{eje}[Problema del clima]
+Supongamos que Mariana le dice a Adrián que esta lloviendo, si Adrián decide verificar si esto es cierto solo tiene que realizar tres pasos:
+\begin{enumerate}
+\item Caminar a la ventana.
+\item Abrir la ventana.
+\item Ver el cielo.
+\end{enumerate}
+Por lo tanto a Adrián le toma un tiempo constante verificar si esta lloviendo lo que implica que este problem esta en NP.
+\end{eje}
+\begin{dfn}
+Se dice que un problema de decisión esta en P si existe un algoritmo polinomial que lo resuelve.
+\end{dfn}
+\begin{obs}[$P  \subseteq NP$]
+Si un problema de decisión pertenece a P entonces pertenece a NP.
+\end{obs}
+%\begin{proof}
+%Supongamos que $A$ es un problema de decision en P y $b$ es una solución dada de $A$, podemos verificar si la respuesta de la solución es ``Si'' resolviendo el problema en tiempo polinomial.
+%\end{proof}
+\begin{obs}
+\label{pp eq}
+Si A es un problema de decisión en P y existe un algoritmo polinomial que reduce resolver el problema de decisión B a resolver el problema A entonces B esta en P.
+\end{obs}
+
+Vale la pena mencionar algunos ejemplos de problemas que estan en P:
+\begin{enumerate}
+\item El problema de admisión a universidades.
+\item Verificar si un numero es primo.
+\item Encontrar la ruta más corta entre dos vertices en una gráfica.
+\item El problema de la ruta critica. 
+\end{enumerate}
+
+Una conjetura famosa que vale la pena mencionar es ¿si $P=NP$?, es decir si todo problema en NP tambien se enecuentra en P. La persona que lo demuestra además de ganar fama y trabajo va a ser acredor a un permio de un millon de dolares. 
+
+\section{El $3-SAT$}
+Un problema de gran importancia para entender las clases de complejidad es el $3-SAT$, la raíz de todo el estudio necesario para estudiar el problema ¿$P=NP?$ se remonta a enteder este problema. 
+\begin{dfn} [conjunctive normal form.]
+\end{dfn}
+
+
+\section{Problemas NP-Completos}
+\begin{flushright}
+\textit{``Chaos is a ladder'}
+\end{flushright}
+\begin{dfn}
+Qué es un problema NP-completo. 
+\end{dfn}
+\begin{teo}[Teorema de Cook-Levin]
+El 3-SAT es NP-Completo.
+\end{teo}
+Donde esta la demostración. 
