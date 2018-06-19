@@ -89,11 +89,93 @@ Un par de ejemplos de estos conceptos son
 \begin{eje}
 Retomando el ejemplo \ref{ejemplo matrimonio 1}. \\
 El conjunto de parejas $(\alpha, A), \; (\beta, B)\; y\; (\gamma, C)$ es estable porque a pesar de las preferencias de las universidades cada persona esta con su primera opción, es decir, los solicitantes prefieren a su universidad más que a cualquier otra. Esta además es óptima porque cada solicitante está en su primera opción.
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=red!60, fill=red!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (f);
+\path[-stealth] (c) edge (g);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Emparejamiento estable.}
+\end{figure}
+
 \fin
 \end{eje}
 \begin{eje}
 Retomando el ejemplo \ref{ejemplo matrimonio 1}. \\
 El conjunto de parejas $(\alpha, A)$, $(\gamma, B)$ y $(\beta, C)$ es inestable porque $\gamma$ prefiere a $A$ que a su universidad actual ($B$) y A prefiere a $\gamma$ que a su universidad actual $(\alpha)$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=red!60, fill=red!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,3) {$B$};
+\node[vertex] (g) at (4,2) {$C$};
+
+
+\node (i) at (0,5) {Hombres};
+\node (j) at (4,5) {Mujeres};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (c) edge (f);
+\path[-stealth] (b) edge (g);
+
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Emparejamiento inestable.}
+\end{figure}
 \fin
 \end{eje}
 
@@ -231,6 +313,8 @@ En segunda instancia, $A$ acepta la propuesta de $\alpha$ y $\beta$ le propone m
 \node[vertex] (f) at (4,3) {$B$};
 \node[vertex] (g) at (4,2) {$C$};
 \node [vertex] (h) at (4,1) {$D$};
+
+%\draw (0,.5) node[cross,red] {};
 
 \node (i) at (0,5) {Hombres};
 \node (j) at (4,5) {Mujeres};
@@ -913,7 +997,127 @@ $$\begin{pmatrix}
 \alpha & 1,1 & 2,1  \\
 \beta & 2,2 & 1,2 \\ 
 \end{pmatrix}.$$
-Lo primero que notamos es que $A$ o $B$ tienen que estar cerradas porque la suma de las cotas inferiores es tres y solo contamos con dos estudiantes. Si $A$ cierra entonces tenemos dos emparejamientos posibles, en el primero $\alpha$ es admitido en $B$ y no es estable porque $\alpha$ prefiere estar en $A$, $\beta$ prefiere estar en $A$ a no estar en ningun lado y $A$ prefiere tener a los dos estudiantes que cerrar . En el segundo caso $\beta$ es admitido en $B$ y esta emparejamiento no es estable porque $B$ prefiere tener a $\alpha$ que a $\beta$ y $\alpha$ prefiere estudiar que no estudiar. Si $B$ cierra entonces solo tenemos un emparejamiento posible en el que $\alpha$ y $\beta$ son admitidos en $A$, este no es estable porque $B$ prefiere tener a $\beta$ que cerrar y $\beta$ prefiere estar en $A$ que en $B$.
+Lo primero que notamos es que $A$ o $B$ tienen que estar cerradas porque la suma de las cotas inferiores es tres y solo contamos con dos estudiantes. Si $A$ cierra entonces tenemos dos emparejamientos posibles, en el primero $\alpha$ es admitido en $B$ y no es estable porque $\alpha$ prefiere estar en $A$, $\beta$ prefiere estar en $A$ a no estar en ningun lado y $A$ prefiere tener a los dos estudiantes que cerrar . 
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=green!60, fill=green!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,2) {$\beta$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,2) {$B$};
+
+
+\node (i) at (0,5) {Solicitantes};
+\node (j) at (4,5) {Universidades};
+
+\path[-stealth] (a) edge (f);
+%\path[-stealth] (b) edge (g);
+
+\draw (4,4) node[cross,red] {};
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Primer caso.}
+\end{figure}
+En el segundo caso $\beta$ es admitido en $B$ y esta emparejamiento no es estable porque $B$ prefiere tener a $\alpha$ que a $\beta$ y $\alpha$ prefiere estudiar que no estudiar. 
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=green!60, fill=green!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,2) {$\beta$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,2) {$B$};
+
+
+\node (i) at (0,5) {Solicitantes};
+\node (j) at (4,5) {Universidades};
+
+\path[-stealth] (b) edge (f);
+%\path[-stealth] (b) edge (g);
+
+\draw (4,4) node[cross,red] {};
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Segundo caso.}
+\end{figure}
+
+
+Si $B$ cierra entonces solo tenemos un emparejamiento posible en el que $\alpha$ y $\beta$ son admitidos en $A$, este no es estable porque $B$ prefiere tener a $\beta$ que cerrar y $\beta$ prefiere estar en $A$ que en $B$.
+
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=green!60, fill=green!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,2) {$\beta$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,2) {$B$};
+
+
+\node (i) at (0,5) {Solicitantes};
+\node (j) at (4,5) {Universidades};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (e);
+
+\draw (4,2) node[cross=10pt,red] {};
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Tercer caso.}
+\end{figure}
+
 \fin
 \end{eje}
 

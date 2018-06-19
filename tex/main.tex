@@ -14,7 +14,15 @@
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{quotes}
-
+\usetikzlibrary{shapes,snakes}
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 1pt. 
+cross/.default={10pt}}
+\newcommand{\tcancel}[2][black]{%
+\begin{tikzpicture}
+\node[draw=#1,cross out,inner sep=1pt] (a){#2};
+\end{tikzpicture}%
+}
 
 
 % Gian Carlo Diluvi's preamble ---------
