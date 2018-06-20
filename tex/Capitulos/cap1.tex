@@ -5,7 +5,7 @@ Make me a match, Find me a find,
 Catch me a catch''}
 \end{flushright}
 \section{Descripción del problema}
-Imaginemos que en una ciudad tenemos $m$ universidades y $n$ personas que desean ir a una de estas escuelas, cada universidad tiene un límite alumnos que puede admitir y por esto no todas las personas pueden asistir a su universidad ''favorita''. Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a esta, este tipo de cota puede ser común si dos o más escuelas comparten recursos o personal. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias exhaustiva de que universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
+Imaginemos que en una ciudad tenemos $m$ universidades y $n$ personas que desean ir a una de estas escuelas, cada universidad tiene un límite alumnos que puede admitir y por esto no todas las personas pueden asistir a su universidad ''favorita''. Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a esta, este tipo de cota puede ser común si dos o más escuelas comparten recursos o personal. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias no exhaustiva (en muchos casos si es exhaustiva) de que universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
 \\ En notación matemática lo que hacemos es suponer que tenemos $n$ alumnos $\alpha_1, \alpha_2, \ldots, \alpha_n$ y $m$ universidades $a_1, a_2, \ldots, a_m$, con las restricciones 
 
 \begin{enumerate}
@@ -53,7 +53,7 @@ Para definir las preferencias de una forma un poco más formal, hacemos uso de l
 
 \begin{dfn}
 \label{matpref}
-Definimos la \textbf{matriz de preferencias} para un problema con $n$ estudiantes y con $m$ universidades como una matriz con $n$ filas y $m$ columnas donde la primera entrada de la celda $(i,j)$ represente el orden de preferencia que le asigna el solicitante $i$ a la universidad $j$ y análogamente la segunda entrada representa el orden de preferencia que le da la universidad $j$ a la persona $i$.
+Definimos la \textbf{matriz de preferencias} para un problema con $n$ estudiantes y con $m$ universidades como una matriz con $n$ filas y $m$ columnas donde la primera entrada de la celda $(i,j)$ represente el orden de preferencia que le asigna el solicitante $i$ a la universidad $j$ y análogamente la segunda entrada representa el orden de preferencia que le da la universidad $j$ a la persona $i$. La matriz podría tener lugares vacíos en caso de listas no exhaustivas. 
 \end{dfn}
 
 Para que dejar más clara la definición es necesario mostrar un ejemplo. 
@@ -76,7 +76,9 @@ Para continuar es necesario introducir un criterio de estabilidad y otro de opti
 
 \begin{dfn}{\cite{GaleShapley}}
 \label{Estable}
-Decimos que una asignación de solicitantes a universidades es inestable si existen dos solicitantes $\alpha$ y $\beta$ asignados a universidades $A$ y $B$ respectivamente, con la propiedad de que $\alpha$ prefiere estar en $B$ que en $A$ y $B$ prefiere tener a $\alpha$ que a $B$. Es decir, existen una universidad y un solicitante que se prefieren entre ellos a sus respectivas asignaciones. Alternativamente una asignación de solicitantes a universidades es \textbf{estable} si no es inestable.
+Decimos que una asignación de solicitantes a universidades es inestable si existen dos solicitantes $\alpha$ y $\beta$ asignados a universidades $A$ y $B$ respectivamente, con la propiedad de que $\alpha$ prefiere estar en $B$ que en $A$ y $B$ prefiere tener a $\alpha$ que a $B$. Es decir, existen una universidad y un solicitante que se prefieren entre ellos a sus respectivas asignaciones. 
+Además a esto, decimos que una asignación es inestable si existe una universidad cerrada $A$ y $m_j$ solicitantes $\alpha_1,\alpha,2,\dots,\alpha_{m_j}$, con la propiedad de que los $m_j$ solicitantes prefieren estar en $A$ a su situación actual, en este caso se le llama a $A$ \textbf{universidad bloqueadora}
+Alternativamente una asignación de solicitantes a universidades es \textbf{estable} si no es inestable.
 \end{dfn}
 
 \begin{dfn}{\cite{GaleShapley}}
@@ -192,8 +194,8 @@ Surgen algunas preguntas de aquí ¿siempre existe un emparejamiento estable? ¿
 %\begin{flushright}
 %\textit{``Even the worst husband, God forbid, is better than no husband, God forbid.''}
 %\end{flushright}
-En el pequeño Shtetl de Anatevka, había muchos hombres y muchas mujeres jóvenes con el deseo de casarse. Yenta, la casamentera del pueblo, tenía el trabajo y la obligación de emparejar a todos estos jóvenes. Esta tarea sonara fácil pero no lo es, cada joven tenía distintas preferencias y cada uno de ellos necesitaba un trato especial, "el matrimonio es para toda la vida y no es algo que hay que tomar como si fuera cualquier cosa" decía Yenta. Retomando los conceptos de la última sección, se desea que el emparejamiento de estos jóvenes sea estable y optimo si es que es posible.\footnote{Este problema hace el supuesto de que las relaciones solo pueden ser entre un hombre y una mujer y que esto es reflejado por sus preferencias. Esto no manifiesta la realidad o las opiniones del autor y se hace unicamente con fines matemáticos.}
-En terminos matemáticos, supongamos que tenemos $n$ hombres $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ mujeres $$a_1, a_2,\ldots,a_m$$ con las restricciones
+En el pequeño Shtetl de Anatevka, había muchos hombres y muchas mujeres jóvenes con el deseo de casarse. Yenta, la casamentera del pueblo, tenía el trabajo y la obligación de emparejar a todos estos jóvenes. Esta tarea sonara fácil pero no lo es, cada joven tenía distintas preferencias y cada uno de ellos necesitaba un trato especial, ``el matrimonio es para toda la vida y no es algo que hay que tomar como si fuera cualquier cosa" decía Yenta. Retomando los conceptos de la última sección, se desea que el emparejamiento de estos jóvenes sea estable y optimo si es que es posible.\footnote{Este problema hace el supuesto de que las relaciones solo pueden ser entre un hombre y una mujer y que esto es reflejado por sus preferencias. Esto no manifiesta la realidad o las opiniones del autor y se hace únicamente con fines matemáticos.}
+En términos matemáticos, supongamos que tenemos $n$ hombres $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ mujeres $$a_1, a_2,\ldots,a_m$$ con las restricciones
 \begin{enumerate}
 \item \begin{equation} \label{1r1}
 x_{i,j}= 
@@ -207,12 +209,12 @@ x_{i,j}=
 \item \begin{equation} \label{1r3}
 \sum_{i=1}^{n} x_{i,j} \leq 1\ \text{ para toda $j=1,2,\dots,m$.} 
 \end{equation}
-Cada mujer se casa con máximo una hombre. 
+Cada mujer se casa con máximo un hombre. 
 \end{enumerate}
 
-Es claro, a partir de la definición del problema que este es un caso particular del problema original. Aprovechando lo que se hizo en la sección anterior la definición de la matrz de preferencias, un emparejamiento estable y de un emparejamiento optimo son analogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}. Existen diversos resultados sobre el problema del matrimonio estable, uno de los más famosos es por Gale y Shapley que encontraron un algoritmo que siempre encuentra un emparejamiento estable y además lo hace sin muchas complicaciones. 
+Es claro, a partir de la definición del problema que este es un caso particular del problema original. Aprovechando lo que se hizo en la sección anterior la definición de la matriz de preferencias, un emparejamiento estable y de un emparejamiento optimo son análogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}. Existen diversos resultados sobre el problema del matrimonio estable, uno de los más famosos es por Gale y Shapley que encontraron un algoritmo que siempre encuentra un emparejamiento estable y además lo hace sin muchas complicaciones. 
 
-Un supuesto adicional que haremos es que el número de hombres es exactamente igual al numero de mujeres. Esto se vera despues que es relativamente sencillo de generalizar al caso en el que el número de hombres y de mujeres no es igual. 
+Un supuesto adicional que haremos es que el número de hombres es exactamente igual al número de mujeres. Esto se verá después que es relativamente sencillo de generalizar al caso en el que el número de hombres y de mujeres no es igual. 
 
 %Definición del problema
 %Definiciones alternativas
@@ -221,7 +223,7 @@ Un supuesto adicional que haremos es que el número de hombres es exactamente ig
 %Ejemplos
 
 \subsection{Algoritmo de Gale Shapley}
-En 1962 David Gale y Lloyd Stowell Shapley demostraron que para el problema del matrimonio estable siempre se puede encontrar un emparejamiento estable óptimo para los hombres, esto se hizo enunciando un algoritmo y mostrando su convergencia. El algoritmo queda representado por el siguiente codigo y es conocido como el algoritmo de Gale Shapley.
+En 1962 David Gale y Lloyd Stowell Shapley demostraron que para el problema del matrimonio estable siempre se puede encontrar un emparejamiento estable óptimo para los hombres, esto se hizo enunciando un algoritmo y mostrando su convergencia. El algoritmo queda representado por el siguiente código y es conocido como el algoritmo de Gale Shapley.
 
 \begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley}, captionpos=b, label=c1]
 Input : Una matriz de preferencias para (*$n$*) hombres y (*$n$*) mujeres 
@@ -693,7 +695,7 @@ En decima instancia, $C$ acepta la propuesta de $\alpha$, $\beta$ le propone mat
 \fin
 \end{eje}
 
-Lo imprtante de este algoritmo no es solo que produce un emparejamiento, adicional a esto como lo muestra el siguiente teorema, el emparejamiento resultante es estable. 
+Lo importante de este algoritmo no es solo que produce un emparejamiento, adicional a esto como lo muestra el siguiente teorema, el emparejamiento resultante es estable. 
 \begin{teo}[Teorema de Gale Shaley] \cite{GaleShapley} \\
 \label{teorema de Gale Shapley}
 El algoritmo de Gale Shapley termina en un emparejamiento estable.
@@ -713,7 +715,7 @@ Dada una matriz de preferencias arbitraria existe un emparejamiento estable.
 Si aplicamos el algoritmo de Gale Shapley, sabemos por el teorema \ref{teorema de Gale Shapley} que este siempre acaba en un emparejamiento estable. Por lo tanto, siempre existe un emparejamiento estable.
 \end{proof}
 
-Una vez que sabemos que el algoritmo siempre converge, nos interesa conocer que tan rapido lo hace y si tiene algunas ventajas el emparejamiento resultante. El lema \ref{lema 1} nos ayuda a llegar a estos resultados y los corolarios \ref{cor1} y \ref{cor2} nos dan una idea de que tan bueno es el algoritmo. 
+Una vez que sabemos que el algoritmo siempre converge, nos interesa conocer que tan rápido lo hace y si tiene algunas ventajas el emparejamiento resultante. El lema \ref{lema 1} nos ayuda a llegar a estos resultados y los corolarios \ref{cor1} y \ref{cor2} nos dan una idea de que tan bueno es el algoritmo. 
 \begin{lem} 
 \label{lema 1} \cite{Knuth} \\
 Bajo el emparejamiento obtenido por Gale Shapley, solo un hombre puede terminar con la última mujer de su lista como pareja. 
@@ -724,7 +726,7 @@ Bajo el emparejamiento obtenido por Gale Shapley, solo un hombre puede terminar 
 Supongamos que en el emparejamiento de Gale Shapley $m$ ($m\geq2$) hombres terminan con la última mujer de su lista como pareja, eso significa que cada uno de esos $m$ hombres invitó a salir a todas las mujeres. Entonces cada mujer fue invita a salir por lo menos $m$ veces, lo cual es una contradicción porque el algoritmo acaba cuando invitan a salir a la última mujer y a esta solo la invitan a salir una vez. Por lo tanto, solo un hombre puede terminar con la última mujer de su lista como pareja. 
 \end{proof}
 
-Dos consecuencias casi inmediatas de esto son que bajo el algoritmo la gran mayoria de los hombres no terminan con su ultima opción y que el algoritmo converge relativamente rapido. 
+Dos consecuencias casi inmediatas de esto son que bajo el algoritmo la gran mayoría de los hombres no terminan con su última opción y que el algoritmo converge relativamente rápido. 
 \begin{cor}
 \label{cor1}
 Si en un emparejamiento estable por lo menos dos hombres están emparejados con la última mujer de sus respectivas listas, entonces existe dos o más emparejamientos estables en el problema.
@@ -746,26 +748,41 @@ Por el lema \ref{lema 1} sabemos que a lo más un hombre acaba emparejado con la
 \end{proof}
 
 \begin{obs}
+\label{complejidad1}
 La complejidad del algoritmo de Gale Shapley es del orden de $n^2$.
 \end{obs}
 
 \begin{eje}
-Si retomamos el ejemplo \ref{ejemploGS} podemos ver que para 4 personas hubo $4^{2}-4+1=13$ propuestas que es el máximo número posible de estas de acuerdo al corolario \ref{cor2}.
+Si retomamos el ejemplo \ref{ejemploGS} podemos ver que para 4 personas hubo $4^{2}-4+1=13$ propuestas que es el máximo número posible de estas de acuerdo con el corolario \ref{cor2}.
 \fin
 \end{eje}
 
 A partir de esto ya podemos resolver el problema en el que la cantidad de hombres y de mujeres es distinta. El siguiente resultado muestra que sin importar el número de hombres o de mujeres, el algoritmo igual converge. 
 
 \begin{teo} \cite{GaleShapley} \\
-Dada una matriz de preferencias arbitraria con $n$ hombres y $m$ mujeres, el algortimo de Gale Shapley converge a un emparejamiento estable
+Dada una matriz de preferencias arbitraria con $n$ hombres y $m$ mujeres, el algoritmo de Gale Shapley converge a un emparejamiento estable
 \end{teo}
 \begin{proof}
-Supongamos que la cantidad de hombres es más chica que la cantidad de mujeres ($n<m$), en este caso el algoritmo acaba cuando $n$ de las $m$ mujeres reciben una propuesta. Si suponemos que la cantidad de hombres es mayor a la cantidad de mujeres ($n>m$), en este caso el algoritmo acaba despues de que $n-m$ hombres son rechazados por todas las mujeres y las propuestas de $m$ de los hombres son aceptadas. 
+Supongamos que la cantidad de hombres es más chica que la cantidad de mujeres ($n<m$), en este caso el algoritmo acaba cuando $n$ de las $m$ mujeres reciben una propuesta. Si suponemos que la cantidad de hombres es mayor a la cantidad de mujeres ($n>m$), en este caso el algoritmo acaba después de que $n-m$ hombres son rechazados por todas las mujeres y las propuestas de $m$ de los hombres son aceptadas. 
 
-Además de forma analoga al teorema \ref{teorema de Gale Shapley} se puede ver que el emparejamiento producido es estable.
+Además de forma análoga al teorema \ref{teorema de Gale Shapley} se puede ver que el emparejamiento producido es estable.
 \end{proof}
 
-El algoritmo de Gale Shapley no es el unico algoritmo que existe para producir un emparejamiento estable, y si se cambia el algoritmo el emparejamiento producido podría ser totalmente diferente al producido por el primero. De forma inmediata se puede crear un algoritmo igual al de Gale Shapley con la unica diferencia de que las mujeres le proponen a lo hombres, el siguiente ejemplo ilustra que el emparejamiento obtenido es distinto en ciertas situaciones y que por lo tanto los emparejamientos estables no son unicos. 
+El algoritmo de Gale Shapley no es el único algoritmo que existe para producir un emparejamiento estable, y si se cambia el algoritmo el emparejamiento producido podría ser totalmente diferente al producido por el primero. De forma inmediata se puede crear un algoritmo igual al de Gale Shapley con la única diferencia de que las mujeres les proponen a los hombres, esto está representado por el siguiente código.
+
+
+\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para las mujeres}, captionpos=b, label=c1]
+Input : Una matriz de preferencias para (*$n$*) hombres y (*$n$*) mujeres 
+Output: Un emparejamiento. 
+Cada mujer le propone al primer hombre de su lista. Cada hombre que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto. 
+repeat{ #hasta que todas las mujeres tengan pareja
+Los hombres no emparejados le proponen al siguiente hombre en su lista. 
+Cada hombre que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual.
+Los hombres rechazan las propuestas que no aceptaron.
+}
+\end{lstlisting}
+
+El siguiente ejemplo ilustra que el emparejamiento obtenido es distinto en ciertas situaciones y que por lo tanto los emparejamientos estables no son únicos. 
 
 \begin{eje}
 \label{ejeunico}
@@ -854,7 +871,7 @@ Si aplicamos el algoritmo de Gale Shapley para las mujeres obtenemos en primera 
 \caption{Resultado del algoritmo si las mujeres proponen.}
 \end{figure}
 
-Es facil ver que los dos emparejamientos estables son distintos.
+Es fácil ver que los dos emparejamientos estables son distintos.
 \fin
 \end{eje}
 
@@ -868,8 +885,8 @@ Con el corolario \ref{corexiste} podemos garantizar la existencia y con el ejemp
 Para continuar, podemos generalizar el problema del matrimonio estable a uno que permite a los hombres casarse con varias mujeres cambiando su cota superior de uno a cualquier otro número. Este es conocido como el problema de admisión a universidades. 
 
 \section{El problema de admisión a universidades}
-Supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a que universidades prefieren entrar y de forma analoga las universidades tienen una lista preferencias con la información de a quien prefieren admitir. Adicional a esto para cada universidad existe un numero máximo de alumnos que pueden admitir, esta restricción es natural porque la cantidad de personal y de espacio en las universidades es limitado. 
-En terminos matemáticos, supongamos que tenemos $n$ solicitantes $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ universidades $$a_1, a_2,\ldots,a_m$$ con las restricciones
+Supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a que universidades prefieren entrar y de forma análoga las universidades tienen una lista preferencias con la información de a quien prefieren admitir. Adicional a esto para cada universidad existe un número máximo de alumnos que pueden admitir, esta restricción es natural porque la cantidad de personal y de espacio en las universidades es limitado. 
+En términos matemáticos, supongamos que tenemos $n$ solicitantes $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ universidades $$a_1, a_2,\ldots,a_m$$ con las restricciones
 \begin{enumerate}
 \item \begin{equation} \label{2r1}
 x_{i,j}= 
@@ -883,26 +900,28 @@ x_{i,j}=
 \item \begin{equation} \label{2r3}
 \sum_{i=1}^{n} x_{i,j} \leq M_j\ \text{ para toda $j=1,2,\dots,m$.} 
 \end{equation}
-Cada universidad tiene un limite de alumnos que puede admitir. 
+Cada universidad tiene un límite de alumnos que puede admitir. 
+
 \end{enumerate}
 
-Es claro que esto es una generalización del problema del matrimonio estable y un caso particular del problema de admisión a universidades con cotas inferiores y comunes. Podemos retomar las definiciones la matrz de preferencias, un emparejamiento estable y de un emparejamiento optimo como analogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}.
+Es claro que esto es una generalización del problema del matrimonio estable y un caso particular del problema de admisión a universidades con cotas inferiores y comunes. Podemos retomar las definiciones la matriz de preferencias, un emparejamiento estable y de un emparejamiento optimo como análogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}.
 
-En el siguiente código exhibimos un análogo al algoritmo de Gale Shapley para este problema, el cual encuentra un emparejamiento estable y que además lo hace relativamente rapido. Para el caso general este algoritmo es conocido como el de ``'aceptación diferida''.
+En el siguiente código exhibimos un análogo al algoritmo de Gale Shapley para este problema, el cual encuentra un emparejamiento estable y que además lo hace relativamente rápido. Para el caso general este algoritmo es conocido como el de ``'aceptación diferida''.
 \pagebreak
 \begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades}, captionpos=b, label=c2]
 Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*).
 Output: Un emparejamiento. 
-Cada solicitante aplica a la primera universidad de su lista. Cada universidad que recibe más de solicitudes a su cota superior acepta las que solicitudes que estan más arriba en su lista y rechaza al resto. 
+Cada solicitante aplica a la primera universidad de su lista. Cada universidad que recibe más de solicitudes a su cota superior acepta las que solicitudes que están más arriba en su lista y rechaza al resto. 
 repeat{ #hasta que cada uno de los solicitantes sea admitido por alguna universidad o rechazado por todas.
-	Los solicitantes no emparejados solicitan entrar a la siguiente universidad en su lista. 
-	Cada universidad que recibe alguna solicitud acepta hasta (*$M_j$*) solicitantes de los primeros de su lista entre los que aplicaron a ella y sus admitidos actuales.
-	Las universidades rechazan a los alumnos no aceptados.
+Los solicitantes no emparejados solicitan entrar a la siguiente universidad en su lista. 
+Cada universidad que recibe alguna solicitud acepta hasta (*$M_j$*) solicitantes de los primeros de su lista entre los que aplicaron a ella y sus admitidos actuales.
+Las universidades rechazan a los alumnos no aceptados.
 }
 \end{lstlisting}
 
 Este algoritmo al igual que su análogo en el matrimonio estable encuentra siempre un emparejamiento estable.
 \begin{cor}
+\label{gsu}
 Dada una matriz de preferencias arbitraria y un vector $M$ de cotas superiores arbitrario, el algoritmo de Gale Shapley siempre encuentra un emparejamiento estable.
 \end{cor}
 \begin{proof}
@@ -923,81 +942,112 @@ Decimos que una universidad es \textbf{posible} para un aplicante si existe una 
 \begin{lem} 
 \label{lema optimo} 
 \cite{GaleShapley} \\
-Supongamos que en un paso arbitrario del algoritmo ningun estudiante a sido rechazado por una universidad posible para el, además supongamos que una universidad $A$ despues de llenarse recibiendo a los estudiantes $\beta_1,\beta_2,\dots,\beta_q$ rechaza a $\alpha$, entonces $A$ no es posible para $\alpha$.
+Supongamos que en un paso arbitrario del algoritmo ningún estudiante ha sido rechazado por una universidad posible para él, además supongamos que una universidad $A$ después de llenarse recibiendo a los estudiantes $\beta_1,\beta_2,\dots,\beta_q$ rechaza a $\alpha$, entonces $A$ no es posible para $\alpha$.
 \end{lem}
 \begin{proof}
-Sabemos por hipotesis que para toda $i=1,\dots,q$, $\beta_i$ prefiere a $A$ que a todas las universidades que no lo han rechazado y además que cualquier universidad que lo rechazo previamente no es posible para el. Supongamos que existe un emparejamiento estable en el que $\alpha$ asiste a $A$, entonces  alguna $\beta_i$ no asiste a $A$ porque $\alpha$ tomo su lugar. Este emparejamiento es inestable porque $\beta_i$ prefiere a $A$ que a su asignación actual porque $A$ es su mejor asignación posible y $A$ prefiere tener a $\beta_i$ que a $\alpha$, lo cual es claramente una contradicción y por lo tanto $A$ no es posible para $\alpha$.
+Sabemos por hipótesis que para toda $i=1,\dots,q$, $\beta_i$ prefiere a $A$ que a todas las universidades que no lo han rechazado y además que cualquier universidad que lo rechazo previamente no es posible para él. Supongamos que existe un emparejamiento estable en el que $\alpha$ asiste a $A$, entonces alguna $\beta_i$ no asiste a $A$ porque $\alpha$ tomo su lugar. Este emparejamiento es inestable porque $\beta_i$ prefiere a $A$ que a su asignación actual porque $A$ es su mejor asignación posible y $A$ prefiere tener a $\beta_i$ que a $\alpha$, lo cual es claramente una contradicción y por lo tanto $A$ no es posible para $\alpha$.
 \end{proof}
 
 \begin{teo}
 \label{optimo}
-\cite{GaleShapley}  \\
+\cite{GaleShapley} \\
 Dada una matriz de preferencias arbitraria y un vector de cotas superiores arbitrario, el emparejamiento producido por el algoritmo es óptimo para los solicitantes.
 \end{teo}
 \begin{proof}
-La prueba es por inducción. Primero que nada sabemos que si en el primer paso del algoritmo una universidad rechaza a un alumno es porque esta universidad no es posible para el aplicante, si suponomes que esta universidad es posible para el llegamos rapidamente a una contradicción porque esto quisiera decir que la universidad rechazo a un mejor estudiante que la tenia como primer opción para meterlo a el y por lo tanto el emparejamiento no seria estable. Luego por el lema \ref{lema optimo} sabemos que en los siguientes pasos del algoritmo ningun estudiante es rechazado por una universidad posible para el y por lo tanto el emparejamiento obtenido es optimo. 
+La prueba es por inducción. Primero que nada, sabemos que si en el primer paso del algoritmo una universidad rechaza a un alumno es porque esta universidad no es posible para el aplicante, si suponemos que esta universidad es posible para el llegamos rápidamente a una contradicción porque esto quisiera decir que la universidad rechazo a un mejor estudiante que la tenía como primera opción para meterlo a él y por lo tanto el emparejamiento no sería estable. Luego por el lema \ref{lema optimo} sabemos que en los siguientes pasos del algoritmo ningún estudiante es rechazado por una universidad posible para él y por lo tanto el emparejamiento obtenido es óptimo. 
 \end{proof}
 
-El algoritmo mencionado anteriormente no es unico, de cambiarlo el emparejamiento obtenido podría cambiar significativamente. En primera instancia el algoritmo puede ser modificado para que sea optimo para las universidades en lugar de para los solicitantes. El siguiente algoritmo produce este resultado y las demostraciones se hacen de forma analoga a las mencionadas anteriormente, como propiedades importantes vale la pena mencionar que produce un emparejamiento estable y que cada universidad esta mejor en este emparejamiento que en cualquier otro emparejamiento. 
+El algoritmo mencionado anteriormente no es único, de cambiarlo el emparejamiento obtenido podría cambiar significativamente. En primera instancia el algoritmo puede ser modificado para que sea óptimo para las universidades en lugar de para los solicitantes. El siguiente algoritmo produce este resultado y las demostraciones se hacen de forma análoga a las mencionadas anteriormente, como propiedades importantes vale la pena mencionar que produce un emparejamiento estable y que cada universidad está mejor en este emparejamiento que en cualquier otro emparejamiento. 
 
-\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades modificiado}, captionpos=b, label=c3]
+\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades modificado}, captionpos=b, label=c3]
 Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*).
 Output: Un emparejamiento. 
 Cada universidad invita a los primeros (*$j_i$*) solicitantes en su lista a estudiar ahí. Cada alumno que recibe más de una solicitud acepta las más alta en su lista y rechaza el resto. 
 repeat{ #hasta que cada universidad este llene o cuando todos los estudiantes sean admitidos en una universidad.
-	Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo a cuantos lugares tienen.
-	Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su acutal universidad y las que lo invitaron. 
-	El alumno rechaza el resto de las invitaciones.
+Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo con cuantos lugares tienen.
+Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su actual universidad y las que lo invitaron. 
+El alumno rechaza el resto de las invitaciones.
 }
 \end{lstlisting}
 
 \subsection{El teorema de los hospitales rurales}
 
-Existe una extensión de este problema llamada el problema de hospitales y residentes medicos que es basicamente lo mismo a este problema con la excepción de que en vez de tener universidades tenemos hospitales y en vez de que existan estudiantes queriendo estudiar en esta tenemos estudiantes medicos que quieren hacer su residencia en este. Una pregunta interesante que se hizo fue ¿qué pasa con los hospitales no populares? Algunos hospitales por su naturaleza no llamaban la atención de los estudiantes de medicina, un ejemplo de esto eran los que estaban en una zona rural, los residentes preferian ir a hospitales en zonas urbanas más pobladas porque contaban con fama de ser mejores hospitales y además tenian más pacientes. La pregunta original puede ser modificada en ¿existe una modificación al algoritmo que produzca un emparejamiento estable y además asigne más residentes en los hospitales poco populares que el resultado de el algortimo Gale Shapley? A raíz de esto David Gale y Marilda Sotomayor en 1985 demostraron que la cantidad de gente que asiste a universidad es la misma en cualquier emparejamiento estable. Este resultado se puede poner en terminos de nuestro problema original, para llegar a este es necesario primero demostrar un lema.
+Existe una extensión de este problema llamada el problema de hospitales y residentes médicos que es básicamente lo mismo a este problema con la excepción de que en vez de tener universidades tenemos hospitales y en vez de que existan estudiantes queriendo estudiar en esta tenemos estudiantes médicos que quieren hacer su residencia en este. Una pregunta interesante que se hizo fue ¿qué pasa con los hospitales no populares? Algunos hospitales por su naturaleza no llamaban la atención de los estudiantes de medicina, un ejemplo de esto eran los que estaban en una zona rural, los residentes preferían ir a hospitales en zonas urbanas más pobladas porque contaban con fama de ser mejores hospitales y además tenían más pacientes. La pregunta original puede ser modificada en ¿existe una modificación al algoritmo que produzca un emparejamiento estable y además asigne más residentes en los hospitales poco populares que el resultado del algoritmo Gale Shapley? A raíz de esto David Gale y Marilda Sotomayor en 1985 demostraron que la cantidad de gente que asiste a universidad es la misma en cualquier emparejamiento estable. Este resultado se puede poner en términos de nuestro problema original, para llegar a este es necesario primero demostrar un lema.
 
 \begin{lem} 
 \label{lema rural} 
 \cite{Verde} \\
-Dada una matriz de preferencias arbitraria y un vector de cotas superiores arbitario, sea $M$ el emparejamiento obtenido por el algoritmo de Gale Shapley para admisión a universidades y sea $M'$ un emparejamiento estable arbitrario. Si una universidad $A$ no se llena en $M'$ entonces todo solicitante que entro a $A$ en $M$ tambien fue asignado a $A$ en $M'$. 
+Dada una matriz de preferencias arbitraria y un vector de cotas superiores arbitrario, sea $M$ el emparejamiento obtenido por el algoritmo de Gale Shapley para admisión a universidades y sea $M'$ un emparejamiento estable arbitrario. Si una universidad $A$ no se llena en $M'$ entonces todo solicitante que entro a $A$ en $M$ también fue asignado a $A$ en $M'$. 
 \end{lem}
 \begin{proof}
-Supongamos que $\alpha$ fue admitido en $A$ en la asignación $M$ pero no en $M'$, por hipotesis $A$ no esta llena en $M'$ entonces tenemos una contradicción porque significaria que $\alpha$  en $M'$ esta en una mejor universidad posible que $A$, lo cual no es posible porque la asignación en $M$ por el teorema \ref{optimo} es optima. Por lo tanto  Si una universidad $A$ no se llena en $M'$ entonces todo solicitante que entro a $A$ en $M$ tambien fue asignado a $A$ en $M'$. 
+Supongamos que $\alpha$ fue admitido en $A$ en la asignación $M$ pero no en $M'$, por hipótesis $A$ no está llena en $M'$ entonces tenemos una contradicción porque significaría que $\alpha$ en $M'$ está en una mejor universidad posible que $A$, lo cual no es posible porque la asignación en $M$ por el teorema \ref{optimo} es óptima. Por lo tanto, si una universidad $A$ no se llena en $M'$ entonces todo solicitante que entro a $A$ en $M$ también fue asignado a $A$ en $M'$. 
 \end{proof}
 
 
 \begin{teo}{Teorema de los hospitales rurales \\ }
 \label{rural}
 \cite{GaleSotomayor}\\
-Dada una matriz de preferencias arbitraria y un vector de cotas superiores arbitario,:
+Dada una matriz de preferencias arbitraria y un vector de cotas superiores arbitrario:
 \begin{enumerate}
-\item Cada universidad recibe el mismo número de solitantes en cada asignación estable.
+\item Cada universidad recibe el mismo número de solicitantes en cada asignación estable.
 \item Exactamente el mismo número de solicitantes quedan como no asignados en cada emparejamiento estable. 
 \item Si una universidad no se llena en un emparejamiento estable recibe exactamente el mismo número de solicitantes en cualquier asignación estable. 
 \end{enumerate}
 \end{teo}
 \begin{proof}
-Sea M el emparejamiento obtenido por Gale Shapley y sea $M'$ un emparejamiento estable arbitario. Prime notamos que si una persona no fue asignada a ningun universidad en $M$ entonces tampoco en $M'$, esto es por el lema \ref{lema optimo} porque ninguna universidad es posible para el. Por lo tanto el número de personas asignadas en $M'$ no puede exceder el de $M$. \\
-Ahora por el lema \ref{lema rural}, si una universidad se llena en $M$ entonces tambien esta llena en $M'$.  Simultaneamente por el lema \ref{lema rural}, si a una universidad le sobran lugares en $M'$ entonces en $M$ tiene minimo la misma cantidad de lugares. Por lo tanto el número de personas asignadas en $M$ no puede exceder el de $M'$. Luego, podemos concluir que para toda universidad  tiene el mismo número de estudiantes asignados en $M$ y en $M'$ que es lo mismo a cada universidad recibe el mismo número de solitantes en cada asignación estable. \\
-Una conclunsión imediata de arriba y de que ningun estudiante que es no asignado en $M$ puede ser admitido en $M'$ es que exactamente el mismo número de solicitantes quedan como no asignados en cada emparejamiento estable. \\
+Sea M el emparejamiento obtenido por Gale Shapley y sea $M'$ un emparejamiento estable arbitrario. Prime notamos que si una persona no fue asignada a ninguna universidad en $M$ entonces tampoco en $M'$, esto es por el lema \ref{lema optimo} porque ninguna universidad es posible para él. Por lo tanto, el número de personas asignadas en $M'$ no puede exceder el de $M$. \\
+Ahora por el lema \ref{lema rural}, si una universidad se llena en $M$ entonces también está llena en $M'$. Simultáneamente por el lema \ref{lema rural}, si a una universidad le sobran lugares en $M'$ entonces en $M$ tiene mínimo la misma cantidad de lugares. Por lo tanto, el número de personas asignadas en $M$ no puede exceder el de $M'$. Luego, podemos concluir que para toda universidad tiene el mismo número de estudiantes asignados en $M$ y en $M'$ que es lo mismo a cada universidad recibe el mismo número de solicitantes en cada asignación estable. \\
+Una conclusión inmediata de arriba y de que ningún estudiante que es no asignado en $M$ puede ser admitido en $M'$ es que exactamente el mismo número de solicitantes quedan como no asignados en cada emparejamiento estable. \\
 Una segunda conclusión inmediata de arriba y del lema \ref{lema rural} es que si una universidad no se llena en un emparejamiento estable recibe exactamente el mismo número de solicitantes en cualquier asignación estable.\\
-Por lo tanto concluimos que se cumplen 1, 2 y 3.
+Por lo tanto, concluimos que se cumplen 1, 2 y 3.
 \end{proof}
 
-Ahora podemos retomar el problema original y ver si podemos extender o usar los resultados obtenidos. 
+Para seguir avanzando, podemos ver qué sucede si al problema de admisión a universidades le agregamos cotas inferiores. Esto es, las universidades necesitan a un número mínimo de personas para ver si les conviene abrir. 
 
-\section{El problema de admisión a universidades con cotas inferiores y comunes}
+\section{Cotas inferiores}
 
-Una pregunta inicial que surge es que si todos los resultados obtenidos para el problema sin cotas inferiores o comunes se siguen cumpliendo ¿el emparejamiento estable siempre existe? ¿De existir este es optimo? ¿Se obtiene con facilidad? Para comenzar es posible mostrar que el emparejamiento estable no siempre existe.
+Casi de la misma manera a la sección anterior, supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a que universidades prefieren entrar y de forma análoga las universidades tienen una lista preferencias con la información de a quien prefieren admitir. En cada universidad existe un número máximo de alumnos que pueden admitir al igual que un número mínimo que necesitan para abrir, estas restricciones son de carácter natural porque la cantidad de personal y de espacio en las universidades es limitado y además necesitan que sea costeable. 
+En términos matemáticos, supongamos que tenemos $n$ solicitantes $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ universidades $$a_1, a_2,\ldots,a_m$$ con las restricciones
+\begin{enumerate}
+\item \begin{equation} \label{2r1}
+x_{i,j}= 
+\begin{cases}
+1 & \qquad \text{si $i$ entra a estudiar a $j$.} \\
+0 &\qquad\text{en otro caso.}\ \\ 
+\end{cases} \end{equation}
+\item \begin{equation} y_{j}= 
+\begin{cases}
+1 & \qquad \text{si la universidad $j$ abre.} \\
+0 &\qquad\text{en otro caso.} \\ 
+\end{cases} \end{equation}
+\item \begin{equation} \label{2r2}
+\sum_{j=1}^{m}x_{i,j} \leq1 \ \text{ para toda $i=1,2,\ldots,n$. }
+\end{equation} Cada solicitante entra solo a una universidad. 
+\item \begin{equation} \label{2r3}
+\sum_{i=1}^{n} x_{i,j} \leq M_j\ \text{ para toda $j=1,2,\dots,m$.} 
+\end{equation}
+Cada universidad tiene un límite de alumnos que puede admitir. 
+\item \begin{equation} \label{r6}
+x_{i,j} \leq y_j \ \text{ para toda $i=1,2,\ldots,n$ y para toda $j=1,2,\ldots,m$.}
+\end{equation}
+Los solicitantes únicamente pueden asistir a universidades abiertas.
+\item \begin{equation} \label{r4}
+\sum_{i=1}^{n} x_{i,j} \geq\ m_j\times y_j 
+\end{equation}
+Cada universidad necesita admitir a una cantidad considerable de alumnos para abrir.
+\end{enumerate}
+
+Una pregunta inicial que surge es si todos los resultados obtenidos para el problema sin cotas inferiores o comunes se siguen cumpliendo, una vez que agregamos las cotas inferiores ¿el emparejamiento estable siempre existe? ¿De existir este es óptimo? ¿Se obtiene con facilidad? Para comenzar es posible mostrar que el emparejamiento estable no siempre existe.
 
 \begin{eje}
 \cite{Todo}\\
-Supongamos que tenemos dos universidades $A$ y $B$, $A$ solo puede admitir a dos alumnos y necesita admitir a dos alumnos para entrar y $B$ solo puede admitir a un alumno y necesita a un alumno para abrir. Además contamos con dos solicitantes $\alpha$ y $\beta$, la matriz de preferencias del problema esta dada por 
+Supongamos que tenemos dos universidades $A$ y $B$, $A$ solo puede admitir a dos alumnos y necesita admitir a dos alumnos para entrar y $B$ solo puede admitir a un alumno y necesita a un alumno para abrir. Además, contamos con dos solicitantes $\alpha$ y $\beta$, la matriz de preferencias del problema está dada por 
 $$\begin{pmatrix}
-& A & B  \\
-\alpha & 1,1 & 2,1  \\
+& A & B \\
+\alpha & 1,1 & 2,1 \\
 \beta & 2,2 & 1,2 \\ 
 \end{pmatrix}.$$
-Lo primero que notamos es que $A$ o $B$ tienen que estar cerradas porque la suma de las cotas inferiores es tres y solo contamos con dos estudiantes. Si $A$ cierra entonces tenemos dos emparejamientos posibles, en el primero $\alpha$ es admitido en $B$ y no es estable porque $\alpha$ prefiere estar en $A$, $\beta$ prefiere estar en $A$ a no estar en ningun lado y $A$ prefiere tener a los dos estudiantes que cerrar . 
+Lo primero que notamos es que $A$ o $B$ tienen que estar cerradas porque la suma de las cotas inferiores es tres y solo contamos con dos estudiantes. Si $A$ cierra entonces tenemos dos emparejamientos posibles, en el primero $\alpha$ es admitido en $B$ y no es estable porque $\alpha$ prefiere estar en $A$, $\beta$ prefiere estar en $A$ a no estar en ningún lado y $A$ prefiere tener a los dos estudiantes que cerrar . 
 \begin{figure}[H]\centering
 
 \begin{tikzpicture}[ scale=0.8]
@@ -1025,7 +1075,7 @@ Lo primero que notamos es que $A$ o $B$ tienen que estar cerradas porque la suma
 \path[-stealth] (a) edge (f);
 %\path[-stealth] (b) edge (g);
 
-\draw (4,4) node[cross,red] {};
+\draw (4,4) node[cross=8pt,red] {};
 
 
 %\draw (0.2,8)--(3.8,8);
@@ -1036,7 +1086,7 @@ Lo primero que notamos es que $A$ o $B$ tienen que estar cerradas porque la suma
 
 \caption{Primer caso.}
 \end{figure}
-En el segundo caso $\beta$ es admitido en $B$ y esta emparejamiento no es estable porque $B$ prefiere tener a $\alpha$ que a $\beta$ y $\alpha$ prefiere estudiar que no estudiar. 
+En el segundo caso $\beta$ es admitido en $B$ y este emparejamiento no es estable porque $B$ prefiere tener a $\alpha$ que a $\beta$ y $\alpha$ prefiere estudiar que no estudiar. 
 \begin{figure}[H]\centering
 
 \begin{tikzpicture}[ scale=0.8]
@@ -1064,7 +1114,7 @@ En el segundo caso $\beta$ es admitido en $B$ y esta emparejamiento no es establ
 \path[-stealth] (b) edge (f);
 %\path[-stealth] (b) edge (g);
 
-\draw (4,4) node[cross,red] {};
+\draw (4,4) node[cross=8pt,red] {};
 
 
 %\draw (0.2,8)--(3.8,8);
@@ -1106,7 +1156,7 @@ Si $B$ cierra entonces solo tenemos un emparejamiento posible en el que $\alpha$
 \path[-stealth] (a) edge (e);
 \path[-stealth] (b) edge (e);
 
-\draw (4,2) node[cross=10pt,red] {};
+\draw (4,2) node[cross=8pt,red] {};
 
 
 %\draw (0.2,8)--(3.8,8);
@@ -1121,19 +1171,177 @@ Si $B$ cierra entonces solo tenemos un emparejamiento posible en el que $\alpha$
 \fin
 \end{eje}
 
-A partir de este ejemplo queda claro que si extendemos el problemo agregando cotas inferiores o comunes perdemos la garantia de existencia de un emparejamiento estable en nuestro problema. Es posible además consturir un algoritmo a partir del algoritmo de Gale Shapley para admisión a universidades que converja en caso de que exista a un emparejamiento estable o que saque como resultado si no existe un emparejamiento estable para este problema, el algoritmo esta dado por el siguiente codigo.
- 
- \begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades modificiado}, captionpos=b, label=c3]
-Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*) , un vector $N$ en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*) y una matriz $$.
-Output: Un emparejamiento. 
-Cada universidad invita a los primeros (*$j_i$*) solicitantes en su lista a estudiar ahí. Cada alumno que recibe más de una solicitud acepta las más alta en su lista y rechaza el resto. 
-repeat{ #hasta que cada universidad este llene o cuando todos los estudiantes sean admitidos en una universidad.
-	Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo a cuantos lugares tienen.
-	Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su acutal universidad y las que lo invitaron. 
-	El alumno rechaza el resto de las invitaciones.
+A partir de este ejemplo queda claro que si extendemos el problema agregando cotas inferiores perdemos la garantía de existencia de un emparejamiento estable en nuestro problema. Es posible además construir un algoritmo a partir del algoritmo de Gale Shapley para admisión a universidades que converja en caso de que exista a un emparejamiento estable o que saque como resultado si no existe un emparejamiento estable para este problema, el algoritmo esta dado por el siguiente código. Antes de mostrarlo vale la pena recordar que si tienes $m$ universidades entonces existen $2^{m}-1$ posibles combinaciones de qué universidades mantienen abiertas y cuales cierran. 
+\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades con cotas inferiores}, captionpos=b, label=c3]
+Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*) y un vector (*$N$*) en donde la entrada (*$j$*) representa la cota inferior de la universidad (*$j$*).
+Output: Un emparejamiento o mensaje. 
+repeat{ #Hasta encontrar un emparejamiento estable factible.
+Se selecciona una de las (*$2^{m}-1$*) combinaciones, se escoge primero las opciones que cierren menos universidades de las todavía no escogidas. 
+Cada universidad abierta invita a los primeros (*$j_i$*) solicitantes en su lista a estudiar ahí. Cada alumno que recibe más de una solicitud acepta las más alta en su lista y rechaza el resto. 
+repeat{ #hasta que cada universidad abierta este llena o cuando todos los estudiantes sean admitidos en una universidad.
+Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo con cuantos lugares tienen.
+Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su actual universidad y las que lo invitaron. 
+El alumno rechaza el resto de las invitaciones.
 }
+Si la asignación obtenida es factible, el algoritmo acaba y saca como output el emparejamiento. 
+}
+Si el algoritmo trato todas las combinaciones y no encontró un emparejamiento estable factible entonces saca un mensaje diciendo que este no existe.
 \end{lstlisting}
 
+\begin{cor}
+Dada una matriz de preferencias arbitraria, un vector de cotas superiores arbitrario y un vector de cotas inferiores arbitrario, el algoritmo de Gale Shapley para admisión a universidades con cotas inferiores converge.
+\end{cor}
+\begin{proof}
+Supongamos que existe una combinación de universidades abiertas que cuenta con una asignación estable y el algoritmo no la encuentra. Esto es, existe una combinación de universidades en las que el emparejamiento estable producido por Gale Shapley no es factible, pero en la que si existe un emparejamiento estable factible, lo cual es una contradicción al teorema \ref{rural} porque todos los emparejamientos estables asignan exactamente el mismo número de personas a cada universidad y por lo tanto si el emparejamiento encontrado por el algoritmo no es factible eso implicaría que todas las asignaciones estables no son factibles. \\
+Cómo se escoge las opciones que cierren menos universidades de las todavía no escogidas podemos garantizar que de encontrar un emparejamiento estable factible este no tiene una universidad bloqueadora. 
+Además, porque el algoritmo trata todas las combinaciones y porque el corolario \ref{gsu} nos garantiza que dada una combinación de universidades abiertas el algoritmo siempre encuentra un emparejamiento estable, entonces podemos concluir que de existir un emparejamiento estable factible el algoritmo de Gale Shapley para admisión a universidades con cotas inferiores lo va a encontrar y por lo tanto el algoritmo converge a lo deseado. 
+\end{proof}
+\begin{cor}
+La complejidad del algoritmo de Gale Shapley para admisión a universidades con cotas inferiores es del orden de $2^{m}m^2$, donde $m$ es el número de universidades.
+\end{cor}
+\begin{proof}
+En el peor escenario no existe una asignación estable factible para el problema, en este caso se realiza $2^{m}-1$ veces el algoritmo de Gale Shapley, que por la observación \ref{complejidad1} tiene como complejidad $m^2$. Por lo tanto, el número máximo de pasos que tiene el algoritmo es aproximadamente $(2^{m}-1)m^2=2^{m}m^2-m^2$ y podemos concluir que la complejidad del algoritmo es del orden de $2^{m}m^2$.
+\end{proof}
+\begin{eje}
+\cite{Todo}\\
+Supongamos que tenemos dos universidades $A$ y $B$, $A$ tiene como cota inferior a dos estudiantes y solo puede admitir a dos solicitantes, $B$ necesita a tres estudiantes para abrir y tiene como cota superior a tres alumnos. Además, a esto contamos con tres solicitantes $\alpha$, $\beta$ y $\gamma$, la matriz de preferencias para este problema es 
+$$\begin{pmatrix}
+& A & B \\
+\alpha & 1,1 & ,1 \\
+\beta & 1,2 & 2,1 \\ 
+\gamma & , & 1,2 \\ 
+\end{pmatrix}.\footnote{\text{Note que la lista de preferencias en este caso es no exhaustiva.}}$$
+En el primer paso del algoritmo las dos universidades se mantienen abiertas, $\alpha$ aplica a $A$, $\beta$ aplica a $A$ y $\gamma$ aplica a $B$. $A$ y $B$ aceptan a los tres alumnos llegando a una asignación estable pero no factible. 
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=green!60, fill=green!5, very thick](4,3) ellipse (.8 and 1.5);
 
 
-%Falta arreglar definición de estabilidad
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,2) {$B$};
+
+
+\node (i) at (0,5) {Solicitantes};
+\node (j) at (4,5) {Universidades};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (e);
+\path[-stealth] (c) edge (f);
+
+%\draw (4,2) node[cross=8pt,red] {};
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Primera iteración.}
+\end{figure}
+
+En el segundo paso del algoritmo $A$ cierra y $B$ se mantiene abierto. $\alpha$ no aplica a ninguna universidad, $\beta$ aplica a $B$ y $\gamma$ aplica a $B$. $B$ acepta a los dos alumnos llegando a un emparejamiento estable pero no factible.
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=green!60, fill=green!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,2) {$B$};
+
+
+\node (i) at (0,5) {Solicitantes};
+\node (j) at (4,5) {Universidades};
+
+%\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (f);
+\path[-stealth] (c) edge (f);
+
+\draw (4,4) node[cross=8pt,red] {};
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Segunda iteración.}
+\end{figure}
+
+En el tercer paso del algoritmo $B$ cierra y $A$ se mantiene abierto. $\gamma$ no aplica a ninguna universidad, $\alpha$ aplica a $A$ y $\alpha$ aplica a $A$. $A$ acepta a los dos alumnos llegando a un emparejamiento estable factible. Después de 3 pasos en el
+algoritmo, encontramos un emparejamiento estable factible, es decir, el algoritmo convergió.
+\begin{figure}[H]\centering
+
+\begin{tikzpicture}[ scale=0.8]
+\tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
+\tikzset{edge/.style = {->,> = latex}}
+\filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
+\filldraw[color=green!60, fill=green!5, very thick](4,3) ellipse (.8 and 1.5);
+
+
+% vertices
+% 
+
+
+\node[vertex] (a) at (0,4) {$\alpha$};
+\node[vertex] (b) at (0,3) {$\beta$};
+\node[vertex] (c) at (0,2) {$\gamma$};
+
+
+\node[vertex] (e) at (4,4) {$A$};
+\node[vertex] (f) at (4,2) {$B$};
+
+
+\node (i) at (0,5) {Solicitantes};
+\node (j) at (4,5) {Universidades};
+
+\path[-stealth] (a) edge (e);
+\path[-stealth] (b) edge (e);
+%\path[-stealth] (c) edge (f);
+
+\draw (4,2) node[cross=8pt,red] {};
+
+
+%\draw (0.2,8)--(3.8,8);
+
+
+
+\end{tikzpicture}
+
+\caption{Tercera iteración.}
+\end{figure}
+
+
+\fin
+\end{eje}
+
+
+
+
