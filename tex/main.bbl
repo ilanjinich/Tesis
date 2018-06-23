@@ -30,6 +30,32 @@ Biró, P.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Espinosa%
+, Jinich%
+\BCBL {}\ \BBA {} Tame%
+}{%
+Espinosa%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2016}}%
+}]{%
+Yo}
+\APACinsertmetastar {%
+Yo}%
+\begin{APACrefauthors}%
+Espinosa, R.%
+, Jinich, I.%
+\BCBL {}\ \BBA {} Tame, A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Gráficas químicas} {Gráficas químicas}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Laberintos e Infinitos}{}{41}{31--36}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Gale%
 \ \BBA {} Shapley%
 }{%
@@ -130,6 +156,28 @@ Knuth, D\BPBI E.%
   to the mathematical analysis of algorithms}\ (\BVOL~10).
 \newblock
 \APACaddressPublisher{}{American Mathematical Society}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Roth%
+}{%
+Roth%
+}{%
+{\protect \APACyear {2014}}%
+}]{%
+roth_2014}
+\APACinsertmetastar {%
+roth_2014}%
+\begin{APACrefauthors}%
+Roth, A\BPBI E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2014}.
+\newblock
+\APACrefbtitle {Who gets what--and why} {Who gets what--and why}.
+\newblock
+\APACaddressPublisher{}{Eamon Dolan/Houghton Mifflin Harcourt}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

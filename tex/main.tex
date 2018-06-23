@@ -11,6 +11,16 @@
 \usepackage{tikz}
 \usepackage{float}
 \usepackage{url}
+%\usepackage[]{algorithm2e}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+
+\newenvironment{Algoritmo}[1][htb]
+  {\renewcommand{\algorithmcfname}{Algoritmo}% Update algorithm name
+   \begin{algorithm}[H]%
+  }{\end{algorithm}}
+  
+ \usepackage{algcompatible}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{quotes}
@@ -108,7 +118,8 @@ cross/.default={10pt}}
 \newtheorem{teo}{Teorema}[section] 
 \newtheorem{cor}[teo]{Corolario}
 \newtheorem{lem}[teo]{Lema}
-\renewcommand{\qedsymbol}{$\blacksquare$}
+%\renewcommand{\qedsymbol}{$\blacksquare$}
+%\renewcommand{\qedsymbol}{$\dag$}}
 \newcommand{\fin}{\hfill$\triangle$}
 
 \theoremstyle{definition}
@@ -204,8 +215,9 @@ cross/.default={10pt}}
 
 \chapter*{}
 \begin{flushright}
-\textit{``To life, to life, L'Chaim!''}
-%\textit{DEDICATORIA}
+%\textit{``To life, to life, L'Chaim!''}
+\textit{$6\times 10^6$}
+%\textit{זאָג ניט קיין מאָל}
 \end{flushright}
 
 

@@ -1,12 +1,14 @@
-\chapter{Introducción}
+\chapter{El modelo}
 \begin{flushright}
 \textit{``Matchmaker, matchmaker,
 Make me a match, Find me a find,
 Catch me a catch''}
 \end{flushright}
 \section{Descripción del problema}
-Imaginemos que en una ciudad tenemos $m$ universidades y $n$ personas que desean ir a una de estas escuelas, cada universidad tiene un límite alumnos que puede admitir y por esto no todas las personas pueden asistir a su universidad ''favorita''. Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a esta, este tipo de cota puede ser común si dos o más escuelas comparten recursos o personal. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias no exhaustiva (en muchos casos si es exhaustiva) de que universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
-\\ En notación matemática lo que hacemos es suponer que tenemos $n$ alumnos $\alpha_1, \alpha_2, \ldots, \alpha_n$ y $m$ universidades $a_1, a_2, \ldots, a_m$, con las restricciones 
+Imaginemos que en una ciudad tenemos $m$ universidades y $n$ personas que desean ir a una de estas escuelas, cada universidad tiene un límite alumnos que puede admitir y por esto no todas las personas pueden asistir a su universidad
+ ``favorita'', este tipo de cota puede ser común si dos o más escuelas comparten recursos o personal como es el caso de las universidades publicas que dependen en conjunto del presupuesto del gobierno. 
+Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a esta. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias no exhaustiva (en muchos casos si es exhaustiva) de que universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
+\\ En notación matemática lo que hacemos es suponer que tenemos $n$ alumnos $\alpha_1, \alpha_2, \ldots, \alpha_n$ y $m$ universidades $a_1, a_2, \ldots, a_m$, con las restricciones: 
 
 \begin{enumerate}
 \item \begin{equation} \label{r1}
@@ -31,15 +33,37 @@ Cada universidad tiene un límite de alumnos que puede admitir.
 \sum_{i=1}^{n} x_{i,j} \geq\ m_j\times y_j 
 \end{equation}
 Cada universidad necesita admitir a una cantidad considerable de alumnos para abrir.
-\item \begin{equation} \label{r5}
-\sum_{i=1}^{n} (x_{i,j}+x_{i,j'}) 
+%\item \begin{equation} \label{r5}
+%\sum_{i=1}^{n} (x_{i,j}+x_{i,j'}) 
+%\begin{cases}
+%\geq m_{j,j'} \times y_j \\
+%\geq m_{j,j'} \times y_{j'} \\
+%\end{cases}
+%\end{equation} \\
+%para toda $(j,j')$, con $j$ distinto de $j'$. \\
+%La cota inferior de las universidades puede ser común.
+
+\item \begin{equation}
+\sum_{i=1}^{n} \sum_{j=1}^m w_{j,k} \cdot x_{i,j} \leq N_k\cdot %z_k
+\end{equation} 
+donde \begin{equation} w_{j,k} \footnote{\text{$w_j,k$ es constante}}= 
 \begin{cases}
-\geq m_{j,j'} \times y_j \\
-\geq m_{j,j'} \times y_{j'} \\
-\end{cases}
-\end{equation} \\
-para toda $(j,j')$, con $j$ distinto de $j'$. \\
-La cota inferior de las universidades puede ser común.
+1 & \qquad \text{si la universidad $j$ es parte de la restricción $k$.} \\
+0 &\qquad\text{en otro caso.} \\ 
+\end{cases} \end{equation} \\   para toda $k=1,2,\dots,p$   \footnote{donde $p$ es el número de restricciones comunes.}. \\
+La cota superior de las universidades puede ser común.
+
+%\item  \begin{equation} 
+%z_{k}= 
+%\begin{cases}
+%1 & \qquad \text{si las universidades en la restricción $k$ abren.} \\
+%0 &\qquad\text{en otro caso.}\ \\ 
+%\end{cases} \end{equation}
+
+%\item \begin{equation}
+%\sum_{j=1}^{m} w_{j,k} y_{j} \leq z_{k} \text{  para toda $k=1,2,\dots,p$. }
+%\end{equation}    \\ Las universidades solo pueden abrir si cumplen su cota común. 
+
 \item \begin{equation} \label{r6}
 x_{i,j} \leq y_j \ \text{ para toda $i=1,2,\ldots,n$ y para toda $j=1,2,\ldots,m$.}
 \end{equation}
@@ -47,7 +71,7 @@ Los solicitantes únicamente pueden asistir a universidades abiertas.
 
 \end{enumerate}
 
-Es importante mencionar que no hay garantía de que todos los alumnos sean admitidos en alguna universidad, algunos se pueden quedar sin estudiar. No todas las universidades necesariamente tienen cotas superiores, inferiores o comunes; en ciertas situaciones se puede considerar que para cierta universidad $j$, $M_{j}$ puede ser igual a infinito o $m_j$ puede ser igual a cero y de igual manera para cierto par de universidades $(j,j')$, $m_{j,j'}$ puede ser igual a cero. 
+Es importante mencionar que no hay garantía de que todos los alumnos sean admitidos en alguna universidad, algunos se pueden quedar sin estudiar. No todas las universidades necesariamente tienen cotas superiores, inferiores o comunes; en ciertas situaciones se puede considerar que para cierta universidad $j$, $M_{j}$ puede ser igual a infinito o $m_j$ puede ser igual a cero.
 
 Para definir las preferencias de una forma un poco más formal, hacemos uso de la matriz de preferencias
 
@@ -77,7 +101,7 @@ Para continuar es necesario introducir un criterio de estabilidad y otro de opti
 \begin{dfn}{\cite{GaleShapley}}
 \label{Estable}
 Decimos que una asignación de solicitantes a universidades es inestable si existen dos solicitantes $\alpha$ y $\beta$ asignados a universidades $A$ y $B$ respectivamente, con la propiedad de que $\alpha$ prefiere estar en $B$ que en $A$ y $B$ prefiere tener a $\alpha$ que a $B$. Es decir, existen una universidad y un solicitante que se prefieren entre ellos a sus respectivas asignaciones. 
-Además a esto, decimos que una asignación es inestable si existe una universidad cerrada $A$ y $m_j$ solicitantes $\alpha_1,\alpha,2,\dots,\alpha_{m_j}$, con la propiedad de que los $m_j$ solicitantes prefieren estar en $A$ a su situación actual, en este caso se le llama a $A$ \textbf{universidad bloqueadora}
+Además a esto, decimos que una asignación es inestable si existe una universidad cerrada $A$ y $m_j$ solicitantes $\alpha_1,\alpha,2,\dots,\alpha_{m_j}$, con la propiedad de que los $m_j$ solicitantes prefieren estar en $A$ a su situación actual, en este caso se le llama a $A$ \textbf{universidad bloqueadora}.\\
 Alternativamente una asignación de solicitantes a universidades es \textbf{estable} si no es inestable.
 \end{dfn}
 
@@ -86,7 +110,7 @@ Alternativamente una asignación de solicitantes a universidades es \textbf{esta
 Una asignación es considera \textbf{optima} si cada solicitante esta mejor o igual respecto a sus preferencias que en cualquier otra asignación estable. 
 \end{dfn}
 
-Un par de ejemplos de estos conceptos son 
+A continuación mostramos un par de ejemplos de cómo funcionan las definiciones para dejar todo más claro. 
 
 \begin{eje}
 Retomando el ejemplo \ref{ejemplo matrimonio 1}. \\
@@ -97,7 +121,7 @@ El conjunto de parejas $(\alpha, A), \; (\beta, B)\; y\; (\gamma, C)$ es estable
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
 \tikzset{edge/.style = {->,> = latex}}
 \filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
-\filldraw[color=red!60, fill=red!5, very thick](4,3) ellipse (.8 and 1.5);
+\filldraw[color=green!60, fill=green!5, very thick](4,3) ellipse (.8 and 1.5);
 
 
 % vertices
@@ -114,8 +138,8 @@ El conjunto de parejas $(\alpha, A), \; (\beta, B)\; y\; (\gamma, C)$ es estable
 \node[vertex] (g) at (4,2) {$C$};
 
 
-\node (i) at (0,5) {Hombres};
-\node (j) at (4,5) {Mujeres};
+\node (i) at (0,5) {Solicitantes};
+\node (j) at (4,5) {Universidades};
 
 \path[-stealth] (a) edge (e);
 \path[-stealth] (b) edge (f);
@@ -144,7 +168,7 @@ El conjunto de parejas $(\alpha, A)$, $(\gamma, B)$ y $(\beta, C)$ es inestable 
 \tikzset{vertex/.style = {shape=circle,draw,minimum size=1.5em}}
 \tikzset{edge/.style = {->,> = latex}}
 \filldraw[color=blue!60, fill=blue!5, very thick](0,3) ellipse (.8 and 1.5);
-\filldraw[color=red!60, fill=red!5, very thick](4,3) ellipse (.8 and 1.5);
+\filldraw[color=green!60, fill=green!5, very thick](4,3) ellipse (.8 and 1.5);
 
 
 % vertices
@@ -161,8 +185,8 @@ El conjunto de parejas $(\alpha, A)$, $(\gamma, B)$ y $(\beta, C)$ es inestable 
 \node[vertex] (g) at (4,2) {$C$};
 
 
-\node (i) at (0,5) {Hombres};
-\node (j) at (4,5) {Mujeres};
+\node (i) at (0,5) {Solicitantes};
+\node (j) at (4,5) {Universidades};
 
 \path[-stealth] (a) edge (e);
 \path[-stealth] (c) edge (f);
@@ -195,7 +219,7 @@ Surgen algunas preguntas de aquí ¿siempre existe un emparejamiento estable? ¿
 %\textit{``Even the worst husband, God forbid, is better than no husband, God forbid.''}
 %\end{flushright}
 En el pequeño Shtetl de Anatevka, había muchos hombres y muchas mujeres jóvenes con el deseo de casarse. Yenta, la casamentera del pueblo, tenía el trabajo y la obligación de emparejar a todos estos jóvenes. Esta tarea sonara fácil pero no lo es, cada joven tenía distintas preferencias y cada uno de ellos necesitaba un trato especial, ``el matrimonio es para toda la vida y no es algo que hay que tomar como si fuera cualquier cosa" decía Yenta. Retomando los conceptos de la última sección, se desea que el emparejamiento de estos jóvenes sea estable y optimo si es que es posible.\footnote{Este problema hace el supuesto de que las relaciones solo pueden ser entre un hombre y una mujer y que esto es reflejado por sus preferencias. Esto no manifiesta la realidad o las opiniones del autor y se hace únicamente con fines matemáticos.}
-En términos matemáticos, supongamos que tenemos $n$ hombres $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ mujeres $$a_1, a_2,\ldots,a_m$$ con las restricciones
+En términos matemáticos, supongamos que tenemos $n$ hombres $\alpha_1,\alpha_2,\ldots,\alpha_n$ y $m$ mujeres $a_1, a_2,\ldots,a_m$ con las restricciones:
 \begin{enumerate}
 \item \begin{equation} \label{1r1}
 x_{i,j}= 
@@ -225,16 +249,34 @@ Un supuesto adicional que haremos es que el número de hombres es exactamente ig
 \subsection{Algoritmo de Gale Shapley}
 En 1962 David Gale y Lloyd Stowell Shapley demostraron que para el problema del matrimonio estable siempre se puede encontrar un emparejamiento estable óptimo para los hombres, esto se hizo enunciando un algoritmo y mostrando su convergencia. El algoritmo queda representado por el siguiente código y es conocido como el algoritmo de Gale Shapley.
 
-\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley}, captionpos=b, label=c1]
-Input : Una matriz de preferencias para (*$n$*) hombres y (*$n$*) mujeres 
-Output: Un emparejamiento. 
-Cada hombre le propone a la primera mujer de su lista. Cada mujer que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto. 
-repeat{ #hasta que todos los hombres tengan pareja
-Los hombres no emparejados le proponen a la siguiente mujer en su lista. 
-Cada mujer que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual.
-Las mujeres rechazan las propuestas que no aceptaron.
+%\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley}, captionpos=b, label=c1]
+%Input : Una matriz de preferencias para (*$n$*) hombres y (*$n$*) mujeres 
+%Output: Un emparejamiento. 
+%Cada hombre le propone a la primera mujer de su lista. Cada mujer que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto. 
+%repeat{ #hasta que todos los hombres tengan pareja
+%Los hombres no emparejados le proponen a la siguiente mujer en su lista. 
+%Cada mujer que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual.
+%Las mujeres rechazan las propuestas que no aceptaron.
+%}
+%\end{lstlisting}
+
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{Una matriz de preferencias para $n$ hombres y $n$ mujeres}
+\Output{Un emparejamiento. }
+\BlankLine
+\emph{Cada hombre le propone a la primera mujer de su lista\; Cada mujer que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto \; }
+\Repeat{hasta que todos los hombres tengan pareja}{
+	\emph{Los hombres no emparejados le proponen a la siguiente mujer en su lista\; } 
+	\emph{Cada mujer que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual\;} 
+	\emph{Las mujeres rechazan las propuestas que no aceptaron\;} 
 }
-\end{lstlisting}
+\caption{Gale Shapley}
+\end{Algoritmo}
+\DecMargin{1em}
 Para dejar la explicación un poco más clara es importante mostrar un ejemplo de cómo funciona el algoritmo y cuál es su resultado final.
 \begin{eje}{\cite{GaleShapley}}
 \label{ejemploGS}
@@ -767,20 +809,60 @@ Supongamos que la cantidad de hombres es más chica que la cantidad de mujeres (
 
 Además de forma análoga al teorema \ref{teorema de Gale Shapley} se puede ver que el emparejamiento producido es estable.
 \end{proof}
+A partir de esto podemos generalizar el algoritmo de Gale Shapley para que permita un número distinto de hombres y de mujeres. 
+
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{Una matriz de preferencias para $n$ hombres y $m$ mujeres}
+\Output{Un emparejamiento. }
+\BlankLine
+\emph{Cada hombre le propone a la primera mujer de su lista\; Cada mujer que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto \; }
+\Repeat{hasta que todos los hombres tengan pareja o hasta que sean rechazados por todas las mujeres}{
+	\emph{Los hombres no emparejados le proponen a la siguiente mujer en su lista\; } 
+	\emph{Cada mujer que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual\;} 
+	\emph{Las mujeres rechazan las propuestas que no aceptaron\;} 
+}
+\caption{Gale Shapley para un número distinto de hombres y mujeres}
+\end{Algoritmo}
+\DecMargin{1em}
+
 
 El algoritmo de Gale Shapley no es el único algoritmo que existe para producir un emparejamiento estable, y si se cambia el algoritmo el emparejamiento producido podría ser totalmente diferente al producido por el primero. De forma inmediata se puede crear un algoritmo igual al de Gale Shapley con la única diferencia de que las mujeres les proponen a los hombres, esto está representado por el siguiente código.
 
 
-\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para las mujeres}, captionpos=b, label=c1]
-Input : Una matriz de preferencias para (*$n$*) hombres y (*$n$*) mujeres 
-Output: Un emparejamiento. 
-Cada mujer le propone al primer hombre de su lista. Cada hombre que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto. 
-repeat{ #hasta que todas las mujeres tengan pareja
-Los hombres no emparejados le proponen al siguiente hombre en su lista. 
-Cada hombre que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual.
-Los hombres rechazan las propuestas que no aceptaron.
+%\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para las mujeres}, captionpos=b, label=c1]
+%Input : Una matriz de preferencias para (*$n$*) hombres y (*$n$*) mujeres 
+%Output: Un emparejamiento. 
+%Cada mujer le propone al primer hombre de su lista. Cada hombre que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto. 
+%repeat{ #hasta que todas las mujeres tengan pareja
+%Los hombres no emparejados le proponen al siguiente hombre en su lista. 
+%Cada hombre que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual.
+%Los hombres rechazan las propuestas que no aceptaron.
+%}
+%\end{lstlisting}
+
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{Una matriz de preferencias para $n$ hombres y $m$ mujeres }
+\Output{Un emparejamiento.}
+\BlankLine
+\emph{Cada mujer le propone al primer hombre de su lista\; Cada hombre que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto\; }
+\Repeat{hasta que todas las mujeres tengan pareja o o hasta que sean rechazadas por todas los hombres}{
+	\emph{Las mujeres no emparejados le proponen al siguiente hombre en su lista\; } 
+	\emph{Cada hombre que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual\;} 
+	\emph{Los hombres rechazan las propuestas que no aceptaron\;} 
 }
-\end{lstlisting}
+\caption{Gale Shapley para las mujeres}
+\end{Algoritmo}
+\DecMargin{1em}
+
 
 El siguiente ejemplo ilustra que el emparejamiento obtenido es distinto en ciertas situaciones y que por lo tanto los emparejamientos estables no son únicos. 
 
@@ -886,7 +968,7 @@ Para continuar, podemos generalizar el problema del matrimonio estable a uno que
 
 \section{El problema de admisión a universidades}
 Supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a que universidades prefieren entrar y de forma análoga las universidades tienen una lista preferencias con la información de a quien prefieren admitir. Adicional a esto para cada universidad existe un número máximo de alumnos que pueden admitir, esta restricción es natural porque la cantidad de personal y de espacio en las universidades es limitado. 
-En términos matemáticos, supongamos que tenemos $n$ solicitantes $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ universidades $$a_1, a_2,\ldots,a_m$$ con las restricciones
+En términos matemáticos, supongamos que tenemos $n$ solicitantes $\alpha_1,\alpha_2,\ldots,\alpha_n$ y $m$ universidades $a_1, a_2,\ldots,a_m$ con las restricciones:
 \begin{enumerate}
 \item \begin{equation} \label{2r1}
 x_{i,j}= 
@@ -906,18 +988,39 @@ Cada universidad tiene un límite de alumnos que puede admitir.
 
 Es claro que esto es una generalización del problema del matrimonio estable y un caso particular del problema de admisión a universidades con cotas inferiores y comunes. Podemos retomar las definiciones la matriz de preferencias, un emparejamiento estable y de un emparejamiento optimo como análogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}.
 
-En el siguiente código exhibimos un análogo al algoritmo de Gale Shapley para este problema, el cual encuentra un emparejamiento estable y que además lo hace relativamente rápido. Para el caso general este algoritmo es conocido como el de ``'aceptación diferida''.
-\pagebreak
-\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades}, captionpos=b, label=c2]
-Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*).
-Output: Un emparejamiento. 
-Cada solicitante aplica a la primera universidad de su lista. Cada universidad que recibe más de solicitudes a su cota superior acepta las que solicitudes que están más arriba en su lista y rechaza al resto. 
-repeat{ #hasta que cada uno de los solicitantes sea admitido por alguna universidad o rechazado por todas.
-Los solicitantes no emparejados solicitan entrar a la siguiente universidad en su lista. 
-Cada universidad que recibe alguna solicitud acepta hasta (*$M_j$*) solicitantes de los primeros de su lista entre los que aplicaron a ella y sus admitidos actuales.
-Las universidades rechazan a los alumnos no aceptados.
+En el siguiente código exhibimos un análogo al algoritmo de Gale Shapley para este problema, el cual encuentra un emparejamiento estable y que además lo hace relativamente rápido. Para el caso general este algoritmo es conocido como el de ``aceptación diferida''.
+%\pagebreak
+%\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades}, captionpos=b, label=c2]
+%Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*).
+%Output: Un emparejamiento. 
+%Cada solicitante aplica a la primera universidad de su lista. Cada universidad que recibe más de solicitudes a su cota superior acepta las que solicitudes que están más arriba en su lista y rechaza al resto. 
+%repeat{ #hasta que cada uno de los solicitantes sea admitido por alguna universidad o rechazado por todas.
+%Los solicitantes no emparejados solicitan entrar a la siguiente universidad en su lista. 
+%Cada universidad que recibe alguna solicitud acepta hasta (*$M_j$*) solicitantes de los primeros de su lista entre los que aplicaron a ella y sus admitidos actuales.
+%Las universidades rechazan a los alumnos no aceptados.
+%}
+%\end{lstlisting}
+
+
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{Una matriz de preferencias para $n$ solicitantes y $m$ universidades, un vector $M$ en donde la entrada $j$ representa la cota superior de la universidad $j$.}
+\Output{Un emparejamiento.}
+\BlankLine
+\emph{Cada solicitante aplica a la primera universidad de su lista\; Cada universidad que recibe más de solicitudes a su cota superior acepta las que solicitudes que están más arriba en su lista y rechaza al resto. \; }
+\Repeat{hasta que cada uno de los solicitantes sea admitido por alguna universidad o rechazado por todas}{
+	\emph{Los solicitantes no emparejados solicitan entrar a la siguiente universidad en su lista\; } 
+	\emph{Cada universidad que recibe alguna solicitud acepta hasta $M_j$ solicitantes de los primeros de su lista entre los que aplicaron a ella y sus admitidos actuales\;} 
+	\emph{Las universidades rechazan a los alumnos no aceptados\;} 
 }
-\end{lstlisting}
+\caption{Gale Shapley  para admisión a universidades}
+\end{Algoritmo}
+\DecMargin{1em}
+
 
 Este algoritmo al igual que su análogo en el matrimonio estable encuentra siempre un emparejamiento estable.
 \begin{cor}
@@ -959,16 +1062,35 @@ La prueba es por inducción. Primero que nada, sabemos que si en el primer paso 
 
 El algoritmo mencionado anteriormente no es único, de cambiarlo el emparejamiento obtenido podría cambiar significativamente. En primera instancia el algoritmo puede ser modificado para que sea óptimo para las universidades en lugar de para los solicitantes. El siguiente algoritmo produce este resultado y las demostraciones se hacen de forma análoga a las mencionadas anteriormente, como propiedades importantes vale la pena mencionar que produce un emparejamiento estable y que cada universidad está mejor en este emparejamiento que en cualquier otro emparejamiento. 
 
-\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades modificado}, captionpos=b, label=c3]
-Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*).
-Output: Un emparejamiento. 
-Cada universidad invita a los primeros (*$j_i$*) solicitantes en su lista a estudiar ahí. Cada alumno que recibe más de una solicitud acepta las más alta en su lista y rechaza el resto. 
-repeat{ #hasta que cada universidad este llene o cuando todos los estudiantes sean admitidos en una universidad.
-Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo con cuantos lugares tienen.
-Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su actual universidad y las que lo invitaron. 
-El alumno rechaza el resto de las invitaciones.
+%\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades modificado}, captionpos=b, label=c3]
+%Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*).
+%Output: Un emparejamiento. 
+%Cada universidad invita a los primeros (*$j_i$*) solicitantes en su lista a estudiar ahí. Cada alumno que recibe más de una solicitud acepta las más alta en su lista y rechaza el resto. 
+%repeat{ #hasta que cada universidad este llene o cuando todos los estudiantes sean admitidos en una universidad.
+%Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo con cuantos lugares tienen.
+%Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su actual universidad y las que lo invitaron. 
+%El alumno rechaza el resto de las invitaciones.
+%}
+%\end{lstlisting}
+
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{Una matriz de preferencias para $n$ solicitantes y $m$ universidades, un vector $M$ en donde la entrada $j$ representa la cota superior de la universidad $j$.}
+\Output{Un emparejamiento.}
+\BlankLine
+\emph{Cada universidad invita a los primeros $j_i$ solicitantes en su lista a estudiar ahí \; Cada alumno que recibe más de una solicitud acepta las más alta en su lista y rechaza el resto. \; }
+\Repeat{hasta que cada universidad este llena o cuando todos los estudiantes sean admitidos en una universidad.}{
+	\emph{Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo con cuantos lugares tienen\; } 
+	\emph{Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su actual universidad y las que lo invitaron\;} 
+	\emph{El alumno rechaza el resto de las invitaciones\;} 
 }
-\end{lstlisting}
+\caption{Gale Shapley para admisión a universidades modificado}
+\end{Algoritmo}
+\DecMargin{1em}
 
 \subsection{El teorema de los hospitales rurales}
 
@@ -1006,8 +1128,8 @@ Para seguir avanzando, podemos ver qué sucede si al problema de admisión a uni
 
 \section{Cotas inferiores}
 
-Casi de la misma manera a la sección anterior, supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a que universidades prefieren entrar y de forma análoga las universidades tienen una lista preferencias con la información de a quien prefieren admitir. En cada universidad existe un número máximo de alumnos que pueden admitir al igual que un número mínimo que necesitan para abrir, estas restricciones son de carácter natural porque la cantidad de personal y de espacio en las universidades es limitado y además necesitan que sea costeable. 
-En términos matemáticos, supongamos que tenemos $n$ solicitantes $$\alpha_1,\alpha_2,\ldots,\alpha_n$$ y $m$ universidades $$a_1, a_2,\ldots,a_m$$ con las restricciones
+Casi de la misma manera a la sección anterior, supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a que universidades prefieren entrar y de forma análoga las universidades tienen una lista preferencias con la información de a quien prefieren admitir. En cada universidad existe un número máximo de alumnos que pueden admitir al igual que un número mínimo que necesitan para abrir, estas restricciones son de carácter natural porque la cantidad de personal y de espacio en las universidades es limitado y además necesitan que sea costeable. %Para abreviar llamaremos a este problema \textbf{CA-LQ}.
+En términos matemáticos, supongamos que tenemos $n$ solicitantes $\alpha_1,\alpha_2,\ldots,\alpha_n$ y $m$ universidades $a_1, a_2,\ldots,a_m$ con las restricciones:
 \begin{enumerate}
 \item \begin{equation} \label{2r1}
 x_{i,j}= 
@@ -1172,21 +1294,41 @@ Si $B$ cierra entonces solo tenemos un emparejamiento posible en el que $\alpha$
 \end{eje}
 
 A partir de este ejemplo queda claro que si extendemos el problema agregando cotas inferiores perdemos la garantía de existencia de un emparejamiento estable en nuestro problema. Es posible además construir un algoritmo a partir del algoritmo de Gale Shapley para admisión a universidades que converja en caso de que exista a un emparejamiento estable o que saque como resultado si no existe un emparejamiento estable para este problema, el algoritmo esta dado por el siguiente código. Antes de mostrarlo vale la pena recordar que si tienes $m$ universidades entonces existen $2^{m}-1$ posibles combinaciones de qué universidades mantienen abiertas y cuales cierran. 
-\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades con cotas inferiores}, captionpos=b, label=c3]
-Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*) y un vector (*$N$*) en donde la entrada (*$j$*) representa la cota inferior de la universidad (*$j$*).
-Output: Un emparejamiento o mensaje. 
-repeat{ #Hasta encontrar un emparejamiento estable factible.
-Se selecciona una de las (*$2^{m}-1$*) combinaciones, se escoge primero las opciones que cierren menos universidades de las todavía no escogidas. 
-Cada universidad abierta invita a los primeros (*$j_i$*) solicitantes en su lista a estudiar ahí. Cada alumno que recibe más de una solicitud acepta las más alta en su lista y rechaza el resto. 
-repeat{ #hasta que cada universidad abierta este llena o cuando todos los estudiantes sean admitidos en una universidad.
-Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo con cuantos lugares tienen.
-Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su actual universidad y las que lo invitaron. 
-El alumno rechaza el resto de las invitaciones.
-}
-Si la asignación obtenida es factible, el algoritmo acaba y saca como output el emparejamiento. 
-}
-Si el algoritmo trato todas las combinaciones y no encontró un emparejamiento estable factible entonces saca un mensaje diciendo que este no existe.
-\end{lstlisting}
+%\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades con cotas inferiores}, captionpos=b, label=c3]
+%Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*) y un vector (*$N$*) en donde la entrada (*$j$*) representa la cota inferior de la universidad (*$j$*).
+%Output: Un emparejamiento o mensaje. 
+%repeat{ #Hasta encontrar un emparejamiento estable factible.
+%Se selecciona una de las (*$2^{m}-1$*) combinaciones, se escoge primero las opciones que cierren menos universidades de las todavía no escogidas. 
+%Cada universidad abierta invita a los primeros (*$j_i$*) solicitantes en su lista a estudiar ahí. Cada alumno que recibe más de una solicitud acepta las más alta en su lista y rechaza el resto. 
+%repeat{ #hasta que cada universidad abierta este llena o cuando todos los estudiantes sean admitidos en una universidad.
+%Las universidades que no alcanzaron su cota superior invitan a los siguientes alumnos de su lista de acuerdo con cuantos lugares tienen.
+%Cada solicitante que recibe una solicitud acepta la más alta en su alta entre su actual universidad y las que lo invitaron. 
+%El alumno rechaza el resto de las invitaciones.
+%}
+%Si la asignación obtenida es factible, el algoritmo acaba y saca como output el emparejamiento. 
+%}
+%Si el algoritmo trato todas las combinaciones y no encontró un emparejamiento estable factible entonces saca un mensaje diciendo que este no existe.
+%\end{lstlisting}
+\vspace{1 cm}
+
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{Una matriz de preferencias para $n$ solicitantes y $m$ universidades, un vector $M$ en donde la entrada $j$ representa la cota superior de la universidad $j$ y un vector $N$ en donde la entrada $j$ representa la cota inferior de la universidad $j$.}
+\Output{Un emparejamiento o un mensaje.}
+\BlankLine
+\Repeat{Hasta encontrar un emparejamiento estable factible o hasta tratar todas las combinaciones}{
+	\emph{Se selecciona una de las $2^{m}-1$ combinaciones, se escoge primero las opciones que cierren menos universidades de las todavía no escogidas\;}
+	\emph{Se le aplica el algoritmo de Gale Shapley para admisión de universidades a la combinación de universidades abiertas y se obtiene una asiignación\;}
+	\emph{Si la asignación obtenida es factible, el algoritmo acaba y saca como output el emparejamiento\;}
+	}
+	\emph{Si el algoritmo trato todas las combinaciones y no encontró un emparejamiento estable factible entonces saca un mensaje diciendo que este no existe\;}
+\caption{Gale Shapley  para admisión a universidades con cotas inferiores.}
+\end{Algoritmo}
+\DecMargin{1em}
 
 \begin{cor}
 Dada una matriz de preferencias arbitraria, un vector de cotas superiores arbitrario y un vector de cotas inferiores arbitrario, el algoritmo de Gale Shapley para admisión a universidades con cotas inferiores converge.
@@ -1196,12 +1338,16 @@ Supongamos que existe una combinación de universidades abiertas que cuenta con 
 Cómo se escoge las opciones que cierren menos universidades de las todavía no escogidas podemos garantizar que de encontrar un emparejamiento estable factible este no tiene una universidad bloqueadora. 
 Además, porque el algoritmo trata todas las combinaciones y porque el corolario \ref{gsu} nos garantiza que dada una combinación de universidades abiertas el algoritmo siempre encuentra un emparejamiento estable, entonces podemos concluir que de existir un emparejamiento estable factible el algoritmo de Gale Shapley para admisión a universidades con cotas inferiores lo va a encontrar y por lo tanto el algoritmo converge a lo deseado. 
 \end{proof}
+
+Este algoritmo a diferencia de los anteriores en que tiene la enorme desventaja de que no es muy eficiente, si el número de universidades es muy grande el algoritmo podría no acabar porque el poder de computo necesario para correrlo es exponencial respecto al número de universidades, esto queda fundamentado por el siguiente resultado.
 \begin{cor}
-La complejidad del algoritmo de Gale Shapley para admisión a universidades con cotas inferiores es del orden de $2^{m}m^2$, donde $m$ es el número de universidades.
+La complejidad del algoritmo de Gale Shapley para admisión a universidades con cotas inferiores es del orden de $2^{m}\cdot m^2$, donde $m$ es el número de universidades.
 \end{cor}
 \begin{proof}
-En el peor escenario no existe una asignación estable factible para el problema, en este caso se realiza $2^{m}-1$ veces el algoritmo de Gale Shapley, que por la observación \ref{complejidad1} tiene como complejidad $m^2$. Por lo tanto, el número máximo de pasos que tiene el algoritmo es aproximadamente $(2^{m}-1)m^2=2^{m}m^2-m^2$ y podemos concluir que la complejidad del algoritmo es del orden de $2^{m}m^2$.
+En el peor escenario no existe una asignación estable factible para el problema, en este caso se realiza $2^{m}-1$ veces el algoritmo de Gale Shapley, que por la observación \ref{complejidad1} tiene como complejidad $m^2$. Por lo tanto, el número máximo de pasos que tiene el algoritmo es aproximadamente $(2^{m}-1)\cdot m^2=2^{m}\cdot m^2-m^2$ y podemos concluir que la complejidad del algoritmo es del orden de $2^{m}\cdot m^2$.
 \end{proof}
+
+A continuación mostramos un ejemplo de cómo funciona el algoritmo para dejarlo más claro. 
 \begin{eje}
 \cite{Todo}\\
 Supongamos que tenemos dos universidades $A$ y $B$, $A$ tiene como cota inferior a dos estudiantes y solo puede admitir a dos solicitantes, $B$ necesita a tres estudiantes para abrir y tiene como cota superior a tres alumnos. Además, a esto contamos con tres solicitantes $\alpha$, $\beta$ y $\gamma$, la matriz de preferencias para este problema es 
@@ -1341,6 +1487,130 @@ algoritmo, encontramos un emparejamiento estable factible, es decir, el algoritm
 
 \fin
 \end{eje}
+
+
+Al igual que en las secciones anteriores el algoritmo puede ser modificado para que sea optimo para las universidades, los resultados de convergencia y de complejidad son analogos a los mostrados.
+Además a esto, \cite{Todo} propone una heuristica para resolver este problema de forma rapida. En general hay que tener cuidado al usarla porque el algoritmo ignora la existencia de universidades bloqueadoras y podria no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable.
+\\
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{Una matriz de preferencias para $n$ solicitantes y $m$ universidades, un vector $M$ en donde la entrada $j$ representa la cota superior de la universidad $j$ y un vector $N$ en donde la entrada $j$ representa la cota inferior de la universidad $j$.}
+\Output{Un emparejamiento o un mensaje.}
+\BlankLine
+\emph{$U$ $\gets$ un vector de tamaño $m$ con los nombres de todas las universidades\;}
+\Repeat{Hasta encontrar un emparejamiento estable factible o mientras $U$ sea no vacio}{
+	\emph{Se aplica el algoritmo de Gale Shapley para admisión a universidades considerando que las escuelas que aparecen en $U$ estan abiertas y las que no estan cerradas obteniendo un emparejamiento $M$\;}
+	\eIf{$M$ es factible}{
+		El algoritmo acaba y saca como output el emparejamiento\;
+		}
+		{
+		\emph{Sea $A$ la universidad con el cociente entre el número asignado de estudiantes y su cota inferior mínimo \;}
+		\emph{$U$ $\gets$ $U \setminus A$ (Al vector $U$ le quitamos la universidad $A$) \;} 
+		}
+}
+\emph{Si $U$ esta vacio, saca un mensaje diciendo que no se encontro el emparejamiento\;}
+\caption{Heuristica  para admisión a universidades con cotas inferiores.}
+\end{Algoritmo}
+\DecMargin{1em}
+
+%falta arreglar
+En el capitulo \ref{NP} se analizara la complejidad computacional de ver si existe una asignación estable para este problema %y en el capitulo \ref{heuristica} se propondra una heuristica para resolver el problema mucho más rapido que en el ultimo algoritmo.
+A continuación veremos que pasa cuando agregamos cotas comunes al problema y ver si las cosas se siguen compartando igual o parecido a los subproblemas mostrados anteriormente. Analizaremos el problema sin considerar las cotas inferiores por simplicidad. 
+% Lo primero que vale la pena mencionar es que toda cota inferior es una cota común en la que solo aparece una solo universidad y por lo tanto podemos considerar el problema con puras cotas comunes y de cierta forma ignorar la existencia de las cotas inferiores.
+
+\section{Cotas comunes}
+Considerando un problema muy similar al original mencionado al principio del capitulo,
+ supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades,
+ los solicitantes tienen una lista de preferencias en donde reflejan a que universidades prefieren entrar y de forma análoga las universidades tienen una lista preferencias con la información de a quien prefieren admitir. 
+ En cada universidad existe un número máximo de alumnos que pueden admitir y estas en conjunto tienen cotas superiores comunes,
+ estas restricciones son de carácter natural porque las universidades pueden tener recursos compartidos como es el caso por ejemplo de becas gubernamentales. 
+%Para abreviar llamaremos a este problema \textbf{CA-CQ}.
+ En términos matemáticos, supongamos que tenemos $n$ solicitantes $\alpha_1,\alpha_2,\ldots,\alpha_n$ y $m$ universidades $a_1, a_2,\ldots,a_m$ con las restricciones
+\begin{enumerate}
+\item \begin{equation} \label{r1}
+x_{i,j}= 
+\begin{cases}
+1 & \qquad \text{si $i$ asiste a la universidad $j$.} \\
+0 &\qquad\text{en otro caso.}\ \\ 
+\end{cases} \end{equation}
+%\item \begin{equation} y_{j}= 
+%\begin{cases}
+%1 & \qquad \text{si la universidad $j$ abre.} \\
+%0 &\qquad\text{en otro caso.} \\ 
+%\end{cases} \end{equation}
+\item \begin{equation} \label{r2}
+\sum_{j=1}^{m}x_{i,j} \leq1 \ \text{ para toda $i=1,2,\ldots,n$. }
+\end{equation} Cada estudiante es admitido en máximo una universidad. 
+\item \begin{equation} \label{r3}
+\sum_{i=1}^{n} x_{i,j} \leq M_j\ \text{ para toda $j=1,2,\dots,m$.} 
+\end{equation}
+Cada universidad tiene un límite de alumnos que puede admitir.
+\item \begin{equation}
+\sum_{i=1}^{n} \sum_{j=1}^m w_{j,k} \cdot x_{i,j} \leq N_p %\cdot z_k
+\end{equation} 
+donde \begin{equation} w_{j,k}= 
+\begin{cases}
+1 & \qquad \text{si la universidad $j$ es parte de la restricción $k$.} \\
+0 &\qquad\text{en otro caso.} \\ 
+\end{cases} \end{equation} \\   para toda $k=1,2,\dots,p$   \footnote{donde $p$ es el número de restricciones comunes.}. \\
+La universidades tienen cotas superiores comunes.
+
+%\item  \begin{equation} 
+%z_{k}= 
+%\begin{cases}
+%1 & \qquad \text{si las universidades en la restricción $k$ abren.} \\
+%0 &\qquad\text{en otro caso.}\ \\ 
+%\end{cases} \end{equation}
+
+%\item \begin{equation}
+%\sum_{j=1}^{m} w_{j,k} y_{j} \leq z_{k} \text{  para toda $k=1,2,\dots,p$. }
+%\end{equation}    \\ Las universidades solo pueden abrir si cumplen su cota común. 
+
+%\item \begin{equation} \label{r6}
+%x_{i,j} \leq y_j \ \text{ para toda $i=1,2,\ldots,n$ y para toda $j=1,2,\ldots,m$.}
+%\end{equation}
+%Los solicitantes únicamente pueden asistir a universidades abiertas.
+\end{enumerate}
+
+Aquí ponemos como modificación al problema original el hecho que ignoramos la existencia de cotas inferiores.
+Además, en lugar de usar la matriz de preferencias definida por \ref{matpref} utilizaremos una lista de preferencias que tiene la ventaja de ser un poco más simple para expresar las cotas comunes. 
+
+\begin{dfn}
+\label{listpref}
+Definimos la \textbf{lista de preferencias} para un problema con $n$ estudiantes, con $m$ universidades y $p$ restricciones
+como una función $P$ de tal forma que si $\alpha$ es un estudiante $P(\alpha)$ es el orden de preferencia que le asigna a las universidades,
+si $A$ es una universidad $P(A)$ es el orden de preferencia que le asigna a los estudiantes salvo que el primer lugar denota la cota inferior de $A$ y el segundo lugar la superior de $A$.
+Además, si denotamos a $\mathcal{C}$ como el \textbf{sistema de conjuntos de universidades} (ver \ref{conj1}) que esta conformado por los conjuntos de universidades que forman cada restricción y denotamos a $C_k$ como el conjunto de universidades que forman parte de la restricción común $k$ para todo $k=1,2,\dots,p$.
+Entonces $P(C_k)$ representa el orden de preferencias de la cota $C_k$ para todo $k=1,2,\dots,p$.
+\\ Para definir el orden de preferencias de una cota común hacemos los siguientes supuestos:
+\begin{enumerate}
+\item Si para alguna $k=1,2,\dots,p$ fija, existe una universidad $A$ que pertenece a $C_k$ y además existe un estudiante $\alpha$ que pertenece a $P(A)$. Entonces, $\alpha$ pertenece a $P(C_k)$.
+\item Si para alguna $k=1,2,\dots,p$ fija, existe un estudiante $\alpha$ que petenece a $P(C_k)$. Entonces, existe una universidad $A$ que pertenece a $C_k$ tal que $\alpha$ pertenece a $P(A)$.
+\item Si para alguna $k=1,2,\dots,p$ fija, existe una universidad $A$ que petenece a $C_K$ y además existen dos estudiantes $\alpha$ y $\beta$ de tal forma que $A$ prefiere a $\alpha$ que a $\beta$. Entonces, $\alpha$ aparece antes que $\beta$ en $P(C_K)$.
+\item Si para alguna $k=1,2,\dots,p$ fija, existen dos estudiantes $\alpha$ y $\beta$, de tal forma que $\alpha$ aparece antes que $\beta$ en $P(C_k)$. Entonces, toda universidad $A$ que pertenece a $C_k$ prefiere tener a $\alpha$ que a $\beta$ en caso que aparazcan en $P(A)$.
+\end{enumerate}
+
+ \end{dfn}
+
+\begin{eje} \cite{Todo}
+\label{listprefeje}
+Una lista de preferencias y cómo funciona
+\end{eje}
+
+No siempre existe una asignación estable
+
+\begin{eje}
+Contraejemplo de que no siempre existe usando \ref{listprefeje}
+\end{eje}
+
+
+
+
+
+
 
 
 
