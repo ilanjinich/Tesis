@@ -775,7 +775,7 @@ Si en un emparejamiento estable por lo menos dos hombres están emparejados con 
 \end{cor}
 
 \begin{proof}
-Llamemos $m$ al emparejamiento estable donde por lo menos dos hombres están emparejados con la última mujer de sus respectivas listas y llamemos $m'$ al emparejamiento de Gale Shapley.
+Llamemos $M$ al emparejamiento estable donde por lo menos dos hombres están emparejados con la última mujer de sus respectivas listas y llamemos $M'$ al emparejamiento de Gale Shapley.
 Por el teorema \ref{teorema de Gale Shapley} sabemos que el algoritmo de Gale Shapley siempre acaba en un emparejamiento estable y además en ese emparejamiento estable solo un hombre puede terminar con la última mujer de su lista como pareja por el lema \ref{lema 1}.
 Por lo tanto $m$ y $m'$ son diferentes y como ambos son emparejamientos estables entonces el número de emparejamientos estables en el problema es mayor o igual a dos. 
 \end{proof}
@@ -1293,7 +1293,7 @@ Si $B$ cierra entonces solo tenemos un emparejamiento posible en el que $\alpha$
 \fin
 \end{eje}
 
-A partir de este ejemplo queda claro que si extendemos el problema agregando cotas inferiores perdemos la garantía de existencia de un emparejamiento estable en nuestro problema. Es posible además construir un algoritmo a partir del algoritmo de Gale Shapley para admisión a universidades que converja en caso de que exista a un emparejamiento estable o que saque como resultado si no existe un emparejamiento estable para este problema, el algoritmo esta dado por el siguiente código. Antes de mostrarlo vale la pena recordar que si tienes $m$ universidades entonces existen $2^{m}-1$ posibles combinaciones de qué universidades mantienen abiertas y cuales cierran. 
+A partir de este ejemplo queda claro que si extendemos el problema agregando cotas inferiores perdemos la garantía de existencia de un emparejamiento estable en nuestro problema. Es posible además construir un algoritmo a partir del algoritmo de Gale Shapley para admisión a universidades que converja en caso de que exista a un emparejamiento estable o que saque como resultado si no existe un emparejamiento estable para este problema, el algoritmo esta dado por el siguiente código. Antes de mostrarlo vale la pena recordar que si tienes $m$ universidades entonces existen $2^{m}-1$ (corolario \ref{card3}) posibles combinaciones de qué universidades mantienen abiertas y cuales cierran. 
 %\begin{lstlisting}[style=R, escapeinside={(*}{*)},caption={Algoritmo de Gale Shapley para admisión a universidades con cotas inferiores}, captionpos=b, label=c3]
 %Input : Una matriz de preferencias para (*$n$*) solicitantes y (*$m$*) universidades, un vector (*$M$*) en donde la entrada (*$j$*) representa la cota superior de la universidad (*$j$*) y un vector (*$N$*) en donde la entrada (*$j$*) representa la cota inferior de la universidad (*$j$*).
 %Output: Un emparejamiento o mensaje. 

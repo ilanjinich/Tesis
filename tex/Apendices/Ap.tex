@@ -1,12 +1,80 @@
 \chapter{Teoría de Conjuntos}
 
 \begin{dfn}
-\label{conj1}
-Decimos que $\mathcal{C}$ es un sistema de conjuntos de $\Omega$ si cada elemento de C es un conjunto de elementos de $\Omega$.
+\label{conjunto} \cite{Schaums} \\
+Un \textbf{conjunto} es una colección bien definida de objetos; los objetos son llamados \textbf{elementos} del conjunto.
 \end{dfn}
 
-\begin{dfn} \cite{Todo}
-\label{conj2}
+\begin{dfn}
+La \textbf{cardinalidad} de un conjunto $\Omega$ es la cantidad de elementos que tiene.
+\end{dfn}
+
+\begin{dfn}
+Definimos al \textbf{conjunto vacio} $\emptyset$ como aquel que no tiene ningun elemento.
+\end{dfn}
+
+\begin{dfn}
+Dado un conjunto $\Omega$ arbitrario, decimos que un conjunto $A$ es \textbf{subconjunto} de $\Omega$  si todos los elementos de $A$ son elementos de $\Omega$. Esto se denota como $A 	\subseteq \Omega$.
+\end{dfn}
+
+\begin{obs}
+Dado un conjunto $\Omega$ arbitrario, $\emptyset$ 	$\subseteq$ $\Omega$. 
+\end{obs}
+
+\begin{dfn}
+Definimos la \textbf{union} entre dos conjuntos $A$ y $B$ como el conjunto $A \cup B$ que contiene a todos los elementos que estan en $A$ y a todos los elementos que estan en $B$.
+\end{dfn}
+
+\begin{dfn}
+Definimos la \textbf{intersección} entre dos conjuntos $A$ y $B$ como el conjunto $A \cap B$ que contiene a todos los elementos que estan en $A$ y  en $B$. Es decir, si un elemento esta en $A$ y no esta en $B$, entonces no esta en $A \cap B$.
+\end{dfn}
+
+\begin{dfn}
+Decimos que dos conjuntos son \textbf{ajenos} si la interesección entre ellos es vacia. 
+\end{dfn}
+
+\begin{dfn}
+Definimos la \textbf{resta} entre dos conjuntos $A$ y $B$ como el conjunto $A \setminus B$ que contiene a todos los elementos que estan en A pero no estan en $B$.
+\end{dfn}
+
+\begin{dfn}
+\label{conj1}
+Decimos que $\mathcal{C}$ es un \textbf{sistema de conjuntos} de $\Omega$ si cada elemento de $\mathcal{C}$ es un conjunto de elementos de $\Omega$.  Es decir, $\mathcal{C}$ es un conjunto cuyos elementos son subconjutos de $\Omega$.
+\end{dfn}
+
+\begin{dfn}
+Decimos que $\mathcal{P}(\Omega)$ es el \textbf{conjunto potencia} de un conjunto $\Omega$ si $\mathcal{P}(\Omega)$ es un sistema de conjuntos que contiene a todos los subconjuntos de $\Omega$.
+\end{dfn}
+
+\begin{teo}
+\label{card2}
+Si la cardinalidad de $\Omega$ es $n$, entonces la cardinalidad de su conjunto potencia es $2^n$.
+\end{teo}
+\begin{proof}
+La prueba se hace por inducción matemática. \\
+Supongamos que $n=0$, entonces $\Omega=\emptyset$. El conjunto vacio unicamente se tiene como subconjunto a si mismo y como $2^0=1$, el teorema es cierto para $n=0$. \\
+Supongamos que $n=1$, entonces $\Omega$ tiene dos posibles subconjuntos: $\Omega$ y $\emptyset$. Como $2^1=2$, el teorema es cierto para $n=1$. \\
+Supongamos que para alguna $n$ arbitraria el teorema es cierto y supongamos que la cardinalidad de $\Omega$ es $n+1$. Sea $\omega$ un elemento arbitrario de $\Omega$ y consideremos a $\Omega^*$ como $\Omega \setminus \omega$. Ahora, como la cardinalidad de $\Omega^*$ es $n$ sabemos por hipotesis que la cardinalidad de su conjunto potencia es $2^n$. \\
+Luego, notamos que los subconjuntos de $\Omega$ son unicamente de dos formas: los que contienen a $\omega$ y los que no. El grupo de los que no contienen a $\Omega$ son el conjunto potencia de $\Omega^*$ y el grupo de los que contienen a $\omega$ puede ser visto como los elementos del conjunto potencia de $\Omega^*$ unidos a $\omega$. Por lo tanto la cardinalidad de $\mathcal{P}(\Omega)$ es el doble a la cardinalidad $\mathcal{P}(\Omega^*)$ que por hipotesis es $2^n$ lo que implica que la cardinalidad de $\mathcal{P}(\Omega)$  es $2 \cdot 2^n=2^{n+1}$ y por lo tanto, el teorema es cierto para toda $n$.
+\end{proof}
+
+\begin{cor}
+\label{card3}
+Si la caridinalidad de $\Omega$ es $n$, entonces la cantidad de subconjuntos no vacios que tiene es $2^{n}-1$.
+\end{cor}
+\begin{proof}
+Por el teorema \ref{card2} sabemos que la cantidad de subconjuntos que tiene $\Omega$ es $2^{n}$, si quitamos el conjunto  vacio nos quedamos con $2^{n}-1$ subconjuntos.
+\end{proof}
+
+\begin{dfn} \label{conj2} \cite{Todo} \\
 Decimos que $\mathcal{C}$ es un \textbf{sistema anidado de conjuntos} si para todo par de conjuntos no ajenos, $S$ y $S'$, 
 se tiene que $S$ es un subconjunto de $S'$ o que $S'$ es un subconjunto de $S$.
+\end{dfn}
+
+\begin{obs}
+Si la cardinalidad de $\Omega$ es mayor a 2, su conjunto potencia no es sistema anidado de conjuntos.
+\end{obs}
+
+\begin{dfn}
+Decimos que una colección de conjuntos $a_1,a_2,\dots,a_n$ es una \textbf{partición} de un conjunto $A$, si $$\bigcup\limits_{i=1}^{n}a_i=A.$$ 
 \end{dfn}

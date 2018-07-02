@@ -31,6 +31,29 @@ Biró, P.%
 
 \bibitem [\protect \citeauthoryear {%
 Espinosa%
+}{%
+Espinosa%
+}{%
+{\protect \APACyear {2017}}%
+}]{%
+Ramon}
+\APACinsertmetastar {%
+Ramon}%
+\begin{APACrefauthors}%
+Espinosa, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2017}.
+\newblock
+\APACrefbtitle {Matemáticas Discretas} {Matemáticas discretas}\
+  (\PrintOrdinal{2}\ \BEd).
+\newblock
+\APACaddressPublisher{}{Alfaomega Grupo Editor}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Espinosa%
 , Jinich%
 \BCBL {}\ \BBA {} Tame%
 }{%
@@ -156,6 +179,30 @@ Knuth, D\BPBI E.%
   to the mathematical analysis of algorithms}\ (\BVOL~10).
 \newblock
 \APACaddressPublisher{}{American Mathematical Society}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Lipschutz%
+}{%
+Lipschutz%
+}{%
+{\protect \APACyear {1998}}%
+}]{%
+Schaums}
+\APACinsertmetastar {%
+Schaums}%
+\begin{APACrefauthors}%
+Lipschutz, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1998}.
+\newblock
+\APACrefbtitle {Shaums's outline of theory and problems of set theory and
+  related topics} {Shaums's outline of theory and problems of set theory and
+  related topics}.
+\newblock
+\APACaddressPublisher{}{McGraw-Hill}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

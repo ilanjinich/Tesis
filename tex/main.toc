@@ -14,5 +14,6 @@
 \contentsline {chapter}{\numberline {3}Conclusiones}{39}{chapter.3}
 \contentsline {chapter}{\numberline {A}Teor\IeC {\'\i }a de Conjuntos}{41}{appendix.Alph1}
 \vspace {2em}
+\contentsline {chapter}{\numberline {B}Teor\IeC {\'\i }a de Gr\IeC {\'a}ficas}{45}{appendix.Alph2}
 \vspace {2em}
-\contentsline {chapter}{Referencias}{43}{appendix*.5}
+\contentsline {chapter}{Referencias}{47}{appendix*.5}
