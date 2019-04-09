@@ -1,8 +1,17 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
-A level-1 auxiliary file: Capitulos/cap1.aux
-A level-1 auxiliary file: Capitulos/cap2.aux
+A level-1 auxiliary file: Capitulos/1.aux
+A level-1 auxiliary file: Capitulos/2.aux
+A level-1 auxiliary file: Capitulos/3.aux
+A level-1 auxiliary file: Capitulos/4.aux
+A level-1 auxiliary file: Capitulos/5.aux
+A level-1 auxiliary file: Capitulos/6.aux
+A level-1 auxiliary file: Capitulos/7.aux
 A level-1 auxiliary file: Capitulos/Conclusiones.aux
 A level-1 auxiliary file: Apendices/Ap.aux
+A level-1 auxiliary file: Apendices/AppendixB.aux
 The style file: apacite.bst
 Database file #1: tesis_itam_bibliografia.bib
+Warning--I didn't find a database entry for "empates"
+Warning--I didn't find a database entry for "tufte"
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
+(There were 2 warnings)

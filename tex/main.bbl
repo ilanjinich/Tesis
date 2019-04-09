@@ -30,6 +30,34 @@ Biró, P.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Cook%
+, Cunningham%
+, Pulleyblank%
+\BCBL {}\ \BBA {} Schrijver%
+}{%
+Cook%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+CO1}
+\APACinsertmetastar {%
+CO1}%
+\begin{APACrefauthors}%
+Cook, W.%
+, Cunningham, W.%
+, Pulleyblank, W.%
+\BCBL {}\ \BBA {} Schrijver, A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{{\protect \bibnodate {}}}.
+\newblock
+\APACrefbtitle {Combinatorial Optimization} {Combinatorial optimization}.
+\newblock
+\APACaddressPublisher{}{Wiley}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Espinosa%
 }{%
 Espinosa%
@@ -76,6 +104,29 @@ Espinosa, R.%
 {\BBOQ}\APACrefatitle {Gráficas químicas} {Gráficas químicas}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Laberintos e Infinitos}{}{41}{31--36}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fraleigh%
+}{%
+Fraleigh%
+}{%
+{\protect \APACyear {1976}}%
+}]{%
+moderna}
+\APACinsertmetastar {%
+moderna}%
+\begin{APACrefauthors}%
+Fraleigh, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1976}.
+\newblock
+\APACrefbtitle {A First Course in Abstract Algebra} {A first course in abstract
+  algebra}.
+\newblock
+\APACaddressPublisher{}{Addison Wesley}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -182,6 +233,29 @@ Knuth, D\BPBI E.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Lawler%
+}{%
+Lawler%
+}{%
+{\protect \APACyear {2015}}%
+}]{%
+CO2}
+\APACinsertmetastar {%
+CO2}%
+\begin{APACrefauthors}%
+Lawler, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2015}.
+\newblock
+\APACrefbtitle {Combinatorial Optimization, Netwroks and Matroids}
+  {Combinatorial optimization, netwroks and matroids}.
+\newblock
+\APACaddressPublisher{}{Dover}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Lipschutz%
 }{%
 Lipschutz%
@@ -203,6 +277,31 @@ Lipschutz, S.%
   related topics}.
 \newblock
 \APACaddressPublisher{}{McGraw-Hill}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Papadimitriou%
+\ \BBA {} Steiglitz%
+}{%
+Papadimitriou%
+\ \BBA {} Steiglitz%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+CO3}
+\APACinsertmetastar {%
+CO3}%
+\begin{APACrefauthors}%
+Papadimitriou, C.%
+\BCBT {}\ \BBA {} Steiglitz, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2016}.
+\newblock
+\APACrefbtitle {Combinatorial Optimization} {Combinatorial optimization}.
+\newblock
+\APACaddressPublisher{}{Dover}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -252,6 +351,28 @@ Roth, A\BPBI E.%
   analysis}.
 \newblock
 \APACaddressPublisher{}{Cambridge University Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Welsh%
+}{%
+Welsh%
+}{%
+{\protect \APACyear {2010}}%
+}]{%
+matroid}
+\APACinsertmetastar {%
+matroid}%
+\begin{APACrefauthors}%
+Welsh, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2010}.
+\newblock
+\APACrefbtitle {Matroid Theory} {Matroid theory}.
+\newblock
+\APACaddressPublisher{}{Dover}.
 \PrintBackRefs{\CurrentBib}
 
 \end{thebibliography}
