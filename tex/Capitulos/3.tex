@@ -2,7 +2,7 @@
 %\begin{flushright}
 %\textit{``Even the worst husband, God forbid, is better than no husband, God forbid.''}
 %\end{flushright}
-En el pequeño Shtetl de Anatevka, había muchos hombres y muchas mujeres jóvenes con el deseo de casarse. Yenta, la casamentera del pueblo, tenía el trabajo y la obligación de emparejar a todos estos jóvenes. Esta tarea sonara fácil pero no lo es, cada joven tenía distintas preferencias y cada uno de ellos necesitaba un trato especial, ``el matrimonio es para toda la vida y no es algo que hay que tomar como si fuera cualquier cosa" decía Yenta. Retomando los conceptos de la última sección, se desea que el emparejamiento de estos jóvenes sea estable y optimo si es que es posible.\footnote{Este problema hace el supuesto de que las relaciones solo pueden ser entre un hombre y una mujer y que esto es reflejado por sus preferencias. Esto no manifiesta la realidad o las opiniones del autor y se hace únicamente con fines matemáticos.}
+En el pequeño Shtetl de Anatevka, había muchos hombres y muchas mujeres jóvenes con el deseo de casarse. Yenta, la casamentera del pueblo, tenía el trabajo y la obligación de emparejar a todos estos jóvenes. Esta tarea sonará fácil pero no lo es, cada joven tenía distintas preferencias y cada uno de ellos necesitaba un trato especial, ``el matrimonio es para toda la vida y no es algo que hay que tomar como si fuera cualquier cosa" decía Yenta. Retomando los conceptos de la última sección, se desea que el emparejamiento de estos jóvenes sea estable y óptimo si es que es posible.\footnote{Este problema hace el supuesto de que las relaciones solo pueden ser entre un hombre y una mujer y que esto es reflejado por sus preferencias. Esto no manifiesta la realidad o las opiniones del autor y se hace únicamente con fines matemáticos.}
 En términos matemáticos, supongamos que tenemos $n$ hombres $\alpha_1,\alpha_2,\ldots,\alpha_n$ y $m$ mujeres $a_1, a_2,\ldots,a_m$ con las restricciones:
 \begin{enumerate}
 \item \begin{equation} \label{1r1}
@@ -13,11 +13,11 @@ x_{i,j}=
 \end{cases} \end{equation}
 \item \begin{equation} \label{1r2}
 \sum_{j=1}^{m}x_{i,j} \leq1 \ \text{ para toda $i=1,2,\ldots,n$. }
-\end{equation} Cada hombre se casa con máximo una mujer. 
+\end{equation} Cada hombre se casa con a lo más una mujer. 
 \item \begin{equation} \label{1r3}
 \sum_{i=1}^{n} x_{i,j} \leq 1\ \text{ para toda $j=1,2,\dots,m$.} 
 \end{equation}
-Cada mujer se casa con máximo un hombre. 
+Cada mujer se casa con a lo más un hombre. 
 \end{enumerate}
 
 Es claro, a partir de la definición del problema que este es un caso particular del problema original. Aprovechando lo que se hizo en la sección anterior la definición de la matriz de preferencias, un emparejamiento estable y de un emparejamiento optimo son análogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}. Existen diversos resultados sobre el problema del matrimonio estable, uno de los más famosos es por Gale y Shapley que encontraron un algoritmo que siempre encuentra un emparejamiento estable y además lo hace sin muchas complicaciones. 
@@ -475,7 +475,7 @@ En novena instancia, $B$ acepta la propuesta de $\delta$ y $\alpha$ le propone m
 \end{figure}
 
 
-En decima instancia, $C$ acepta la propuesta de $\alpha$, $\beta$ le propone matrimonio a $D$ y $D$ acepta la propuesta de $\beta$. Después de 10 pasos en el algoritmo, todos los hombres ya están emparejados, es decir, el algoritmo convergió en un emparejamiento. Cabe mencionar que el número total de propuestas fue 13. 
+En décima instancia, $C$ acepta la propuesta de $\alpha$, $\beta$ le propone matrimonio a $D$ y $D$ acepta la propuesta de $\beta$. Después de 10 pasos en el algoritmo, todos los hombres ya están emparejados, es decir, el algoritmo convergió en un emparejamiento. Cabe mencionar que el número total de propuestas fue 13. 
 
 \begin{figure}[H]\centering
 
@@ -516,7 +516,7 @@ En decima instancia, $C$ acepta la propuesta de $\alpha$, $\beta$ le propone mat
 
 \end{tikzpicture}
 
-\caption{Decima iteración.}
+\caption{Décima iteración.}
 \end{figure}
 \fin
 \end{eje}
@@ -549,7 +549,7 @@ Bajo el emparejamiento obtenido por Gale Shapley, solo un hombre puede terminar 
 
 \begin{proof}
 
-Supongamos que en el emparejamiento de Gale Shapley $m$ ($m\geq2$) hombres terminan con la última mujer de su lista como pareja, eso significa que cada uno de esos $m$ hombres invitó a salir a todas las mujeres. Entonces cada mujer fue invita a salir por lo menos $m$ veces, lo cual es una contradicción porque el algoritmo acaba cuando invitan a salir a la última mujer y a esta solo la invitan a salir una vez. Por lo tanto, solo un hombre puede terminar con la última mujer de su lista como pareja. 
+Supongamos que en el emparejamiento de Gale Shapley $m$ ($m\geq2$) hombres terminan con la última mujer de su lista como pareja, eso significa que cada uno de esos $m$ hombres invitó a salir a todas las mujeres. Entonces cada mujer fue invita a salir por lo menos $m$ veces, lo cual es una contradicción porque el algoritmo acaba cuando invitan a salir a la última mujer y a ésta solo la invitan a salir una vez. Por lo tanto, solo un hombre puede terminar con la última mujer de su lista como pareja. 
 \end{proof}
 
 Dos consecuencias casi inmediatas de esto son que bajo el algoritmo la gran mayoría de los hombres no terminan con su última opción y que el algoritmo converge relativamente rápido. 
@@ -579,11 +579,11 @@ La complejidad del algoritmo de Gale Shapley es del orden de $n^2$.
 \end{obs}
 
 \begin{eje}
-Si retomamos el ejemplo \ref{ejemploGS} podemos ver que para 4 personas hubo $4^{2}-4+1=13$ propuestas que es el máximo número posible de estas de acuerdo con el corolario \ref{cor2}.
+Si retomamos el ejemplo \ref{ejemploGS} podemos ver que para 4 personas hubo $4^{2}-4+1=13$ propuestas que es el máximo número posible de éstas de acuerdo con el corolario \ref{cor2}.
 \fin
 \end{eje}
 
-A partir de esto ya podemos resolver el problema en el que la cantidad de hombres y de mujeres es distinta. El siguiente resultado muestra que sin importar el número de hombres o de mujeres, el algoritmo igual converge. 
+A partir de esto ya podemos resolver el problema en el que la cantidad de hombres y de mujeres es distinta. El siguiente resultado muestra que sin importar el número de hombres o de mujeres, el algoritmo también converge. 
 
 \begin{teo} \cite{GaleShapley} \\
 Dada una matriz de preferencias arbitraria con $n$ hombres y $m$ mujeres, el algoritmo de Gale Shapley converge a un emparejamiento estable
@@ -639,7 +639,7 @@ El algoritmo de Gale Shapley no es el único algoritmo que existe para producir 
 \BlankLine
 \emph{Cada mujer le propone al primer hombre de su lista\; Cada hombre que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto\; }
 \Repeat{hasta que todas las mujeres tengan pareja o o hasta que sean rechazadas por todas los hombres}{
-	\emph{Las mujeres no emparejados le proponen al siguiente hombre en su lista\; } 
+	\emph{Las mujeres no emparejadas le proponen al siguiente hombre en su lista\; } 
 	\emph{Cada hombre que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual\;} 
 	\emph{Los hombres rechazan las propuestas que no aceptaron\;} 
 }
@@ -745,7 +745,7 @@ Es fácil ver que los dos emparejamientos estables son distintos.
 Dada una matriz de preferencias arbitraria, la cantidad de emparejamientos estables es mayor o igual a 1. 
 \end{cor}
 \begin{proof}
-Con el corolario \ref{corexiste} podemos garantizar la existencia y con el ejemplo \ref{ejeunico} mostramos que no podemos garantizar la unicidad de este.
+Con el corolario \ref{corexiste} podemos garantizar la existencia y con el ejemplo \ref{ejeunico} mostramos que no podemos garantizar la unicidad de éste.
 \end{proof}
 
 

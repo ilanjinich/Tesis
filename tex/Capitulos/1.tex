@@ -7,7 +7,7 @@ Catch me a catch''}
 \section{Descripción del problema}
 Imaginemos que en una ciudad tenemos $m$ universidades y $n$ personas que desean ir a una de estas escuelas, cada universidad tiene un límite alumnos que puede admitir y por esto no todas las personas pueden asistir a su universidad
  ``favorita'', este tipo de cota puede ser común si dos o más escuelas comparten recursos o personal como es el caso de las universidades publicas que dependen en conjunto del presupuesto del gobierno. 
-Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a esta. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias no exhaustiva (en muchos casos si es exhaustiva) de que universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
+Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a esta. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias no exhaustiva (en muchos casos si es exhaustiva) de qué universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
 \\ En notación matemática lo que hacemos es suponer que tenemos $n$ alumnos $\alpha_1, \alpha_2, \ldots, \alpha_n$ y $m$ universidades $a_1, a_2, \ldots, a_m$, con las restricciones: 
 
 \begin{enumerate}
@@ -24,7 +24,7 @@ x_{i,j}=
 \end{cases} \end{equation}
 \item \begin{equation} \label{r2}
 \sum_{j=1}^{m}x_{i,j} \leq1 \ \text{ para toda $i=1,2,\ldots,n$. }
-\end{equation} Cada estudiante es admitido en máximo una universidad. 
+\end{equation} Cada estudiante es admitido en a lo más una universidad. 
 \item \begin{equation} \label{r3}
 \sum_{i=1}^{n} x_{i,j} \leq M_j\ \text{ para toda $j=1,2,\dots,m$.} 
 \end{equation}
@@ -32,7 +32,7 @@ Cada universidad tiene un límite de alumnos que puede admitir.
 \item \begin{equation} \label{r4}
 \sum_{i=1}^{n} x_{i,j} \geq\ m_j\times y_j 
 \end{equation}
-Cada universidad necesita admitir a una cantidad considerable de alumnos para abrir.
+Cada universidad necesita admitir a una cantidad mínima de alumnos para abrir.
 %\item \begin{equation} \label{r5}
 %\sum_{i=1}^{n} (x_{i,j}+x_{i,j'}) 
 %\begin{cases}
@@ -77,7 +77,7 @@ Para definir las preferencias de una forma un poco más formal, hacemos uso de l
 
 \begin{dfn}
 \label{matpref}
-Definimos la \textbf{matriz de preferencias} para un problema con $n$ estudiantes y con $m$ universidades como una matriz con $n$ filas y $m$ columnas donde la primera entrada de la celda $(i,j)$ represente el orden de preferencia que le asigna el solicitante $i$ a la universidad $j$ y análogamente la segunda entrada representa el orden de preferencia que le da la universidad $j$ a la persona $i$. La matriz podría tener lugares vacíos en caso de listas no exhaustivas. 
+Definimos la \textbf{matriz de preferencias} para un problema con $n$ estudiantes y con $m$ universidades como una matriz con $n$ filas y $m$ columnas donde la primera entrada de la celda $(i,j)$ representa el orden de preferencia que le asigna el solicitante $i$ a la universidad $j$ y análogamente la segunda entrada representa el orden de preferencia que le da la universidad $j$ a la persona $i$. La matriz podría tener lugares vacíos en caso de listas no exhaustivas. 
 \end{dfn}
 
 Para que dejar más clara la definición es necesario mostrar un ejemplo. 
@@ -101,13 +101,13 @@ Para continuar es necesario introducir un criterio de estabilidad y otro de opti
 \begin{dfn}{\cite{GaleShapley}}
 \label{Estable}
 Decimos que una asignación de solicitantes a universidades es inestable si existen dos solicitantes $\alpha$ y $\beta$ asignados a universidades $A$ y $B$ respectivamente, con la propiedad de que $\alpha$ prefiere estar en $B$ que en $A$ y $B$ prefiere tener a $\alpha$ que a $B$. Es decir, existen una universidad y un solicitante que se prefieren entre ellos a sus respectivas asignaciones. 
-Además a esto, decimos que una asignación es inestable si existe una universidad cerrada $A$ y $m_j$ solicitantes $\alpha_1,\alpha,2,\dots,\alpha_{m_j}$, con la propiedad de que los $m_j$ solicitantes prefieren estar en $A$ a su situación actual, en este caso se le llama a $A$ \textbf{universidad bloqueadora}.\\
+Además a esto, decimos que una asignación es \textbf{inestable} si existe una universidad cerrada $A$ y $m_j$ solicitantes $\alpha_1,\alpha,2,\dots,\alpha_{m_j}$, con la propiedad de que los $m_j$ solicitantes prefieren estar en $A$ a su situación actual, en este caso se le llama a $A$ \textbf{universidad bloqueadora}.\\
 Alternativamente una asignación de solicitantes a universidades es \textbf{estable} si no es inestable.
 \end{dfn}
 
 \begin{dfn}{\cite{GaleShapley}}
 \label{optima}
-Una asignación es considera \textbf{optima} si cada solicitante esta mejor o igual respecto a sus preferencias que en cualquier otra asignación estable. 
+Una asignación es considera \textbf{óptima} si cada solicitante está mejor o igual respecto a sus preferencias que en cualquier otra asignación estable. 
 \end{dfn}
 
 A continuación mostramos un par de ejemplos de cómo funcionan las definiciones para dejar todo más claro. 
