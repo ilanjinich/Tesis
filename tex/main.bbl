@@ -280,6 +280,37 @@ Lipschutz, S.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Manlove%
+, Irving%
+, Iwama%
+, Miyazaki%
+\BCBL {}\ \BBA {} Morita%
+}{%
+Manlove%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2002}}%
+}]{%
+empates}
+\APACinsertmetastar {%
+empates}%
+\begin{APACrefauthors}%
+Manlove, D\BPBI F.%
+, Irving, R\BPBI W.%
+, Iwama, K.%
+, Miyazaki, S.%
+\BCBL {}\ \BBA {} Morita, Y.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2002}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Hard Variants of Stable Marriage} {Hard variants of
+  stable marriage}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Theoretical Computer Science}{276}{1-2}{261 - 279}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Papadimitriou%
 \ \BBA {} Steiglitz%
 }{%

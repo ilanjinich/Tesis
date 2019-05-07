@@ -246,13 +246,11 @@ Dada una matriz de preferencias incompleta en la que se permiten empates para $n
 
 Un problema interesante aquí es encontrar \textbf{un emparejamiento estable de máxima cardinalidad}, o sea encontrar algun emparejamiento estable $M_1$ con la propiedad de que no existe ningun otro emparejamiento $M_2$ estable en el problema en el cual exista una mayor cantidad de hombres emparejados que en $M_1$.  El siguiente resultado muestra que encontrar una solución para este problema no es nada trivial.
 
-\begin{teo} {\cite{empates}}
+\begin{teo} {\cite{empates}} \label{NPempates}
 Dada una matriz de preferencias incompleta en la que se permiten empates para $n$ hombres y $n$ mujeres. El problema de encontrar un emparejamiento estable de máxima cardinalidad es NP-duro. Este resultado es correcto inclusive si solo existen empates en las listas de las mujeres (o de forma análoga en las listas de los hombres). 
 \end{teo}
 \begin{proof}
-Tomemos $k$ un entero no negativo fijo y consideremos el problema de decisión de encontrar un emparejamiento estable $M$ para el problema anterior con la propiedad de que la cantidad de hombres emparejados en $M$ es mayor o igual que $k$, para facilitar la notación en el problema llamaremos a este problema de notación como \text{Max Cardinality SMTI}\footnote{SMTI quiere decir emparejamientos estables con listas incompletas y empates.}\footnote{Se considera el nombre en ingles para ser consistente con los artículos publicados sobre el tema.}. Claramente si Max Cardinality SMTI esta en NP y además si Max Cardinality SMTI es NP-completo entonces el problema de encontrar un emparejamiento estable de máxima cardinalidad es NP-duro. \\
-Para demostrar que este Max Cardinality SMTI es NP-completo, transformamos el problema al de encontrar un emparejamiento estable maximal para gráficas de subdivisión.
-% Falta acabar esta demostración. 
+La demostración supera el alcance de esta tesis pero se puede encontrar en \cite{empates}. 
 \end{proof}
 
 
