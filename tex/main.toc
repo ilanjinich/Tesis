@@ -13,15 +13,19 @@
 \contentsline {section}{\numberline {5.1}Listas incompletas con empates}{36}{section.5.1}
 \contentsline {chapter}{\numberline {6}Cotas inferiores}{39}{chapter.6}
 \contentsline {chapter}{\numberline {7}Cotas comunes}{47}{chapter.7}
-\contentsline {chapter}{\numberline {8}Cotas comunes anidadas}{55}{chapter.8}
-\contentsline {chapter}{\numberline {9}Matroides}{59}{chapter.9}
-\contentsline {section}{\numberline {9.1}Bases}{60}{section.9.1}
-\contentsline {section}{\numberline {9.2}Funci\IeC {\'o}n rango}{63}{section.9.2}
-\contentsline {section}{\numberline {9.3}Circuitos}{68}{section.9.3}
-\contentsline {section}{\numberline {9.4}El algoritmo glot\IeC {\'o}n}{77}{section.9.4}
-\contentsline {chapter}{\numberline {10}Conclusiones}{81}{chapter.10}
-\contentsline {chapter}{\numberline {A}Teor\IeC {\'\i }a de Conjuntos}{83}{appendix.Alph1}
+\contentsline {chapter}{\numberline {8}Cotas comunes anidadas}{57}{chapter.8}
+\contentsline {section}{\numberline {8.1}Algoritmo orientado a los aplicantes}{60}{section.8.1}
+\contentsline {section}{\numberline {8.2}Algoritmo orientado a las universidades}{64}{section.8.2}
+\contentsline {chapter}{\numberline {9}Matroides}{71}{chapter.9}
+\contentsline {section}{\numberline {9.1}Bases}{72}{section.9.1}
+\contentsline {section}{\numberline {9.2}Funci\IeC {\'o}n rango}{75}{section.9.2}
+\contentsline {section}{\numberline {9.3}Circuitos}{80}{section.9.3}
+\contentsline {section}{\numberline {9.4}El algoritmo glot\IeC {\'o}n}{89}{section.9.4}
+\contentsline {chapter}{\numberline {10}Funciones de elecci\IeC {\'o}n y matroides}{93}{chapter.10}
+\contentsline {section}{\numberline {10.1}Resultados estructurales}{97}{section.10.1}
+\contentsline {chapter}{\numberline {11}Conclusiones}{101}{chapter.11}
+\contentsline {chapter}{\numberline {A}Teor\IeC {\'\i }a de Conjuntos}{103}{appendix.Alph1}
 \vspace {2em}
-\contentsline {chapter}{\numberline {B}Teor\IeC {\'\i }a de Gr\IeC {\'a}ficas}{87}{appendix.Alph2}
+\contentsline {chapter}{\numberline {B}Teor\IeC {\'\i }a de Gr\IeC {\'a}ficas}{107}{appendix.Alph2}
 \vspace {2em}
-\contentsline {chapter}{Referencias}{89}{appendix*.6}
+\contentsline {chapter}{Referencias}{109}{appendix*.6}

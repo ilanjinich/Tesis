@@ -78,6 +78,7 @@ Aquí (solo para dar algunos ejemplos) podemos ver que $\alpha$ tiene en su list
 La primera pregunta que uno podría hacerse es si siempre existe una asignación estable. Recordemos que en el caso de cotas inferiores no siempre existe y por lo tanto podría aquí suceder lo mismo. El siguiente resultado muestra que de hecho no siempre existe una asignación estable para el problema.
 
 \begin{teo} \cite{Todo}
+\label{ejemplo teorema}
 Dada una instancia del problema de admisión a universidades con cotas comunes podría no existir solución al problema de encontrar una asignación estable.
 \end{teo}
 \begin{proof}
@@ -121,12 +122,34 @@ Para simplificar notación, sea $A_1$ los aplicantes de la forma $m_{j,k}$ y sea
 \begin{itemize}
 \item Si $w_j$ pertenece a $W \setminus W_0$, entonces $m_i$ esta asignado a $w_j$ en $M'$.
 \item Si $w_j$ pertenece a $W_0$, entonces $m_{j,1}$ esta emparejado con $w_j$ si y sólo si en $M'$ tenemos que $m_{j,1}$ esta asignado a $c_j^1$, $b_j^2$ esta asignado a $c_j^3$ y $b_j^1$ esta asignado a $c_j^5$.
-\item Si $w_j$ pertenece a $W_0$, entonces $m_{j,2}$ esta emparejado con $w_j$ si y sólo si en $M'$ tenemos que $m_{j,2}$ esta asignado a $c_j^2$, $b_j^2$ esta asignado a $c_j^4$ y $b_j^1$ esta asignado a $c_j^6$.
+\item Si $w_j$ pertenece a $W_0$, entonces $m_{j,2}$ esta emparejado con $w_j$ si y sólo si en $M'$ tenemos que $m_{j,2}$ esta asignado a $c_j^4$, $b_j^2$ esta asignado a $c_j^6$ y $b_j^1$ esta asignado a $c_j^2$.
 \end{itemize}
-Supongamos que existe un emparejamiento estable $M$ en $I$, es claro por construcción que la asignación $M'$ resultante es tambien estable y que además cada aplicante en $A_1$ es asignado a alguna universidad.  \\
-Supongamos que existe una asignación estable $M'$ en $I'$ en el que todos los aplicantes en $A_1$ estan emparejados
+Supongamos que existe un emparejamiento estable $M$ en $I$, es claro por construcción que la asignación $M'$ resultante es tambien estable y que además cada aplicante en $A_1$ es asignado a alguna universidad.  
 
-falta como la mitad...
+Supongamos que existe una asignación estable $M'$ en $I'$ en el que todos los aplicantes en $A_1$ estan emparejados.
+% Me falta el parrafo que empieza in the other ddirection.
+
+
+Para completar la reducción, es necesario construir una parte adicional de $I'$ como sigue: Para cada aplicante $a_i$ en $A_1$ construimos dos aplicantes adicionales $z_i^1,z_i^2$, cuatro uuniversidades $d_i^1,d_i^2,d_i^3,d_i^4$ con cotas comunes $\{d_i^1,d_i^2\}$ y $\{d_i^2,d_i^3\}$. Las listas de preferencias y cotas son como siguen:
+\noindent \begin{minipage}{.3\linewidth}
+$$P(z_i^1)=d_i^1,d_i^4$$ \\
+$$P(z_i^2)=d_i^4,d_i^3$$ 
+\end{minipage}%
+\begin{minipage}{.3\linewidth}
+$$P(d_i^1)=1:z_i^1$$ \\
+$$P(d_i^2)=1:a_i$$ \\
+$$P(d_i^3)=1: z_i^2$$ \\
+$$P(d_i^4)=1:  z_i^1,z_i^2$$ 
+\end{minipage}
+\begin{minipage}{.4\linewidth}
+$$P(\{d_i^1,d_i^2\})= 1:a_1,z_i^1$$ \\
+$$P(\{d_i^2,d_i^3\})=1:z_i^2,a_i$$
+\end{minipage}
+
+Finalmente añadimos a $d_i^2$ al final de la lista de preferencias de $a_i$ y afirmamos que $I$ tiene un emparejamiento estable completo si y solo si $I'$ tiene emparejamiento estable.  Lo primero que notamos es que la construcción es casi identica a la usada en la demostración de \ref{ejemplo teorema} entonces podemos usar argumentos similares. Notamos que en $I'$ cada aplicante en $A_i$ esta emparejado a la parte no adicional de $I'$ porque si no la parte adicional bloquearia la estabilidad ({ejemplo teorema}) y además para garantizar estabilidad si cada universidad esta emparejada con la parte no adicional de $I'$ agregamos las parejas $(z_i^1,d_i^1)$ y  $(z_i^2,d_i^4)$ al emparejamiento (al igual que en \ref{ejemplo teorema}).
+
+Por lo tanto, podemos concluir que el problema de ver si una instancia del problema de admisión a universidades con cotas comunes admite un emparejamiento estable es NP-completo.
+
 \end{proof}
 
 Además de no siempre existir una asignación estable sucede algo bastante problematico, para un mismo problema podrían existir dos emparejamientos estables en los que el conjunto de alumnos admitidos sea distinto en cada asignación. Esto tal vez quiere decir que es necesario introducir algun otro criterio para resolver el problema. El siguiente ejemplo demuestra esta afirmación. 

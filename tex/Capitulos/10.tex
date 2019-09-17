@@ -1,0 +1,199 @@
+\chapter{Funciones de elección y matroides}
+
+En este capítulo redefineremos el problema de admisión a universidades con cotas comunes anidadas por completo, vamos a suponer que tenemos una gráfica bipartita $G=(A\cup C,E)$ donde los vertices en $A$ representan los aplicantes, $C$ representa las universidades y las aristas de la gráifca $E$ representan las asignaciónes aceptables entre los dos. Para definir el problema de esta manera es necesario definir dos funciones de elección. 
+
+\begin{dfn}
+Decimos que $Q$ es una \textbf{función de elección} para un conjunto $E$ si para todo subconjunto $X$ de $E$ tenemos que $Q(X)$ es un subconjunto de $X$.  En particular, decimos que un conjunto $X$ es \textbf{$Q$-independiente} si $Q(X)=X$.
+\end{dfn}
+
+Definimos dos funciones de elección (las dos sobre ) una para los aplicantes denotado como $Q_A$ y otra para las universidades denotada como $Q_C$. Si un conjunto es $Q_A$-independiente decimos que es \textbf{aplicante independiente} y si un conjunto es $Q_C$-independiente decimos que es \textbf{universidad independiente}. Las dos funciones se definen de la siguiente manera:
+
+\begin{dfn}
+Definimos la \textbf{función de elección para los aplicantes} $Q_A$ como una función de elección sobre las aristas que cumple que para todo aplicante $a$, $Q_A(X)$ contiene a las aristas en $X$ que el aplicante escogería si podria elegir libremente sin importar las restricciones. En particular, si $X$ contiene  varias aristas que inciden sobre $a$ este elige la que incide en la universidad más alta en su lista. 
+\end{dfn} 
+
+\begin{dfn}
+Definimos la \textbf{función de elección para las universidades} $Q_C$ como una función de elección sobre las aristas que cumple que para toda universidad $c$, $Q_C(X)$ contiene a las aristas $X$ que inciden en los aplicantes que a $c$ elegiria si podria elegir libremente. En particular se sigue el siguiente algoritmo, supongamos que la familia de conjuntos $\mathcal{C}=\{C_1,C_2,\dots,C_m\}$ son los conjuntos de universidades que son parte de una restricción y supongamos que si $C_i$ es un subconjunto de $C_j$ es porque $i$ es menor igual que $j$:
+
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{Un conjunto $X$ de aristas en $E$, la familia de conjuntos con restricciones $\mathcal{C}$ con sus cotas y las listas de preferencias para las universidades y los aplicantes}
+\Output{$Q(X)$}
+\BlankLine
+\emph{Sea $X_0 = X$;}
+
+\For{i = 1, \dots, m}{
+
+\emph{$X_i$ es el conjunto obtenido por aplicarle la cota superior de $C_i$ a $X_{i-1}$;}
+
+\emph{Sea $X_{i-1}(C_i)$ las aristas en $X_{i-1}$ que inciden en $C_i$;}
+
+\emph{Sean $X'_{i}$ las aristas en $X_{i-1}(C_i)$ que no se encuentran entre las $q(C_i)$ mejores;}
+
+\emph{$X_i = X_{i-1}\setminus X'_i$;}
+}
+
+\emph{$Q_C(X) = X_m$;}
+\caption{Algoritmo para calcular la función de elección para las universidades}
+\end{Algoritmo}
+\DecMargin{1em}
+
+Para la linea 5 del algoritmo es necesario explicar cuál es el orden de preferencias de $X_{i-1}(C_i)$, este depende de dos casos: 
+\begin{enumerate}
+\item Dadas dos aristas que inciden en dos aplicantes distintos escogemos de acuerdo al orden de preferencias de $C_i$.
+\item Dadas dos aristas que inciden en el mismo aplicante $a$ escogemos de acuerdo al orden de preferencias de $a$.
+\end{enumerate}
+
+\end{dfn}
+
+Apartir de esto realizamos las siguientes observaciones sobre el comportamiento de estas funciones:
+
+\begin{obs}
+$Q_A(X)=X$ si y solo si cada aplicante tiene a lo más una arista incidente en $X$.
+\end{obs}
+\begin{obs}
+$Q_C(X)=X$ si y solo si $X$ no viola ninguna cota de $\mathcal{C}$.
+\end{obs}
+
+Usando esas dos observaciones concluimos que:
+
+\begin{obs}
+$M$ es un emparejamiento si y solo si $M$ es aplicante independiente y universidad independiente. 
+\end{obs}
+
+\begin{teo}
+\label{matroid}
+Sea $I_C$ el subconjunto del conjunto potencia de $E$ que contiene a todos los conjuntos universidad independiente, entonces $M_C = (E,I_C)$ es una matroide. 
+\end{teo}
+
+\begin{proof}
+Usamos inducción sobre el número $m$ de conjuntos acotados (la cardinalidad de $\mathcal{C}$). Si $m=1$ entonces solo tenemos una universidad y $M_C$ es una matroide uniforme de rango $q(C_i)$. 
+Supongamos que el resultado es valido si la cantidad de conjuntos es estrictamente menor que $m$ y supongamos que tenemos $m$ conjuntos acotados. Sean $C^1,C^2,\dots, C^k$ los grupos en $\mathcal{C}$, entonces tenemos dos casos:
+\begin{enumerate}
+\item Si $k$ es mayor estricto que $1$ entonces cada $I_{C^i}$ forma una matroide y como $I_C$ es la suma directa de los $I_{C^i}$ entonces es una matroide. 
+\item Si $k=1$ entonces $I'$ es el conjunto de conjuntos universidad independientes de acuerdo a $C_1,\dots,C_{m-1}$ es parte de una matroide. Podemos ver que al aplicar la restricción de $C_m$ tenemos un truncamiento sobre la misma y no se pierde el hecho de que es una matroide. 
+\end{enumerate}
+Por lo tanto, si $I_C$ el subconjunto del conjunto potencia de $E$ que contiene a todos los conjuntos universidad independiente, entonces $M_C = (E,I_C)$ es una matroide.
+\end{proof}
+
+\begin{cor}
+Sea $I_A$ el subconjunto del conjunto potencia de $E$ que contiene a todos los conjuntos universidad independiente, entonces $M_A = (E,I_A)$ es una matroide. 
+\end{cor}
+\begin{proof}
+Como los aplicantes pueden ser vistos como universidades en donde cada cota superior es 1 y no existen cotas comunes, de acuerdo al teorema \ref{matroid}  $M_A = (E,I_A)$ es una matroide. 
+\end{proof}
+
+\begin{cor}
+La función de elección para las universidades para $X$ encuentra el subconjunto maximal universidad independiente de $X$.
+\end{cor}
+
+\begin{proof}
+Para cada elemento $x$ en $X\setminus Q_c(X)$ tenemos que el conjunto $\{x\}\cup Q_c(X)$ es no universidad independiente, por definición existe un conjunto acotado $C_i$ tal que $Q_c(X)$ contiene $q(C_i)$ aristas incidentes en $C_i$ que todas son preferidas a $x$.
+\end{proof}
+
+A partir de esto podemos ver dos observaciónes.
+
+\begin{obs}
+La cardinalidad de $Q_c(X)$ es igual al rango de $X$ respecto a la matroide de las universidades $M_c$. 
+\end{obs}
+
+\begin{obs}
+La función $Q_c$ es creciente. Es decir, si $X$ es un subconjunto de $Y$ entonces la cardinalidad de $Q_c(X)$ es menor o igual que la cardinalidad de $Q_c(Y)$. \footnote{La demostración es directo del 9.8 } %Me falta referencia
+\end{obs} 
+
+Estas dos observaciones implican que la función $Q_c$ puede ser construida a partir del algoritmo gloton de la siguiente manera:
+
+\IncMargin{1em}
+\begin{Algoritmo}[H]
+%\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+%\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{Un conjunto $X$ de aristas en $E$, la familia de conjuntos con restricciones $\mathcal{C}$ con sus cotas y las listas de preferencias para las universidades y los aplicantes}
+\Output{$Q(X)$}
+\BlankLine
+\emph{Acomodamos las aristas de $E=e_1,e_2,\dots,e_n$ de cierta forma que si dos aristas $e_i$ y $e_j$ pertenecen al mismo conjunto acotado entonces si $i$ es menor que $j$ implica que $e_i$ es preferido a $e_j$;}
+
+\emph{Sea $E_i$ las aristas $e_j$ con $j$ menor o igual que $i$;}
+
+\emph{Sea $X_i=X \cap E_i$;}
+
+\emph{Sea $X_0 = \emptyset$;}
+
+\For{$i = 1, \dots, n$}{
+\If{$Q_c(X_i)\cup\{e_{i+1}\}$  es universidad independiente}{
+\emph{$Q_c(X_i+1)=Q_c(X_i)\cup\{e_{i+1}\}$}
+
+\Else{$Q_c(X_{i+1})=Q_c(X_i)$;}
+}
+}
+
+\caption{Algoritmo alternativo para calcular la función de elección para las universidades}
+\end{Algoritmo}
+\DecMargin{1em}
+
+El algoritmo es igual porque por el teorema () sabemos que el algoritmo gloton siempre converge al subconjunto maximal universidad independiente de $X$ y por lo tanto aplicar uno u otro algoritmo debe de llevar al mismo resultado. Además de esto si agregamos podemos ver que la función es comonotona, es decir:
+
+\begin{dfn}
+Decimos que una función $Q$ en $E$ es \textbf{comonotona} si para cualquier par de subconjuntos $X,Y$ de $E$ con $X$ siendo un subconjunto de $Y$ tenemos que $X\setminus Q(X)$ es un subconjunto de $Y\setminus Q(Y)$.
+\end{dfn}
+
+\begin{cor}
+La función $Q_c$ es comonotona sobre $E$
+\end{cor}
+
+\begin{proof}
+Para probar comonotonicidad tenemos que ver que si $x$ en $X$ no pertenece a $Q_c(X)$ entonces esta no pertenece a $Q_c(Y)$ cuando $X$ es un subconjunto de $Y$. Esto sale directo del algoritmo gloton porque durante la construcción de $Q_c(X)$ no se eligio $x$ entonces es claro que durante la construcción de $Q_c(Y)$ tampoco se eligio a $x$ por las mismas razones. 
+\end{proof}
+
+Para relacionar todo esto con la idea de de estabilidad igual que en los demas capitulos es necesario enunciar algunas definiciones.
+
+\begin{dfn}
+Para un conjunto $X$ en $E$ y una arista $e$ en $E$, decimos que $X$ \textbf{domina} a $e$ en el lado del aplicante si $e$ no pertenece a $Q_A(X \cup \{e\})$ y decimos que $X$ domina a $e$ en el lado de las universidades si $e$ no pertenece a $Q_C(X \cup \{e\})$.
+
+En particular, para los dos tipos de dominancia si tenemos dos subconjuntos $X,Y$ de $E$. Decimos que $X$ domina a $Y$ si $X$ domina a todos los elementos $Y \setminus X$.
+\end{dfn}
+
+A partir de este definición podemos realizar la siguiente observación:
+
+\begin{obs}
+Un subconjunto $M$ de $E$ es estable si y solo si domina a $E\setminus M$ (bajo cualquiera de los dos esquemas).
+\end{obs}
+
+\section{Resultados estructurales}
+
+A partir de todos los resultados en lo que sigue del capítulo mostraremos varios resultados importantes sobre el problema que se relacionan de forma general con el resto de la tesis. 
+
+\begin{teo}
+\label{union de estables}
+Si $M_1,M_2,\dots,M_k$ son asignaciones estables entonces $Q_C( \cup_{i=1}^k M_i)$ y $Q_A( \cup_{i=1}^k M_i)$ son tambien asignaciones estables. 
+\end{teo}
+\begin{proof}
+Dado un conjunto $X$ en $E$ sabemos que $Q_C(X)$ es el subconjunto maximal universidad independiente de $X$, como $X$ es la union de varias asignaciones podemos ver que $Q_C(X)$ es tambien una asignacón y además podemos ver por propiedades del algoritmo glotón que este domina a las demás asignaciones en el sentido de las universidades, por lo tanto  $Q_C( \cup_{i=1}^k M_i)$ es una asignación estable. En particular, el argumento es identico para demostrar que $Q_A( \cup_{i=1}^k M_i)$ es una asignación estable. 
+\end{proof}
+
+\begin{lem}
+\label{desigualdad}
+Si tenemos dos asignaciones estables $M_1,M_2$ si $M_1$ domina a $M_2$ en el lado de las universidades esto se cumple si y solo si $M_2$ domina a $M_1$ en el lado de los aplicantes.
+\end{lem}
+\begin{proof}
+Si $M_1$ y $M_2$ son emperajemientos estables entonces cado uno de ellos domina al otro. Si $M_1$ domina a cada elemento de $M_2 \setminus M_1$ en el lado de la universidad entonces $M_2$ debe de dominar a cada elemento de $M_1 \setminus M_2$ en el lado de los aplicantes. A partir de esta observación podemos ver que el lema es verdadero.
+\end{proof}
+
+\begin{teo}
+Si $M_1,M_2,\dots,M_n$ son asignaciones estables y $k$ es un entero arbitrario entre $1$ y $n$. Si cada aplicante escoge su $k$ mejor opción entre todas las asignaciónes entonces el conjunto $M$ con esas asignaciones es estable. 
+\end{teo}
+\begin{proof}
+Sea $a$ un aplicante arbitrario y sean $M_a^1,M_a^2,\dots,M_a^n$ los $n$ emparejamientos respecto al orden de preferencias de $a$. Además para facilitar la notación sean $M_a = Q_C(\cup_{i=1}^kM_a^i)$ y  $M=Q_A( \cup_{a \in A} M_a)$.
+
+Por el teorema \ref{union de estables} sabemos que todos los $M_a$ y que $M$ son asignaciones estables. Observamos quer para todo aplicante $a$ tenemos que $M_a$ domina por las universidades a $M_1,M_2,\dots,M_k$ y por lo tanto $M_1,M_2,\dots,M_k$ dominan a $M_a$ por los aplicantes (lema \ref{desigualdad}). Esto implica que en $M_a$ cada aplicante $a'$ en $A$ recibe su peor asignación dentro de $M_a^1,M_a^1,\dots,M_a^k$ y por lo tanto $a$ recibre su $k$ mejor opción en $M_a$ y los demás aplicantes reciben una asignación que no es más preferida que su mejor $k$ opción. Ahora, al construir $M$ cada aplicante escoge su mejor opción entre todos los $M_a$ lo que implicaria que cada aplicante escoge su mejor $k$ opción entre $M_1,M_2,\dots,M_n$. Como $M$ es estable por el teorema \ref{union de estables} entonces podemos concluir que si cada aplicante escoge su $k$ mejor opción entre todas las asignaciónes entonces el conjunto $M$ con esas asignaciones es estable.
+\end{proof}
+
+%Aquí me falta ver que pedo con spans
+
+
+
