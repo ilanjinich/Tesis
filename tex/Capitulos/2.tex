@@ -1,79 +1,85 @@
 \chapter{Un poco sobre computación}
 
-Introducción.... (hablar un poco sobre la importancia de la computación en IDO)
+La idea de este capítulo es introducir la idea de complejidad algorítmica. Se habla de qué es un algoritmo, de cuál es el orden de uno y de algunas clases de complejidad sobre estos. Para empezar a introducir estas ideas son necesarias varias definiciones. 
 
-\begin{dfn}
-Qué es un algoritmo
+\begin{dfn} \cite{Ramon}
+Definimos un \textbf{algoritmo} como una serie de pasos para resolver un problema. El \textbf{tamaño} de un problema es la cantidad de datos necesarios para resolver el problema (las entradas del algoritmo). La \textbf{complejidad} de un problema es una función $f$, donde $f(n)$ es la cantidad de operaciones necesarias para que el algoritmo termine. Además, decimos que $f(n)$ es orden a lo más $g(n)$ si para alguna $K>0$ se cumple que
+$$f(n) \leq Kg(n)$$
+para todo $n$ natural.
 \end{dfn}
 
-\begin{dfn}
-Orden de un algoritmo
-\end{dfn}
+A partir de esto podemos definir la clase de algoritmos polinomiales, los cuales son muy importantes para entender el contenido de esta tesis. 
 
-Intro a clases de complejidad
+\begin{dfn}
+Decimos que un algoritmo es \textbf{polinomial} si el algoritmo es de orden a lo más $n^k$ para alguna $k$ en los enteros. 
+\end{dfn}
 
 
 \section{Clases de complejidad}
-Algo que nos interesa mucho cuando atacamos un problema de computación es que tan dificíl es de resolver y si existe una mejor manera de hacerlo. La complejidad computacional nos permite estudiar esto. Para encarrilarnos hay que empezar con algunas definiciones y ejemplos.
+Algo que nos interesa mucho cuando atacamos un problema de computación es que tan difícil es de resolver y si existe una mejor manera de hacerlo. La complejidad computacional nos permite estudiar esto. Para encarrilarnos hay que empezar con algunas definiciones y ejemplos.
 \begin{dfn}
-Se dice que un problema es un problema de decisón si admite dos posibles respuestas ``Si'' o ``No''. Resolverlo es encontrar todas las soluciones en las que la respuesta es ``Si''.
+Se dice que un problema es un problema de decisión si admite dos posibles respuestas ``Si'' o ``No''. Resolverlo es encontrar todas las soluciones en las que la respuesta es ``Si''.
 \end{dfn}
-Existen dos clases de problemas de decisión que nos interesan, los que son faciles de verificar (NP) y los que son faciles de resolver (P)-
+Existen dos clases de problemas de decisión que nos interesan, los que son fáciles de verificar (NP) y los que son fáciles de resolver (P).
 \begin{dfn}
-Un problema esta en la clase NP si existe un algoritmo polinomial para verificar que la respuesta de una solución dada es ``Si''.
+Un problema está en la clase NP si existe un algoritmo polinomial para verificar que la respuesta de una solución dada es ``Si''.
 \end{dfn}
 
 \begin{eje}[Problema del clima]
-Supongamos que Mariana le dice a Adrián que esta lloviendo, si Adrián decide verificar si esto es cierto solo tiene que realizar tres pasos:
+Supongamos que Mariana le dice a Adrián que está lloviendo, si Adrián decide verificar si esto es cierto solo tiene que realizar tres pasos:
 \begin{enumerate}
 \item Caminar a la ventana.
 \item Abrir la ventana.
 \item Ver el cielo.
 \end{enumerate}
-Por lo tanto a Adrián le toma un tiempo constante verificar si esta lloviendo lo que implica que este problem esta en NP.
+Por lo tanto, a Adrián le toma un tiempo constante verificar si está lloviendo lo que implica que este problema está en NP.
 \end{eje}
 \begin{dfn}
-Se dice que un problema de decisión esta en P si existe un algoritmo polinomial que lo resuelve.
+Se dice que un problema de decisión está en P si existe un algoritmo polinomial que lo resuelve.
 \end{dfn}
-\begin{obs}[$P  \subseteq NP$]
+\begin{obs}[$P \subseteq NP$]
 Si un problema de decisión pertenece a P entonces pertenece a NP.
 \end{obs}
 %\begin{proof}
-%Supongamos que $A$ es un problema de decision en P y $b$ es una solución dada de $A$, podemos verificar si la respuesta de la solución es ``Si'' resolviendo el problema en tiempo polinomial.
+%Supongamos que $A$ es un problema de decisión en P y $b$ es una solución dada de $A$, podemos verificar si la respuesta de la solución es ``Si'' resolviendo el problema en tiempo polinomial.
 %\end{proof}
 \begin{obs}
 \label{pp eq}
-Si A es un problema de decisión en P y existe un algoritmo polinomial que reduce resolver el problema de decisión B a resolver el problema A entonces B esta en P.
+Si A es un problema de decisión en P y existe un algoritmo polinomial que reduce resolver el problema de decisión B a resolver el problema A entonces B está en P.
 \end{obs}
 
-Vale la pena mencionar algunos ejemplos de problemas que estan en P:
+Vale la pena mencionar algunos ejemplos de problemas que están en P:
 \begin{enumerate}
-\item El problema de admisión a universidades.
-\item Verificar si un numero es primo.
+\item Verificar si un número es primo.
 \item Encontrar la ruta más corta entre dos vertices en una gráfica.
-\item El problema de la ruta critica. 
+\item El problema de la ruta crítica. 
 \end{enumerate}
 
-Una conjetura famosa que vale la pena mencionar es ¿si $P=NP$?, es decir si todo problema en NP tambien se enecuentra en P. La persona que lo demuestra además de ganar fama y trabajo va a ser acredor a un permio de un millon de dolares. 
-
-\section{El $3-SAT$}
-Un problema de gran importancia para entender las clases de complejidad es el $3-SAT$, la raíz de todo el estudio necesario para estudiar el problema ¿$P=NP?$ se remonta a enteder este problema. 
-\begin{dfn} [conjunctive normal form.]
-\end{dfn}
+Una conjetura famosa que vale la pena mencionar es ¿si $P=NP$?, es decir si todo problema en NP también se encuentra en P. La persona que lo demuestra además de ganar fama y trabajo va a ser acreedor a un permio de un millón de dólares. 
 
 
 \section{Problemas NP-Completos}
-\begin{flushright}
-\textit{``Chaos is a ladder'}
-\end{flushright}
+
 \begin{dfn}
-Qué es un problema NP-completo. 
+Decimos que $A$ un problema es \textbf{NP-Completo} si para todo problema en NP $B$ existe una reducción polinomial que reduce el resolver $B$ a resolver $A$.
 \end{dfn}
-\begin{teo}[Teorema de Cook-Levin]
-El 3-SAT es NP-Completo. Chance no
-\end{teo}
-Donde esta la demostración. 
+
+Una conclusión inmediata de este problema es la siguiente: 
+
+\begin{obs}
+Si existe algún algoritmo polinomial para resolver un problema NP-Completo entonces $P=NP$.
+\end{obs}
+
+Algunos ejemplos de problemas NP-Completos son: 
 
 \begin{eje}
-Ejemplos con y sin demostración. 
+\begin{itemize}
+\item El problema del agente viajero. 
+\item El problema de 3-coloración. 
+\item El problema de las galerías de arte.
+\end{itemize}
+\fin
 \end{eje}
+
+
+En el siguiente capítulo se reduce el problema planteado en el capítulo 1 a su caso más simple, conocido como el problema del matrimonio estable.

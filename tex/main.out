@@ -2,27 +2,24 @@
 \BOOKMARK [1][-]{section.1.1}{Descripci\363n del problema}{chapter.1}% 2
 \BOOKMARK [0][-]{chapter.2}{Un poco sobre computaci\363n}{}% 3
 \BOOKMARK [1][-]{section.2.1}{Clases de complejidad}{chapter.2}% 4
-\BOOKMARK [1][-]{section.2.2}{El 3-SAT}{chapter.2}% 5
-\BOOKMARK [1][-]{section.2.3}{Problemas NP-Completos}{chapter.2}% 6
-\BOOKMARK [0][-]{chapter.3}{El problema del matrimonio estable}{}% 7
-\BOOKMARK [1][-]{section.3.1}{Algoritmo de Gale Shapley}{chapter.3}% 8
-\BOOKMARK [0][-]{chapter.4}{El problema de admisi\363n a universidades}{}% 9
-\BOOKMARK [1][-]{section.4.1}{El teorema de los hospitales rurales}{chapter.4}% 10
-\BOOKMARK [0][-]{chapter.5}{Listas con empates}{}% 11
-\BOOKMARK [1][-]{section.5.1}{Listas incompletas con empates}{chapter.5}% 12
-\BOOKMARK [0][-]{chapter.6}{Cotas inferiores}{}% 13
-\BOOKMARK [0][-]{chapter.7}{Cotas comunes}{}% 14
-\BOOKMARK [0][-]{chapter.8}{Cotas comunes anidadas}{}% 15
-\BOOKMARK [1][-]{section.8.1}{Algoritmo orientado a los aplicantes}{chapter.8}% 16
-\BOOKMARK [1][-]{section.8.2}{Algoritmo orientado a las universidades}{chapter.8}% 17
-\BOOKMARK [0][-]{chapter.9}{Matroides}{}% 18
-\BOOKMARK [1][-]{section.9.1}{Bases}{chapter.9}% 19
-\BOOKMARK [1][-]{section.9.2}{Funci\363n rango}{chapter.9}% 20
-\BOOKMARK [1][-]{section.9.3}{Circuitos}{chapter.9}% 21
-\BOOKMARK [1][-]{section.9.4}{El algoritmo glot\363n}{chapter.9}% 22
-\BOOKMARK [0][-]{chapter.10}{Funciones de elecci\363n y matroides}{}% 23
-\BOOKMARK [1][-]{section.10.1}{Resultados estructurales}{chapter.10}% 24
-\BOOKMARK [0][-]{chapter.11}{Conclusiones}{}% 25
-\BOOKMARK [0][-]{appendix.Alph1}{Teor\355a de Conjuntos}{}% 26
-\BOOKMARK [0][-]{appendix.Alph2}{Teor\355a de Gr\341ficas}{}% 27
-\BOOKMARK [0][-]{appendix*.6}{Referencias}{}% 28
+\BOOKMARK [1][-]{section.2.2}{Problemas NP-Completos}{chapter.2}% 5
+\BOOKMARK [0][-]{chapter.3}{El problema del matrimonio estable}{}% 6
+\BOOKMARK [1][-]{section.3.1}{Algoritmo de Gale Shapley}{chapter.3}% 7
+\BOOKMARK [0][-]{chapter.4}{El problema de admisi\363n a universidades}{}% 8
+\BOOKMARK [1][-]{section.4.1}{El teorema de los hospitales rurales}{chapter.4}% 9
+\BOOKMARK [0][-]{chapter.5}{Listas con empates}{}% 10
+\BOOKMARK [1][-]{section.5.1}{Listas incompletas con empates}{chapter.5}% 11
+\BOOKMARK [0][-]{chapter.6}{Cotas inferiores}{}% 12
+\BOOKMARK [0][-]{chapter.7}{Cotas comunes}{}% 13
+\BOOKMARK [0][-]{chapter.8}{Cotas comunes anidadas}{}% 14
+\BOOKMARK [1][-]{section.8.1}{Algoritmo orientado a los aplicantes}{chapter.8}% 15
+\BOOKMARK [1][-]{section.8.2}{Algoritmo orientado a las universidades}{chapter.8}% 16
+\BOOKMARK [0][-]{chapter.9}{Matroides}{}% 17
+\BOOKMARK [1][-]{section.9.1}{Bases}{chapter.9}% 18
+\BOOKMARK [1][-]{section.9.2}{Funci\363n rango}{chapter.9}% 19
+\BOOKMARK [1][-]{section.9.3}{Circuitos}{chapter.9}% 20
+\BOOKMARK [1][-]{section.9.4}{El algoritmo glot\363n}{chapter.9}% 21
+\BOOKMARK [0][-]{chapter.10}{Funciones de elecci\363n y matroides}{}% 22
+\BOOKMARK [1][-]{section.10.1}{Resultados estructurales}{chapter.10}% 23
+\BOOKMARK [0][-]{appendix.Alph1}{Teor\355a de Gr\341ficas}{}% 24
+\BOOKMARK [0][-]{appendix*.6}{Referencias}{}% 25

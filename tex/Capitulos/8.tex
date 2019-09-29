@@ -170,7 +170,26 @@ A partir de esto podemos estudiar cuál es la diferencia principal entre pedir q
 La complejidad del algoritmo orientado a los aplicantes es del orden de $kL+pn$ donde $L$ es la cantidad de parejas aceptables, $k$ es la longitud máxima de algun árbol en el bosque de restricciones, $n$ es el número de aplicantes y $p$ e el número de conjuntos acotados. 
 \end{teo}
 \begin{proof}
-El primer termino viene de que el primer %``loop´´ del algoritmo es realiza en un orden $L$ veces y con la excepción de actualizar el peor aplicante cada paso en el ``loop´´ es realizado en un orden de $k$ veces. 
+El primer termino viene de que el primer ciclo del algoritmo es ralizado en un orden de $L$ veces y con la excepción de actualizar el peor aplicante cada paso en el ciclo es realizado en un orden de $k$ veces.  
+
+Ahora, supongamos que el número de universidades es en el orden de $n$ y que la estructura del bosque de restricción puede ser acomodada en un orden de $pn$. En cada parte del bosque guardamos las siguientes cosas:
+\begin{itemize}
+\item Quién es el padre del nodo. 
+\item La cota común del nodo. 
+\item El número de aplicantes asignados al nodo.
+\item La lista de preferencias del nodo y su actual peor aplicante. 
+\end{itemize}
+Notamos que esta información solo es necesaria en el caso de que los nodos esten llenos. 
+
+Para determinar si una universidad este llena, lo único que es necesario es recorrer ese nodo hacia arriba y ver si algun nodo cumple su cota superior, esto se puede realizar en un orden $k$ de operaciones. 
+
+Cuando un nuevo par es agregado o eliminado de la asignación se debe de agregar/eliminar en todos los nodos que esten por arriba de la asignación, esto se puede realizar en un orden $k$ de operaciones. 
+
+Por el lema \ref{lemaAOA2} el peor asignado en cualquier nodo debe de ser mejor o igual que el peor asignado en la última itereación. Entonces, el actualizar un nodo despues de que esta lleno puede ser realizado revisando la lista de aplicantes hacia arriba en la lista de preferencias a partir del peor aplicante asignado. Cada vez que sucede esto, cada nodo en el bosque es visitado al menos una vez y por lo tanto se realiza en un orden de $pn$ veces.
+
+Por lo tanto, concluimos que el orden del algoritmo orientado a los aplicantes es de $kL+pn$.
+%Falta un parrafo, matame pliiiis
+
 % No tengo paciencia
 \end{proof}
 
@@ -236,7 +255,15 @@ Sea $M^*$ el emparejamiento obtenido por el algoritmo antes de ofrecerle un pues
 Finalmente, supongamos ahora que a esta asignado a $c$ en $M$ y que $b$ no esta asignado a $c$ en $M$ pero si en otro emparejamiento estable $M'$ y que $b$ esta más arriba en la lista de preferencias que $a$. Entonces por el argumento de arriba $b$ debe de preferir a $c$ sobre su asignación en $M$ o no esta asignada, de aquí sigue que $(b,c)$ bloquea la estabilidad de $M$ y por lo tanto llegamos a una contradicción. 
 \end{proof}
 
-Hablar de complejidad
+La complejidad del algoritmo se entiende a partir del siguiente resultado, al igual que en el caso del algoritmo orientado a los aplicantes podemos ver que en este caso nos encontramos en una mejor situación que cuando las cotas no eran anidadas. 
+
+\begin{teo}
+El orden del algoritmo orientado a las universidades es de $mL$ donde $L$ es el número de posibles pares y $m$ es la longitud máxima de algún árbol en el bosque de restricciones. 
+\end{teo}
+
+\begin{proof}
+Los ciclos del algoritmo se realizan a lo más $L$ veces. En casa iteración se debe de escoger que universidad realiza la solicitud a un aplicante, para hacer esto es necesario escanear un árbol, esto a lo más se realiza en $m$ pasos. Como las universidades nunca estan llenas y cada universidad le propone a su siguiente aplicante en su lista (esta operación tiene un paso). El orden del algoritmo es de $mL$.
+\end{proof}
 
 Para dejar más clara la diferencia entre los dos algoritmos mostramos el siguiente ejemplo.
 

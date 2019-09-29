@@ -1,14 +1,14 @@
 \chapter{Listas con empates}
 
-Retomemos el problema planteado en el capítulo \ref{me}, recordemos que se planteo el problema del matrimonio estable y se demostro que sin importar si las listas de preferencia son completas o incompletas, existe un algoritmo polinomial que siempre encuentra un emparejamiento estable optimo (en el sentido de los hombres o de las mujeres dependendiendo de que algoritmo se use). \\
+Retomemos el problema planteado en el capítulo \ref{me}, recordemos que se planteó el problema del matrimonio estable y se demostró que sin importar si las listas de preferencia son completas o incompletas, existe un algoritmo polinomial que siempre encuentra un emparejamiento estable optimo (en el sentido de los hombres o de las mujeres dependendiendo de que algoritmo se use). \\
 
-Ahora, consideremos el caso en el que la lista de preferencias es completo, es decir cada hombre y cada mujer tiene catalogado en su orden de preferencia a cada persona del genero opuesto. Incluiremos la variante de que en la lista se pueden introducir empates, esto es muy común dada que en muchas ocasiones la diferencia entre escoger a dos personas puede ser no significativa. 
+Ahora, consideremos el caso en el que la lista de preferencias es completa, es decir cada hombre y cada mujer tiene catalogado en su orden de preferencia a cada persona del género opuesto. Incluiremos la variante de que en la lista se pueden introducir empates, esto es muy común dada que en muchas ocasiones la diferencia entre escoger a dos personas puede ser no significativa. 
 
 \begin{eje}{\cite{Verde}}
 \label{ejemplo empates}
 Supongamos que para 2 hombres y 2 mujeres tenemos la matriz de preferencias 
 $$\begin{pmatrix}
-& A & B  \\
+& A & B \\
 \alpha & 1,2 & 2,2 \\
 \beta & 1,1 & 1,1\\
 \end{pmatrix}.$$
@@ -20,20 +20,20 @@ Para este caso es necesario cambiar un poco la definición de estabilidad y de i
 
 \begin{dfn}{\cite{Verde}}
 \label{estricto}
-Decimos que un emparejamiento es inestable si existen un hombre $\alpha$ y una mujer $\beta$, donde cada uno de ellos \textbf{estrictamente} prefiere al otro que a su respesctiva pareja.  \\
+Decimos que un emparejamiento es inestable si existen un hombre $\alpha$ y una mujer $\beta$, donde cada uno de ellos \textbf{estrictamente} prefiere al otro que a su respectiva pareja. \\
 Alternativamente un emparejamiento es estable si no es inestable.
 \end{dfn}
 
-La unica diferencia con la definición \ref{Estable} es la palabra estrictamente, este tipo de emparejamientos en muchas ocasiones se conoce como \textbf{estabilidad debil}\footnote{Si no se pide la preferencia estricta es posible ver que en muchas ocasiones no existe un emparejamiento estable para el problema (ver \cite{Verde}).}. En el caso de que no existan empates en las listas de preferencias las dos definciones son identicas. El siguiente resultado muestra que el algoritmo de Gale Shapley tambien sirve para encontrar un emparejamiento estable dadas estas condiciones.
+La única diferencia con la definición \ref{Estable} es la palabra estrictamente, este tipo de emparejamientos en muchas ocasiones se conoce como \textbf{estabilidad débil}\footnote{Si no se pide la preferencia estricta es posible ver que en muchas ocasiones no existe un emparejamiento estable para el problema (ver \cite{Verde}).}. En el caso de que no existan empates en las listas de preferencias las dos defunciones son idénticas. El siguiente resultado muestra que el algoritmo de Gale Shapley también sirve para encontrar un emparejamiento estable dadas estas condiciones.
 
 \begin{cor}
-Dada una matriz de preferencias arbitaria completa en la que se permiten empates con $n$ hombres y $m$ mujeres, el algoritmo de Gale Shapley converge a un emparejamiento estable.
+Dada una matriz de preferencias arbitraria completa en la que se permiten empates con $n$ hombres y $m$ mujeres, el algoritmo de Gale Shapley converge a un emparejamiento estable.
 \end{cor}
 \begin{proof}
-De la definición \ref{estricto} podemos ver que si partimos si convertimos los empates en ordenes estrictos de forma arbitraria llegamos a una instancia del problema planteado en el capítulo \ref{me}. Si aplicamos el resultado del teorema \ref{teorema de Gale Shapley} podemos ver que el algoritmo converge a un emparejamiento estable.  \\
+De la definición \ref{estricto} podemos ver que si partimos si convertimos los empates en ordenes estrictos de forma arbitraria llegamos a una instancia del problema planteado en el capítulo \ref{me}. Si aplicamos el resultado del teorema \ref{teorema de Gale Shapley} podemos ver que el algoritmo converge a un emparejamiento estable. \\
 \end{proof}
 
-Una nota importante de la demostración de arriba es que si que si cambiamos los empates en ordenes distrintos podríamos llegar a emparejamientos estables diferentes. 
+Una nota importante de la demostración de arriba es que sí que si cambiamos los empates en ordenes distintos podríamos llegar a emparejamientos estables diferentes. 
 
 
 
@@ -42,7 +42,7 @@ Una nota importante de la demostración de arriba es que si que si cambiamos los
 \begin{eje}
 Consideremos la lista de preferencias del ejemplo \ref{ejemplo empates}, la modificamos para que permita un orden estricto obteniendo la siguiente matriz de preferencias
 $$\begin{pmatrix}
-& A & B  \\
+& A & B \\
 \alpha & 1,2 & 2,2 \\
 \beta & 1,1 & 2,1\\
 \end{pmatrix}.$$
@@ -131,7 +131,7 @@ En segunda instancia, $A$ acepta la propuesta de $\beta$ y $\alpha$ le propone m
 \caption{Segunda iteración.}
 \end{figure}
 
-Es claro que el emparejamiento obtenido despues de dos iteraciones es estable.
+Es claro que el emparejamiento obtenido después de dos iteraciones es estable.
 \end{eje}
 
 Otro resultado importante de este problema es que sigue cumpliendo el teorema \ref{rural}, es decir dados dos emparejamientos estables la cantidad de hombres emparejados es la misma.
@@ -144,12 +144,12 @@ Dada que la lista de preferencias es completa, todos los hombres prefieren tener
 \end{proof}
 
 \section{Listas incompletas con empates}
-Ahora, consideremos el problema del matrimonio estable considerando dos variantes para el problema; la lista de preferencias es incompleta, o sea para alguna persona en el problema existe otra persona del genero opuesto de la cual prefiere quedarse no emparejado a terminar emparejado con ella y además se permiten empates en la lista del mismo modo que se planteo al principio del capítulo. 
+Ahora, consideremos el problema del matrimonio estable considerando dos variantes para el problema; la lista de preferencias es incompleta, o sea para alguna persona en el problema existe otra persona del género opuesto de la cual prefiere quedarse no emparejado a terminar emparejado con ella y además se permiten empates en la lista del mismo modo que se planteó al principio del capítulo. 
 
 \begin{eje}{\cite{empates}}
 Supongamos que para 2 hombres y 2 mujeres tenemos la matriz de preferencias 
 $$\begin{pmatrix}
-& A & B  \\
+& A & B \\
 \alpha & 1,1 & , \\
 \beta & 1,1 & 2,1\\
 \end{pmatrix}.$$
@@ -244,14 +244,15 @@ Un resultado directo mostrado en el ejemplo de arriba es el siguiente corolario.
 Dada una matriz de preferencias incompleta en la que se permiten empates para $n$ hombres y $m$ mujeres. Si tenemos dos emparejamientos estables $M_1$ y $M_2$, la cantidad de hombres emparejados no necesariamente es la misma.
 \end{cor}
 
-Un problema interesante aquí es encontrar \textbf{un emparejamiento estable de máxima cardinalidad}, o sea encontrar algun emparejamiento estable $M_1$ con la propiedad de que no existe ningun otro emparejamiento $M_2$ estable en el problema en el cual exista una mayor cantidad de hombres emparejados que en $M_1$.  El siguiente resultado muestra que encontrar una solución para este problema no es nada trivial.
+Un problema interesante aquí es encontrar \textbf{un emparejamiento estable de máxima cardinalidad}, o sea encontrar algún emparejamiento estable $M_1$ con la propiedad de que no existe ningún otro emparejamiento $M_2$ estable en el problema en el cual exista una mayor cantidad de hombres emparejados que en $M_1$. El siguiente resultado muestra que encontrar una solución para este problema no es nada trivial.
 
 \begin{teo} {\cite{empates}} \label{NPempates}
 Dada una matriz de preferencias incompleta en la que se permiten empates para $n$ hombres y $n$ mujeres. El problema de encontrar un emparejamiento estable de máxima cardinalidad es NP-duro. Este resultado es correcto inclusive si solo existen empates en las listas de las mujeres (o de forma análoga en las listas de los hombres). 
 \end{teo}
 \begin{proof}
-La demostración supera el alcance de esta tesis pero se puede encontrar en \cite{empates}. 
+La demostración supera el alcance de esta tesis, pero se puede encontrar en \cite{empates}. 
 \end{proof}
+
 
 
 

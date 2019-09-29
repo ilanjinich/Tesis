@@ -1,6 +1,6 @@
 \chapter{Cotas inferiores}
 
-Retomamos el problema de admisión a universidades igual que como se plantea en el capíitulo 4, a cada universidad se le agrega la restricción de que necesita un número mínimo de alumnos asignados que necesitan para abrir. En particular se le agregan las siguientes tres ecuaciónes al problema:
+Retomamos el problema de admisión a universidades igual que como se plantea en el capítulo 4, a cada universidad se le agrega la restricción de que necesita un número mínimo de alumnos asignados que necesitan para abrir. En particular se le agregan las siguientes tres ecuaciones al problema:
 
 \begin{enumerate}
 \item \begin{equation} y_{j}= 
@@ -152,26 +152,26 @@ Si $B$ cierra entonces solo tenemos un emparejamiento posible en el que $\alpha$
 \fin
 \end{eje}
 
-A partir de este ejemplo queda claro que si extendemos el problema agregando cotas inferiores perdemos la garantía de existencia de un emparejamiento estable en nuestro problema. La pregunta clave aquí es si existe alguna condición que garantice la existencia de un emparejamiento estable para cualquier problema de este tipo o si existe algun algoritmo para llegar a uno de forma eficiente, el siguiente resultado muestra que esta pregunta es mucho más complicada de lo que parece. 
+A partir de este ejemplo queda claro que si extendemos el problema agregando cotas inferiores perdemos la garantía de existencia de un emparejamiento estable en nuestro problema. La pregunta clave aquí es si existe alguna condición que garantice la existencia de un emparejamiento estable para cualquier problema de este tipo o si existe algún algoritmo para llegar a uno de forma eficiente, el siguiente resultado muestra que esta pregunta es mucho más complicada de lo que parece. 
 
-\begin{teo}  \cite{Todo}
+\begin{teo} \cite{Todo}
 \label{np1}
 El problema de ver si una instancia del problema de admisión a universidades con cotas inferiores admite un emparejamiento estable es NP-completo. 
 \end{teo}
 
 \begin{proof}
 Dado que el problema claramente es de decisión, este pertenece a la clase NP. \\ Para ver que el problema es NP-completo reduciremos el problema del matrimonio estable con listas incompletas con empates a este\footnote{Recordemos que el problema aquí es ver si existe un emparejamiento estable con todos los hombres y todas las mujeres emparejadas.} (sabemos que este problema es NP-completo por el teorema \ref{NPempates}). Para este caso supondremos que sólo existen empates en las listas de las mujeres, estos son de a lo más longitud 2 y en caso de existir un empate para una mujer arbitraria $w_j$, este ocupa toda la lista de $w_j$ y al menos uno de los dos hombres pertenecientes a este tiene a $w_j$ hasta arriba de su lista \footnote{Dadas estas condiciones el problema sigue siendo NP-completo \cite{empates}}. \\
-Sea $I$ una instancia del problema del emparejamiento estable con listas incompletas con empates, sean $U=\{m_1,m_2,\dots,m_n\}$ la lista de hombres en el problema y sean $W=\{w_1,w_2,\dots,w_n\}$ las mujeres en el problema.  Sea $W_0$ un subconjunto de $W$ que contiene a todas las mujeres con un empate de tamaño dos en su lista.  Construiremos una instancia $I'$ del problema de admisión a universidades con cotas inferiores a partir de $I$.  \\
-Cada hombre en $I$ corresponde a un aplicante en $I'$ y sus listas de preferencia son identicas en ambas instancias. Si las mujeres pertenecen a $W \setminus W_0$ entonces representan a una universidad en $I'$ y cuentan como cota superior e inferior al número 1, sus listas de preferencia son identicas en $I$ y en $I'$.\\ El truco esta  con las mujeres en $W_0$, supongamos que tenemos a una mujer $w_j$ en $W_0$ y supongamos que $m_{j,1} $ y $m_{j,2}$ son los dos hombres que conforman este empate. En $I'$ construimos dos universidades $w_j^{1}, w_{j}^2$ y dos aplicantes nuevos $a_j^1, a_j^2$. Para $w_j^{1}, w_{j}^2$ asignamos al número 3 como sus cotas inferiores y simulataneamente tambien como sus cotas superiores. Las listas de prefencias para las dos universidades y para los dos aplicantes quedan definidios por la siguiente regla:
+Sea $I$ una instancia del problema del emparejamiento estable con listas incompletas con empates, sean $U=\{m_1,m_2,\dots,m_n\}$ la lista de hombres en el problema y sean $W=\{w_1,w_2,\dots,w_n\}$ las mujeres en el problema. Sea $W_0$ un subconjunto de $W$ que contiene a todas las mujeres con un empate de tamaño dos en su lista. Construiremos una instancia $I'$ del problema de admisión a universidades con cotas inferiores a partir de $I$. \\
+Cada hombre en $I$ corresponde a un aplicante en $I'$ y sus listas de preferencia son idénticas en ambas instancias. Si las mujeres pertenecen a $W \setminus W_0$ entonces representan a una universidad en $I'$ y cuentan como cota superior e inferior al número 1, sus listas de preferencia son idénticas en $I$ y en $I'$.\\ El truco esta con las mujeres en $W_0$, supongamos que tenemos a una mujer $w_j$ en $W_0$ y supongamos que $m_{j,1} $ y $m_{j,2}$ son los dos hombres que conforman este empate. En $I'$ construimos dos universidades $w_j^{1}, w_{j}^2$ y dos aplicantes nuevos $a_j^1, a_j^2$. Para $w_j^{1}, w_{j}^2$ asignamos al número 3 como sus cotas inferiores y simultáneamente también como sus cotas superiores. Las listas de prefencia para las dos universidades y para los dos aplicantes quedan definidos por la siguiente regla:
 \begin{enumerate}
-\item La lista de $a_j^1$ tiene a dos universidades, en primer lugar prefiere a $w_j^2$ y en segundo a $w_j^1$.
-\item La lista de $a_j^2$ tiene a dos universidades, en primer lugar prefiere a $w_j^1$ y en segundo a $w_j^2$.
-\item La lista de $w_j^1$ tiene a tres aplicantes, en primer lugar prefieren a $a_j^1$, en segundo a $m_{j,1}$ y en tercero a $a_j^2$.
-\item La lista de $w_j^2$ tiene a tres aplicantes, en primer lugar prefieren a $a_j^2$, en segundo a $m_{j,2}$ y en tercero a $a_j^1$.
+\item La lista de $a_j^1$ tiene a dos universidades, en primer lugar, prefiere a $w_j^2$ y en segundo a $w_j^1$.
+\item La lista de $a_j^2$ tiene a dos universidades, en primer lugar, prefiere a $w_j^1$ y en segundo a $w_j^2$.
+\item La lista de $w_j^1$ tiene a tres aplicantes, en primer lugar, prefieren a $a_j^1$, en segundo a $m_{j,1}$ y en tercero a $a_j^2$.
+\item La lista de $w_j^2$ tiene a tres aplicantes, en primer lugar, prefieren a $a_j^2$, en segundo a $m_{j,2}$ y en tercero a $a_j^1$.
 \end{enumerate}
-Remplazamos a $w_j$ por $w_j^1$ en la lista de $m_{j,1}$ y remplazamos a $w_j$ por $w_j^2$ en la lista de $m_{j,2}$. Afirmamos que existe un emparejamiento estable completo en $I$ si y solo si $I'$ cuenta con un emparejamiento estable.  \\
-Supongamos que existe un emparejamiento estable completo $M$ en $I$, queremos construir un emparejamiento estable $M'$ en $I'$ a apartir de este. Supongamos que $M'=M$, para toda pareja $(m_i,w_j)$ con $w_j$ en $W\setminus W_0$ no existe ningun cambio y para toda pareja $(m_i,w_j)$ con $w_j$ en $W_0$ y $m_i=m_{j,r}$ con $r$ igual a 1 o a dos, remplazamos a  $(m_i,w_j)$ en $M'$ por $(a_j^1,w_j^r), (a_j^2,w_j^r),(m_{j,r}, w_j^r)$. Es claro que para toda universidad se cumplen las cotas superiores e inferiores y además por la igualdad entre las listas concluimos que $M'$ es un emparejamiento estable. \\
-Supongamos que existe un emparejamiento estable $M'$ en $I'$, queremos construir un emparejamiento estable $M$ en $I$ a apartir de este. Supongamos que $M=M'$, para toda pareja $(m_i,w_j)$ con $w_j$ en $W\setminus W_0$ no existe ningun cambio. Supongamos entonces que $(m_{j,r}, w_{j}^{r})$ pertenece a $M'$ con $r$ igual a 1 o a dos, donde $m_{j,r}$ es igual a $m_k$ para algún hombre en $U$. Como la cota inferior de $w_{j}^{r}$ es igual a 3, es claro que $(a_j^1,w_{j}^{r})$ y  $(a_j^2,w_{j}^{r})$ pertenecen a $M'$, sustituimos a $(m_{j,r}, w_{j}^{r})$, a $(a_j^1,w_{j}^{r})$ y  a $(a_j^2,w_{j}^{r})$ en $M$ por $(m_i,w_j)$. Por construcción de $w_j^1$ y de $w_j^2$, unicamente una de esas dos universidades pueden estar abiertas, lo que garantiza que $w_j$ en $M$ sólo este emparejada con un hombre (esto se cumple para cada mujer en $W_0$). Además como al menos uno de los dos hombres pertenecientes a la lista de  $w_j$ tienen a esta hasta arriba de su lista, tenemos garantia de que $w_j^1$ o  $w_j^2$ esten abiertas en $I$. Es claro que todos los hombres y todas las mujeres en $I$ estan emparejadas en $M$ por lo tanto el emparejamiento es completo, por la similitud entre las listas de $I$ y $I'$ es tambien claro que $M$ es un emparejamiento estable y por lo tanto la afirmación mencionada arriba es verdadera y concluimos que el problema de ver si una instancia del problema de admisión a universidades con cotas inferiores admite un emparejamiento estable es NP-completo (inclusive si cada cota inferior no excede a 3).
+Remplazamos a $w_j$ por $w_j^1$ en la lista de $m_{j,1}$ y remplazamos a $w_j$ por $w_j^2$ en la lista de $m_{j,2}$. Afirmamos que existe un emparejamiento estable completo en $I$ si y solo si $I'$ cuenta con un emparejamiento estable. \\
+Supongamos que existe un emparejamiento estable completo $M$ en $I$, queremos construir un emparejamiento estable $M'$ en $I'$ a partir de este. Supongamos que $M'=M$, para toda pareja $(m_i,w_j)$ con $w_j$ en $W\setminus W_0$ no existe ningún cambio y para toda pareja $(m_i,w_j)$ con $w_j$ en $W_0$ y $m_i=m_{j,r}$ con $r$ igual a 1 o a dos, remplazamos a $(m_i,w_j)$ en $M'$ por $(a_j^1,w_j^r), (a_j^2,w_j^r),(m_{j,r}, w_j^r)$. Es claro que para toda universidad se cumplen las cotas superiores e inferiores y además por la igualdad entre las listas concluimos que $M'$ es un emparejamiento estable. \\
+Supongamos que existe un emparejamiento estable $M'$ en $I'$, queremos construir un emparejamiento estable $M$ en $I$ a partir de este. Supongamos que $M=M'$, para toda pareja $(m_i,w_j)$ con $w_j$ en $W\setminus W_0$ no existe ningun cambio. Supongamos entonces que $(m_{j,r}, w_{j}^{r})$ pertenece a $M'$ con $r$ igual a 1 o a dos, donde $m_{j,r}$ es igual a $m_k$ para algún hombre en $U$. Como la cota inferior de $w_{j}^{r}$ es igual a 3, es claro que $(a_j^1,w_{j}^{r})$ y $(a_j^2,w_{j}^{r})$ pertenecen a $M'$, sustituimos a $(m_{j,r}, w_{j}^{r})$, a $(a_j^1,w_{j}^{r})$ y a $(a_j^2,w_{j}^{r})$ en $M$ por $(m_i,w_j)$. Por construcción de $w_j^1$ y de $w_j^2$, únicamente una de esas dos universidades puede estar abiertas, lo que garantiza que $w_j$ en $M$ sólo este emparejada con un hombre (esto se cumple para cada mujer en $W_0$). Además, como al menos uno de los dos hombres pertenecientes a la lista de $w_j$ tienen a esta hasta arriba de su lista, tenemos garantía de que $w_j^1$ o $w_j^2$ estén abiertas en $I$. Es claro que todos los hombres y todas las mujeres en $I$ están emparejadas en $M$ por lo tanto el emparejamiento es completo, por la similitud entre las listas de $I$ y $I'$ es también claro que $M$ es un emparejamiento estable y por lo tanto la afirmación mencionada arriba es verdadera y concluimos que el problema de ver si una instancia del problema de admisión a universidades con cotas inferiores admite un emparejamiento estable es NP-completo (inclusive si cada cota inferior no excede a 3).
 \end{proof}
 
 %A partir de este ejemplo queda claro que si extendemos el problema agregando cotas inferiores perdemos la garantía de existencia de un emparejamiento estable en nuestro problema. Es posible además construir un algoritmo a partir del algoritmo de Gale Shapley para admisión a universidades que converja en caso de que exista a un emparejamiento estable o que saque como resultado si no existe un emparejamiento estable para este problema, el algoritmo esta dado por el siguiente código. Antes de mostrarlo vale la pena recordar que si tienes $m$ universidades entonces existen $2^{m}-1$ (corolario \ref{card3}) posibles combinaciones de qué universidades mantienen abiertas y cuales cierran. 
@@ -202,12 +202,12 @@ Supongamos que existe un emparejamiento estable $M'$ en $I'$, queremos construir
 %\Output{Un emparejamiento o un mensaje.}
 %\BlankLine
 %\Repeat{Hasta encontrar un emparejamiento estable factible o hasta tratar todas las combinaciones}{
-%	\emph{Se selecciona una de las $2^{m}-1$ combinaciones, se escoge primero las opciones que cierren menos universidades de las todavía no escogidas\;}
-%	\emph{Se le aplica el algoritmo de Gale Shapley para admisión de universidades a la combinación de universidades abiertas y se obtiene una asiignación\;}
-%	\emph{Si la asignación obtenida es factible, el algoritmo acaba y saca como output el emparejamiento\;}
-%	}
-%	\emph{Si el algoritmo trato todas las combinaciones y no encontró un emparejamiento estable factible entonces saca un mensaje diciendo que este no existe\;}
-%\caption{Gale Shapley  para admisión a universidades con cotas inferiores.}
+% \emph{Se selecciona una de las $2^{m}-1$ combinaciones, se escoge primero las opciones que cierren menos universidades de las todavía no escogidas\;}
+% \emph{Se le aplica el algoritmo de Gale Shapley para admisión de universidades a la combinación de universidades abiertas y se obtiene una asiignación\;}
+% \emph{Si la asignación obtenida es factible, el algoritmo acaba y saca como output el emparejamiento\;}
+% }
+% \emph{Si el algoritmo trato todas las combinaciones y no encontró un emparejamiento estable factible entonces saca un mensaje diciendo que este no existe\;}
+%\caption{Gale Shapley para admisión a universidades con cotas inferiores.}
 %\end{Algoritmo}
 %\DecMargin{1em}
 %
@@ -215,7 +215,7 @@ Supongamos que existe un emparejamiento estable $M'$ en $I'$, queremos construir
 %Dada una matriz de preferencias arbitraria, un vector de cotas superiores arbitrario y un vector de cotas inferiores arbitrario, el algoritmo de Gale Shapley para admisión a universidades con cotas inferiores converge.
 %\end{cor}
 %\begin{proof}
-%Supongamos que existe una combinación de universidades abiertas que cuenta con una asignación estable y el algoritmo no la encuentra. Esto es, existe una combinación de universidades en las que el emparejamiento estable producido por Gale Shapley no es factible, pero en la que si existe un emparejamiento estable factible, lo cual es una contradicción al teorema \ref{rural} porque todos los emparejamientos estables asignan exactamente el mismo número de personas a cada universidad y por lo tanto si el emparejamiento encontrado por el algoritmo no es factible eso implicaría que todas las asignaciones estables no son factibles. \\
+%Supongamos que existe una combinación de universidades abiertas que cuenta con una asignación estable y el algoritmo no la encuentra. Esto es, existe una combinación de universidades en las que el emparejamiento estable producido por Gale Shapley no es factible, pero en la que, si existe un emparejamiento estable factible, lo cual es una contradicción al teorema \ref{rural} porque todos los emparejamientos estables asignan exactamente el mismo número de personas a cada universidad y por lo tanto si el emparejamiento encontrado por el algoritmo no es factible eso implicaría que todas las asignaciones estables no son factibles. \\
 %Cómo se escoge las opciones que cierren menos universidades de las todavía no escogidas podemos garantizar que de encontrar un emparejamiento estable factible este no tiene una universidad bloqueadora. 
 %Además, porque el algoritmo trata todas las combinaciones y porque el corolario \ref{gsu} nos garantiza que dada una combinación de universidades abiertas el algoritmo siempre encuentra un emparejamiento estable, entonces podemos concluir que de existir un emparejamiento estable factible el algoritmo de Gale Shapley para admisión a universidades con cotas inferiores lo va a encontrar y por lo tanto el algoritmo converge a lo deseado. 
 %\end{proof}
@@ -370,11 +370,11 @@ Supongamos que existe un emparejamiento estable $M'$ en $I'$, queremos construir
 %\end{eje}
 
 
-%Al igual que en las secciones anteriores el algoritmo puede ser modificado para que sea optimo para las universidades, los resultados de convergencia y de complejidad son analogos a los mostrados.
+%Al igual que en las secciones anteriores el algoritmo puede ser modificado para que sea óptimo para las universidades, los resultados de convergencia y de complejidad son análogos a los mostrados.
 
 
 
-A partir de este resultado vemos que el problema es extremedamente dificil de resolver.  \cite{Todo} propone una heuristica para resolver este problema de forma rapida. En general hay que tener cuidado al usarla porque el algoritmo ignora la existencia de universidades bloqueadoras y podria no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable. La heuristica es la siguiente: 
+A partir de este resultado vemos que el problema es extremadamente difícil de resolver. \cite{Todo} propone una heurística para resolver este problema de forma rápida. En general hay que tener cuidado al usarla porque el algoritmo ignora la existencia de universidades bloqueadoras y podría no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable. La heurística es la siguiente: 
 \\
 \IncMargin{1em}
 \begin{Algoritmo}[H]
@@ -385,22 +385,22 @@ A partir de este resultado vemos que el problema es extremedamente dificil de re
 \Output{Un emparejamiento o un mensaje.}
 \BlankLine
 \emph{$U$ $\gets$ un vector de tamaño $m$ con los nombres de todas las universidades\;}
-\Repeat{Hasta encontrar un emparejamiento estable factible o mientras $U$ sea no vacio}{
-	\emph{Se aplica el algoritmo de Gale Shapley para admisión a universidades considerando que las escuelas que aparecen en $U$ estan abiertas y las que no estan cerradas obteniendo un emparejamiento $M$\;}
-	\eIf{$M$ es factible}{
-		El algoritmo acaba y saca como output el emparejamiento\;
-		}
-		{
-		\emph{Sea $A$ la universidad con el cociente entre el número asignado de estudiantes y su cota inferior mínimo \;}
-		\emph{$U$ $\gets$ $U \setminus A$ (Al vector $U$ le quitamos la universidad $A$) \;} 
-		}
+\Repeat{Hasta encontrar un emparejamiento estable factible o mientras $U$ sea no vacío}{
+\emph{Se aplica el algoritmo de Gale Shapley para admisión a universidades considerando que las escuelas que aparecen en $U$ están abiertas y las que no están cerradas obteniendo un emparejamiento $M$\;}
+\eIf{$M$ es factible}{
+El algoritmo acaba y saca como output el emparejamiento\;
 }
-\emph{Si $U$ esta vacio, saca un mensaje diciendo que no se encontro el emparejamiento\;}
-\caption{Heuristica  para admisión a universidades con cotas inferiores.}
+{
+\emph{Sea $A$ la universidad con el cociente entre el número asignado de estudiantes y su cota inferior mínimo \;}
+\emph{$U$ $\gets$ $U \setminus A$ (Al vector $U$ le quitamos la universidad $A$) \;} 
+}
+}
+\emph{Si $U$ este vacío, saca un mensaje diciendo que no se encontró el emparejamiento\;}
+\caption{Heurística para admisión a universidades con cotas inferiores.}
 \end{Algoritmo}
 \DecMargin{1em}
 
-Como afirmamos arriba la heuristica podria no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable, demostramos esto a partir del siguiente ejemplo. 
+Como afirmamos arriba la heurística podría no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable, demostramos esto a partir del siguiente ejemplo. 
 
 \begin{eje} \cite{Todo}
 Supongamos que tenemos a 3 aplicantes $\alpha,\beta,\gamma$ y a dos universidades $A,B$. A tiene como cota inferir y superior al número 2; B tiene como cota inferior y superior al número 3. Sus preferencias son las siguientes:
@@ -453,7 +453,7 @@ Aplicamos el algoritmo de Gale Shapley para las dos universidades abiertas obten
 \caption{Primera iteración.}
 \end{figure}
 
-La asignación es estable pero claramente no es factible porque  $A$ y $B$ no respetan sus cotas. En un segundo paso cerramos $A$ porque es la universidad con el cociente entre el número asignado de estudiantes y su cota inferior mínimo (su cociente es $\frac{1}{2}$ y el de $B$ es $\frac{2}{3}$). Aplicamos el algoritmo de Gale Shaple considerando unicamente $B$ abierto obteniendo la asignación:
+La asignación es estable pero claramente no es factible porque $A$ y $B$ no respetan sus cotas. En un segundo paso cerramos $A$ porque es la universidad con el cociente entre el número asignado de estudiantes y su cota inferior mínimo (su cociente es $\frac{1}{2}$ y el de $B$ es $\frac{2}{3}$). Aplicamos el algoritmo de Gale Shapley considerando únicamente $B$ abierto obteniendo la asignación:
 
 \begin{figure}[H]\centering
 
@@ -496,7 +496,7 @@ La asignación es estable pero claramente no es factible porque  $A$ y $B$ no re
 \caption{Segunda iteración.}
 \end{figure}
 
-La asignación es estable pero claramente no es factible porque $B$ no respeta sus cotas. El algoritmo saca un mensaje diciendo que no se encontro un emparejamiento estable. Uno apartir de esto podría concluir que este no existe para el problema pero si abrimos $A$ y cerramos $B$ obteniendo la asignación: 
+La asignación es estable pero claramente no es factible porque $B$ no respeta sus cotas. El algoritmo saca un mensaje diciendo que no se encontró un emparejamiento estable. Uno a partir de esto podría concluir que este no existe para el problema, pero si abrimos $A$ y cerramos $B$ obteniendo la asignación: 
 
 \begin{figure}[H]\centering
 
@@ -539,14 +539,15 @@ La asignación es estable pero claramente no es factible porque $B$ no respeta s
 \caption{Asignación estable.}
 \end{figure}
 
-Esta asignación es estable y factible lo que muestra que la heuristica podria no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable. \fin
+Esta asignación es estable y factible lo que muestra que la heurística podría no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable. \fin
 
 \end{eje}
 
-Concluimos que el problema de admisión a universidades con cotas inferiores es extremadamente dificil de resolver, en lo que resta de la tesis hablaremos del problema de admisión a universidades considerando cotas superiores comunes. 
+Concluimos que el problema de admisión a universidades con cotas inferiores es extremadamente difícil de resolver, en lo que resta de la tesis hablaremos del problema de admisión a universidades considerando cotas superiores comunes. 
 
 
 %no siempre converge
-%heuristicas
+%heurísticas
 %es np completo
+
 

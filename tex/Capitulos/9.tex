@@ -31,6 +31,15 @@ Sea Z subconjunto de $Y \setminus X$ tal que $X \cup Z$ es independiente y tal q
 Supongamos que la cardinalidad $X \cup Z$ es menor a la cardinalidad de $Y$, entonces existe $\{y_0\}$ subconjunto de $Y$ tal que la cardinalidad de $y_0$ es uno más la cardinalidad de $X \cup Z$, entonces por la propiedad \ref{axioma 3} de las matroides existe $y$ en $\{y_0\} \setminus (Y \setminus X)$ con la propiedad de que $X \cup Z \cup \{ y\}$ es independiente. Esto contradice la elección de $Z$ porque se pedía que ésta sea máxima, por lo tanto, la cardinalidad de $X \cup Z$ es igual a la cardinalidad de $Y$ y el teorema se cumple. 
 \end{proof}
 
+Mostraremos un ejemplo sencillo de una matroide, se recomienda al lector tratar de entender los resultados que siguen a partir de este ejemplo. En muchas ocasiones hacer esto ayuda a mantener claridad.
+
+\begin{eje}
+Sea $S$ un conjunto de cardinalidad $n$ y sea $\mathcal{F}$ todos los subconjuntos de $S$ de cardinalidad menor o igual que $k$. Entonces, $M=(S,\mathcal{F})$ es una matroide. 
+
+En este caso se le conoce como  \textbf{Matroide uniforme} de orden $n,k$.
+\fin
+\end{eje}
+
 A continuación, aprovecharemos la similitud que existe entre el álgebra lineal y la teoría de matroides para mostrar algunas definiciones y resultados interesantes. 
 
 \section{Bases}
@@ -482,7 +491,7 @@ Ahora sí ya encaminados podemos definir el algoritmo glotón, más adelante ver
 \DecMargin{1em}
 El siguiente resultado muestra que el algoritmo converge a pesar de ser relativamente sencillo.
 
-\begin{teo}
+\begin{teo} \label{glot}
 Sean $M=(S,\mathcal{F})$ y $\omega$ una función de pesos para $M$, entonces el algoritmo glotón converge para el problema de optimización $(\mathcal{F}, \omega)$. 
 \end{teo}
 \begin{proof}
