@@ -208,6 +208,37 @@ Gusfield, D.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Irving%
+, Manlove%
+, Iwama%
+, Miyazaki%
+\BCBL {}\ \BBA {} Morita%
+}{%
+Irving%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2002}}%
+}]{%
+empates}
+\APACinsertmetastar {%
+empates}%
+\begin{APACrefauthors}%
+Irving, R\BPBI W.%
+, Manlove, D\BPBI F.%
+, Iwama, K.%
+, Miyazaki, S.%
+\BCBL {}\ \BBA {} Morita, Y.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2002}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Hard Variants of Stable Marriage} {Hard variants of
+  stable marriage}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Theoretical Computer Science}{276}{1-2}{261 - 279}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Knuth%
 }{%
 Knuth%
@@ -249,8 +280,8 @@ Lawler, E.%
 \newblock
 \APACrefYear{2015}.
 \newblock
-\APACrefbtitle {Combinatorial Optimization, Netwroks and Matroids}
-  {Combinatorial optimization, netwroks and matroids}.
+\APACrefbtitle {Combinatorial Optimization, Networks and Matroids}
+  {Combinatorial optimization, networks and matroids}.
 \newblock
 \APACaddressPublisher{}{Dover}.
 \PrintBackRefs{\CurrentBib}
@@ -277,37 +308,6 @@ Lipschutz, S.%
   related topics}.
 \newblock
 \APACaddressPublisher{}{McGraw-Hill}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Manlove%
-, Irving%
-, Iwama%
-, Miyazaki%
-\BCBL {}\ \BBA {} Morita%
-}{%
-Manlove%
-\ \protect \BOthers {.}}{%
-{\protect \APACyear {2002}}%
-}]{%
-empates}
-\APACinsertmetastar {%
-empates}%
-\begin{APACrefauthors}%
-Manlove, D\BPBI F.%
-, Irving, R\BPBI W.%
-, Iwama, K.%
-, Miyazaki, S.%
-\BCBL {}\ \BBA {} Morita, Y.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2002}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {Hard Variants of Stable Marriage} {Hard variants of
-  stable marriage}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Theoretical Computer Science}{276}{1-2}{261 - 279}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

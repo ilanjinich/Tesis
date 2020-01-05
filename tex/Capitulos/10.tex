@@ -1,19 +1,19 @@
 \chapter{Funciones de elección y matroides}
 
-En este capítulo redefiniremos el problema de admisión a universidades con cotas comunes anidadas por completo, vamos a suponer que tenemos una gráfica bipartita $G=(A\cup C,E)$ donde los vertices en $A$ representan los aplicantes, $C$ representa las universidades y las aristas de la gráfica $E$ representan las asignaciones aceptables entre los dos. Para definir el problema de esta manera es necesario definir dos funciones de elección. 
+En este capítulo redefiniremos el problema de admisión a universidades con cotas comunes anidadas por completo, vamos a suponer que tenemos una gráfica bipartita $G=(A\cup C,E)$ donde los vértices en $A$ representan los aspirantes, $C$ representa las universidades y las aristas de la gráfica $E$ representan las asignaciones aceptables entre los dos. Para definir el problema de esta manera es necesario definir dos funciones de elección. 
 
 \begin{dfn}
 Decimos que $Q$ es una \textbf{función de elección} para un conjunto $E$ si para todo subconjunto $X$ de $E$ tenemos que $Q(X)$ es un subconjunto de $X$. En particular, decimos que un conjunto $X$ es \textbf{$Q$-independiente} si $Q(X)=X$.
 \end{dfn}
 
-Definimos dos funciones de elección (los dos sobres ) una para los aplicantes denotado como $Q_A$ y otra para las universidades denotada como $Q_C$. Si un conjunto es $Q_A$-independiente decimos que es \textbf{aplicante independiente} y si un conjunto es $Q_C$-independiente decimos que es \textbf{universidad independiente}. Las dos funciones se definen de la siguiente manera:
+Definimos dos funciones de elección una para los solicitantes denotado como $Q_A$ y otra para las universidades denotada como $Q_C$. Si un conjunto es $Q_A$-independiente decimos que es \textbf{aspirante independiente} y si un conjunto es $Q_C$-independiente decimos que es \textbf{universidad independiente}. Las dos funciones se definen de la siguiente manera:
 
 \begin{dfn}
-Definimos la \textbf{función de elección para los aplicantes} $Q_A$ como una función de elección sobre las aristas que cumple que para todo aplicante $a$, $Q_A(X)$ contiene a las aristas en $X$ que el aplicante escogería si pudiera elegir libremente sin importar las restricciones. En particular, si $X$ contiene varias aristas que inciden sobre $a$ este elige la que incide en la universidad más alta en su lista. 
+Definimos la \textbf{función de elección para los aspirantes} $Q_A$ como una función de elección sobre las aristas que cumple que para todo aspirante $a$, $Q_A(X)$ contiene a las aristas en $X$ que el solicitante escogería si pudiera elegir libremente sin importar las restricciones. En particular, si $X$ contiene varias aristas que inciden sobre $a$ éste elige la que incide en la universidad más alta en su lista. 
 \end{dfn} 
 
 \begin{dfn}
-Definimos la \textbf{función de elección para las universidades} $Q_C$ como una función de elección sobre las aristas que cumple que para toda universidad $c$, $Q_C(X)$ contiene a las aristas $X$ que inciden en los aplicantes que a $c$ elegiría si pudiera elegir libremente. En particular se sigue el siguiente algoritmo, supongamos que la familia de conjuntos $\mathcal{C}=\{C_1,C_2,\dots,C_m\}$ son los conjuntos de universidades que son parte de una restricción y supongamos que si $C_i$ es un subconjunto de $C_j$ es porque $i$ es menor igual que $j$:
+Definimos la \textbf{función de elección para las universidades} $Q_C$ como una función de elección sobre las aristas que cumple que para toda universidad $c$, $Q_C(X)$ contiene a las aristas $X$ que inciden en los solicitantes que $c$ elegiría si pudiera elegir libremente. En particular se sigue el siguiente algoritmo, supongamos que la familia de conjuntos $\mathcal{C}=\{C_1,C_2,\dots,C_m\}$ son los conjuntos de universidades que son parte de una restricción y supongamos que si $C_i$ es un subconjunto de $C_j$ es porque $i$ es menor igual que $j$:
 
 \IncMargin{1em}
 \begin{Algoritmo}[H]
@@ -21,7 +21,7 @@ Definimos la \textbf{función de elección para las universidades} $Q_C$ como un
 %\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
 \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
 
-\Input{Un conjunto $X$ de aristas en $E$, la familia de conjuntos con restricciones $\mathcal{C}$ con sus cotas y las listas de preferencias para las universidades y los aplicantes}
+\Input{Un conjunto $X$ de aristas en $E$, la familia de conjuntos con restricciones $\mathcal{C}$ con sus cotas y las listas de preferencias para las universidades y los aspirantes}
 \Output{$Q(X)$}
 \BlankLine
 \emph{Sea $X_0 = X$;}
@@ -44,8 +44,8 @@ Definimos la \textbf{función de elección para las universidades} $Q_C$ como un
 
 Para la línea 5 del algoritmo es necesario explicar cuál es el orden de preferencias de $X_{i-1}(C_i)$, este depende de dos casos: 
 \begin{enumerate}
-\item Dadas dos aristas que inciden en dos aplicantes distintos escogemos de acuerdo con el orden de preferencias de $C_i$.
-\item Dadas dos aristas que inciden en el mismo aplicante $a$ escogemos de acuerdo con el orden de preferencias de $a$.
+\item Dadas dos aristas que inciden en dos solicitantes distintos escogemos de acuerdo con el orden de preferencias de $C_i$.
+\item Dadas dos aristas que inciden en el mismo aspirante $a$ escogemos de acuerdo con el orden de preferencias de $a$.
 \end{enumerate}
 
 \end{dfn}
@@ -53,7 +53,7 @@ Para la línea 5 del algoritmo es necesario explicar cuál es el orden de prefer
 A partir de esto realizamos las siguientes observaciones sobre el comportamiento de estas funciones:
 
 \begin{obs}
-$Q_A(X)=X$ si y solo si cada aplicante tiene a lo más una arista incidente en $X$.
+$Q_A(X)=X$ si y solo si cada aspirante tiene a lo más una arista incidente en $X$.
 \end{obs}
 \begin{obs}
 $Q_C(X)=X$ si y solo si $X$ no viola ninguna cota de $\mathcal{C}$.
@@ -62,7 +62,7 @@ $Q_C(X)=X$ si y solo si $X$ no viola ninguna cota de $\mathcal{C}$.
 Usando esas dos observaciones concluimos que:
 
 \begin{obs}
-$M$ es un emparejamiento si y solo si $M$ es aplicante independiente y universidad independiente. 
+$M$ es un emparejamiento si y solo si $M$ es aspirante independiente y universidad independiente. 
 \end{obs}
 
 A partir de estos resultados podemos demostrar el siguiente teorema que habla de la relación entre nuestro problema y las matroides. 
@@ -82,19 +82,19 @@ Supongamos que el resultado es válido si la cantidad de conjuntos es estrictame
 Por lo tanto, si $I_C$ el subconjunto del conjunto potencia de $E$ que contiene a todos los conjuntos universidad independiente, entonces $M_C = (E,I_C)$ es una matroide.
 \end{proof}
 
-Un resultado inmediato del teorema que lo mismo sucede para los aplicantes. 
+Un resultado inmediato del teorema es que lo mismo sucede para los aplicantes. 
 
 \begin{cor}
 Sea $I_A$ el subconjunto del conjunto potencia de $E$ que contiene a todos los conjuntos universidad independiente, entonces $M_A = (E,I_A)$ es una matroide. 
 \end{cor}
 \begin{proof}
-Como los aplicantes pueden ser vistos como universidades en donde cada cota superior es 1 y no existen cotas comunes, de acuerdo con el teorema \ref{matroid} $M_A = (E,I_A)$ es una matroide. 
+Como los aspirantes pueden ser vistos como universidades en donde cada cota superior es 1 y no existen cotas comunes, de acuerdo con el teorema \ref{matroid} $M_A = (E,I_A)$ es una matroide. 
 \end{proof}
 
 A partir de esto, podemos encontrar varios resultados bastante interesantes sobre el problema. 
 
 \begin{cor}
-La función de elección para las universidades para $X$ encuentra el subconjunto máximal universidad independiente de $X$.
+La función de elección para las universidades para $X$ encuentra el subconjunto maximal universidad independiente de $X$.
 \end{cor}
 
 \begin{proof}
@@ -119,7 +119,7 @@ Estas dos observaciones implican que la función $Q_c$ puede ser construida a pa
 %\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
 \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
 
-\Input{Un conjunto $X$ de aristas en $E$, la familia de conjuntos con restricciones $\mathcal{C}$ con sus cotas y las listas de preferencias para las universidades y los aplicantes}
+\Input{Un conjunto $X$ de aristas en $E$, la familia de conjuntos con restricciones $\mathcal{C}$ con sus cotas y las listas de preferencias para las universidades y los solicitantes}
 \Output{$Q(X)$}
 \BlankLine
 \emph{Acomodamos las aristas de $E=e_1,e_2,\dots,e_n$ de cierta forma que si dos aristas $e_i$ y $e_j$ pertenecen al mismo conjunto acotado entonces si $i$ es menor que $j$ implica que $e_i$ es preferido a $e_j$;}
@@ -142,7 +142,7 @@ Estas dos observaciones implican que la función $Q_c$ puede ser construida a pa
 \end{Algoritmo}
 \DecMargin{1em}
 
-El algoritmo es igual porque por el teorema (\ref{glot}) sabemos que el algoritmo glotón siempre converge al subconjunto máximal universidad independiente de $X$ y por lo tanto aplicar uno u otro algoritmo debe de llevar al mismo resultado. Además de esto si agregamos podemos ver que la función es comonotona, es decir:
+El algoritmo es igual porque por el teorema (\ref{glot}) sabemos que el algoritmo glotón siempre converge al subconjunto maximal universidad independiente de $X$ y por lo tanto aplicar uno u otro algoritmo debe de llevar al mismo resultado. Además de esto si agregamos la siguiente definición podemos ver que la función es comonotona, es decir:
 
 \begin{dfn}
 Decimos que una función $Q$ en $E$ es \textbf{comonotona} si para cualquier par de subconjuntos $X,Y$ de $E$ con $X$ siendo un subconjunto de $Y$ tenemos que $X\setminus Q(X)$ es un subconjunto de $Y\setminus Q(Y)$.
@@ -153,13 +153,13 @@ La función $Q_c$ es comonotona sobre $E$
 \end{cor}
 
 \begin{proof}
-Para probar comonotonicidad tenemos que ver que si $x$ en $X$ no pertenece a $Q_c(X)$ entonces esta no pertenece a $Q_c(Y)$ cuando $X$ es un subconjunto de $Y$. Esto sale directo del algoritmo glotón porque durante la construcción de $Q_c(X)$ no se eligió $x$ entonces es claro que durante la construcción de $Q_c(Y)$ tampoco se eligió a $x$ por las mismas razones. 
+Para probar comonotonicidad tenemos que ver que si $x$ en $X$ no pertenece a $Q_c(X)$ entonces esta no pertenece a $Q_c(Y)$ cuando $X$ es un subconjunto de $Y$. Esto sale directo del algoritmo glotón porque si durante la construcción de $Q_c(X)$ no se eligió $x$ entonces es claro que durante la construcción de $Q_c(Y)$ tampoco se eligió a $x$ por las mismas razones. 
 \end{proof}
 
 Para relacionar todo esto con la idea de estabilidad igual que en los demás capítulos es necesario enunciar algunas definiciones.
 
 \begin{dfn}
-Para un conjunto $X$ en $E$ y una arista $e$ en $E$, decimos que $X$ \textbf{domina} a $e$ en el lado del aplicante si $e$ no pertenece a $Q_A(X \cup \{e\})$ y decimos que $X$ domina a $e$ en el lado de las universidades si $e$ no pertenece a $Q_C(X \cup \{e\})$.
+Para un conjunto $X$ en $E$ y una arista $e$ en $E$, decimos que $X$ \textbf{domina} a $e$ en el lado del aspirante si $e$ no pertenece a $Q_A(X \cup \{e\})$ y decimos que $X$ domina a $e$ en el lado de las universidades si $e$ no pertenece a $Q_C(X \cup \{e\})$.
 
 En particular, para los dos tipos de dominancia si tenemos dos subconjuntos $X,Y$ de $E$. Decimos que $X$ domina a $Y$ si $X$ domina a todos los elementos $Y \setminus X$.
 \end{dfn}
@@ -172,31 +172,31 @@ Un subconjunto $M$ de $E$ es estable si y solo si domina a $E\setminus M$ (bajo 
 
 \section{Resultados estructurales}
 
-A partir de todos los resultados en lo que sigue del capítulo mostraremos varios resultados importantes sobre el problema que se relacionan de forma general con el resto de la tesis. 
+A partir de todos los resultados anteriores, en lo que sigue del capítulo mostraremos varios resultados importantes sobre el problema que se relacionan de forma general con el resto de la tesis. 
 
 \begin{teo}
 \label{union de estables}
 Si $M_1,M_2,\dots,M_k$ son asignaciones estables entonces $Q_C( \cup_{i=1}^k M_i)$ y $Q_A( \cup_{i=1}^k M_i)$ son también asignaciones estables. 
 \end{teo}
 \begin{proof}
-Dado un conjunto $X$ en $E$ sabemos que $Q_C(X)$ es el subconjunto máximal universidad independiente de $X$, como $X$ es la unión de varias asignaciones podemos ver qué $Q_C(X)$ es también una asignación y además podemos ver por propiedades del algoritmo glotón que este domina a las demás asignaciones en el sentido de las universidades, por lo tanto $Q_C( \cup_{i=1}^k M_i)$ es una asignación estable. En particular, el argumento es idéntico para demostrar que $Q_A( \cup_{i=1}^k M_i)$ es una asignación estable. 
+Dado un conjunto $X$ en $E$ sabemos que $Q_C(X)$ es el subconjunto maximal universidad independiente de $X$, como $X$ es la unión de varias asignaciones podemos ver qué $Q_C(X)$ es también una asignación y además podemos ver por propiedades del algoritmo glotón que este domina a las demás asignaciones en el sentido de las universidades, por lo tanto $Q_C( \cup_{i=1}^k M_i)$ es una asignación estable. En particular, el argumento es idéntico para demostrar que $Q_A( \cup_{i=1}^k M_i)$ es una asignación estable. 
 \end{proof}
 
 \begin{lem}
 \label{desigualdad}
-Si tenemos dos asignaciones estables $M_1,M_2$ si $M_1$ domina a $M_2$ en el lado de las universidades esto se cumple si y solo si $M_2$ domina a $M_1$ en el lado de los aplicantes.
+Si tenemos dos asignaciones estables $M_1,M_2$ si $M_1$ domina a $M_2$ en el lado de las universidades esto se cumple si y solo si $M_2$ domina a $M_1$ en el lado de los solicitantes.
 \end{lem}
 \begin{proof}
-Si $M_1$ y $M_2$ son emparejamientos estables entonces cado uno de ellos domina al otro. Si $M_1$ domina a cada elemento de $M_2 \setminus M_1$ en el lado de la universidad entonces $M_2$ debe de dominar a cada elemento de $M_1 \setminus M_2$ en el lado de los aplicantes. A partir de esta observación podemos ver que el lema es verdadero.
+Si $M_1$ y $M_2$ son emparejamientos estables entonces cada uno de ellos domina al otro. Si $M_1$ domina a cada elemento de $M_2 \setminus M_1$ en el lado de la universidad entonces $M_2$ debe de dominar a cada elemento de $M_1 \setminus M_2$ en el lado de los aspirantes. A partir de esta observación podemos ver que el lema es verdadero.
 \end{proof}
 
 \begin{teo}
-Si $M_1,M_2,\dots,M_n$ son asignaciones estables y $k$ es un entero arbitrario entre $1$ y $n$. Si cada aplicante escoge su $k$ mejor opción entre todas las asignaciones entonces el conjunto $M$ con esas asignaciones es estable. 
+Si $M_1,M_2,\dots,M_n$ son asignaciones estables y $k$ es un entero arbitrario entre $1$ y $n$. Si cada aspirante escoge su $k$ mejor opción entre todas las asignaciones entonces el conjunto $M$ con esas asignaciones es estable. 
 \end{teo}
 \begin{proof}
-Sea $a$ un aplicante arbitrario y sean $M_a^1,M_a^2,\dots,M_a^n$ los $n$ emparejamientos respecto al orden de preferencias de $a$. Además, para facilitar la notación sean $M_a = Q_C(\cup_{i=1}^kM_a^i)$ y $M=Q_A( \cup_{a \in A} M_a)$.
+Sea $a$ un solicitante arbitrario y sean $M_a^1,M_a^2,\dots,M_a^n$ los $n$ emparejamientos respecto al orden de preferencias de $a$. Además, para facilitar la notación sean $M_a = Q_C(\cup_{i=1}^kM_a^i)$ y $M=Q_A( \cup_{a \in A} M_a)$.
 
-Por el teorema \ref{union de estables} sabemos que todos los $M_a$ y que $M$ son asignaciones estables. Observamos que para todo aplicante $a$ tenemos que $M_a$ domina por las universidades a $M_1,M_2,\dots,M_k$ y por lo tanto $M_1,M_2,\dots,M_k$ dominan a $M_a$ por los aplicantes (lema \ref{desigualdad}). Esto implica que en $M_a$ cada aplicante $a'$ en $A$ recibe su peor asignación dentro de $M_a^1,M_a^1,\dots,M_a^k$ y por lo tanto $a$ recibe su $k$ mejor opción en $M_a$ y los demás aplicantes reciben una asignación que no es más preferida que su mejor $k$ opción. Ahora, al construir $M$ cada aplicante escoge su mejor opción entre todos los $M_a$ lo que implicaría que cada aplicante escoge su mejor $k$ opción entre $M_1,M_2,\dots,M_n$. Como $M$ es estable por el teorema \ref{union de estables} entonces podemos concluir que si cada aplicante escoge su $k$ mejor opción entre todas las asignaciones entonces el conjunto $M$ con esas asignaciones es estable.
+Por el teorema \ref{union de estables} sabemos que todos los $M_a$ y que $M$ son asignaciones estables. Observamos que para todo aspirante $a$ tenemos que $M_a$ domina por las universidades a $M_1,M_2,\dots,M_k$ y por lo tanto $M_1,M_2,\dots,M_k$ dominan a $M_a$ por los aspirantes (lema \ref{desigualdad}). Esto implica que en $M_a$ cada solicitante $a'$ en $A$ recibe su peor asignación dentro de $M_a^1,M_a^1,\dots,M_a^k$ y por lo tanto $a$ recibe su $k$ mejor opción en $M_a$ y los demás aspirantes reciben una asignación que no es más preferida que su mejor $k$ opción. Ahora, al construir $M$ cada aspirante escoge su mejor opción entre todos los $M_a$ lo que implicaría que cada aspirante escoge su mejor $k$ opción entre $M_1,M_2,\dots,M_n$. Como $M$ es estable por el teorema \ref{union de estables} entonces podemos concluir que si cada solicitante escoge su $k$ mejor opción entre todas las asignaciones entonces el conjunto $M$ con esas asignaciones es estable.
 \end{proof}
 
 Para la siguiente parte necesitamos agregar una definición sobre las matroides que nos va a ayudar a generar muchos resultados sobre este problema.
@@ -209,20 +209,20 @@ En nuestra matroide sobre las universidades esta definición es equivalente a de
 
 \begin{teo}
 \label{help}
-Para todo par de asignaciones estables $M,M'$ se tiene que los elementos abarcados por $M$ y $M'$ en la matroide de las universidades son exactamente lo mismo. El resultado además es análogo en la matroide de los aplicantes. 
+Para todo par de asignaciones estables $M,M'$ se tiene que los elementos abarcados por $M$ y $M'$ en la matroide de las universidades son exactamente los mismos. El resultado además es análogo en la matroide de los aspirantes. 
 \end{teo}
 
-A partir de este resultado podemos ver varios resultados bastante interesantes, primero necesitamos definir que significa que una universidad este débilmente libre. 
+A partir de este resultado podemos ver varios resultados bastante interesantes, primero necesitamos definir qué significa que una universidad este débilmente libre. 
 
 \begin{dfn}
-Decimos que un conjunto acotado $C_i$ es \textbf{débilmente libre} relativo a un conjunto de aristas $E'$ si ningún conjunto acotado que contiene propiamente a $C_i$ está lleno relativo a $E'$ (no existe ningún emparejamiento en $E'$ con la propiedad de que acote a $C_i$). Además, decimos que $C_i$ esta \textbf{esencialmente libre} relativo a $E'$ si $C_i$ esta débilmente libre relativo a $E'$ y ningún subconjunto de $C_i$ está lleno relativo a $E'$. 
+Decimos que un conjunto acotado $C_i$ es \textbf{débilmente libre} relativo a un conjunto de aristas $E'$ si ningún conjunto acotado que contiene propiamente a $C_i$ está lleno relativo a $E'$ (no existe ningún emparejamiento en $E'$ con la propiedad de que acote a $C_i$). Además, decimos que $C_i$ está \textbf{esencialmente libre} relativo a $E'$ si $C_i$ está débilmente libre relativo a $E'$ y ningún subconjunto de $C_i$ está lleno relativo a $E'$. 
 \end{dfn}
 
 Con esta definición podemos generalizar el teorema de los hospitales rurales. 
 
 \begin{teo}{Generalización del teorema de los hospitales rurales}
 
-Sea $M$ un emparejamiento. Si un conjunto acotado $C_i$ esta débilmente libre relativo a $M$ para todo emparejamiento estable $M'$. Entonces, tenemos que la cantidad de personas asignadas a $C_i$ es idéntica en $M'$ y en $M$. Además, si $C_i$ es esencialmente libre relativo a $M$ entonces las personas asignadas a $C_i$ en $M$ y $M'$ son las mismas. 
+Sea $M$ un emparejamiento. Si un conjunto acotado $C_i$ está débilmente libre relativo a $M$ para todo emparejamiento estable $M'$. Entonces, tenemos que la cantidad de personas asignadas a $C_i$ es idéntica en $M'$ y en $M$. Además, si $C_i$ es esencialmente libre relativo a $M$ entonces las personas asignadas a $C_i$ en $M$ y $M'$ son las mismas. 
 \end{teo}
 
 \begin{proof}
@@ -231,20 +231,20 @@ La demostración se hace por inducción sobre $i$ el número de conjuntos acotad
 Supongamos que $i=1$ entonces hay tres opciones:
 \begin{enumerate}
 \item $C_1$ no es débilmente libre entonces por vacuidad el teorema es verdadero.
-\item $C_1$ es libre y por lo tanto es débilmente libre. Además, como $C_1$ no contiene ningún conjunto acotado entonces también es relativamente libre. Esto quiere decir que si $A$ son los elementos abarcados por $M$ y $B$ son las aristas que inciden en $C_1$ entonces la intersección entre $A$y $B$ es igual a los elementos asignados a $C_1$ en $M$. Por el teorema \ref{help} tenemos que los elementos abarcados por $M$ intersectados con las aristas incidentes en $C_1$ son iguales a los elementos abarcados por $M'$ intersectados con las aristas incidentes en $C_1$ y, por lo tanto, las personas asignadas a $C_i$ en $M$ y $M'$ son las misma. Por lo tanto, el teorema es cierto. 
-\item Supongamos que $C_1$ está lleno relativo a $M$ y supongamos que la cantidad de personas asignadas a $C_1$ en $M$ es distinta a las asignadas en $M'$. Como $C_1$ está llena en $M$ tenemos que la cantidad de personas asignadas en $M'$ es menor estricto que su cota superior y por lo tanto $C_1$ esta subsuscrito en $M'$, lo que implica que $C_1$ no puede estar lleno en ningún emparejamiento estable y llegamos a una contradicción porque $C_1$ está llena en $M$. Por lo tanto, el teorema en este caso es cierto. 
+\item $C_1$ es libre y por lo tanto es débilmente libre. Además, como $C_1$ no contiene ningún conjunto acotado entonces también es relativamente libre. Esto quiere decir que si $A$ son los elementos abarcados por $M$ y $B$ son las aristas que inciden en $C_1$ entonces la intersección entre $A$y $B$ es igual a los elementos asignados a $C_1$ en $M$. Por el teorema \ref{help} tenemos que los elementos abarcados por $M$ intersectados con las aristas incidentes en $C_1$ son iguales a los elementos abarcados por $M'$ intersectados con las aristas incidentes en $C_1$ y, por lo tanto, las personas asignadas a $C_i$ en $M$ y $M'$ son las mismas. Por lo tanto, el teorema es cierto. 
+\item Supongamos que $C_1$ está lleno relativo a $M$ y supongamos que la cantidad de personas asignadas a $C_1$ en $M$ es distinta a las asignadas en $M'$. Como $C_1$ está llena en $M$ tenemos que la cantidad de personas asignadas en $M'$ es estrictamente menor que su cota superior y por lo tanto $C_1$ esta subsuscrito en $M'$, lo que implica que $C_1$ no puede estar lleno en ningún emparejamiento estable y llegamos a una contradicción porque $C_1$ está llena en $M$. Por lo tanto, el teorema en este caso es cierto. 
 \end{enumerate}
 Ahora, tomamos una $i$ fija y supongamos que el teorema es cierto para cada $C_j$ con $j$ estrictamente menor que $i$. 
 
-Si $C_i$ no contiene a ningún otra $C_k$ entonces la demostración es idéntica al caso de $i=1$. De otra forma, sea $C_i = C^1 \cup C^2 \cup \cdots \cup C^k$, donde $C^1,C^2,\dots,C^k$ son los conjuntos acotados más grandes con la propiedad de que son disjuntos. Podemos asumir que $C_i$ es débilmente libre porque esa es una de las hipótesis del teorema. 
+Si $C_i$ no contiene a ningún otra $C_k$ entonces la demostración es idéntica al caso de $i=1$. De otra forma, sea $C_i = C^1 \cup C^2 \cup \cdots \cup C^k$, donde $C^1,C^2,\dots,C^k$ son los conjuntos acotados más grandes con la propiedad de que son ajenos. Podemos suponer que $C_i$ es débilmente libre porque esa es una de las hipótesis del teorema. 
 
-Supongamos que $C_i$ esta subsuscrito relativo a $M$, entonces tenemos que cada uno de los $C^1,C^2,\dots,C^k$ son débilmente libres. Por hipótesis de inducción el teorema es cierto para cada $C^j$ entonces tenemos que para $C^j$ se cumple que la cantidad de personas asignadas a $M$ es idéntica a la cantidad de personas asignadas al conjunto en $M'$. Si sumamos sobre todos los conjuntos obtenemos que la cantidad de personas asignadas a $C_i$ en $M$ es igual a la cantidad de personas asignadas a $C_i$ en $M'$. 
+Supongamos que $C_i$ está subsuscrito relativo a $M$, entonces tenemos que cada uno de los $C^1,C^2,\dots,C^k$ son débilmente libres. Por hipótesis de inducción el teorema es cierto para cada $C^j$ entonces tenemos que para $C^j$ se cumple que la cantidad de personas asignadas a $M$ es idéntica a la cantidad de personas asignadas al conjunto en $M'$. Si sumamos sobre todos los conjuntos obtenemos que la cantidad de personas asignadas a $C_i$ en $M$ es igual a la cantidad de personas asignadas a $C_i$ en $M'$. 
 
 Simultáneamente si suponemos que $C_i$ es relativamente libre respecto a $M$ tenemos que $C^1,C^2,\dots,C^k$ también son relativamente libres respecto a $M$. Para cada $C^j$ tenemos que las personas asignadas a ella son igual en los dos emparejamientos. Si unimos todos los conjuntos tenemos que las personas asignadas a $C_i$ son las mismas en $M$ y en $M'$. 
 
 Si $C_i$ está lleno se puede usar el mismo argumento que en el caso de $i=1$ para mostrar que está lleno en los emparejamientos y por lo tanto en este caso el teorema es cierto. 
 
-Por lo tanto, si un conjunto acotado $C_i$ esta débilmente libre relativo a $M$ para todo emparejamiento estable $M'$. Entonces, tenemos que la cantidad de personas asignadas a $C_i$ es idéntica en $M'$ y en $M$. Además, si $C_i$ es esencialmente libre relativo a $M$ entonces las personas asignadas a $C_i$ en $M$ y $M'$ son las mismas. 
+Por lo tanto, si un conjunto acotado $C_i$ está débilmente libre relativo a $M$ para todo emparejamiento estable $M'$. Entonces, tenemos que la cantidad de personas asignadas a $C_i$ es idéntica en $M'$ y en $M$. Además, si $C_i$ es esencialmente libre relativo a $M$ entonces las personas asignadas a $C_i$ en $M$ y $M'$ son las mismas. 
 
 \end{proof}
 

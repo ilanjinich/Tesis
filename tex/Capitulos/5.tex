@@ -1,6 +1,6 @@
 \chapter{Listas con empates}
 
-Retomemos el problema planteado en el capítulo \ref{me}, recordemos que se planteó el problema del matrimonio estable y se demostró que sin importar si las listas de preferencia son completas o incompletas, existe un algoritmo polinomial que siempre encuentra un emparejamiento estable optimo (en el sentido de los hombres o de las mujeres dependendiendo de que algoritmo se use). \\
+Retomemos el problema planteado en el capítulo \ref{me}, recordemos que se planteó el problema del matrimonio estable y se demostró que sin importar si las listas de preferencia son completas o incompletas, existe un algoritmo polinomial que siempre encuentra un emparejamiento estable óptimo (en el sentido de los hombres o de las mujeres dependendiendo de qué algoritmo se use). \\
 
 Ahora, consideremos el caso en el que la lista de preferencias es completa, es decir cada hombre y cada mujer tiene catalogado en su orden de preferencia a cada persona del género opuesto. Incluiremos la variante de que en la lista se pueden introducir empates, esto es muy común dada que en muchas ocasiones la diferencia entre escoger a dos personas puede ser no significativa. 
 
@@ -13,7 +13,7 @@ $$\begin{pmatrix}
 \beta & 1,1 & 1,1\\
 \end{pmatrix}.$$
 
-En este caso el orden de preferencias $A$ y $B$ es $(\beta, \alpha)$, el orden de preferencia de $\alpha$ es $(A,B)$ y el orden de preferencia de $\beta$ es $([A,B])$\footnote{los corchetes denotan que la lista contiene empates}.
+En este caso el orden de preferencias $A$ y $B$ es $(\beta, \alpha)$, el orden de preferencia de $\alpha$ es $(A,B)$ y el orden de preferencia de $\beta$ es $([A,B])$\footnote{Los corchetes denotan que la lista contiene empates}.
 \end{eje}
 
 Para este caso es necesario cambiar un poco la definición de estabilidad y de inestabilidad. 
@@ -30,10 +30,10 @@ La única diferencia con la definición \ref{Estable} es la palabra estrictament
 Dada una matriz de preferencias arbitraria completa en la que se permiten empates con $n$ hombres y $m$ mujeres, el algoritmo de Gale Shapley converge a un emparejamiento estable.
 \end{cor}
 \begin{proof}
-De la definición \ref{estricto} podemos ver que si partimos si convertimos los empates en ordenes estrictos de forma arbitraria llegamos a una instancia del problema planteado en el capítulo \ref{me}. Si aplicamos el resultado del teorema \ref{teorema de Gale Shapley} podemos ver que el algoritmo converge a un emparejamiento estable. \\
+De la definición \ref{estricto} podemos ver que si convertimos los empates en órdenes estrictos de forma arbitraria llegamos a una instancia del problema planteado en el capítulo \ref{me}. Si aplicamos el resultado del teorema \ref{teorema de Gale Shapley} podemos ver que el algoritmo converge a un emparejamiento estable. \\
 \end{proof}
 
-Una nota importante de la demostración de arriba es que sí que si cambiamos los empates en ordenes distintos podríamos llegar a emparejamientos estables diferentes. 
+Una nota importante de la demostración de arriba es que si cambiamos los empates en ordenes distintos podríamos llegar a emparejamientos estables diferentes. 
 
 
 
@@ -46,7 +46,7 @@ $$\begin{pmatrix}
 \alpha & 1,2 & 2,2 \\
 \beta & 1,1 & 2,1\\
 \end{pmatrix}.$$
-En primera instancia, $\alpha$ y $\beta$ le proponen a $A$.
+En la primera iteración, $\alpha$ y $\beta$ le proponen a $A$.
 
 \begin{figure}[H]
 \centering
@@ -88,7 +88,7 @@ En primera instancia, $\alpha$ y $\beta$ le proponen a $A$.
 
 \caption{Primera iteración.}
 \end{figure}
-En segunda instancia, $A$ acepta la propuesta de $\beta$ y $\alpha$ le propone matrimonio a $B$.
+En la segunda iteración, $A$ acepta la propuesta de $\beta$ y $\alpha$ le propone matrimonio a $B$.
 
 \begin{figure}[H]
 \centering

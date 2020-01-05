@@ -1,28 +1,29 @@
 \select@language {spanish}
 \contentsline {chapter}{\numberline {1}El modelo}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Descripci\IeC {\'o}n del problema}{1}{section.1.1}
-\contentsline {chapter}{\numberline {2}Un poco sobre computaci\IeC {\'o}n}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}Clases de complejidad}{8}{section.2.1}
-\contentsline {section}{\numberline {2.2}Problemas NP-Completos}{9}{section.2.2}
-\contentsline {chapter}{\numberline {3}El problema del matrimonio estable}{11}{chapter.3}
-\contentsline {section}{\numberline {3.1}Algoritmo de Gale Shapley}{12}{section.3.1}
-\contentsline {chapter}{\numberline {4}El problema de admisi\IeC {\'o}n a universidades}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}El teorema de los hospitales rurales}{29}{section.4.1}
-\contentsline {chapter}{\numberline {5}Listas con empates}{33}{chapter.5}
-\contentsline {section}{\numberline {5.1}Listas incompletas con empates}{36}{section.5.1}
-\contentsline {chapter}{\numberline {6}Cotas inferiores}{39}{chapter.6}
-\contentsline {chapter}{\numberline {7}Cotas comunes}{47}{chapter.7}
-\contentsline {chapter}{\numberline {8}Cotas comunes anidadas}{57}{chapter.8}
-\contentsline {section}{\numberline {8.1}Algoritmo orientado a los aplicantes}{60}{section.8.1}
-\contentsline {section}{\numberline {8.2}Algoritmo orientado a las universidades}{65}{section.8.2}
-\contentsline {chapter}{\numberline {9}Matroides}{73}{chapter.9}
-\contentsline {section}{\numberline {9.1}Bases}{75}{section.9.1}
-\contentsline {section}{\numberline {9.2}Funci\IeC {\'o}n rango}{77}{section.9.2}
-\contentsline {section}{\numberline {9.3}Circuitos}{82}{section.9.3}
-\contentsline {section}{\numberline {9.4}El algoritmo glot\IeC {\'o}n}{91}{section.9.4}
-\contentsline {chapter}{\numberline {10}Funciones de elecci\IeC {\'o}n y matroides}{97}{chapter.10}
-\contentsline {section}{\numberline {10.1}Resultados estructurales}{102}{section.10.1}
-\contentsline {chapter}{\numberline {A}Teor\IeC {\'\i }a de Gr\IeC {\'a}ficas}{107}{appendix.Alph1}
+\contentsline {chapter}{\numberline {2}Un poco sobre computaci\IeC {\'o}n}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Clases de complejidad}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Problemas NP-Completos}{8}{section.2.2}
+\contentsline {chapter}{\numberline {3}El problema del matrimonio estable}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Algoritmo de Gale Shapley}{10}{section.3.1}
+\contentsline {chapter}{\numberline {4}El problema de admisi\IeC {\'o}n a universidades}{22}{chapter.4}
+\contentsline {section}{\numberline {4.1}El teorema de los hospitales rurales}{26}{section.4.1}
+\contentsline {chapter}{\numberline {5}Listas con empates}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Listas incompletas con empates}{32}{section.5.1}
+\contentsline {chapter}{\numberline {6}Cotas inferiores}{34}{chapter.6}
+\contentsline {chapter}{\numberline {7}Cotas comunes}{43}{chapter.7}
+\contentsline {chapter}{\numberline {8}Cotas comunes anidadas}{52}{chapter.8}
+\contentsline {section}{\numberline {8.1}Algoritmo orientado a los solicitantes}{55}{section.8.1}
+\contentsline {section}{\numberline {8.2}Algoritmo orientado a las universidades}{60}{section.8.2}
+\contentsline {chapter}{\numberline {9}Matroides}{68}{chapter.9}
+\contentsline {section}{\numberline {9.1}Bases}{70}{section.9.1}
+\contentsline {section}{\numberline {9.2}Funci\IeC {\'o}n rango}{72}{section.9.2}
+\contentsline {section}{\numberline {9.3}Circuitos}{78}{section.9.3}
+\contentsline {section}{\numberline {9.4}El algoritmo glot\IeC {\'o}n}{87}{section.9.4}
+\contentsline {chapter}{\numberline {10}Funciones de elecci\IeC {\'o}n y matroides}{91}{chapter.10}
+\contentsline {section}{\numberline {10.1}Resultados estructurales}{96}{section.10.1}
+\contentsline {chapter}{\numberline {11}Conclusiones}{101}{chapter.11}
+\contentsline {chapter}{\numberline {A}Teor\IeC {\'\i }a de Gr\IeC {\'a}ficas}{103}{appendix.Alph1}
 \vspace {2em}
 \vspace {2em}
-\contentsline {chapter}{Referencias}{109}{appendix*.6}
+\contentsline {chapter}{Referencias}{104}{appendix*.6}

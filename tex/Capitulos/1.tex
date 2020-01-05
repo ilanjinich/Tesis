@@ -6,8 +6,8 @@ Catch me a catch''}
 \end{flushright}
 \section{Descripción del problema}
 Imaginemos que en una ciudad tenemos $m$ universidades y $n$ personas que desean ir a una de estas escuelas, cada universidad tiene un límite alumnos que puede admitir y por esto no todas las personas pueden asistir a su universidad
- ``favorita'', este tipo de cota puede ser común si dos o más escuelas comparten recursos o personal como es el caso de las universidades publicas que dependen en conjunto del presupuesto del gobierno. 
-Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a esta. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias no exhaustiva (en muchos casos si es exhaustiva) de qué universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
+ ``favorita'', este tipo de cota puede ser común si dos o más escuelas comparten recursos o personal como es el caso de las universidades públicas que dependen en conjunto del presupuesto del gobierno. 
+Además, podemos agregar el supuesto de que las escuelas tienen cotas inferiores, usualmente por razones de dinero o de personal a una escuela no le conviene abrir o aceptar a menos de que entren una cantidad considerable de alumnos a está. Adicionalmente, tenemos el supuesto de que todos los alumnos tienen una lista de preferencias no exhaustiva (en muchos casos si es exhaustiva) de qué universidad prefieren y de forma análoga las universidades tienen una lista de preferencias sobre los alumnos, cada escuela y persona tienen necesidades diferentes a los demás, algunos podrían preferir la escuela que está más cerca de sus casas, otros la que te prepara mejor académicamente y otros entre muchas razones podrían preferir la que tenga el mejor ambiente social. 
 \\ En notación matemática lo que hacemos es suponer que tenemos $n$ alumnos $\alpha_1, \alpha_2, \ldots, \alpha_n$ y $m$ universidades $a_1, a_2, \ldots, a_m$, con las restricciones: 
 
 \begin{enumerate}
@@ -50,7 +50,7 @@ donde \begin{equation} w_{j,k} \footnote{\text{$w_j,k$ es constante}}=
 \begin{cases}
 1 & \qquad \text{si la universidad $j$ es parte de la restricción $k$.} \\
 0 &\qquad\text{en otro caso.} \\ 
-\end{cases} \end{equation} \\   para toda $k=1,2,\dots,p$   \footnote{donde $p$ es el número de restricciones comunes.}. \\
+\end{cases} \end{equation} \\   para toda $k=1,2,\dots,p$   \footnote{Donde $p$ es el número de restricciones comunes.}. \\
 La cota superior de las universidades puede ser común.
 
 %\item  \begin{equation} 
@@ -91,7 +91,7 @@ $$\begin{pmatrix}
 \beta & 3,1 & 1,3 & 2,2 \\
 \gamma & 2,2 & 3,1 & 1,3 
 \end{pmatrix}$$
-aquí por ejemplo el orden preferencias de $\alpha$ es $(A,B,C)$ y el orden de preferencias de $C$ es $(\gamma, \beta, \alpha)$.
+aquí por ejemplo el orden preferencias de $\alpha$ es $(A,B,C)$ y el orden de preferencias de $C$ es $(\alpha, \beta, \gamma)$.
 \fin
 \end{eje}
 
@@ -101,7 +101,8 @@ Para continuar es necesario introducir un criterio de estabilidad y otro de opti
 \begin{dfn}{\cite{GaleShapley}}
 \label{Estable}
 Decimos que una asignación de solicitantes a universidades es inestable si existen dos solicitantes $\alpha$ y $\beta$ asignados a universidades $A$ y $B$ respectivamente, con la propiedad de que $\alpha$ prefiere estar en $B$ que en $A$ y $B$ prefiere tener a $\alpha$ que a $B$. Es decir, existen una universidad y un solicitante que se prefieren entre ellos a sus respectivas asignaciones. 
-Además a esto, decimos que una asignación es \textbf{inestable} si existe una universidad cerrada $A$ y $m_j$ solicitantes $\alpha_1,\alpha,2,\dots,\alpha_{m_j}$, con la propiedad de que los $m_j$ solicitantes prefieren estar en $A$ a su situación actual, en este caso se le llama a $A$ \textbf{universidad bloqueadora}.\\
+Además a esto, decimos que una asignación es \textbf{inestable} si existe una universidad cerrada $A$ y $m_j$ solicitantes $\alpha_1,\alpha,2,\dots,\alpha_{m_j}$, con la propiedad de que los $m_j$ solicitantes prefieren estar en $A$ a su situación actual, en este caso se le llama a $A$ \textbf{universidad bloqueadora}.
+
 Alternativamente una asignación de solicitantes a universidades es \textbf{estable} si no es inestable.
 \end{dfn}
 
@@ -114,7 +115,7 @@ A continuación mostramos un par de ejemplos de cómo funcionan las definiciones
 
 \begin{eje}
 Retomando el ejemplo \ref{ejemplo matrimonio 1}. \\
-El conjunto de parejas $(\alpha, A), \; (\beta, B)\; y\; (\gamma, C)$ es estable porque a pesar de las preferencias de las universidades cada persona esta con su primera opción, es decir, los solicitantes prefieren a su universidad más que a cualquier otra. Esta además es óptima porque cada solicitante está en su primera opción.
+El conjunto de parejas $(\alpha, A), \; (\beta, B)\; y\; (\gamma, C)$ es estable porque a pesar de las preferencias de las universidades cada persona está con su primera opción, es decir, los solicitantes prefieren a su universidad más que a cualquier otra. Esta además es óptima porque cada solicitante está en su primera opción.
 \begin{figure}[H]\centering
 
 \begin{tikzpicture}[ scale=0.8]

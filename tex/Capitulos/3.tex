@@ -20,7 +20,7 @@ x_{i,j}=
 Cada mujer se casa con a lo más un hombre. 
 \end{enumerate}
 
-Es claro, a partir de la definición del problema que este es un caso particular del problema original. Aprovechando lo que se hizo en la sección anterior la definición de la matriz de preferencias, un emparejamiento estable y de un emparejamiento optimo son análogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}. Existen diversos resultados sobre el problema del matrimonio estable, uno de los más famosos es por Gale y Shapley que encontraron un algoritmo que siempre encuentra un emparejamiento estable y además lo hace sin muchas complicaciones. 
+Es claro, a partir de la definición del problema que éste es un caso particular del problema original. Aprovechando lo que se hizo en la sección anterior la definición de la matriz de preferencias, un emparejamiento estable y de un emparejamiento óptimo son análogas a las definiciones \ref{matpref}, \ref{Estable} y \ref{optima}. Existen diversos resultados sobre el problema del matrimonio estable, uno de los más famosos es por Gale y Shapley que encontraron un algoritmo que siempre encuentra un emparejamiento estable y además lo hace sin muchas complicaciones. 
 
 Un supuesto adicional que haremos es que el número de hombres es exactamente igual al número de mujeres. Esto se verá después que es relativamente sencillo de generalizar al caso en el que el número de hombres y de mujeres no es igual. 
 
@@ -72,7 +72,7 @@ $$\begin{pmatrix}
 \gamma & 3,1 & 1,4 & 2,3 & 4,2 \\
 \delta & 2,2&3,1 &1,4 & 4,1 
 \end{pmatrix}.$$
-En primera estancia, $\alpha$ le propone matrimonio a $A$, $\beta$ le propone matrimonio a $A$, $\gamma$ le propone matrimonio a $B$ y $\delta$ le propone matrimonio a $C$.
+En la primera iteración, $\alpha$ le propone matrimonio a $A$, $\beta$ le propone matrimonio a $A$, $\gamma$ le propone matrimonio a $B$ y $\delta$ le propone matrimonio a $C$.
 
 \begin{figure}[H]\centering
 
@@ -116,7 +116,7 @@ En primera estancia, $\alpha$ le propone matrimonio a $A$, $\beta$ le propone ma
 \caption{Primera iteración.}
 \end{figure}
 
-En segunda instancia, $A$ acepta la propuesta de $\alpha$ y $\beta$ le propone matrimonio a $B$.
+En la segunda iteración, $A$ acepta la propuesta de $\alpha$ y $\beta$ le propone matrimonio a $B$.
 
 \begin{figure}[H]
 \centering
@@ -164,7 +164,7 @@ En segunda instancia, $A$ acepta la propuesta de $\alpha$ y $\beta$ le propone m
 \end{figure}
 
 
-En tercera instancia, $B$ acepta la propuesta de $\beta$ y $\gamma$ le propone matrimonio a $C$.
+En la tercera iteración, $B$ acepta la propuesta de $\beta$ y $\gamma$ le propone matrimonio a $C$.
 
 \begin{figure}[H]\centering
 
@@ -208,7 +208,7 @@ En tercera instancia, $B$ acepta la propuesta de $\beta$ y $\gamma$ le propone m
 \caption{Tercera iteración.}
 \end{figure}
 
-En cuarta instancia, $C$ acepta la propuesta de $\gamma$ y $\beta$ le propone matrimonio a $A$.
+En la cuarta iteración, $C$ acepta la propuesta de $\gamma$ y $\beta$ le propone matrimonio a $A$.
 
 \begin{figure}[H]\centering
 
@@ -253,7 +253,7 @@ En cuarta instancia, $C$ acepta la propuesta de $\gamma$ y $\beta$ le propone ma
 \end{figure}
 
 
-En quinta instancia, $A$ acepta la propuesta de $\delta$ y $\alpha$ le propone matrimonio a $B$.
+En la quinta iteración, $A$ acepta la propuesta de $\delta$ y $\alpha$ le propone matrimonio a $B$.
 
 \begin{figure}[H]\centering
 
@@ -297,7 +297,7 @@ En quinta instancia, $A$ acepta la propuesta de $\delta$ y $\alpha$ le propone m
 \caption{Quinta iteración.}
 \end{figure}
 
-En sexta instancia, $B$ acepta la propuesta de $\alpha$ y $\beta$ le propone matrimonio a $C$.
+En la sexta iteración, $B$ acepta la propuesta de $\alpha$ y $\beta$ le propone matrimonio a $C$.
 
 \begin{figure}[H]\centering
 
@@ -341,7 +341,7 @@ En sexta instancia, $B$ acepta la propuesta de $\alpha$ y $\beta$ le propone mat
 \caption{Sexta iteración.}
 \end{figure}
 
-En séptima instancia, $C$ acepta la propuesta de $\beta$ y $\gamma$ le propone matrimonio a $A$.
+En la séptima iteración, $C$ acepta la propuesta de $\beta$ y $\gamma$ le propone matrimonio a $A$.
 
 \begin{figure}[H]\centering
 
@@ -386,7 +386,7 @@ En séptima instancia, $C$ acepta la propuesta de $\beta$ y $\gamma$ le propone 
 \end{figure}
 
 
-En octava instancia, $A$ acepta la propuesta de $\gamma$ y $\delta$ le propone matrimonio a $B$.
+En la octava iteración, $A$ acepta la propuesta de $\gamma$ y $\delta$ le propone matrimonio a $B$.
 
 \begin{figure}[H]\centering
 
@@ -430,7 +430,7 @@ En octava instancia, $A$ acepta la propuesta de $\gamma$ y $\delta$ le propone m
 \caption{Octava iteración.}
 \end{figure}
 
-En novena instancia, $B$ acepta la propuesta de $\delta$ y $\alpha$ le propone matrimonio a $C$.
+En la novena iteración, $B$ acepta la propuesta de $\delta$ y $\alpha$ le propone matrimonio a $C$.
 
 \begin{figure}[H]\centering
 
@@ -475,7 +475,7 @@ En novena instancia, $B$ acepta la propuesta de $\delta$ y $\alpha$ le propone m
 \end{figure}
 
 
-En décima instancia, $C$ acepta la propuesta de $\alpha$, $\beta$ le propone matrimonio a $D$ y $D$ acepta la propuesta de $\beta$. Después de 10 pasos en el algoritmo, todos los hombres ya están emparejados, es decir, el algoritmo convergió en un emparejamiento. Cabe mencionar que el número total de propuestas fue 13. 
+En la décima iteración, $C$ acepta la propuesta de $\alpha$, $\beta$ le propone matrimonio a $D$ y $D$ acepta la propuesta de $\beta$. Después de 10 pasos en el algoritmo, todos los hombres ya están emparejados, es decir, el algoritmo convergió en un emparejamiento. Cabe mencionar que el número total de propuestas fue 13. 
 
 \begin{figure}[H]\centering
 
@@ -527,9 +527,11 @@ Lo importante de este algoritmo no es solo que produce un emparejamiento, adicio
 El algoritmo de Gale Shapley termina en un emparejamiento estable.
 \end{teo}
 \begin{proof}
-Supongamos que el emparejamiento producido por el algoritmo no es estable. Esto es, un hombre $\alpha$ y una mujer $A$ se prefieren entre ellos que a sus respectivas parejas. \\
+Supongamos que el emparejamiento producido por el algoritmo no es estable. Esto es, un hombre $\alpha$ y una mujer $A$ se prefieren entre ellos que a sus respectivas parejas. 
+
 Como $\alpha$ prefiere a $A$ más que a su esposa entonces, $\alpha$ le propuso matrimonio primero a $A$ que a su propia esposa. 
-Además, como $A$ prefiere a $\alpha$ que a su esposo entonces, $A$ hubiera rechazado a su esposo y se hubiera quedado casada con $\alpha$ lo cual es una contradicción. \\
+Además, como $A$ prefiere a $\alpha$ que a su esposo entonces, $A$ hubiera rechazado a su esposo y se hubiera quedado casada con $\alpha$ lo cual es una contradicción. 
+
 Por lo tanto, el algoritmo de Gale Shapley termina siempre en un emparejamiento estable. 
 \end{proof}
 Un resultado inmediato de esto es que siempre, sin importar como sean las preferencias, existe un emparejamiento estable. 

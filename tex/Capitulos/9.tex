@@ -22,11 +22,10 @@ Todo subconjunto de $S$ que no pertenece a $\mathcal{F}$ es llamado \textbf{conj
 Un primer resultado es el teorema del aumento, en términos simples es una forma de generalizar el punto \ref{axioma 3} para conjuntos independientes que difieren en tamaño más de una unidad. 
 
 \begin{teo}{Teorema del aumento} \label{augmentation}
-
 Sea $M=(S,\mathcal{F})$ una matroide y sean $X,Y$ en $\mathcal{F}$ con la propiedad que la cardinalidad de $Y$ es estrictamente mayor a la cardinalidad de $X$. Entonces, existe $Z$ subconjunto de $Y \setminus X$ de tal forma que la cardinalidad de $X \cup Z$ es igual a la cardinalidad de $Y$ y donde además $X \cup Z$ es independiente. 
 \end{teo}
 \begin{proof}
-Sea Z subconjunto de $Y \setminus X$ tal que $X \cup Z$ es independiente y tal que $Z$ es máximal \footnote{En este contexto máximal se refiere a que Z es el conjunto en S de máxima cardinalidad que cumple lo que se pide, en lo que sigue de la tesis se utiliza esta definición de máximo.}. 
+Sea Z subconjunto de $Y \setminus X$ tal que $X \cup Z$ es independiente y tal que $Z$ es máximal \footnote{En este contexto máximal se refiere a que Z es el conjunto en S con respecto a una propiedad que satisface la propiedad y no es subconjunto propio de otro conjunto que satisface la propiedad.}. 
  
 Supongamos que la cardinalidad $X \cup Z$ es menor a la cardinalidad de $Y$, entonces existe $\{y_0\}$ subconjunto de $Y$ tal que la cardinalidad de $y_0$ es uno más la cardinalidad de $X \cup Z$, entonces por la propiedad \ref{axioma 3} de las matroides existe $y$ en $\{y_0\} \setminus (Y \setminus X)$ con la propiedad de que $X \cup Z \cup \{ y\}$ es independiente. Esto contradice la elección de $Z$ porque se pedía que ésta sea máxima, por lo tanto, la cardinalidad de $X \cup Z$ es igual a la cardinalidad de $Y$ y el teorema se cumple. 
 \end{proof}
@@ -90,7 +89,7 @@ Sea $W = B_1 \setminus\{ b_1 \} $, entonces existe z en $B_2$ tal que $W \cup \{
 
 Si $z$ no es un elemento de $Y$, sea $W_1= (W \cup \{ z \}) \setminus \{ b_2 \}$. De nuevo, existe $z_1$ en $B_2$ tal que $W_1 \cup \{ z_1 \}$ está en $\mathcal{B}$. Si $z_1$ está en $Y$ entonces $X \cup \{z_1\}$ es independiente y se cumple la propiedad \ref{axioma 3}. 
 
-Si $z_1$ no es un elemento de $Y$ entonces se repite el mismo procedimiento para $b_3, b_4, \dots b_q$, como la cardinalidad de $\{ b1, b2, \dots, b_q\}$ es mayor a la cardinalidad de $\{c_1,c_2, \dots, c_{q-1}\}$ eventualmente existe $z_j$ en $Y$, lo que implica que $X \cup \{z_j\}$ es independiente y se cumple la propiedad \ref{axioma 3} y por lo tanto $\mathcal{B}$ es el conjunto de bases de una matroide y el teorema se cumple. 
+Si $z_1$ no es un elemento de $Y$ entonces se repite el mismo procedimiento para $b_3, b_4, \dots b_q$, como la cardinalidad de $\{ b_1, b_2, \dots, b_q\}$ es mayor a la cardinalidad de $\{c_1,c_2, \dots, c_{q-1}\}$ eventualmente existe $z_j$ en $Y$, lo que implica que $X \cup \{z_j\}$ es independiente y se cumple la propiedad \ref{axioma 3} y por lo tanto $\mathcal{B}$ es el conjunto de bases de una matroide y el teorema se cumple. 
 \end{proof}
 
 \section{Función rango}
@@ -111,7 +110,7 @@ el rango del conjunto vacío es igual a cero.
 Sea $M=(S,\mathcal{F})$ una matroide, $\rho$ su función rango y $A,B$ dos subconjuntos de $S$ tales que $A$ es un subconjunto de $B$ entonces $\rho(B) \geq \rho(A)$.
 \end{cor}
 \begin{proof}
-Como todos los subconjuntos de $A$ son subconjuntos de $B$ no puede existir un subconjunto de $A$ independiente que se más grande que todos los subconjuntos independientes de $B$. Por lo tanto $\rho(B) \geq \rho(A)$.
+Como todos los subconjuntos de $A$ son subconjuntos de $B$ no puede existir un subconjunto de $A$ independiente que sea más grande que todos los subconjuntos independientes de $B$. Por lo tanto $\rho(B) \geq \rho(A)$.
 \end{proof}
 
 \begin{cor} \label{R1'}
@@ -145,7 +144,7 @@ $$\rho(X)=\rho(X \cup \{ x\}) =\rho(X \cup \{ y\}). $$
 Sea $A = X \cup \{ x\} \cup \{ y\}$, es claro por el corolario \ref{R1'} que $\rho(A) \geq \rho(X)$. Supongamos que $\rho(A) > \rho(X)$, sea $Y$ un subconjunto independiente de X máximal. Como $\rho(A) > \rho(X)$ eso implica que $Y \cup \{x\}$ es independiente o que $Y \cup \{y\}$ es independiente, ambas afirmaciones son falsas porque claramente contradicen que $\rho(X)=\rho(X \cup \{ x\}) =\rho(X \cup \{ y\})$. Por lo tanto, $\rho(A) = \rho(X)$ y el corolario se cumple. 
 \end{proof}
 
-\begin{cor} {desigualdad submodular} \label {R3'}
+\begin{cor} {Desigualdad submodular} \label {R3'}
 
 Sea $M=(S,\mathcal{F})$ una matroide y $\rho$ su función rango, supongamos que $A,B$ son dos subconjuntos arbitrarios de $S$ entonces
 $$\rho(A \cup B)+ \rho(A \cap B) \leq \rho(A) + \rho(B).$$
@@ -159,7 +158,7 @@ Para facilitar la notación sea $\rho(A \cup B)=p$ y sea $\rho(A \cap B) =q$. Se
 \item $Y$ es un subconjunto de $A \cup B$.
 \item La cardinalidad de $Y$ es $p$.
 \end{enumerate}
-A $Y$ lo podemos escribir como $Y=X \cup V \cup W$, donde $V$ es un subconjunto independiente de $B \setminus A$ y $W$ es un subconjunto independiente de $A \setminus B$. Además se cumple que $X \cup V$ es un subconjunto independiente de B y $X \cup W$ es un subconjunto independiente de A. Vale la pena mencionar que $X, V,W$ son tres conjuntos ajenos y por lo tanto la cardinalidad de $X \cup V$ más la cardinalidad de $X \cup W$ es igual a dos veces la cardinalidad de $X$ más la cardinalidad de $V$ más la cardinalidad de $W$ que esta a su vez es igual a la cardinalidad de $X$ más la cardinalidad de $Y$ y por construcción esto es igual a $\rho(A \cup B)+ \rho(A \cap B)$. 
+A $Y$ lo podemos escribir como $Y=X \cup V \cup W$, donde $V$ es un subconjunto independiente de $B \setminus A$ y $W$ es un subconjunto independiente de $A \setminus B$. Además se cumple que $X \cup V$ es un subconjunto independiente de B y $X \cup W$ es un subconjunto independiente de A. Vale la pena mencionar que $X, V,W$ son tres conjuntos ajenos y por lo tanto la cardinalidad de $X \cup V$ más la cardinalidad de $X \cup W$ es igual a dos veces la cardinalidad de $X$ más la cardinalidad de $V$ más la cardinalidad de $W$ que ésta a su vez es igual a la cardinalidad de $X$ más la cardinalidad de $Y$ y por construcción esto es igual a $\rho(A \cup B)+ \rho(A \cap B)$. 
 
 Como $\rho(B)$ es mayor igual que la cardinalidad de $X \cup V$ y $\rho(A)$ es mayor igual que la cardinalidad de $X \cup W$ esto implica que 
 $$\rho(A \cup B)+ \rho(A \cap B) \leq \rho(A) + \rho(B).$$
@@ -186,7 +185,7 @@ Decimos que $X$ es un subconjunto independiente de $S$ si y solo si $\rho(X)$ es
 
 Supongamos que $A$ subconjunto de $S$ es independiente y sea $B$ un subconjunto arbitrario de $A$, supongamos también que $B$ no es independiente. Como $B$ no es independiente eso implica que $\rho(B)$ es estrictamente menor a la cardinalidad de $B$, sea 
 $$A \setminus B = \{ c_1, c_2, \dots c_k\},$$
-por el punto 2 del teorema tenemos que $\rho(B) \leq \rho(B \cup \{c_1\}) \leq \rho(B)+1,$ si aplicamos esta propiedad $k$ veces obtenemos que $\rho(B) \leq \rho(B \cup \{ c_1, c_2, \dots c_k\}) = \rho(A) \leq \rho(B)+k.$ Por el otro lado, la cardinalidad de $A$ es igual a la cardinalidad de $B$ más $k$ y como $\rho(B)$ es estrictamente menor a la cardinalidad de $B$, entonces $\rho(A)$ es estrictamente menor que su cardinalidad lo cual claramente es una contradicción porque $A$ es independente y por lo tanto $B$ es independente. 
+por el punto 2 del teorema tenemos que $\rho(B) \leq \rho(B \cup \{c_1\}) \leq \rho(B)+1,$ si aplicamos esta propiedad $k$ veces obtenemos que $\rho(B) \leq \rho(B \cup \{ c_1, c_2, \dots c_k\}) = \rho(A) \leq \rho(B)+k.$ Por el otro lado, la cardinalidad de $A$ es igual a la cardinalidad de $B$ más $k$ y como $\rho(B)$ es estrictamente menor a la cardinalidad de $B$, entonces $\rho(A)$ es estrictamente menor que su cardinalidad lo cual claramente es una contradicción porque $A$ es independiente y por lo tanto $B$ es independiente. 
 
 Ahora, sean $X,Y$ dos conjuntos independientes con la propiedad de que la cardinalidad de $Y$ es mayor a la cardinalidad de $X$ por una unidad, para facilitar la notación sean 
 $$X = \{ x_1,x_2,\dots, x_q, y_{q+1}, \dots y_k\}$$
@@ -238,7 +237,7 @@ Las matroides además de tener análogos con el álgebra lineal también tienen 
 
 \section{Circuitos}
 
-En teoría de gráficas los circuitos son de vital importancia, en particular sería imposible definir que es un árbol sin el concepto de circuito. La siguiente definición viene de la intersección que existe entre la teoría de gráficas y las matroides \footnote{Si el lector no tiene familiaridad con la existencia de esta intersección, al finalizar esta sección tendrá claro cuál es la naturaleza de esta.}, decimos que para una matroide los circuitos quedan definidos como: 
+En teoría de gráficas los circuitos son de vital importancia, en particular sería imposible definir qué es un árbol sin el concepto de circuito. La siguiente definición viene de la intersección que existe entre la teoría de gráficas y las matroides \footnote{Si el lector no tiene familiaridad con la existencia de esta intersección, al finalizar esta sección tendrá claro cuál es la naturaleza de ésta.}, decimos que para una matroide los circuitos quedan definidos como: 
 
 \begin{dfn} % \cite{tufte}
 Sea $M=(S,\mathcal{F})$ una matroide, decimos que $C$ es un \textbf{circuito} si 
@@ -323,7 +322,7 @@ Sean $M=(S,\mathcal{F})$ una matroide, $B$ una base en $M$ y $x$ un elemento en 
 \end{cor}
 
 \begin{proof}
-La demostración es directa del lema \ref{lem circuitos}, del hecho de que todas las bases en $M$ son subconjuntos independientes de $S$ y que estas son subconjuntos independientes máximales (si les unes un elemento se vuelven dependientes). 
+La demostración es directa del lema \ref{lem circuitos}, del hecho de que todas las bases en $M$ son subconjuntos independientes de $S$ y que éstas son subconjuntos independientes máximales (al unirles un elemento se vuelven dependientes). 
 \end{proof}
 
 A este circuito $C=C(x,B)$ se le llama el \textbf{circuito fundamental} de $x$ en la base $B$. Un resultado importante de esta definición es el siguiente:
@@ -351,7 +350,7 @@ Sean $M=(S,\mathcal{F})$ una matroide, $C_1, C_2$ dos circuitos en $M$ y $x$ un 
 \end{teo}
 
 \begin{proof}
-Supongamos que existen dos circuitos $C_1,C_2$, un elemento $x$ en $C_1 \cap C_2$ y un elemento $y$ en $C_1 \setminus C_2$ que muestran que el teorema es falso, además supongamos la cardinal de $C_1 \cup C_2$ es mínima con esta propiedad, es decir no existen otros dos circuitos con la cardinalidad de su unión menor a la de $C_1$ y $C_2$ que no cumplen esta propiedad. 
+Supongamos que existen dos circuitos $C_1,C_2$, un elemento $x$ en $C_1 \cap C_2$ y un elemento $y$ en $C_1 \setminus C_2$ que muestran que el teorema es falso, además supongamos la cardinalidad de $C_1 \cup C_2$ es mínima con esta propiedad, es decir no existen otros dos circuitos con la cardinalidad de su unión menor a la de $C_1$ y $C_2$ que no cumplen esta propiedad. 
 
 Por el corolario \ref{C2}, existe un circuito $C_3$ subconjunto de $(C_1 \cup C_2)\setminus \{x\}$ (no tenemos garantía alguna de que $y$ pertenezca a $C_3$). 
 
@@ -462,7 +461,7 @@ La siguiente sección muestra cómo toda esta teoría se aplica en particular a 
 Esta sección muestra el resultado más importante sobre matroides para este trabajo y ejemplifica por qué éstas son muy importantes en la investigación de operaciones. Para definir el algoritmo glotón es necesario antes definir qué es una matroide ponderada y cuál es el problema de optimización asociada a este. 
 
 \begin{dfn}
-Decimos que $(M,\omega)$ es una \textbf{matroide ponderada} si $M=(S,\mathcal{F})$ es una matroide y $\omega$ es una función que va del conjunto potencia de $S$ a los reales positivos, con la propiedad de que si $A=\{e_1,e_2,\dots_ep\}$ es un subconjunto de $S$ entonces se cumple que $$\omega(A) = \sum_{k=0}^p \omega(e_k).$$
+Decimos que $(M,\omega)$ es una \textbf{matroide ponderada} si $M=(S,\mathcal{F})$ es una matroide y $\omega$ es una función que va del conjunto potencia de $S$ a los reales positivos, con la propiedad de que si $A=\{e_1,e_2,\dots e_p\}$ es un subconjunto de $S$ entonces se cumple que $$\omega(A) = \sum_{k=0}^p \omega(e_k).$$
 \end{dfn}
 
 De forma casi directa se define el algoritmo de optimización de la siguiente manera:
@@ -529,7 +528,7 @@ $$\omega(Y) = t \cdot u + (n+1-t)v.$$
 Si $u$ es igual a $\left(1+\dfrac{1}{2(n-t)}\right)v$\footnote{Con este supuesto se sigue cumpliendo que $u>v$.}, tenemos que $ \omega(Y) > \omega(X)$. Por lo tanto, podemos concluir que el algoritmo no convergió porque claramente no encontró al óptimo. Como el algoritmo no convergió, este realiza por lo menos un paso más en el que selecciona $y_j$ en $X \setminus Y$ de tal forma que $X \cup \{y_j\}$ pertenece a $\mathcal{F}$. Concluimos que se cumple \ref{axioma 3} y por lo tanto $\mathcal{F}$ es la familia de conjuntos independientes de una matroide. 
 \end{proof}
 
-Este teorema se puede rescribir de la siguiente forma para encontrar una forma de definir las matroides:
+Este teorema se puede reescribir de la siguiente forma para encontrar una forma de definir las matroides:
 
 \begin{cor}{Axiomatización por algoritmo glotón.}
 

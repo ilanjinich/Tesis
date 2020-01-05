@@ -11,9 +11,8 @@ donde \begin{equation} w_{j,k}=
 \begin{cases}
 1 & \qquad \text{si la universidad $j$ es parte de la restricción $k$.} \\
 0 &\qquad\text{en otro caso.} \\ 
-\end{cases} \end{equation} \\ para toda $k=1,2,\dots,p$ \footnote{donde $p$ es el número de restricciones comunes.}. \\
+\end{cases} \end{equation} \\ para toda $k=1,2,\dots,p$ \footnote{Donde $p$ es el número de restricciones comunes.}. \\
 Las universidades tienen cotas superiores comunes.
-end{equation}
 %\item \begin{equation} 
 %z_{k}= 
 %\begin{cases}
@@ -37,10 +36,12 @@ Para simplificar la notación del problema, en lugar de usar la matriz de prefer
 \label{listpref}
 Definimos la \textbf{lista de preferencias} para un problema con $n$ estudiantes, con $m$ universidades y $p$ restricciones
 como una función $P$ de tal forma que si $\alpha$ es un estudiante $P(\alpha)$ es el orden de preferencia que le asigna a las universidades,
-sí $A$ es una universidad $P(A)$ es el orden de preferencia que le asigna a los estudiantes. salvo que el primer lugar denota la cota superior de $A$.
-Además, si denotamos a $\mathcal{C}$ como el \textbf{sistema de conjuntos de universidades} (ver \ref{conj1}) que está conformado por los conjuntos de universidades que forman cada restricción y denotamos a $C_k$ como el conjunto de universidades que forman parte de la restricción común $k$ para todo $k=1,2,\dots,p$.
-Entonces $P(C_k)$ representa el orden de preferencias de la cota $C_k$ para todo $k=1,2,\dots,p$ ().
-\\ Es un poco contraintuitivo definir las preferencias en términos de conjuntos de universidades, esto es necesario, por ejemplo, en situaciones cuando se alcanza la cota común entre dos universidades, pero ninguna alcanza su cota superior. Si sólo nos basamos en las listas de preferencia de las dos universidades no es claro bajo qué criterio se aceptan o se rechazan nuevos estudiantes. Además, para que exista consistencia en los órdenes de preferencias hacemos los siguientes supuestos:
+si $A$ es una universidad $P(A)$ es el orden de preferencia que le asigna a los estudiantes, salvo que el primer lugar denota la cota superior de $A$.
+Además, si denotamos a $\mathcal{C}$ como el \textbf{sistema de conjuntos de universidades} %(ver \ref{conj1})
+que está conformado por los conjuntos de universidades que forman cada restricción y denotamos a $C_k$ como el conjunto de universidades que forman parte de la restricción común $k$ para todo $k=1,2,\dots,p$.
+Entonces $P(C_k)$ representa el orden de preferencias de la cota $C_k$ para todo $k=1,2,\dots,p$.
+
+Es un poco contraintuitivo definir las preferencias en términos de conjuntos de universidades, esto es necesario, por ejemplo, en situaciones cuando se alcanza la cota común entre dos universidades, pero ninguna alcanza su cota superior. Si sólo nos basamos en las listas de preferencia de las dos universidades no es claro bajo qué criterio se aceptan o se rechazan nuevos estudiantes. Además, para que exista consistencia en los órdenes de preferencias hacemos los siguientes supuestos:
 \begin{enumerate}
 \item Si para alguna $k=1,2,\dots,p$ fija, existe una universidad $A$ que pertenece a $C_k$ y además existe un estudiante $\alpha$ que pertenece a $P(A)$. Entonces, $\alpha$ pertenece a $P(C_k)$.
 \item Si para alguna $k=1,2,\dots,p$ fija, existe un estudiante $\alpha$ que pertenece a $P(C_k)$. Entonces, existe una universidad $A$ que pertenece a $C_k$ tal que $\alpha$ pertenece a $P(A)$.
@@ -49,12 +50,12 @@ Entonces $P(C_k)$ representa el orden de preferencias de la cota $C_k$ para todo
 \end{enumerate}
 \end{dfn}
 
-Damos un ejemplo de una lista de preferencias para dejar todo un poco más claro, en general la idea es la misma a las matrices de preferencias.
+Damos un ejemplo de una lista de preferencias para dejar todo un poco más claro, en general la idea es la misma que las matrices de preferencias.
 
 
 \begin{eje} \cite{Todo}
 \label{listprefeje}
-Supongamos que tenemos tres aplicantes $\alpha,\beta, \gamma$, cuatro universidades $A,B,C,D$ y dos conjuntos de universidades $\{A,B\},\{A,C\}$ que forman cotas comunes. La lista de preferencias sigue la siguiente regla:
+Supongamos que tenemos tres solicitantes $\alpha,\beta, \gamma$, cuatro universidades $A,B,C,D$ y dos conjuntos de universidades $\{A,B\},\{A,C\}$ que forman cotas comunes. La lista de preferencias sigue la siguiente regla:
 
 \noindent \begin{minipage}{.3\linewidth}
 $$P(\alpha)=A,D$$ \\
@@ -71,7 +72,7 @@ $$P(D)=1: \alpha, \gamma$$
 $$P(\{A,B\})= 1:\beta,\alpha$$ \\
 $$P(\{A,C\})=1:\gamma,\beta$$
 \end{minipage}
-Aquí (solo para dar algunos ejemplos) podemos ver qué $\alpha$ tiene en su lista primero a $A$ y luego a $D$. $C$ únicamente quiere a $\gamma$ como su alumno y además tiene como cota superior al número uno. Las cotas comunes son consistentes de acuerdo con lo planteado anteriormente. 
+Aquí (solo para dar algunos ejemplos) podemos ver que $\alpha$ tiene en su lista primero a $A$ y luego a $D$. $C$ únicamente quiere a $\gamma$ como su alumno y además tiene como cota superior al número uno. Las cotas comunes son consistentes de acuerdo con lo planteado anteriormente. 
 
 \end{eje}
 
@@ -82,8 +83,13 @@ La primera pregunta que uno podría hacerse es si siempre existe una asignación
 Dada una instancia del problema de admisión a universidades con cotas comunes podría no existir solución al problema de encontrar una asignación estable.
 \end{teo}
 \begin{proof}
-Supongamos que para lista \ref{listprefeje} existe una asignación estable $M$. Si $\alpha$ no está emparejada llegamos a una contradicción porque $D$ tiene a $\alpha$ primero en su lista y no está bloqueada por ninguna restricción común. es decir, no existe razón para que $\alpha$ no esté asignada. \\ Si $\alpha$ esta asignada a $A$ tenemos que entonces $\gamma$ esta asignada a $D$ y además por la restricción común de $\{A,B\}$, $\beta$ queda sin estar asignado lo cual contradice la hipótesis de estabilidad porque $\{A,B\}$ prefiere tener a $\beta$ que a $\alpha$. \\ Si $\alpha$ este asignado a $D$ entonces $\gamma$ está asignado a $C$ lo que implica que $\beta$ queda sin estar asignado. $\{A,B\}$ y $A$ no cumplen con su cota superior (tienen espacio para más alumnos) y $\alpha$ prefiere estar en $A$ que en $D$, por lo tanto, esta asignación no es estable y de hecho concluimos que no existen asignaciones estables para este problema. \\
-Notamos que si $\beta$ no fuera parte del problema entonces si asignamos a $\alpha$ a $A$ y asignamos a $\gamma$ a $D$ tenemos una asignación estable, por lo tanto, concluimos que a veces si existe una asignación estable. 
+Supongamos que para lista \ref{listprefeje} existe una asignación estable $M$. Si $\alpha$ no está emparejada llegamos a una contradicción porque $D$ tiene a $\alpha$ primero en su lista y no está bloqueada por ninguna restricción común. es decir, no existe razón para que $\alpha$ no esté asignada. 
+
+Si $\alpha$ esta asignada a $A$ tenemos que entonces $\gamma$ esta asignada a $D$ y además por la restricción común de $\{A,B\}$, $\beta$ queda sin estar asignado lo cual contradice la hipótesis de estabilidad porque $\{A,B\}$ prefiere tener a $\beta$ que a $\alpha$. 
+
+Si $\alpha$ este asignado a $D$ entonces $\gamma$ está asignado a $C$ lo que implica que $\beta$ queda sin estar asignado. $\{A,B\}$ y $A$ no cumplen con su cota superior (tienen espacio para más alumnos) y $\alpha$ prefiere estar en $A$ que en $D$, por lo tanto, esta asignación no es estable y de hecho concluimos que no existen asignaciones estables para este problema. 
+
+Notamos que si $\beta$ no fuera parte del problema entonces si asignamos a $\alpha$ a $A$ y asignamos a $\gamma$ a $D$ tenemos una asignación estable, por lo tanto, concluimos que a veces sí existe una asignación estable. 
 \end{proof}
 
 %Además de no siempre existir una asignación estable sucede algo muy similar a lo planteado en el capítulo 5, en el que podría existir varios emparejamientos estables para el mismo problema de distinto tamaño. El siguiente ejemplo muestra que para este problema también sucede lo mismo.
@@ -94,11 +100,16 @@ A partir de este ejemplo queda claro que si extendemos el problema agregando cot
 El problema de ver si una instancia del problema de admisión a universidades con cotas comunes admite un emparejamiento estable es NP-completo. 
 \end{teo}
 \begin{proof}
-\footnote{la demostración se parece bastante a la del teorema \ref{np1}.}
-Dado que el problema claramente es de decisión, este pertenece a la clase NP. \\ Para ver que el problema es NP-completo reduciremos el problema del matrimonio estable con listas incompletas con empates a este\footnote{Recordemos que el problema aquí es ver si existe un emparejamiento estable con todos los hombres y todas las mujeres emparejadas.} (sabemos que este problema es NP-completo por el teorema \ref{NPempates}). Para este caso supondremos que sólo existen empates en las listas de las mujeres, estos son de a lo más longitud 2 y en caso de existir un empate para una mujer arbitraria $w_j$, este ocupa toda la lista de $w_j$ y al menos uno de los dos hombres pertenecientes a este tiene a $w_j$ hasta arriba de su lista \footnote{Dadas estas condiciones el problema sigue siendo NP-completo \cite{empates}}. \\
-Sea $I$ una instancia del problema del emparejamiento estable con listas incompletas con empates, sean $U=\{m_1,m_2,\dots,m_n\}$ la lista de hombres en el problema y sean $W=\{w_1,w_2,\dots,w_n\}$ las mujeres en el problema. Sea $W_0$ un subconjunto de $W$ que contiene a todas las mujeres con un empate de tamaño dos en su lista. Construiremos una instancia $I'$ del problema de admisión a universidades con cotas comunes a partir de $I$. \\
-Cada hombre en $I$ corresponde a un aplicante en $I'$ y sus listas de preferencia son idénticas en ambas instancias. Si las mujeres pertenecen a $W \setminus W_0$ entonces representan a universidad en $I'$ y cuentan con una cota superior igual al número 1, sus listas de preferencia son idénticas en $I$ y en $I'$. \\
-El truco esta con las mujeres en $W_0$, supongamos que tenemos una mujer $w_j$ en $W_0$ y supongamos que $m_{j,1}$ y $m_{j,2}$ son los dos hombres que conforman este empate. Creamos entonces dos aplicantes adicionales $b_j^1,b_j^2$, seis universidades $c_j^1,c_j^2,c_j^3,c_j^4,c_j^5,c_j^6$ y cuatro conjuntos de universidades $\{c_j^1,c_j^2\},\{c_j^2,c_j^3\},\{c_j^4,c_j^5\},\{c_j^5,c_j^6\}$ con cotas comunes y las siguientes preferencias: 
+\footnote{La demostración se parece bastante a la del teorema \ref{np1}.}
+Dado que el problema claramente es de decisión y además dada una solución es fácil ver si está es correcta o no, este pertenece a la clase NP.
+
+Para ver que el problema es NP-completo reduciremos el problema del matrimonio estable con listas incompletas con empates a esté\footnote{Recordemos que el problema aquí es ver si existe un emparejamiento estable con todos los hombres y todas las mujeres emparejadas.} (sabemos que este problema es NP-completo por el teorema \ref{NPempates}). Para este caso supondremos que sólo existen empates en las listas de las mujeres, estos son de a lo más longitud 2 y en caso de existir un empate para una mujer arbitraria $w_j$, esté ocupa toda la lista de $w_j$ y al menos uno de los dos hombres pertenecientes a esté tiene a $w_j$ hasta arriba de su lista\footnote{Dadas estas condiciones el problema sigue siendo NP-completo \cite{empates}}. 
+
+Sea $I$ una instancia del problema del emparejamiento estable con listas incompletas con empates, sean $U=\{m_1,m_2,\dots,m_n\}$ la lista de hombres en el problema y sean $W=\{w_1,w_2,\dots,w_n\}$ las mujeres en el problema. Sea $W_0$ un subconjunto de $W$ que contiene a todas las mujeres con un empate de tamaño dos en su lista. Construiremos una instancia $I'$ del problema de admisión a universidades con cotas comunes a partir de $I$. 
+
+Cada hombre en $I$ corresponde a un solicitante en $I'$ y sus listas de preferencia son idénticas en ambas instancias. Si las mujeres pertenecen a $W \setminus W_0$ entonces representan a una universidad en $I'$ y cuentan con una cota superior igual al número 1, sus listas de preferencia son idénticas en $I$ y en $I'$. 
+
+El truco está con las mujeres en $W_0$, supongamos que tenemos una mujer $w_j$ en $W_0$ y supongamos que $m_{j,1}$ y $m_{j,2}$ son los dos hombres que conforman este empate. Creamos entonces dos solicitantes adicionales $b_j^1,b_j^2$, seis universidades $c_j^1,c_j^2,c_j^3,c_j^4,c_j^5,c_j^6$ y cuatro conjuntos de universidades $\{c_j^1,c_j^2\},\{c_j^2,c_j^3\},\{c_j^4,c_j^5\},\{c_j^5,c_j^6\}$ con cotas comunes y las siguientes preferencias: 
 
 \begin{minipage}{.3\linewidth}
 $$P(b_j^1)=c_j^5,c_j^2$$ \\
@@ -118,19 +129,20 @@ $$P(\{c_j^2,c_j^3\})=1:b_j^1,b_j^2$$ \\
 $$P(\{c_j^4,c_j^5\})= 1:b_j^1,m_{j,2}$$ \\
 $$P(\{c_j^5,c_j^6\})=1:b_j^2,b_j^1$$
 \end{minipage}
-Para simplificar notación, sea $A_1$ los aplicantes de la forma $m_{j,k}$ y sea $A_2$ los aplicantes de la forma $b_j^k$. Finalmente, sustituimos a $w_j$ n la lista de $m_{j,1}$ por $c_{j,1}$ y sustituimos a $w_j$ n la lista de $m_{j,2}$ por $c_{j,4}$. Afirmamos que $I$ tiene un emparejamiento estable completo $M$ si y sólo si $I'$ tiene una asignación estable $M'$ en la que cada aplicante en $A_1$ está asignado a alguna universidad. Suponiendo que en $M$ tenemos que $m_i$ y $w_j$ están emparejados, la relación entre las dos instancias sigue las siguientes reglas:
+Para simplificar notación, sea $A_1$ los aplicantes de la forma $m_{j,k}$ y sea $A_2$ los aplicantes de la forma $b_j^k$. Finalmente, sustituimos a $w_j$ en la lista de $m_{j,1}$ por $c_{j,1}$ y sustituimos a $w_j$ en la lista de $m_{j,2}$ por $c_{j,4}$. Afirmamos que $I$ tiene un emparejamiento estable completo $M$ si y sólo si $I'$ tiene una asignación estable $M'$ en la que cada solicitante en $A_1$ está asignado a alguna universidad. Suponiendo que en $M$ tenemos que $m_i$ y $w_j$ están emparejados, la relación entre las dos instancias sigue las siguientes reglas:
 \begin{itemize}
 \item Si $w_j$ pertenece a $W \setminus W_0$, entonces $m_i$ está asignado a $w_j$ en $M'$.
-\item Si $w_j$ pertenece a $W_0$, entonces $m_{j,1}$ esta emparejado con $w_j$ si y sólo si en $M'$ tenemos que $m_{j,1}$ está asignado a $c_j^1$, $b_j^2$ está asignado a $c_j^3$ y $b_j^1$ está asignado a $c_j^5$.
-\item Si $w_j$ pertenece a $W_0$, entonces $m_{j,2}$ esta emparejado con $w_j$ si y sólo si en $M'$ tenemos que $m_{j,2}$ está asignado a $c_j^4$, $b_j^2$ está asignado a $c_j^6$ y $b_j^1$ está asignado a $c_j^2$.
+\item Si $w_j$ pertenece a $W_0$, entonces $m_{j,1}$ está emparejado con $w_j$ si y sólo si en $M'$ tenemos que $m_{j,1}$ está asignado a $c_j^1$, $b_j^2$ está asignado a $c_j^3$ y $b_j^1$ está asignado a $c_j^5$.
+\item Si $w_j$ pertenece a $W_0$, entonces $m_{j,2}$ está emparejado con $w_j$ si y sólo si en $M'$ tenemos que $m_{j,2}$ está asignado a $c_j^4$, $b_j^2$ está asignado a $c_j^6$ y $b_j^1$ está asignado a $c_j^2$.
 \end{itemize}
-Supongamos que existe un emparejamiento estable $M$ en $I$, es claro por construcción que la asignación $M'$ resultante es también estable y que además cada aplicante en $A_1$ es asignado a alguna universidad. 
 
-Supongamos que existe una asignación estable $M'$ en $I'$ en el que todos los aplicantes en $A_1$ están emparejados.
+Supongamos que existe un emparejamiento estable $M$ en $I$, es claro por construcción que la asignación $M'$ resultante es también estable y que además cada solicitante en $A_1$ es asignado a alguna universidad. 
+
+Supongamos que existe una asignación estable $M'$ en $I'$ en el que todos los solicitantes en $A_1$ están emparejados.
 % Me falta el párrafo que empieza in the other ddirection.
 
 
-Para completar la reducción, es necesario construir una parte adicional de $I'$ como sigue: Para cada aplicante $a_i$ en $A_1$ construimos dos aplicantes adicionales $z_i^1,z_i^2$, cuatro universidades $d_i^1,d_i^2,d_i^3,d_i^4$ con cotas comunes $\{d_i^1,d_i^2\}$ y $\{d_i^2,d_i^3\}$. Las listas de preferencias y cotas son como siguen:
+Para completar la reducción, es necesario construir una parte adicional de $I'$ como sigue: Para cada solicitante $a_i$ en $A_1$ construimos dos solicitantes adicionales $z_i^1,z_i^2$, cuatro universidades $d_i^1,d_i^2,d_i^3,d_i^4$ con cotas comunes $\{d_i^1,d_i^2\}$ y $\{d_i^2,d_i^3\}$. Las listas de preferencias y cotas son como siguen:
 \noindent \begin{minipage}{.3\linewidth}
 $$P(z_i^1)=d_i^1,d_i^4$$ \\
 $$P(z_i^2)=d_i^4,d_i^3$$ 
@@ -146,7 +158,7 @@ $$P(\{d_i^1,d_i^2\})= 1:a_1,z_i^1$$ \\
 $$P(\{d_i^2,d_i^3\})=1:z_i^2,a_i$$
 \end{minipage}
 
-Finalmente añadimos a $d_i^2$ al final de la lista de preferencias de $a_i$ y afirmamos que $I$ tiene un emparejamiento estable completo si y solo si $I'$ tiene emparejamiento estable. Lo primero que notamos es que la construcción es casi idéntica a la usada en la demostración de \ref{ejemplo teorema} entonces podemos usar argumentos similares. Notamos que en $I'$ cada aplicante en $A_i$ esta emparejado a la parte no adicional de $I'$ porque si no la parte adicional bloquearía la estabilidad ({ejemplo teorema}) y además para garantizar estabilidad si cada universidad esta emparejada con la parte no adicional de $I'$ agregamos las parejas $(z_i^1,d_i^1)$ y $(z_i^2,d_i^4)$ al emparejamiento (al igual que en \ref{ejemplo teorema}).
+Finalmente añadimos a $d_i^2$ al final de la lista de preferencias de $a_i$ y afirmamos que $I$ tiene un emparejamiento estable completo si y solo si $I'$ tiene emparejamiento estable. Lo primero que notamos es que la construcción es casi idéntica a la usada en la demostración de \ref{ejemplo teorema} entonces podemos usar argumentos similares. Notamos que en $I'$ cada solicitante en $A_i$ está emparejado a la parte no adicional de $I'$ porque si no la parte adicional bloquearía la estabilidad ({ejemplo teorema}) y además para garantizar estabilidad si cada universidad está emparejada con la parte no adicional de $I'$ agregamos las parejas $(z_i^1,d_i^1)$ y $(z_i^2,d_i^4)$ al emparejamiento (al igual que en \ref{ejemplo teorema}).
 
 Por lo tanto, podemos concluir que el problema de ver si una instancia del problema de admisión a universidades con cotas comunes admite un emparejamiento estable es NP-completo.
 
