@@ -77,7 +77,7 @@ Usamos inducción sobre el número $m$ de conjuntos acotados (la cardinalidad de
 Supongamos que el resultado es válido si la cantidad de conjuntos es estrictamente menor que $m$ y supongamos que tenemos $m$ conjuntos acotados. Sean $C^1,C^2,\dots, C^k$ los grupos en $\mathcal{C}$, entonces tenemos dos casos:
 \begin{enumerate}
 \item Si $k$ es mayor estricto que $1$ entonces cada $I_{C^i}$ forma una matroide y como $I_C$ es la suma directa de los $I_{C^i}$ entonces es una matroide. 
-\item Si $k=1$ entonces $I'$ es el conjunto de conjuntos universidad independientes de acuerdo con $C_1,\dots,C_{m-1}$ es parte de una matroide. Podemos ver que al aplicar la restricción de $C_m$ tenemos un truncamiento sobre la misma y no se pierde el hecho de que es una matroide. 
+\item Si $k=1$ entonces $I'$ es el conjunto de conjuntos universidad independiente de acuerdo con $C_1,\dots,C_{m-1}$ es parte de una matroide. Podemos ver que al aplicar la restricción de $C_m$ tenemos un truncamiento sobre la misma y no se pierde el hecho de que es una matroide. 
 \end{enumerate}
 Por lo tanto, si $I_C$ el subconjunto del conjunto potencia de $E$ que contiene a todos los conjuntos universidad independiente, entonces $M_C = (E,I_C)$ es una matroide.
 \end{proof}
@@ -101,14 +101,14 @@ La función de elección para las universidades para $X$ encuentra el subconjunt
 Para cada elemento $x$ en $X\setminus Q_c(X)$ tenemos que el conjunto $\{x\}\cup Q_c(X)$ es no universidad independiente, por definición existe un conjunto acotado $C_i$ tal que $Q_c(X)$ contiene $q(C_i)$ aristas incidentes en $C_i$ que todas son preferidas a $x$.
 \end{proof}
 
-A partir de esto podemos ver dos observaciones.
+A partir de esto tenemos dos observaciones.
 
 \begin{obs}
 La cardinalidad de $Q_c(X)$ es igual al rango de $X$ respecto a la matroide de las universidades $M_c$. 
 \end{obs}
 
 \begin{obs}
-La función $Q_c$ es creciente. Es decir, si $X$ es un subconjunto de $Y$ entonces la cardinalidad de $Q_c(X)$ es menor o igual que la cardinalidad de $Q_c(Y)$. \footnote{La demostración es directo del 9.8 } %Me falta referencia
+La función $Q_c$ es creciente. Es decir, si $X$ es un subconjunto de $Y$ entonces la cardinalidad de $Q_c(X)$ es menor o igual que la cardinalidad de $Q_c(Y)$. \footnote{La demostración es directa del 9.8 } %Me falta referencia
 \end{obs} 
 
 Estas dos observaciones implican que la función $Q_c$ puede ser construida a partir del algoritmo glotón de la siguiente manera:
@@ -142,18 +142,18 @@ Estas dos observaciones implican que la función $Q_c$ puede ser construida a pa
 \end{Algoritmo}
 \DecMargin{1em}
 
-El algoritmo es igual porque por el teorema (\ref{glot}) sabemos que el algoritmo glotón siempre converge al subconjunto maximal universidad independiente de $X$ y por lo tanto aplicar uno u otro algoritmo debe de llevar al mismo resultado. Además de esto si agregamos la siguiente definición podemos ver que la función es comonotona, es decir:
+El algoritmo es igual porque por el teorema (\ref{glot}) sabemos que el algoritmo glotón siempre converge al subconjunto maximal universidad independiente de $X$ y por lo tanto aplicar uno u otro algoritmo debe de llevar al mismo resultado. Además de esto si agregamos la siguiente definición podemos ver que la función es comonótona, es decir:
 
 \begin{dfn}
-Decimos que una función $Q$ en $E$ es \textbf{comonotona} si para cualquier par de subconjuntos $X,Y$ de $E$ con $X$ siendo un subconjunto de $Y$ tenemos que $X\setminus Q(X)$ es un subconjunto de $Y\setminus Q(Y)$.
+Decimos que una función $Q$ en $E$ es \textbf{comonótona} si para cualquier par de subconjuntos $X,Y$ de $E$ con $X$ siendo un subconjunto de $Y$ tenemos que $X\setminus Q(X)$ es un subconjunto de $Y\setminus Q(Y)$.
 \end{dfn}
 
 \begin{cor}
-La función $Q_c$ es comonotona sobre $E$
+La función $Q_c$ es comonótona sobre $E$
 \end{cor}
 
 \begin{proof}
-Para probar comonotonicidad tenemos que ver que si $x$ en $X$ no pertenece a $Q_c(X)$ entonces esta no pertenece a $Q_c(Y)$ cuando $X$ es un subconjunto de $Y$. Esto sale directo del algoritmo glotón porque si durante la construcción de $Q_c(X)$ no se eligió $x$ entonces es claro que durante la construcción de $Q_c(Y)$ tampoco se eligió a $x$ por las mismas razones. 
+Para probar comonotonicidad tenemos que ver que si $x$ en $X$ no pertenece a $Q_c(X)$ entonces ésta no pertenece a $Q_c(Y)$ cuando $X$ es un subconjunto de $Y$. Esto sale directo del algoritmo glotón porque si durante la construcción de $Q_c(X)$ no se eligió $x$ entonces es claro que durante la construcción de $Q_c(Y)$ tampoco se eligió a $x$ por las mismas razones. 
 \end{proof}
 
 Para relacionar todo esto con la idea de estabilidad igual que en los demás capítulos es necesario enunciar algunas definiciones.
@@ -212,7 +212,7 @@ En nuestra matroide sobre las universidades esta definición es equivalente a de
 Para todo par de asignaciones estables $M,M'$ se tiene que los elementos abarcados por $M$ y $M'$ en la matroide de las universidades son exactamente los mismos. El resultado además es análogo en la matroide de los aspirantes. 
 \end{teo}
 
-A partir de este resultado podemos ver varios resultados bastante interesantes, primero necesitamos definir qué significa que una universidad este débilmente libre. 
+A partir de este resultado podemos ver varios resultados bastante interesantes, primero necesitamos definir qué significa que una universidad sea débilmente libre. 
 
 \begin{dfn}
 Decimos que un conjunto acotado $C_i$ es \textbf{débilmente libre} relativo a un conjunto de aristas $E'$ si ningún conjunto acotado que contiene propiamente a $C_i$ está lleno relativo a $E'$ (no existe ningún emparejamiento en $E'$ con la propiedad de que acote a $C_i$). Además, decimos que $C_i$ está \textbf{esencialmente libre} relativo a $E'$ si $C_i$ está débilmente libre relativo a $E'$ y ningún subconjunto de $C_i$ está lleno relativo a $E'$. 
@@ -222,7 +222,7 @@ Con esta definición podemos generalizar el teorema de los hospitales rurales.
 
 \begin{teo}{Generalización del teorema de los hospitales rurales}
 
-Sea $M$ un emparejamiento. Si un conjunto acotado $C_i$ está débilmente libre relativo a $M$ para todo emparejamiento estable $M'$. Entonces, tenemos que la cantidad de personas asignadas a $C_i$ es idéntica en $M'$ y en $M$. Además, si $C_i$ es esencialmente libre relativo a $M$ entonces las personas asignadas a $C_i$ en $M$ y $M'$ son las mismas. 
+Sea $M$ un emparejamiento. Si un conjunto de cotas $C_i$ está débilmente libre relativo a $M$ para todo emparejamiento estable $M'$. Entonces, tenemos que la cantidad de personas asignadas a $C_i$ es idéntica en $M'$ y en $M$. Además, si $C_i$ es esencialmente libre relativo a $M$ entonces las personas asignadas a $C_i$ en $M$ y $M'$ son las mismas. 
 \end{teo}
 
 \begin{proof}
@@ -248,10 +248,10 @@ Por lo tanto, si un conjunto acotado $C_i$ está débilmente libre relativo a $M
 
 \end{proof}
 
-Esta demostración sirve para demostrar también el caso planteado en el capítulo 4. Un resultado directo de este teorema y de vital importancia es el siguiente que muestra como los grupos en el caso de cotas anidadas se comportan igual al caso sin cotas comunes como si fueran universidades por sí solos.
+Esta demostración sirve para demostrar también el caso planteado en el capítulo 4. Un resultado directo de este teorema y de vital importancia es el siguiente que muestra cómo los grupos en el caso de cotas anidadas se comportan igual al caso sin cotas comunes como si fueran universidades por sí solos.
 
 \begin{cor}
-Si $C_i$ es un grupo entonces cada emparejamiento estable asigna la misma cantidad de personas a $C_i$.
+Si $C_i$ es un grupo\footnote{en el sentido del nodo padre del árbol.} entonces cada emparejamiento estable asigna la misma cantidad de personas a $C_i$.
 \end{cor}
 
 \begin{proof}

@@ -1,13 +1,13 @@
 \chapter{Matroides}
 
-El objetivo de este capítulo es dar una breve introducción a qué una matroide, así como mostrar varios resultados interesantes sobre esta estructura y útiles para lo que resta de esta tesis \footnote{La gran mayoría de los resultados presentados en este capítulo fueron sacados de \cite{matroid}, otros resultados fueron sacados de \cite{CO1}, \cite{CO2} y \cite{CO3}}.
+El objetivo de este capítulo es dar una breve introducción a qué es una matroide, así como mostrar varios resultados interesantes sobre esta estructura y útiles para lo que resta de esta tesis \footnote{La gran mayoría de los resultados presentados en este capítulo fueron sacados de \cite{matroid}, otros resultados fueron sacados de \cite{CO1}, \cite{CO2} y \cite{CO3}.}.
 
 \subsection*{Un poco de independencia lineal}
-Sea $V$ un espacio vectorial finito y sea $\mathcal{F}$ una colección de subconjuntos de $V$ con la propiedad que si $A$ pertenece a $\mathcal{F}$ es porque $A$ es linealmente independiente. Cualquier persona que ha tomado un curso en álgebra lineal puede ver que se cumplen las siguientes tres cosas: 
+Sea $V$ un espacio vectorial finito y sea $\mathcal{F}$ una colección de subconjuntos de $V$ con la propiedad que si $A$ pertenece a $\mathcal{F}$ si y solo si $A$ es linealmente independiente. Cualquier persona que ha tomado un curso en álgebra lineal puede ver que se cumplen las siguientes tres cosas: 
 \begin{enumerate}
 \item El conjunto vacío $\emptyset$ pertenece a $\mathcal{F}$. \label{axioma 1}
 \item Si $X$ pertenece a $\mathcal{F}$ y $Y$ es un subconjunto de $X$, entonces $Y$ pertenece a $\mathcal{F}$. \label{axioma 2}
-\item Si $X$ y $Y$ pertenecen a $\mathcal{F}$ y la cardinalidad de $X$ es uno más la cardinalidad de $Y$, entonces existe un elemento $v$ en $X \setminus Y$ tal que $Y \cup \{v\} $ pertenece a $\mathcal{F}$. \label{axioma 3}
+\item Si $X$ y $Y$ pertenecen a $\mathcal{F}$ y la cardinalidad de $X$ es uno más que la cardinalidad de $Y$, entonces existe un elemento $v$ en $X \setminus Y$ tal que $Y \cup \{v\} $ pertenece a $\mathcal{F}$. \label{axioma 3}
 \end{enumerate}
 
 A partir de esto definimos una matroide de la siguiente forma:
@@ -25,9 +25,9 @@ Un primer resultado es el teorema del aumento, en términos simples es una forma
 Sea $M=(S,\mathcal{F})$ una matroide y sean $X,Y$ en $\mathcal{F}$ con la propiedad que la cardinalidad de $Y$ es estrictamente mayor a la cardinalidad de $X$. Entonces, existe $Z$ subconjunto de $Y \setminus X$ de tal forma que la cardinalidad de $X \cup Z$ es igual a la cardinalidad de $Y$ y donde además $X \cup Z$ es independiente. 
 \end{teo}
 \begin{proof}
-Sea Z subconjunto de $Y \setminus X$ tal que $X \cup Z$ es independiente y tal que $Z$ es máximal \footnote{En este contexto máximal se refiere a que Z es el conjunto en S con respecto a una propiedad que satisface la propiedad y no es subconjunto propio de otro conjunto que satisface la propiedad.}. 
+Sea Z subconjunto de $Y \setminus X$ tal que $X \cup Z$ es independiente y tal que $Z$ es maximal \footnote{En este contexto maximal se refiere a que Z es el conjunto en S con respecto a una propiedad si satisface alguna propiedad y no es subconjunto propio de otro conjunto que satisface esa propiedad.}. 
  
-Supongamos que la cardinalidad $X \cup Z$ es menor a la cardinalidad de $Y$, entonces existe $\{y_0\}$ subconjunto de $Y$ tal que la cardinalidad de $y_0$ es uno más la cardinalidad de $X \cup Z$, entonces por la propiedad \ref{axioma 3} de las matroides existe $y$ en $\{y_0\} \setminus (Y \setminus X)$ con la propiedad de que $X \cup Z \cup \{ y\}$ es independiente. Esto contradice la elección de $Z$ porque se pedía que ésta sea máxima, por lo tanto, la cardinalidad de $X \cup Z$ es igual a la cardinalidad de $Y$ y el teorema se cumple. 
+Supongamos que la cardinalidad $X \cup Z$ es menor a la cardinalidad de $Y$, entonces existe $y_0$ subconjunto de $Y$ tal que la cardinalidad de $y_0$ es uno más la cardinalidad de $X \cup Z$, entonces por la propiedad \ref{axioma 3} de las matroides existe $y$ en $\{y_0\} \setminus (Y \setminus X)$ con la propiedad de que $X \cup Z \cup \{ y\}$ es independiente. Esto contradice la elección de $Z$ porque se pedía que ésta fuera máxima, por lo tanto, la cardinalidad de $X \cup Z$ es igual a la cardinalidad de $Y$ y el teorema se cumple. 
 \end{proof}
 
 Mostraremos un ejemplo sencillo de una matroide, se recomienda al lector tratar de entender los resultados que siguen a partir de este ejemplo. En muchas ocasiones hacer esto ayuda a mantener claridad.
@@ -44,13 +44,13 @@ A continuación, aprovecharemos la similitud que existe entre el álgebra lineal
 
 \section{Bases}
 
-Las bases son una de las propiedades más importantes del álgebra lineal, aprovechando la intersección que existe entre independencia e independencia lineal decimos que para una matroide una base es: 
+Las bases son unos de los conjuntos más importantes del álgebra lineal, aprovechando la intersección que existe entre independencia e independencia lineal tenemos la siguiente definición: 
 
 \begin{dfn}
 Sea $M=(S,\mathcal{F})$ una matroide, decimos que ${B}$ es una \textbf{base} si:
 \begin{enumerate}
 \item ${B}$ es independiente.
-\item ${B}$ es máximal, es decir, no existe ningún elemento $v$ en $S \setminus {B}$ tal que ${B} \cup \{v\}$ sea independiente.
+\item ${B}$ es maximal, es decir, no existe ningún elemento $v$ en $S \setminus {B}$ tal que ${B} \cup \{v\}$ sea independiente.
 \end{enumerate}
 Al conjunto de todas las bases en M se le denota como $\mathcal{B}(M)$.
 \end{dfn}
@@ -105,7 +105,7 @@ Es claro que esta definición es equivalente para espacios vectoriales a la del 
 Sea $M=(S,\mathcal{F})$ una matroide y $\rho$ su función rango entonces
 el rango del conjunto vacío es igual a cero. 
 \end{cor}
-\begin{proof} Como el conjunto vacío es el único subconjunto de sí mismo, como éste es independiente y no contiene ningún elemento, entonces $\rho(\emptyset)=0$. \end{proof}
+\begin{proof} Como el conjunto vacío es el único subconjunto de sí mismo y como éste es independiente y no contiene ningún elemento, entonces $\rho(\emptyset)=0$. \end{proof}
 
 \begin{cor}\label{R2'}
 Sea $M=(S,\mathcal{F})$ una matroide, $\rho$ su función rango y $A,B$ dos subconjuntos de $S$ tales que $A$ es un subconjunto de $B$ entonces $\rho(B) \geq \rho(A)$.
@@ -120,7 +120,7 @@ Sea $M=(S,\mathcal{F})$ una matroide y $\rho$ su función rango, entonces para t
 
 \begin{proof}
 Sea $A$ un subconjunto de $S$ arbitrario. 
-Como la cardinalidad de un conjunto es siempre no negativa eso implica que $\rho(A)$ es siempre no negativa. El subconjunto de $A$ de mayor cardinalidad es el mismo por lo tanto $\rho(A)$ es menor o igual a la cardinalidad de $A$
+Como la cardinalidad de un conjunto es siempre no negativa eso implica que $\rho(A)$ es siempre no negativa. El subconjunto de $A$ de mayor cardinalidad es él mismo por lo tanto $\rho(A)$ es menor o igual a la cardinalidad de $A$
 \end{proof}
 
 \begin{cor} \label{R2}
@@ -129,7 +129,7 @@ $$\rho(X) \leq \rho(X \cup \{y\}) \leq \rho(X)+1.$$
 \end{cor} 
 
 \begin{proof}
-La desigualdad sale directo de que para todo conjunto $X$ se cumple que el agregar un elemento $y$ a éste puede incrementar la cardinalidad de su subconjunto independiente más grande en a lo más una unidad.
+La desigualdad sale directamente de que para todo conjunto $X$ se cumple que el agregar un elemento $y$ a éste puede incrementar la cardinalidad de su subconjunto independiente más grande en a lo más una unidad.
 \end{proof}
 
 \begin{cor} \label{R3}
@@ -142,7 +142,7 @@ $$\rho(X)=\rho(X \cup \{ x\} \cup \{ y\}).$$
 \begin{proof}
 Supongamos que para $X$ subconjunto de $S$ y para $x,y$ elementos de $S$ se cumple que 
 $$\rho(X)=\rho(X \cup \{ x\}) =\rho(X \cup \{ y\}). $$ 
-Sea $A = X \cup \{ x\} \cup \{ y\}$, es claro por el corolario \ref{R1'} que $\rho(A) \geq \rho(X)$. Supongamos que $\rho(A) > \rho(X)$, sea $Y$ un subconjunto independiente de X máximal. Como $\rho(A) > \rho(X)$ eso implica que $Y \cup \{x\}$ es independiente o que $Y \cup \{y\}$ es independiente, ambas afirmaciones son falsas porque claramente contradicen que $\rho(X)=\rho(X \cup \{ x\}) =\rho(X \cup \{ y\})$. Por lo tanto, $\rho(A) = \rho(X)$ y el corolario se cumple. 
+Sea $A = X \cup \{ x\} \cup \{ y\}$, es claro por el corolario \ref{R1'} que $\rho(A) \geq \rho(X)$. Supongamos que $\rho(A) > \rho(X)$, sea $Y$ un subconjunto independiente de X maximal. Como $\rho(A) > \rho(X)$ eso implica que $Y \cup \{x\}$ es independiente o que $Y \cup \{y\}$ es independiente, ambas afirmaciones son falsas porque claramente contradicen que $\rho(X)=\rho(X \cup \{ x\}) =\rho(X \cup \{ y\})$. Por lo tanto, $\rho(A) = \rho(X)$ y el corolario se cumple. 
 \end{proof}
 
 \begin{cor} {Desigualdad submodular} \label {R3'}
@@ -193,7 +193,7 @@ $$X = \{ x_1,x_2,\dots, x_q, y_{q+1}, \dots y_k\}$$
 $$Y = \{ x_1,x_2,\dots, x_q, z_{q+1}, \dots z_{k+1}\}$$
 donde $y_i$ es distinto a $z_j$ para toda $i$ y para toda $j$. 
 
-Supongamos que para toda $j$ se tiene que $X \cup \{z_j\}$ no es independente, esto implica que $\rho(X) =\rho(X \cup \{z_j\})$ para toda $j$. Si aplicamos la propiedad 3 $k+1-q$ veces obtenemos que $\rho(X \cup \{ z_{q+1}, \dots z_{k+1} \} )= \rho(X)$. Además sabemos que $X \cup \{ z_{q+1}, \dots z_{k+1} \}= X \cup Y$, lo cual implicaría que $\rho(Y) = \rho (X)$, esto es claramente una contradicción porque esto implicaría que $Y$ no es independiente por lo tanto existe $z_j$ tal que $X \cup \{z_j\}$ es independiente y podemos concluir que el teorema se cumple.
+Supongamos que para toda $j$ se tiene que $X \cup \{z_j\}$ no es independente, esto implica que $\rho(X) =\rho(X \cup \{z_j\})$ para toda $j$. Si aplicamos la propiedad 3 $k+1-q$ veces obtenemos que $\rho(X \cup \{ z_{q+1}, \dots z_{k+1} \} )= \rho(X)$. Además sabemos que $X \cup \{ z_{q+1}, \dots z_{k+1} \}= X \cup Y$, lo cual implicaría que $\rho(Y) = \rho (X)$, esto es claramente una contradicción porque esto implicaría que $Y$ no es independiente, por lo tanto, existe $z_j$ tal que $X \cup \{z_j\}$ es independiente y podemos concluir que el teorema se cumple.
 \end{proof}
 
 Además de esta forma de definir a las matroides usando la función rango existe otra, en particular si una función cumple \ref{R1'}, \ref{R2'} y \ref{R3'} entonces es una función rango para alguna matroide. El siguiente teorema muestra formalmente como sucede esto:
@@ -234,7 +234,7 @@ Como $\rho$ cumple que
 Por el teorema \ref{rank 1} podemos concluir que $\rho$ es la función rango de una matroide en $S$ y por lo tanto se cumple el teorema. 
 \end{proof}
 
-Las matroides además de tener análogos con el álgebra lineal también tienen análogos con la teoría de gráficas, la siguiente sección muestra como es qué esto sucede. 
+Las matroides además de tener análogos con el álgebra lineal también tienen análogos con la teoría de gráficas, la siguiente sección muestra como es que esto sucede. 
 
 \section{Circuitos}
 
@@ -249,7 +249,7 @@ Sea $M=(S,\mathcal{F})$ una matroide, decimos que $C$ es un \textbf{circuito} si
 Al conjunto de todos los circuitos en M se le denota como $\mathcal{C}(M)$.
 \end{dfn}
 
-Algunas propiedades de los circuitos que salen casi directo de la definición son: 
+Algunas propiedades de los circuitos que salen casi directamente de la definición son: 
 
 \begin{cor} \ref{circ1}
 Sea $M=(S,\mathcal{F})$ una matroide, $C$ un circuito en M y $\rho$ su función rango entonces, $\rho(C)$ es igual a su cardinalidad menos uno. 
@@ -263,7 +263,7 @@ Sea $M=(S,\mathcal{F})$ una matroide y $C$ un circuito en M. Entonces la cardina
 \end{cor}
 
 \begin{proof}
-Si $\rho(S)=k$ esto implica que el subconjunto independiente de $S$ más grande es de cardinalidad $k$ si a este conjunto le agregamos un elemento obtenemos un circuito de cardinalidad $k +1$, es claro que este circuito es el de mayor cardinalidad de todos los elementos de $\mathcal{C}(M)$ y por lo tanto la cardinalidad de $C$ es menor igual que $\rho(S) + 1$ para todo circuito $C$.
+Si $\rho(S)=k$ esto implica que el subconjunto independiente de $S$ más grande es de cardinalidad $k$ y si a este conjunto le agregamos un elemento obtenemos un circuito de cardinalidad $k +1$, es claro que este circuito es él de mayor cardinalidad de todos los elementos de $\mathcal{C}(M)$ y por lo tanto la cardinalidad de $C$ es menor igual que $\rho(S) + 1$ para todo circuito $C$.
 \end{proof}
 
 \begin{cor}
@@ -271,7 +271,7 @@ Sea $M=(S,\mathcal{F})$ una matroide, si $\mathcal{C}(M)=\emptyset$ entonces $\m
 \end{cor}
 
 \begin{proof}
-Supongamos que $\mathcal{C}(M)=\emptyset$, esto implicaría que no existe ningún subconjunto dependiente de $S$ y por lo tanto $S$ es un subconjunto independiente de $S$ máximal. Por lo tanto, $\mathcal{B}(M)=\{S\}$.
+Supongamos que $\mathcal{C}(M)=\emptyset$, esto implicaría que no existe ningún subconjunto dependiente de $S$ y por lo tanto $S$ es un subconjunto independiente de $S$ maximal. Por lo tanto, $\mathcal{B}(M)=\{S\}$.
 \end{proof}
 
 \begin{cor}
@@ -323,7 +323,7 @@ Sean $M=(S,\mathcal{F})$ una matroide, $B$ una base en $M$ y $x$ un elemento en 
 \end{cor}
 
 \begin{proof}
-La demostración es directa del lema \ref{lem circuitos}, del hecho de que todas las bases en $M$ son subconjuntos independientes de $S$ y que éstas son subconjuntos independientes máximales (al unirles un elemento se vuelven dependientes). 
+La demostración es directa del lema \ref{lem circuitos}, del hecho de que todas las bases en $M$ son subconjuntos independientes de $S$ y que éstas son subconjuntos independientes maximales (al unirles un elemento se vuelven dependientes). 
 \end{proof}
 
 A este circuito $C=C(x,B)$ se le llama el \textbf{circuito fundamental} de $x$ en la base $B$. Un resultado importante de esta definición es el siguiente:
@@ -337,7 +337,7 @@ Si $y=x$ el resultado es directo porque por hipótesis $B=$$(B \setminus \{ x\})
  
 Supongamos que $(B \setminus \{ y\}) \cup \{x\}$ es una base en $M$, supongamos además que $y$ no pertenece a $C(x,B)$. Como $y$ no pertenece a $C(x,B)$, tenemos que $C(x,B)$ es un subconjunto de la base $(B \setminus \{ y\}) \cup \{x\}$ y por lo tanto que $C(x,B)$ es un subconjunto independiente de $S$, lo cual es claramente una contradicción porque $C(x,B)$ es un subconjunto dependiente de $S$ y podemos entonces concluir que $y$ pertenece a $C(x,B)$ . 
 
-Por el otro lado, supongamos que $y$ pertenece a $C(x,B)$ y además supongamos que $(B \setminus \{ y\}) \cup \{x\}$ no es una base. Como $(B \setminus \{ y\}) \cup \{x\}$ tiene la misma cardinalidad que $B$ y no es base, como todas las bases tienen el mismo tamaño podemos ver que $(B \setminus \{ y\}) \cup \{x\}$ es un subconjunto dependiente de $S$. Ahora, como$(B \setminus \{ y\}) \cup \{x\}$ es dependiente entonces existe un circuito $C'$ (distinto de $C(x,B)$ subconjunto de $(B \setminus \{ y\}) \cup \{x\}$, lo que implica que $B \cup \{x\}$ contiene dos circuitos distintos, lo cual es una contradicción al lema \ref{lem circuitos} y por lo tanto $(B \setminus \{ y\}) \cup \{x\}$ es una base y el teorema es cierto. 
+Por el otro lado, supongamos que $y$ pertenece a $C(x,B)$ y además supongamos que $(B \setminus \{ y\}) \cup \{x\}$ no es una base. Como $(B \setminus \{ y\}) \cup \{x\}$ tiene la misma cardinalidad que $B$ y no es base, como todas las bases tienen el mismo tamaño podemos ver que $(B \setminus \{ y\}) \cup \{x\}$ es un subconjunto dependiente de $S$. Ahora, como$(B \setminus \{ y\}) \cup \{x\}$ es dependiente entonces existe un circuito $C'$ distinto de $C(x,B)$ subconjunto de $(B \setminus \{ y\}) \cup \{x\}$, lo que implica que $B \cup \{x\}$ contiene dos circuitos distintos, lo cual es una contradicción al lema \ref{lem circuitos} y por lo tanto $(B \setminus \{ y\}) \cup \{x\}$ es una base y el teorema es cierto. 
 \end{proof}
 
 Antes de mostrar la equivalencia entre circuitos y matroides es necesario mostrar el siguiente resultado, este teorema puede ser interpretado como un resultado más fuerte que el corolario \ref{C2}.
@@ -351,7 +351,7 @@ Sean $M=(S,\mathcal{F})$ una matroide, $C_1, C_2$ dos circuitos en $M$ y $x$ un 
 \end{teo}
 
 \begin{proof}
-Supongamos que existen dos circuitos $C_1,C_2$, un elemento $x$ en $C_1 \cap C_2$ y un elemento $y$ en $C_1 \setminus C_2$ que muestran que el teorema es falso, además supongamos la cardinalidad de $C_1 \cup C_2$ es mínima con esta propiedad, es decir no existen otros dos circuitos con la cardinalidad de su unión menor a la de $C_1$ y $C_2$ que no cumplen esta propiedad. 
+Supongamos que existen dos circuitos $C_1,C_2$, un elemento $x$ en $C_1 \cap C_2$ y un elemento $y$ en $C_1 \setminus C_2$ que muestran que el teorema es falso, además supongamos que la cardinalidad de $C_1 \cup C_2$ es mínima con esta propiedad, es decir no existen otros dos circuitos con la cardinalidad de su unión menor a la de $C_1$ y $C_2$ que no cumplen esta propiedad. 
 
 Por el corolario \ref{C2}, existe un circuito $C_3$ subconjunto de $(C_1 \cup C_2)\setminus \{x\}$ (no tenemos garantía alguna de que $y$ pertenezca a $C_3$). 
 
@@ -390,19 +390,19 @@ t(\{x_1,x_2,\dots,x_q\}) = t(\{x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(q)}\}).
 \end{equation}
 
 
-A partir de esto definimos $r$ como una función que va de los subconjuntos de $S$ a los enteros no negativos y que sigue la regla de correspondencia $r(A) = t(\{x_1,x_2,\dots,x_q\})$, donde $x_1,x_2,\dots,x_q\}$ es una representación ordenada de los elementos de $A$. Por la afirmación mencionada en la ecuación \ref{afirmacion} sabemos que $r$ está bien definida. 
+A partir de esto definimos $r$ como una función que va de los subconjuntos de $S$ a los enteros no negativos y que sigue la regla de correspondencia $r(A) = t(\{x_1,x_2,\dots,x_q\})$, donde $\{x_1,x_2,\dots,x_q\}$ es una representación ordenada de los elementos de $A$. Por la afirmación mencionada en la ecuación \ref{afirmacion} sabemos que $r$ está bien definida. 
 
 Ahora, es claro que $r(\emptyset)=0$ porque la suma sobre ningún elemento siempre es cero. Además, podemos ver que para cualquier subconjunto $X$ de $S$ y para cualquier elemento $y$ de $S$ claramente se cumple que $r(X)\leq r(X \cup \{y\}) \leq r(X) + 1$ porque al agregar un elemento al conjunto la función no puede decrecer por propiedades de la suma y ésta a lo más puede crecer en una unidad. 
 
 Por el otro lado, sea $A$ un subconjunto de $S$ y sean $x,y$ dos elementos de $S$ y supongamos que 
 $$r(A)= r(X \cup \{x\}) = r(A \cup \{y\}),$$
-entonces por definición se cumple que existen $C_1,C_2$ en $\mathcal{C}$ tales que $x$ pertenece a $C_1$, con $C_1$ subconjunto de $X \cup \{x\}$ y de forma análoga $y$ pertenece a $C_2$, con $C_2$ subconjunto de $X \cup \{y\}$. Por lo tanto, podemos concluir que $r(A)= r(X \cup \{x\} \cup \{y\})$ y por el teorema \ref{rank 1} $r$ es la función rango de una matroide y podemos concluir que $\mathcal{C}$ es la familia de circuitos de esa matroide.
+entonces por definición se cumple que existen $C_1,C_2$ en $\mathcal{C}$ tales que $x$ pertenece a $C_1$, con $C_1$ subconjunto de $X \cup \{x\}$ y de forma análoga $y$ pertenece a $C_2$, con $C_2$ subconjunto de $X \cup \{y\}$. Por lo tanto, podemos concluir que $r(A)= r(X \cup \{x\} \cup \{y\})$ y por el teorema \ref{rank 1}, $r$ es la función rango de una matroide y podemos concluir que $\mathcal{C}$ es la familia de circuitos de esa matroide.
 \end{proof}
 
 La demostración de arriba no está completa, hace falta la demostración de la afirmación mencionada en \ref{afirmacion}. Esta se muestra a continuación.
 
 \begin{lem}
-Para la función $t$ definida \ref{funcic} se cumple que para cualquier familia ordenada $\{x_1,x_2,\dots,x_q\}$ de objetos de $S$ y para cualquier permutación $\pi$ que 
+Para la función $t$ definida en \ref{funcic} se cumple que para cualquier familia ordenada $\{x_1,x_2,\dots,x_q\}$ de objetos de $S$ y para cualquier permutación $\pi$ que 
 $$t(\{x_1,x_2,\dots,x_q\}) = t(\{x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(q)}\}).$$
 \end{lem}
 
@@ -441,10 +441,10 @@ Después de plantear todos los casos podemos concluir que $$t(\{x_1,x_2,\dots x_
 \end{proof}
 
 
-El siguiente resultado muestra de donde viene la conexión entre las matroides y las gráficas, además muestra de donde viene la definición de circuitos.
+El siguiente resultado muestra de dónde viene la conexión entre las matroides y las gráficas, además muestra de dónde viene la definición de circuitos.
 
 \begin{teo}
-Sea $G=(V.E)$ una gráfica entonces los ciclos en G forman los circuitos de una matroide. 
+Sea $G=(V,E)$ una gráfica entonces los ciclos en G forman los circuitos de una matroide. 
 \end{teo}
 \begin{proof}
 Claramente ningún ciclo contiene a otro ciclo porque se pide minimalidad en la definición de estos. Sean $C_1$ y $C_2$ dos ciclos en G y sea $e$ una arista en $C_1 \cap C_2$ \footnote{En este caso representamos a un ciclo por el conjunto de aristas que lo forman}. Para facilitar la notación sean 
@@ -459,7 +459,7 @@ La siguiente sección muestra cómo toda esta teoría se aplica en particular a 
 
 \section{El algoritmo glotón}
 
-Esta sección muestra el resultado más importante sobre matroides para este trabajo y ejemplifica por qué éstas son muy importantes en la investigación de operaciones. Para definir el algoritmo glotón es necesario antes definir qué es una matroide ponderada y cuál es el problema de optimización asociada a este. 
+Esta sección muestra el resultado más importante sobre matroides para este trabajo y ejemplifica por qué éstas son muy importantes en la investigación de operaciones. Para definir el algoritmo glotón es necesario antes definir qué es una matroide ponderada y cuál es el problema de optimización asociada a éste. 
 
 \begin{dfn}
 Decimos que $(M,\omega)$ es una \textbf{matroide ponderada} si $M=(S,\mathcal{F})$ es una matroide y $\omega$ es una función que va del conjunto potencia de $S$ a los reales positivos, con la propiedad de que si $A=\{e_1,e_2,\dots e_p\}$ es un subconjunto de $S$ entonces se cumple que $$\omega(A) = \sum_{k=0}^p \omega(e_k).$$
@@ -468,10 +468,10 @@ Decimos que $(M,\omega)$ es una \textbf{matroide ponderada} si $M=(S,\mathcal{F}
 De forma casi directa se define el algoritmo de optimización de la siguiente manera:
 
 \begin{dfn}
-Sea $(M,\omega)$ una matroide, si $M=(S,\mathcal{F})$ definimos el problema de optimización $(\mathcal{F},\omega)$ como encontrar el conjunto $A$ en $\mathcal{F}$ con la propiedad de que $\omega(A)$ sea máximal, es decir no existe $B$ en $\mathcal{F}$ tal que $\omega(B) > \omega(A)$.
+Sea $(M,\omega)$ una matroide, si $M=(S,\mathcal{F})$ definimos el problema de optimización $(\mathcal{F},\omega)$ como encontrar el conjunto $A$ en $\mathcal{F}$ con la propiedad de que $\omega(A)$ sea maximal, es decir no existe $B$ en $\mathcal{F}$ tal que $\omega(B) > \omega(A)$.
 \end{dfn}
 
-Ahora sí ya encaminados podemos definir el algoritmo glotón, más adelante veremos que este además de ser sencillo y fácil de entender, converge para el problema $(\mathcal{F},\omega)$. El seudocódigo del algoritmo es el siguiente:
+Ahora sí ya encaminados podemos definir el algoritmo glotón, más adelante veremos que éste además de ser sencillo y fácil de entender, converge para el problema $(\mathcal{F},\omega)$. El algoritmo es el siguiente:
 
 \IncMargin{1em}
 \begin{Algoritmo}[H]
@@ -495,7 +495,7 @@ El siguiente resultado muestra que el algoritmo converge a pesar de ser relativa
 Sean $M=(S,\mathcal{F})$ y $\omega$ una función de pesos para $M$, entonces el algoritmo glotón converge para el problema de optimización $(\mathcal{F}, \omega)$. 
 \end{teo}
 \begin{proof}
-Sea $B$ la base en $M$ elegida por el algoritmo glotón \footnote{El algoritmo glotón siempre converge a una base porque frena cuando encuentra un subconjunto independiente de $S$ máximal.}, supongamos que existe otra base $T$ tal que $\omega(T)> \omega(B)$ y con la propiedad de que la cardinalidad de $T\cap B$ es máxima en el sentido de que no existe $T'$ tal que $\omega(T')> \omega(B)$ y la cardinalidad de $T'\cap B$ es estrictamente mayor a la cardinalidad de $T\cap B$ . 
+Sea $B$ la base en $M$ elegida por el algoritmo glotón \footnote{El algoritmo glotón siempre converge a una base porque frena cuando encuentra un subconjunto independiente de $S$ maximal.}, supongamos que existe otra base $T$ tal que $\omega(T)> \omega(B)$ y con la propiedad de que la cardinalidad de $T\cap B$ es máxima en el sentido de que no existe $T'$ tal que $\omega(T')> \omega(B)$ y la cardinalidad de $T'\cap B$ es estrictamente mayor a la cardinalidad de $T\cap B$ . 
 
 Sea $x_k$ el primer elemento que el glotón escogió en $B \setminus T$, por el corolario \ref{circuitos bases} existe un circuito $C(x_k,T)$ tal que $x_k$ pertenece a $C(x_k,T)$ y que $C(x_k,T)$ es un subconjunto de $T \cup \{x_k\}$. 
 
@@ -526,7 +526,7 @@ Supongamos que $u>v$ y que queremos resolver el problema de optimización $(\mat
 Supongamos que el algoritmo convergió. Sea $t$ igual a la cardinalidad de $X \cap Y$, notamos que se cumple lo siguiente:
 $$\omega(X)= n\cdot u$$
 $$\omega(Y) = t \cdot u + (n+1-t)v.$$
-Si $u$ es igual a $\left(1+\dfrac{1}{2(n-t)}\right)v$\footnote{Con este supuesto se sigue cumpliendo que $u>v$.}, tenemos que $ \omega(Y) > \omega(X)$. Por lo tanto, podemos concluir que el algoritmo no convergió porque claramente no encontró al óptimo. Como el algoritmo no convergió, este realiza por lo menos un paso más en el que selecciona $y_j$ en $X \setminus Y$ de tal forma que $X \cup \{y_j\}$ pertenece a $\mathcal{F}$. Concluimos que se cumple \ref{axioma 3} y por lo tanto $\mathcal{F}$ es la familia de conjuntos independientes de una matroide. 
+Si $u$ es igual a $\left(1+\dfrac{1}{2(n-t)}\right)v$\footnote{Con este supuesto se sigue cumpliendo que $u>v$.}, tenemos que $ \omega(Y) > \omega(X)$. Por lo tanto, podemos concluir que el algoritmo no convergió porque claramente no encontró el óptimo. Como el algoritmo no convergió, éste realiza por lo menos un paso más en el que selecciona $y_j$ en $X \setminus Y$ de tal forma que $X \cup \{y_j\}$ pertenece a $\mathcal{F}$. Concluimos que se cumple \ref{axioma 3} y por lo tanto $\mathcal{F}$ es la familia de conjuntos independientes de una matroide. 
 \end{proof}
 
 Este teorema se puede reescribir de la siguiente forma para encontrar una forma de definir las matroides:
@@ -536,7 +536,7 @@ Este teorema se puede reescribir de la siguiente forma para encontrar una forma 
 Una colección $\mathcal{F}$ no vacía de subconjuntos de $S$ es la familia de conjuntos independientes de $S$ si y solo si 
 \begin{enumerate}
 \item Si $A$ pertenece a $\mathcal{F}$ y $B$ es un subconjunto de $A$, entonces $B$ pertenece a $\mathcal{F}$.
-\item Para toda función $\omega$ que va de $S$ a los reales el algoritmo glotón escoge al conjunto $A$ en $\mathcal{F}$ que maximiza la función 
+\item Para toda función $\omega$ que va de $S$ a los reales positivos el algoritmo glotón escoge al conjunto $A$ en $\mathcal{F}$ que maximiza la función 
 $$f(A) = \sum_{k=1}^{n}\omega(a_k) \text{ con } A=\{a_1,\dots,a_n\}$$ es decir, no existe $B$ en $\mathcal{F}$ tal que $f(B)>f(A)$.
 \end{enumerate}
 \end{cor}

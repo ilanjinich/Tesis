@@ -2,7 +2,7 @@
 %\begin{flushright}
 %\textit{``Even the worst husband, God forbid, is better than no husband, God forbid.''}
 %\end{flushright}
-En el pequeño Shtetl de Anatevka, había muchos hombres y muchas mujeres jóvenes con el deseo de casarse. Yenta, la casamentera del pueblo, tenía el trabajo y la obligación de emparejar a todos estos jóvenes. Esta tarea sonará fácil pero no lo es, cada joven tenía distintas preferencias y cada uno de ellos necesitaba un trato especial, ``el matrimonio es para toda la vida y no es algo que hay que tomar como si fuera cualquier cosa" decía Yenta. Retomando los conceptos de la última sección, se desea que el emparejamiento de estos jóvenes sea estable y óptimo si es que es posible.\footnote{Este problema hace el supuesto de que las relaciones solo pueden ser entre un hombre y una mujer y que esto es reflejado por sus preferencias. Esto no manifiesta la realidad o las opiniones del autor y se hace únicamente con fines matemáticos.}
+En el pequeño Shtetl\footnote{Poblado en Yddish.} de Anatevka, había muchos hombres y muchas mujeres jóvenes con el deseo de casarse. Yenta, la casamentera del pueblo, tenía el trabajo y la obligación de emparejar a todos estos jóvenes. Esta tarea sonará fácil pero no lo es, cada joven tenía distintas preferencias y cada uno de ellos necesitaba un trato especial, ``el matrimonio es para toda la vida y no es algo que hay que tomar como si fuera cualquier cosa" decía Yenta. Retomando los conceptos de la última sección, se desea que el emparejamiento de estos jóvenes sea estable y óptimo si es que es posible.\footnote{Este problema hace el supuesto de que las relaciones solo pueden ser entre un hombre y una mujer y que esto es reflejado por sus preferencias. Esto no manifiesta la realidad o las opiniones del autor y se hace únicamente con fines matemáticos.}
 En términos matemáticos, supongamos que tenemos $n$ hombres $\alpha_1,\alpha_2,\ldots,\alpha_n$ y $m$ mujeres $a_1, a_2,\ldots,a_m$ con las restricciones:
 \begin{enumerate}
 \item \begin{equation} \label{1r1}
@@ -208,7 +208,7 @@ En la tercera iteración, $B$ acepta la propuesta de $\beta$ y $\gamma$ le propo
 \caption{Tercera iteración.}
 \end{figure}
 
-En la cuarta iteración, $C$ acepta la propuesta de $\gamma$ y $\beta$ le propone matrimonio a $A$.
+En la cuarta iteración, $C$ acepta la propuesta de $\gamma$ y $\delta$ le propone matrimonio a $A$.
 
 \begin{figure}[H]\centering
 
@@ -530,7 +530,7 @@ El algoritmo de Gale Shapley termina en un emparejamiento estable.
 Supongamos que el emparejamiento producido por el algoritmo no es estable. Esto es, un hombre $\alpha$ y una mujer $A$ se prefieren entre ellos que a sus respectivas parejas. 
 
 Como $\alpha$ prefiere a $A$ más que a su esposa entonces, $\alpha$ le propuso matrimonio primero a $A$ que a su propia esposa. 
-Además, como $A$ prefiere a $\alpha$ que a su esposo entonces, $A$ hubiera rechazado a su esposo y se hubiera quedado casada con $\alpha$ lo cual es una contradicción. 
+Además, como $A$ prefiere a $\alpha$ sobre su esposo entonces, $A$ hubiera rechazado a su esposo y se hubiera quedado casada con $\alpha$ lo cual es una contradicción. 
 
 Por lo tanto, el algoritmo de Gale Shapley termina siempre en un emparejamiento estable. 
 \end{proof}
@@ -543,7 +543,7 @@ Dada una matriz de preferencias arbitraria existe un emparejamiento estable.
 Si aplicamos el algoritmo de Gale Shapley, sabemos por el teorema \ref{teorema de Gale Shapley} que este siempre acaba en un emparejamiento estable. Por lo tanto, siempre existe un emparejamiento estable.
 \end{proof}
 
-Una vez que sabemos que el algoritmo siempre converge, nos interesa conocer que tan rápido lo hace y si tiene algunas ventajas el emparejamiento resultante. El lema \ref{lema 1} nos ayuda a llegar a estos resultados y los corolarios \ref{cor1} y \ref{cor2} nos dan una idea de que tan bueno es el algoritmo. 
+Una vez que sabemos que el algoritmo siempre converge, nos interesa conocer que tan rápido lo hace y si tiene algunas ventajas el emparejamiento resultante. El lema \ref{lema 1} nos ayuda a llegar a estos resultados y los corolarios \ref{cor1} y \ref{cor2} nos dan una idea de qué tan bueno es el algoritmo. 
 \begin{lem} 
 \label{lema 1} \cite{Knuth} \\
 Bajo el emparejamiento obtenido por Gale Shapley, solo un hombre puede terminar con la última mujer de su lista como pareja. 
@@ -557,7 +557,7 @@ Supongamos que en el emparejamiento de Gale Shapley $m$ ($m\geq2$) hombres termi
 Dos consecuencias casi inmediatas de esto son que bajo el algoritmo la gran mayoría de los hombres no terminan con su última opción y que el algoritmo converge relativamente rápido. 
 \begin{cor}
 \label{cor1}
-Si en un emparejamiento estable por lo menos dos hombres están emparejados con la última mujer de sus respectivas listas, entonces existe dos o más emparejamientos estables en el problema.
+Si en un emparejamiento estable por lo menos dos hombres están emparejados con la última mujer de sus respectivas listas, entonces existen dos o más emparejamientos estables en el problema.
 \end{cor}
 
 \begin{proof}
@@ -605,7 +605,7 @@ A partir de esto podemos generalizar el algoritmo de Gale Shapley para que permi
 \Input{Una matriz de preferencias para $n$ hombres y $m$ mujeres}
 \Output{Un emparejamiento. }
 \BlankLine
-\emph{Cada hombre le propone a la primera mujer de su lista\; Cada mujer que recibe más de una propuesta acepta la que este más arriba en su lista y rechaza al resto \; }
+\emph{Cada hombre le propone a la primera mujer de su lista\; Cada mujer que recibe más de una propuesta acepta la que esté más arriba en su lista y rechaza al resto \; }
 \Repeat{hasta que todos los hombres tengan pareja o hasta que sean rechazados por todas las mujeres}{
 	\emph{Los hombres no emparejados le proponen a la siguiente mujer en su lista\; } 
 	\emph{Cada mujer que recibe una propuesta escoge la que está más arriba en su lista entre las propuestas que recibió y su pareja actual\;} 

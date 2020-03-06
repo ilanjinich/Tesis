@@ -1,9 +1,9 @@
 \chapter{Un poco sobre computación}
 
-La idea de este capítulo es introducir la idea de complejidad algorítmica. Se habla de qué es un algoritmo, de cuál es el orden de complejidad de un algoritmo y de algunas clases de complejidad de algoritmos. Para empezar a introducir estas ideas son necesarias varias definiciones. 
+El objetivo de este capítulo es introducir la idea de complejidad algorítmica. Se habla de qué es un algoritmo, de cuál es el orden de complejidad de un algoritmo y de algunas clases de complejidad de algoritmos. Para empezar a introducir estas ideas son necesarias varias definiciones. 
 
-\begin{dfn} \cite{Ramon}
-Definimos un \textbf{algoritmo} como una serie de pasos para resolver un problema. El \textbf{tamaño} de un problema es la cantidad de datos necesarios para resolver el problema (las entradas del algoritmo). La \textbf{complejidad} de un problema es una función $f$, donde $f(n)$ es la cantidad de operaciones necesarias para que el algoritmo termine. Además, decimos que $f(n)$ es orden a lo más $g(n)$ si para alguna $K>0$ se cumple que
+\begin{dfn} 
+Definimos un \textbf{algoritmo} como una serie de pasos para resolver un problema. El \textbf{tamaño} de un problema es la cantidad de datos necesarios para resolver el problema (las entradas del algoritmo). La \textbf{complejidad} de un problema es una función $f$, donde $f(n)$ es la cantidad de operaciones necesarias para que el algoritmo termine. Además, decimos que $f(n)$ es de orden a lo más $g(n)$ si para alguna $K>0$ se cumple que
 $$f(n) \leq Kg(n)$$
 para todo $n$ natural.
 \end{dfn}
@@ -51,12 +51,12 @@ Si A es un problema de decisión en P y existe un algoritmo polinomial que reduc
 
 Vale la pena mencionar algunos ejemplos de problemas que están en P:
 \begin{enumerate}
-\item Verificar si un número es primo.
+\item Verificar si un número es primo (ver \cite{agrawal2004primes}).
 \item Encontrar la ruta más corta entre dos vértices en una gráfica.
 \item El problema de la ruta crítica. 
 \end{enumerate}
 
-Una conjetura famosa que vale la pena mencionar es ¿si $P=NP$?, es decir si todo problema en NP también se encuentra en P. La persona que lo demuestra además de ganar fama y trabajo va a ser acreedor a un premio de un millón de dólares. 
+Una conjetura famosa que vale la pena mencionar es si $P=NP$, es decir si todo problema en NP también se encuentra en P. La persona que lo demuestre además de ganar fama y trabajo va a ser acreedor a un premio de un millón de dólares. 
 
 
 \section{Problemas NP-Completos}

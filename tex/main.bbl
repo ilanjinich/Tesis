@@ -1,6 +1,38 @@
 \begin{thebibliography}{}
 
 \bibitem [\protect \citeauthoryear {%
+Agrawal%
+, Kayal%
+\BCBL {}\ \BBA {} Saxena%
+}{%
+Agrawal%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2004}}%
+}]{%
+agrawal2004primes}
+\APACinsertmetastar {%
+agrawal2004primes}%
+\begin{APACrefauthors}%
+Agrawal, M.%
+, Kayal, N.%
+\BCBL {}\ \BBA {} Saxena, N.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2004}{June}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Primes is in P} {Primes is in p}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Annals of Mathematics}{160}{}{781-793}.
+\newblock
+\begin{APACrefURL}
+  \url{https://www.microsoft.com/en-us/research/publication/primes-is-in-p/}
+  \end{APACrefURL}
+\newblock
+\APACrefnote{Godel Prize, Fulkerson Prize}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Biró%
 , Fleiner%
 , Irving%
@@ -182,11 +214,11 @@ Gale, D.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Gusfield%
-\ \BBA {} Irving%
+Irving%
+\ \BBA {} Gusfield%
 }{%
-Gusfield%
-\ \BBA {} Irving%
+Irving%
+\ \BBA {} Gusfield%
 }{%
 {\protect \APACyear {1989}}%
 }]{%
@@ -194,8 +226,8 @@ Verde}
 \APACinsertmetastar {%
 Verde}%
 \begin{APACrefauthors}%
-Gusfield, D.%
-\BCBT {}\ \BBA {} Irving, R\BPBI W.%
+Irving, R\BPBI W.%
+\BCBT {}\ \BBA {} Gusfield, D.%
 \end{APACrefauthors}%
 \unskip\
 \newblock

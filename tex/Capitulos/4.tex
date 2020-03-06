@@ -1,5 +1,5 @@
 \chapter{El problema de admisión a universidades}
-Supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a qué universidades prefieren entrar y de forma análoga las universidades tienen una lista preferencias con la información de a quién prefieren admitir. Adicional a esto para cada universidad existe un número máximo de alumnos que pueden admitir, esta restricción es natural porque la cantidad de personal y de espacio en las universidades es limitado. 
+Supongamos que en una ciudad hay $n$ personas que desean entrar a $m$ universidades, los solicitantes tienen una lista de preferencias en donde reflejan a qué universidades prefieren entrar y de forma análoga las universidades tienen una lista de preferencias con la información de a quién prefieren admitir. Adicional a esto para cada universidad existe un número máximo de alumnos que pueden admitir, esta restricción es natural porque la cantidad de personal y de espacio en las universidades es limitado. 
 En términos matemáticos, supongamos que tenemos $n$ solicitantes $\alpha_1,\alpha_2,\ldots,\alpha_n$ y $m$ universidades $a_1, a_2,\ldots,a_m$ con las restricciones:
 \begin{enumerate}
 \item \begin{equation} \label{2r1}
@@ -43,7 +43,7 @@ En el siguiente código exhibimos un análogo al algoritmo de Gale-Shapley para 
 \Input{Una matriz de preferencias para $n$ solicitantes y $m$ universidades, un vector $M$ en donde la entrada $j$ representa la cota superior de la universidad $j$.}
 \Output{Un emparejamiento.}
 \BlankLine
-\emph{Cada solicitante aplica a la primera universidad de su lista\; Cada universidad que recibe más de solicitudes a su cota superior acepta las que solicitudes que están más arriba en su lista y rechaza al resto\; }
+\emph{Cada solicitante aplica a la primera universidad de su lista\; Cada universidad que recibe más solicitudes que su cota superior acepta las solicitudes que están más arriba en su lista y rechaza al resto\; }
 \Repeat{hasta que cada uno de los solicitantes sea admitido por alguna universidad o rechazado por todas}{
 	\emph{Los solicitantes no emparejados solicitan entrar a la siguiente universidad en su lista\; } 
 	\emph{Cada universidad que recibe alguna solicitud acepta hasta $M_j$ solicitantes de los primeros de su lista entre los que aplicaron a ella y sus admitidos actuales\;} 
@@ -61,7 +61,7 @@ Dada una matriz de preferencias arbitraria y un vector $M$ de cotas superiores a
 \end{cor}
 \begin{proof}
 Al igual que en la demostración del teorema \ref{teorema de Gale Shapley}, supongamos que el emparejamiento producido por el algoritmo no es estable. 
-Esto es, un solicitante $\alpha$ que esta admitido en una universidad $B$ (o en ninguna) prefiere estar en una universidad $A$ y simultáneamente una universidad $A$ tiene admitido a un alumno $\beta$ y preferiría tener a $\alpha$ que a $\beta$ como estudiante. 
+Esto es, un solicitante $\alpha$ que está admitido en una universidad $B$ (o en ninguna) prefiere estar en una universidad $A$ y simultáneamente una universidad $A$ tiene admitido a un alumno $\beta$ y preferiría tener a $\alpha$ que a $\beta$ como estudiante. 
 
 Como $\alpha$ prefiere a $A$ más que a su universidad entonces, $\alpha$ solicitó entrar primero a $A$ que a su propia universidad. 
 Además, como $A$ prefiere a $\alpha$ que a $\beta$ entonces de acuerdo con el algoritmo, $A$ hubiera rechazado a $\beta$ y se hubiera quedado con $\alpha$ como alumno lo cual es una contradicción (el argumento para cuando $\alpha$ no fue aceptado en ninguna universidad es el mismo). 
@@ -69,7 +69,7 @@ Además, como $A$ prefiere a $\alpha$ que a $\beta$ entonces de acuerdo con el a
 Por lo tanto, el algoritmo de Gale Shapley termina siempre en un emparejamiento estable. 
 \end{proof}
 
-Este algoritmo además de ser producir un emparejamiento estable también cada solicitante está mejor o igual en este emparejamiento que en cualquier otro emparejamiento estable. Para hacer la demostración primero introducimos una definición y un lema. 
+Este algoritmo además de producir un emparejamiento estable también cada solicitante está mejor o igual en este emparejamiento que en cualquier otro emparejamiento estable. Para hacer la demostración primero introducimos una definición y un lema. 
 
 \begin{dfn}{\cite{GaleShapley}}
 \label{Posible}
@@ -82,7 +82,7 @@ Decimos que una universidad es \textbf{posible} para un aplicante si existe una 
 Supongamos que en un paso arbitrario del algoritmo ningún estudiante ha sido rechazado por una universidad posible para él, además supongamos que una universidad $A$ después de llenarse recibiendo a los estudiantes $\beta_1,\beta_2,\dots,\beta_q$ rechaza a $\alpha$, entonces $A$ no es posible para $\alpha$.
 \end{lem}
 \begin{proof}
-Sabemos por hipótesis que para toda $i=1,\dots,q$, $\beta_i$ prefiere a $A$ que a todas las universidades que no lo han rechazado y además que cualquier universidad que lo rechazó previamente no es posible para él. Supongamos que existe un emparejamiento estable en el que $\alpha$ asiste a $A$, entonces alguna $\beta_i$ no asiste a $A$ porque $\alpha$ tomo su lugar. Este emparejamiento es inestable porque $\beta_i$ prefiere a $A$ que a su asignación actual porque $A$ es su mejor asignación posible y $A$ prefiere tener a $\beta_i$ que a $\alpha$, lo cual es claramente una contradicción y por lo tanto $A$ no es posible para $\alpha$.
+Sabemos por hipótesis que para toda $i=1,\dots,q$, $\beta_i$ prefiere a $A$ que a todas las universidades que no lo han rechazado y además que cualquier universidad que lo rechazó previamente no es posible para él. Supongamos que existe un emparejamiento estable en el que $\alpha$ asiste a $A$, entonces alguna $\beta_i$ no asiste a $A$ porque $\alpha$ tomá su lugar. Este emparejamiento es inestable porque $\beta_i$ prefiere a $A$ que a su asignación actual porque $A$ es su mejor asignación posible y $A$ prefiere tener a $\beta_i$ que a $\alpha$, lo cual es claramente una contradicción y por lo tanto $A$ no es posible para $\alpha$.
 \end{proof}
 
 \begin{teo}
@@ -128,7 +128,7 @@ El algoritmo mencionado anteriormente no es único, de cambiarlo el emparejamien
 
 \section{El teorema de los hospitales rurales}
 
-Existe una extensión de este problema llamada el problema de hospitales y residentes médicos que es básicamente lo mismo a este problema con la excepción de que en vez de tener universidades tenemos hospitales y en vez de que existan estudiantes queriendo estudiar en ésta tenemos estudiantes médicos que quieren hacer su residencia en éste. Una pregunta interesante que se hizo fue ¿qué pasa con los hospitales no populares? Algunos hospitales por su naturaleza no llamaban la atención de los estudiantes de medicina, un ejemplo de esto eran los que estaban en una zona rural, los residentes preferían ir a hospitales en zonas urbanas más pobladas porque contaban con fama de ser mejores hospitales y además tenían más pacientes. La pregunta original puede ser modificada en ¿existe una modificación al algoritmo que produzca un emparejamiento estable y además asigne más residentes en los hospitales poco populares que el resultado del algoritmo Gale Shapley? A raíz de esto David Gale y Marilda Sotomayor en 1985 demostraron que la cantidad de gente que asiste a la universidad es la misma en cualquier emparejamiento estable. Este resultado se puede poner en términos de nuestro problema original, para llegar a éste es necesario primero demostrar un lema.
+Existe una extensión de este problema llamada el problema de hospitales y residentes médicos que es básicamente lo mismo que este problema con la excepción de que en vez de tener universidades tenemos hospitales y en vez de que existan estudiantes queriendo estudiar en ésta tenemos estudiantes médicos que quieren hacer su residencia en éste. Una pregunta interesante que se hizo fue ¿qué pasa con los hospitales no populares? Algunos hospitales por su naturaleza no llamaban la atención de los estudiantes de medicina, un ejemplo de esto eran los que estaban en una zona rural, los residentes preferían ir a hospitales en zonas urbanas más pobladas porque contaban con fama de ser mejores hospitales y además tenían más pacientes. La pregunta original puede ser modificada en ¿existe una modificación al algoritmo que produzca un emparejamiento estable y además asigne más residentes en los hospitales poco populares que el resultado del algoritmo Gale Shapley? A raíz de esto David Gale y Marilda Sotomayor en 1985 demostraron que la cantidad de gente que asiste a la universidad es la misma en cualquier emparejamiento estable. Este resultado se puede poner en términos de nuestro problema original, para llegar a éste es necesario primero demostrar un lema.
 
 \begin{lem} 
 \label{lema rural} 
@@ -140,7 +140,7 @@ Supongamos que $\alpha$ fue admitido en $A$ en la asignación $M$ pero no en $M'
 \end{proof}
 
 
-\begin{teo}{Teorema de los hospitales rurales \\ }
+\begin{teo}{Teorema de los hospitales rurales \footnote{El teorema se enuncio originalmente para hospitales, para efectos de este trabajo usamos universidades en vez para confundir al lector lo menos posíble.} \\ }
 \label{rural}
 \cite{GaleSotomayor}\\
 Dada una matriz de preferencias arbitraria y un vector de cotas superiores arbitrario:
@@ -153,7 +153,7 @@ Dada una matriz de preferencias arbitraria y un vector de cotas superiores arbit
 \begin{proof}
 Sea M el emparejamiento obtenido por Gale Shapley y sea $M'$ un emparejamiento estable arbitrario. Primero notamos que si una persona no fue asignada a ninguna universidad en $M$ entonces tampoco en $M'$, esto es por el lema \ref{lema optimo} porque ninguna universidad es posible para él. Por lo tanto, el número de personas asignadas en $M'$ no puede exceder el de $M$. 
 
-Ahora por el lema \ref{lema rural}, si una universidad se llena en $M$ entonces también está llena en $M'$. Simultáneamente por el lema \ref{lema rural}, si a una universidad le sobran lugares en $M'$ entonces en $M$ tiene mínimo la misma cantidad de lugares. Por lo tanto, el número de personas asignadas en $M$ no puede exceder el de $M'$. Luego, podemos concluir que para toda universidad tiene el mismo número de estudiantes asignados en $M$ y en $M'$ que es lo mismo a cada universidad recibe el mismo número de solicitantes en cada asignación estable. 
+Ahora por el lema \ref{lema rural}, si una universidad se llena en $M$ entonces también está llena en $M'$. Simultáneamente por el lema \ref{lema rural}, si a una universidad le sobran lugares en $M'$ entonces en $M$ tiene mínimo la misma cantidad de lugares. Por lo tanto, el número de personas asignadas en $M$ no puede exceder el de $M'$. Luego, podemos concluir que para toda universidad tiene el mismo número de estudiantes asignados en $M$ y en $M'$ que es lo mismo que cada universidad reciba el mismo número de solicitantes en cada asignación estable. 
 
 A partir de esto concluimos que exactamente el mismo número de solicitantes quedan como no asignados en cada emparejamiento estable dado que ningún estudiante que es no asignado en $M$ puede ser admitido en $M'$. También vemos (\ref{lema rural}) que si una universidad no se llena en un emparejamiento estable recibe exactamente el mismo número de solicitantes en cualquier asignación estable. 
 

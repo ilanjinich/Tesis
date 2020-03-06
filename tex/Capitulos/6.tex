@@ -1,6 +1,6 @@
 \chapter{Cotas inferiores}
 
-Retomamos el problema de admisión a universidades igual que como se plantea en el capítulo 4, a cada universidad se le agrega la restricción de que necesita un número mínimo de alumnos asignados que necesitan para abrir. En particular se le agregan las siguientes tres ecuaciones al problema:
+Retomamos el problema de admisión a universidades igual que como se plantea en el capítulo 4, a cada universidad se le agrega la restricción de que requiere un número mínimo de alumnos asignados que necesitan para abrir. En particular se le agregan las siguientes tres ecuaciones al problema:
 
 \begin{enumerate}
 \item \begin{equation} y_{j}= 
@@ -18,11 +18,11 @@ Los solicitantes únicamente pueden asistir a universidades abiertas.
 Cada universidad necesita admitir a una cantidad considerable de alumnos para abrir.
 \end{enumerate}
 
-Una pregunta inicial que surge es si todos los resultados obtenidos para el problema sin cotas inferiores o comunes se siguen cumpliendo, una vez que agregamos las cotas inferiores ¿el emparejamiento estable siempre existe? ¿De existir esté es óptimo? ¿Se obtiene con facilidad? Para comenzar es posible mostrar que el emparejamiento estable no siempre existe.
+Una pregunta inicial que surge es si todos los resultados obtenidos para el problema sin cotas inferiores o comunes se siguen cumpliendo, una vez que agregamos las cotas inferiores ¿el emparejamiento estable siempre existe? ¿De existir éste es óptimo? ¿Se obtiene con facilidad? Para comenzar es posible mostrar que el emparejamiento estable no siempre existe.
 
 \begin{eje}
 \cite{Todo}\\
-Supongamos que tenemos dos universidades $A$ y $B$, $A$ solo puede admitir a dos alumnos y necesita admitir a dos alumnos para entrar y $B$ solo puede admitir a un alumno y necesita a un alumno para abrir. Además, contamos con dos solicitantes $\alpha$ y $\beta$, la matriz de preferencias del problema está dada por 
+Supongamos que tenemos dos universidades $A$ y $B$, $A$ solo puede admitir a dos alumnos y necesita admitir a dos alumnos para abrir y $B$ solo puede admitir a un alumno y necesita un alumno para abrir. Además, contamos con dos solicitantes $\alpha$ y $\beta$, la matriz de preferencias del problema está dada por 
 $$\begin{pmatrix}
 & A & B \\
 \alpha & 1,1 & 2,1 \\
@@ -160,9 +160,9 @@ El problema de ver si una instancia del problema de admisión a universidades co
 \end{teo}
 
 \begin{proof}
-Dado que el problema claramente es de decisión y además dada una solución es fácil ver si está es correcta o no, este pertenece a la clase NP.
+Dado que el problema claramente es de decisión y además dada una solución es fácil ver si ésta es correcta o no, éste pertenece a la clase NP.
 
-Para ver que el problema es NP-completo reduciremos el problema del matrimonio estable con listas incompletas con empates a esté\footnote{Recordemos que el problema aquí es ver si existe un emparejamiento estable con todos los hombres y todas las mujeres emparejadas.} (sabemos que este problema es NP-completo por el teorema \ref{NPempates}). Para este caso supondremos que sólo existen empates en las listas de las mujeres, estos son de a lo más longitud 2 y en caso de existir un empate para una mujer arbitraria $w_j$, esté ocupa toda la lista de $w_j$ y al menos uno de los dos hombres pertenecientes a este tiene a $w_j$ hasta arriba de su lista \footnote{Dadas estas condiciones el problema sigue siendo NP-completo \cite{empates}}. 
+Para ver que el problema es NP-completo reduciremos el problema del matrimonio estable con listas incompletas con empates a éste\footnote{Recordemos que el problema aquí es ver si existe un emparejamiento estable con todos los hombres y todas las mujeres emparejadas.} (sabemos que este problema es NP-completo por el teorema \ref{NPempates}). Para este caso supondremos que sólo existen empates en las listas de las mujeres, estos son de a lo más longitud 2 y en caso de existir un empate para una mujer arbitraria $w_j$, éste ocupa toda la lista de $w_j$ y al menos uno de los dos hombres pertenecientes a éste tiene a $w_j$ hasta arriba de su lista \footnote{Dadas estas condiciones el problema sigue siendo NP-completo \cite{empates}}. 
 
 Sea $I$ una instancia del problema del emparejamiento estable con listas incompletas con empates, sean $U=\{m_1,m_2,\dots,m_n\}$ la lista de hombres en el problema y sean $W=\{w_1,w_2,\dots,w_n\}$ las mujeres en el problema. Sea $W_0$ un subconjunto de $W$ que contiene a todas las mujeres con un empate de tamaño dos en su lista. Construiremos una instancia $I'$ del problema de admisión a universidades con cotas inferiores a partir de $I$. 
 
@@ -178,11 +178,11 @@ El truco está con las mujeres en $W_0$, supongamos que tenemos a una mujer $w_j
 
 Reemplazamos a $w_j$ por $w_j^1$ en la lista de $m_{j,1}$ y reemplazamos a $w_j$ por $w_j^2$ en la lista de $m_{j,2}$. Afirmamos que existe un emparejamiento estable completo en $I$ si y solo si $I'$ cuenta con un emparejamiento estable. 
 
-Supongamos que existe un emparejamiento estable completo $M$ en $I$, queremos construir un emparejamiento estable $M'$ en $I'$ a partir de este. Supongamos que $M'=M$, para toda pareja $(m_i,w_j)$ con $w_j$ en $W\setminus W_0$ no existe ningún cambio y para toda pareja $(m_i,w_j)$ con $w_j$ en $W_0$ y $m_i=m_{j,r}$ con $r$ igual a 1 o a dos, reemplazamos a $(m_i,w_j)$ en $M'$ por $(a_j^1,w_j^r), (a_j^2,w_j^r),(m_{j,r}, w_j^r)$. Es claro que para toda universidad se cumplen las cotas superiores e inferiores y además por la igualdad entre las listas concluimos que $M'$ es un emparejamiento estable. 
+Supongamos que existe un emparejamiento estable completo $M$ en $I$, queremos construir un emparejamiento estable $M'$ en $I'$ a partir de éste. Supongamos que $M'=M$, para toda pareja $(m_i,w_j)$ con $w_j$ en $W\setminus W_0$ no existe ningún cambio y para toda pareja $(m_i,w_j)$ con $w_j$ en $W_0$ y $m_i=m_{j,r}$ con $r$ igual a 1 o a dos, reemplazamos a $(m_i,w_j)$ en $M'$ por $(a_j^1,w_j^r), (a_j^2,w_j^r),(m_{j,r}, w_j^r)$. Es claro que para toda universidad se cumplen las cotas superiores e inferiores y además por la igualdad entre las listas concluimos que $M'$ es un emparejamiento estable. 
 
 Supongamos que existe un emparejamiento estable $M'$ en $I'$, queremos construir un emparejamiento estable $M$ en $I$ a partir de este. Supongamos que $M=M'$, para toda pareja $(m_i,w_j)$ con $w_j$ en $W\setminus W_0$ no existe ningún cambio. Supongamos entonces que $(m_{j,r}, w_{j}^{r})$ pertenece a $M'$ con $r$ igual a 1 o a dos, donde $m_{j,r}$ es igual a $m_k$ para algún hombre en $U$. Como la cota inferior de $w_{j}^{r}$ es igual a 3, es claro que $(a_j^1,w_{j}^{r})$ y $(a_j^2,w_{j}^{r})$ pertenecen a $M'$, sustituimos a $(m_{j,r}, w_{j}^{r})$, a $(a_j^1,w_{j}^{r})$ y a $(a_j^2,w_{j}^{r})$ en $M$ por $(m_i,w_j)$.
 
-Por construcción de $w_j^1$ y de $w_j^2$, únicamente una de esas dos universidades puede estar abiertas, lo que garantiza que $w_j$ en $M$ sólo este emparejada con un hombre (esto se cumple para cada mujer en $W_0$). Además, como al menos uno de los dos hombres pertenecientes a la lista de $w_j$ tienen a está hasta arriba de su lista, tenemos garantía de que $w_j^1$ o $w_j^2$ estén abiertas en $I$. Es claro que todos los hombres y todas las mujeres en $I$ están emparejadas en $M$ por lo tanto el emparejamiento es completo, por la similitud entre las listas de $I$ y $I'$ es también claro que $M$ es un emparejamiento estable y por lo tanto la afirmación mencionada arriba es verdadera y concluimos que el problema de ver si una instancia del problema de admisión a universidades con cotas inferiores admite un emparejamiento estable es NP-completo (inclusive si cada cota inferior no excede a 3).
+Por construcción de $w_j^1$ y de $w_j^2$, únicamente una de esas dos universidades puede estar abierta, lo que garantiza que $w_j$ en $M$ sólo esté emparejada con un hombre (esto se cumple para cada mujer en $W_0$). Además, como al menos uno de los dos hombres pertenecientes a la lista de $w_j$ tienen a ésta hasta arriba de su lista, tenemos garantía de que $w_j^1$ o $w_j^2$ estén abiertas en $I$. Es claro que todos los hombres y todas las mujeres en $I$ están emparejadas en $M$ por lo tanto el emparejamiento es completo, por la similitud entre las listas de $I$ y $I'$ es también claro que $M$ es un emparejamiento estable y por lo tanto la afirmación mencionada arriba es verdadera y concluimos que el problema de ver si una instancia del problema de admisión a universidades con cotas inferiores admite un emparejamiento estable es NP-completo (inclusive si cada cota inferior no excede a 3).
 \end{proof}
 
 %A partir de este ejemplo queda claro que si extendemos el problema agregando cotas inferiores perdemos la garantía de existencia de un emparejamiento estable en nuestro problema. Es posible además construir un algoritmo a partir del algoritmo de Gale Shapley para admisión a universidades que converja en caso de que exista a un emparejamiento estable o que saque como resultado si no existe un emparejamiento estable para este problema, el algoritmo esta dado por el siguiente código. Antes de mostrarlo vale la pena recordar que si tienes $m$ universidades entonces existen $2^{m}-1$ (corolario \ref{card3}) posibles combinaciones de qué universidades mantienen abiertas y cuales cierran. 
@@ -406,12 +406,12 @@ El algoritmo acaba y saca como output el emparejamiento\;
 \emph{$U$ $\gets$ $U \setminus A$ (Al vector $U$ le quitamos la universidad $A$) \;} 
 }
 }
-\emph{Si $U$ este vacío, saca un mensaje diciendo que no se encontró el emparejamiento\;}
+\emph{Si $U$ es vacío, saca un mensaje diciendo que no se encontró el emparejamiento\;}
 \caption{Heurística para admisión a universidades con cotas inferiores.}
 \end{Algoritmo}
 \DecMargin{1em}
 
-Como afirmamos arriba la heurística podría no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable, demostramos esto a partir del siguiente ejemplo. 
+Como afirmamos arriba la heurística podría no llegar a una solución a pesar de que para ese problema en particular sí exista una asignación estable, demostramos esto a partir del siguiente ejemplo. 
 
 \begin{eje} \cite{Todo}
 Supongamos que tenemos a 3 solicitantes $\alpha,\beta,\gamma$ y a dos universidades $A,B$. A tiene como cota inferior y superior al número 2; B tiene como cota inferior y superior al número 3. Sus preferencias son las siguientes:
@@ -507,7 +507,7 @@ La asignación es estable pero claramente no es factible porque $A$ y $B$ no res
 \caption{Segunda iteración.}
 \end{figure}
 
-La asignación es estable pero claramente no es factible porque $B$ no respeta sus cotas. El algoritmo saca un mensaje diciendo que no se encontró un emparejamiento estable. Uno a partir de esto podría concluir que este no existe para el problema, pero si abrimos $A$ y cerramos $B$ obteniendo la asignación: 
+La asignación es estable pero claramente no es factible porque $B$ no respeta sus cotas. El algoritmo saca un mensaje diciendo que no se encontró un emparejamiento estable. Uno a partir de esto podría concluir que éste no existe para el problema, pero si abrimos $A$ y cerramos $B$ obteniendo la asignación: 
 
 \begin{figure}[H]\centering
 
@@ -550,8 +550,7 @@ La asignación es estable pero claramente no es factible porque $B$ no respeta s
 \caption{Asignación estable.}
 \end{figure}
 
-Esta asignación es estable y factible lo que muestra que la heurística podría no llegar a una solución a pesar de que para ese problema en particular si exista una asignación estable. \fin
-\fin
+Esta asignación es estable y factible lo que muestra que la heurística podría no llegar a una solución a pesar de que para ese problema en particular sí exista una asignación estable. \fin
 \end{eje}
 
 Concluimos que el problema de admisión a universidades con cotas inferiores es extremadamente difícil de resolver, en lo que resta de la tesis hablaremos del problema de admisión a universidades considerando cotas superiores comunes. 

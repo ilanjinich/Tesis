@@ -56,21 +56,21 @@ Entonces la representación como bosque de las restricciones queda así:
 \end{minipage}%
 \caption{Bosque representando las restricciones del ejemplo \ref{ejeanidado}}
 \end{figure}
-Falta mencionar que en cada nodo aparece el conjunto de universidades junto con su cota superior. El nodo padre de cada árbol es el \textbf{grupo} de las universidades pertenecientes a ese árbol.
+Falta mencionar que en cada nodo aparece el conjunto de universidades junto con su cota superior. El nodo padre de cada árbol se define \textbf{grupo} de las universidades pertenecientes a ese árbol.
 
 \fin
 \end{eje}
 
 Existen varias definiciones nuevas que nos gustaría agregar al problema, para verlo en términos más simples.
 \begin{dfn}
-Algunos terminos que utilizaremos son los siguientes:
+Algunos términos que utilizaremos son los siguientes:
 \begin{enumerate}
 
 \item Decimos que $M$ es la \textbf{función de emparejamiento} si dado una asignación $M$\footnote{El abuso de notación es para confundir al lector lo menos posible.} tenemos que para un aspirante $a$ arbitrario, $M(a)$ es la universidad a la que es asignado en $M$ y además para cada conjunto de universidades $c$, $M(c)$ es el conjunto de solicitantes asignados a $c$ en $M$.
-\item Decimos un conjunto de universidades $c$ está \textbf{lleno} si la cardinalidad de $M(c)$ es igual a $q(c)$. 
-\item Decimos que un conjunto de universidades esta \textbf{subsuscrito} si no esta lleno. 
+\item Decimos que un conjunto de universidades $c$ está \textbf{lleno} si la cardinalidad de $M(c)$ es igual a $q(c)$. 
+\item Decimos que un conjunto de universidades está \textbf{subsuscrito} si no está lleno. 
 \item Una universidad está \textbf{libre} si ningún conjunto que la contiene está lleno, es lo mismo a que su grupo está libre. Si no está libre decimos que está \textbf{restringida}. Las universidades libres pueden admitir a uno o más aplicantes sin violar ninguna restricción. 
-\item Dada una universidad $c$ restringida dada un emparejamiento $M$, decimos que $Cs_M(c)$ es el \textbf{conjunto crítico} de $c$ dado $M$ si es el conjunto de universidades lleno minimal que contiene a $c$. Esto quiere decir que dado el árbol de restricciones donde aparece $c$, $Cs_M(c)$ es el nodo padre de $c$ más abajo (no existen nodos llenos entre él y $c$) con la propiedad de que está lleno. 
+\item Dada una universidad $c$ restringida y  un emparejamiento $M$, decimos que $Cs_M(c)$ es el \textbf{conjunto crítico} de $c$ dado $M$ si es el conjunto de universidades lleno minimal que contiene a $c$. Esto quiere decir que dado el árbol de restricciones donde aparece $c$, $Cs_M(c)$ es el nodo padre de $c$ más abajo (no existen nodos llenos entre él y $c$) con la propiedad de que esté lleno. 
 \end{enumerate}
 \end{dfn}
 
@@ -80,7 +80,7 @@ Algunos terminos que utilizaremos son los siguientes:
 %Me da flojera pero es agarrar el ejemplo de arriba y aplicar definiciones
 %\end{eje}
 
-Este problema difiere con el del capítulo 7 en el sentido de que sí es fácil de resolver.A continuación veremos un algoritmo para obtener una asignación estable,, mostraremos su convergencia y veremos cuál es su complejidad. Al igual que en el capítulo 3 veremos que hay algoritmos óptimos para los solicitantes y algoritmos óptimos para las universidades, se muestra primero el de los solicitantes. %no mames este parrafo. 
+Este problema difiere con el del capítulo 7 en el sentido de que sí es fácil de resolver. A continuación veremos un algoritmo para obtener una asignación estable, mostraremos su convergencia y veremos cuál es su complejidad. Al igual que en el capítulo 3 veremos que hay algoritmos óptimos para los solicitantes y algoritmos óptimos para las universidades, se muestra primero el de los solicitantes. %no mames este parrafo. 
 
 \newpage
 
@@ -95,7 +95,7 @@ Este problema difiere con el del capítulo 7 en el sentido de que sí es fácil 
 \Input{Lista de restricciones y preferencias de las universidades y los aspirantes }
 \Output{Un emparejamiento.}
 \BlankLine
-\While{ Existe un aspirante $a$ que no esta emparejado y que no haya sido rechazado por todas las universidades.}{
+\While{ Existe un aspirante $a$ que no está emparejado y que no haya sido rechazado por todas las universidades.}{
 		\emph{$c$ es la primera universidad de la lista de $a$ a la que no ha solicitado;} \\
 		\If{$c$ está libre}{\emph{asignamos $a$ a $c$;}}
 		\Else{\emph{Sea $S$ el conjunto crítico de $C$;} \\
@@ -118,8 +118,8 @@ Los siguientes resultados hablan sobre la convergencia y complejidad del algorit
 Si alguna universidad $c$ en el algún punto del algoritmo orientado a los aspirantes queda restringida, entonces no vuelve a estar libre.
 \end{lem}
 \begin{proof}
-En cualquier iteración del algoritmo si alguna universidad $c$ con un conjunto crítico $S$, si el conjunto $S$ que subsuscrito sería porque alguna universidad en $S$ rechazó a algún solicitante actual $a$. Si esto sucede es porque algún conjunto $S'$
- que contiene a $S$ estaba lleno y rechazó a $a$ para aceptar a un mejor solicitante en su lista. De esta forma $c$ queda restringida por $S'$.
+En cualquier iteración del algoritmo si alguna universidad $c$ con un conjunto crítico $S$, si el conjunto $S$ está subsuscrito sería porque alguna universidad en $S$ rechazó a algún solicitante actual $a$. Si esto sucede es porque algún conjunto $S'$
+ que contiene a $S$ esta lleno y rechazá a $a$ para aceptar a un mejor solicitante en su lista. De esta forma $c$ queda restringida por $S'$.
 \end{proof}
 
 \begin{lem}
@@ -131,13 +131,13 @@ Primero notamos que si $S$ y $S'$ son dos conjuntos de universidades y $S$ es un
 
 Supongamos que en el siguiente paso de algoritmo, el solicitante $b$ solicita a la universidad $d$ y es rechazado, como $M'$ queda idéntico a $M$ el lema queda como verdadero para este caso. 
 
-En el otro caso, supongamos que $d$ acepta a $b$ para ser parte de su universidad. Sea $S$ el conjunto crítico de $c$ en el emparejamiento $M$, sea $S'$ el conjunto crítico en $S'$, sea $T$ el conjunto crítico de $d$ en $M'$. Consideramos cinco casos:
+En el otro caso, supongamos que $d$ acepta a $b$ para ser parte de su universidad. Sea $S$ el conjunto crítico de $c$ en el emparejamiento $M$, sea $S'$ el conjunto crítico en $S$, sea $T$ el conjunto crítico de $d$ en $M'$. Consideramos cinco casos:
 \begin{enumerate}
 \item Supongamos $d$ estaba libre en $M$, esto implica directamente que $S=S'$ y el resultado sigue de esto.
 \item Supongamos que la intersección entre $S$ y $T$ es igual al vacío, de aquí sale directo que en la iteración $S$ no cambia y por lo tanto $S=S'$ y el resultado sigue de esto.
-\item Supongamos que $T$ es un subconjunto propio de $S$, entonces $c$ no pertenece a $T$ (porque esto contradecería la hipótesis de que $S$ es el conjunto crítico de $c$). De aquí sigue que $S=S'$ y como los cambios de $M$  a $M'$ solo suceden en $T$ los solicitantes emparejados en $S\setminus T$ son los mismos a los asignados en $S' \setminus T$ y en T por como funciona el algoritmo el peor alumno asignado en $M'$ debe de ser mejor al peor alumno asignado en $M$. De aquí se sigue que esto es cierto para $S$ y $S'$.
+\item Supongamos que $T$ es un subconjunto propio de $S$, entonces $c$ no pertenece a $T$ (porque esto contradiría la hipótesis de que $S$ es el conjunto crítico de $c$). De aquí sigue que $S=S'$ y como los cambios de $M$  a $M'$ solo suceden en $T$ los solicitantes emparejados en $S\setminus T$ son los mismos a los asignados en $S' \setminus T$ y en T por como funciona el algoritmo el peor alumno asignado en $M'$ debe de ser mejor al peor alumno asignado en $M$. De aquí se sigue que esto es cierto para $S$ y $S'$.
 \item Supongamos que $T$ es igual a $S$. Aquí tenemos que la cantidad de alumnos asignados bajo $M$ en $S$ son iguales a la cantidad de alumnos asignados bajo $M'$ a $S$ y simultáneamente son iguales a la cota superior de $S$. En este caso existe la posibilidad de que $S'$ sea un subconjunto de $S$ pero por la observación realizada al principio de la demostración concluimos que para este caso el lema es verdadero.
-\item Por último, supongamos que $S$ es un subconjunto propio de $T$. Si el solicitante rechazado no se encontraba asignado en $S$ entonces el resultado se sigue directo de que los asignados en $S$ bajo $M$ y en $S'$ bajo $M'$ no cambian. En otro caso, debe de suceder que la cantidad de alumnos asignados en $S$ bajo $M'$ son estrictamente menores a la cantidad de alumnos asignados a $S$ bajo $M$ y que esto además sucede para toda $S^*$ con la propiedad de que $S$ es un subconjunto de $S^*$, $S^*$ es un subconjunto de $T$ y $d$ no pertenece a $S^*$. Además sabemos que la cantidad de alumnos asignados bajo $M$ son iguales a la cantidad de alumnos asignados bajo $M'$ a toda $S^*$ que cumple que $S$ es un subconjunto de $S^*$, $S^*$ es un subconjunto de $T$ y $d$ pertenece a $S^*$, pero la cantidad de alumnos asignados es estrictamente menor a su cota superior.  Esto implica que el nuevo conjunto crítico de $c$ ($S'$) es igual a $T$, como $S'$ es el conjunto crítico de $d$ y en la iteración del algoritmo rechazó a su peor aplicante, se sigue que el lema es correcto para este caso. 
+\item Por último, supongamos que $S$ es un subconjunto propio de $T$. Si el solicitante rechazado no se encontraba asignado en $S$ entonces el resultado se sigue directo de que los asignados en $S$ bajo $M$ y en $S'$ bajo $M'$ no cambian. En otro caso, debe de suceder que la cantidad de alumnos asignados en $S$ bajo $M'$ es estrictamente menor a la cantidad de alumnos asignados a $S$ bajo $M$ y que esto además sucede para toda $S^*$ con la propiedad de que $S$ es un subconjunto de $S^*$, $S^*$ es un subconjunto de $T$ y $d$ no pertenece a $S^*$. Además sabemos que la cantidad de alumnos asignados bajo $M$ es igual a la cantidad de alumnos asignados bajo $M'$ a toda $S^*$ que cumple que $S$ es un subconjunto de $S^*$, $S^*$ es un subconjunto de $T$ y $d$ pertenece a $S^*$, pero la cantidad de alumnos asignados es estrictamente menor a su cota superior.  Esto implica que el nuevo conjunto crítico de $c$ ($S'$) es igual a $T$, como $S'$ es el conjunto crítico de $d$ y en la iteración del algoritmo rechazó a su peor aplicante, se sigue que el lema es correcto para este caso. 
 \end{enumerate}
 Por lo tanto, si $M$ es un emparejamiento bajo el cual $c$ está restringido y $M'$ es el emparejamiento obtenido en el siguiente paso del algoritmo orientado a los solicitantes, entonces el solicitante más abajo en la lista en  $Cs_{M'}(c)$ no puede ser menos preferido que el menos preferido en $Cs_M(c)$.
 \end{proof}
@@ -151,13 +151,13 @@ Dado un problema de admisión a universidades con cotas comunes anidadas, el emp
 \begin{proof}
 Supongamos que $M$ no es estable y por lo tanto existe un aspirante $a$ y una universidad $c$ que se prefieren a su asignación actual. Como $a$ prefiere a $c$, podemos ver que $c$ rechazó a $a$ en algún paso del algoritmo. En esa iteración del algoritmo $c$ estaba restringida y prefirió a algún solicitante $b$ ($b$ aquí siendo el menos preferido entre los asignados) sobre $a$ (de acuerdo a la lista de su grupo). Por los lemas \ref{lemaAOA1} y \ref{lemaAOA1} $c$ se mantiene restringida en las iteraciones posteriores y el peor solicitante de su conjunto crítico no puede ser menos preferido que $b$. Por lo tanto, llegamos a una contradicción y concluimos que $M$ es estable. \\
 Ahora, supongamos que el algoritmo no es óptimo para los solicitantes eso es existen un solicitante $a$ y una universidad $c$ emparejados en $M$, además existe otra asignación estable $M'$ en donde $a$ está asignado a $c'$ y $a$ prefiere a $c'$ sobre $c$ (adicional a esto supongamos que en el algoritmo es la primera asignación estable que es rechazada). Como $a$ prefiere a $c'$ podemos concluir que $c'$ rechazó a $a$ en algún punto del algoritmo. \\
-Sea $X$ el emparejamiento obtenido antes de que un solicitante $a^*$ solicita a alguna universidad $c^*$ resultando en que $c'$ rechazara a $a$. Sea $S=Cs_X(c^*)$ el conjunto crítico de $c^*$ en $X$ y sea $X^*=X \cup \{(a^*,c^*)\}$. Mostraremos que existe un aplicante $d$ y una unversidad $d$ tales que:
+Sea $X$ el emparejamiento obtenido antes de que un solicitante $a^*$ solicita a alguna universidad $c^*$ resultando en que $c'$ rechazara a $a$. Sea $S=Cs_X(c^*)$ el conjunto crítico de $c^*$ en $X$ y sea $X^*=X \cup \{(a^*,c^*)\}$. Mostraremos que existe un aplicante $b$ y una unversidad $d$ tales que:
 \begin{enumerate}
-\item $d$ está asignado a $b$ en $X^*$.
+\item $b$ está asignado a $d$ en $X^*$.
 \item $b$ no está asignado a $d$ en $M'$.
 \item $d$ está libre en $M'$ o $S$ es un subconjunto de $Cs_{M'}(d)$.
 \end{enumerate}
-Primero, notamos que la cantidad de alumnos asignados a $S$ en $M'$ es menor o igual que la cota de $S$ y que está a su vez igual a la cantidad de alumnos asignados a $S$ en $X$. Además podemos ver que la cantidad de alumnos asignados a $S$ en $X^*$ excede a la cota superior de $S$ por 1, como la cota se excede a partir de agregar un nuevo par podemos ver que para cualquier subconjunto propio $S_i$ de $S$ se cumple que la cantidad de personadas asignadas a $S_i$ en $X^*$ es menor o igual a la cota de $S_i$ (porque $S=Cs_X(c^*)$), por lo tanto $S$ es es el conjunto minimal que no cumple la cota. Esto implica que alguno de sus hijos (en el sentido de las restricciones) $S_2$ satisface que la cantidad de personas emparejadas en $M'$ es menor estricto a la cantidad de personas emparejadas en $X^*$ que es menor igual a su cota. Por la misma razón, podemos construir una sucesión en donde $S=S_1$, $S_{i+1}$ es un subconjunto propio de $S_i$, $S_{k}$ es igual a $\{d\}$ y cada $S_i$ satisface la propiedad anterior. Finalmente sea $b$ el solicitante que se encuentra asignado en $X^*$ a $d$ pero en $M'$. 
+Primero, notamos que la cantidad de alumnos asignados a $S$ en $M'$ es menor o igual que la cota de $S$ y que está a su vez igual a la cantidad de alumnos asignados a $S$ en $X$. Además podemos ver que la cantidad de alumnos asignados a $S$ en $X^*$ excede a la cota superior de $S$ por 1, como la cota se excede a partir de agregar un nuevo par podemos ver que para cualquier subconjunto propio $S_i$ de $S$ se cumple que la cantidad de personadas asignadas a $S_i$ en $X^*$ es menor o igual a la cota de $S_i$ (porque $S=Cs_X(c^*)$), por lo tanto $S$ es es el conjunto minimal que no cumple la cota. Esto implica que alguno de sus hijos (en el sentido de las restricciones) $S_2$ satisface que la cantidad de personas emparejadas en $M'$ es menor estricto a la cantidad de personas emparejadas en $X^*$ que es menor o igual a su cota. Por la misma razón, podemos construir una sucesión en donde $S=S_1$, $S_{i+1}$ es un subconjunto propio de $S_i$, $S_{k}$ es igual a $\{d\}$ y cada $S_i$ satisface la propiedad anterior. Finalmente sea $b$ el solicitante que se encuentra asignado en $X^*$ a $d$ pero en $M'$. 
 
 Ahora, notamos que $b$ está en mejor posición que $a$, de otra forma en la siguiente iteración del algoritmo hubieran rechazado a $b$ y no a $a$. Entonces, como $b$ no está asignado en $M'$ o prefiere a $d$ que a su respectiva universidad en $M'$, como $S$ es un subconjunto de  $Cs_{M'}(d)$ se sigue que la pareja $(b,d)$ ocasiona que $M'$ no sea estable. Por lo tanto llegamos a una contradicción y concluimos que el algoritmo es óptimo para los aplicantes. 
 \end{proof}
@@ -174,7 +174,7 @@ Como el algoritmo es óptimo sin importar el orden sobre el que se itera, podemo
 A partir de esto podemos estudiar cuál es la diferencia principal entre pedir que las cotas comunes sean anidadas y no tener ninguna restricción sobre éstas. El siguiente resultado muestra como el comportamiento de éste problema es mucho más amigable en terminos algorítmicos. 
 
 \begin{teo}
-La complejidad del algoritmo orientado a los aplicantes es del orden de $kL+pn$ donde $L$ es la cantidad de parejas aceptables, $k$ es la longitud máxima de algún árbol en el bosque de restricciones, $n$ es el número de solicitantes y $p$ e el número de conjuntos acotados. 
+La complejidad del algoritmo orientado a los aplicantes es del orden de $kL+pn$ donde $L$ es la cantidad de parejas aceptables, $k$ es la longitud máxima de algún árbol en el bosque de restricciones, $n$ es el número de solicitantes y $p$ es el número de conjuntos acotados. 
 \end{teo}
 \begin{proof}
 El primer término viene de que el primer ciclo del algoritmo es realizado en un orden de $L$ veces y con la excepción de actualizar el peor solicitante cada paso en el ciclo es realizado en un orden de $k$ veces.  
@@ -243,7 +243,7 @@ El siguiente lema y teorema nos ayudan a entender qué tan bueno es este algorit
 \begin{lem}
 Si en algún punto del algoritmo, una universidad $d$ en un grupo $G$ le ofrece un puesto a un solicitante $b$ entonces si se cumple alguna de las siguientes dos cosas:
 \begin{enumerate}
-\item Si a algún otro solicitante $a$ (superior a $b$ en la lista de $G$) no se le ofrece un puesto en alguna universidad $c$ en $G$, donde $a$ es no es marcado como tratado por $c$.
+\item Si a algún otro solicitante $a$ (superior a $b$ en la lista de $G$) no se le ofrece un puesto en alguna universidad $c$ en $G$, donde $a$ no es marcado como tratado por $c$.
 \item Si a $b$ no le ofrecen un puesto en $c$ (superior a $d$ en la lista de $b$), donde $b$ no es marcado como tratado por $c$.
 \end{enumerate}
 Entonces, $c$ está restringido y su conjunto crítico no se encuentra en el camino entre $d$ y la parte de arriba del árbol.
@@ -257,13 +257,13 @@ El emparejamiento $M$ obtenido por el algoritmo orientado a las universidades es
 \begin{proof}
 Supongamos que $M$ es no estable y que es bloqueado por un solicitante $a$ y una universidad $c$, esto es que ambos se prefieren a sus respectivas asignaciones. Sabemos que $c$ no le ofreció un lugar a $a$ durante el algoritmo porque los solicitantes solo pueden mejorar mientras progresa el algorítmo (no haría sentido que empeoren). De aquí sigue que $c$ debe tener un conjunto crítico $S$ al finalizar el algoritmo.
 
-Como $(a,c)$ bloquean la estabilidad entonces deben de existir una universidad $d$ en $S$ y un solicitante $b$ que es asignado a $d$ en $M$ tal que $a$ es preferido a $b$ y $a$ prefiere a $c$ que a su asignación actual. Aquí la contradicción es clara porque $c$ debió de haber ofrecido un puesto primero a $a$ que a $b$ y como $a$ prefiere a $c$ entonces podemos concluir que $M$ es estable. 
+Como $(a,c)$ bloquea la estabilidad entonces deben de existir una universidad $d$ en $S$ y un solicitante $b$ que es asignado a $d$ en $M$ tal que $a$ es preferido a $b$ y $a$ prefiere a $c$ que a su asignación actual. Aquí la contradicción es clara porque $c$ debió de haber ofrecido un puesto primero a $a$ que a $b$ y como $a$ prefiere a $c$ entonces podemos concluir que $M$ es estable. 
 
 Supongamos que existe un emparejamiento estable $M'$ en donde existe un solicitante $a$ que no está asignado o donde está asignado a una peor universidad que en $M$ (supongamos que en $M$ está asignado a $c$). Supongamos que cuando a $c$ le ofreció un puesto a $a$ ésta fue la primera vez que un solicitante recibió una oferta que era mejor a su estatus en otra asignación estable. Llamaremos a esta oferta \textbf{superior}. Para evitar que $(a,c)$ bloquee la estabilidad de $M'$ es necesario suponer que el conjunto crítico de $c$ en $M'$ está lleno con solicitantes superiores a $a$. 
 
 Sea $M^*$ el emparejamiento obtenido por el algoritmo antes de ofrecerle un puesto a $a$ en $c$. Como $c$ estaba libre en ese momento sabemos que la cantidad de alumnos asignados a $S$ en $M^*$ en ese momento era estrictamente menor que la cantidad de personas asignadas a $S$ en $M'$ y que está a su vez es igual a la cota superior de $S$. Esto implica que algún hijo $S_2$ de $S$ cumple que la cantidad de personas asignadas a $S_2$ en $M^*$ es menor a la cantidad de personas asignadas en $M'$ que ésta a su vez es menor o igual a la cota de $S_2$. Con el mismo razonamiento podemos construir una sucesión en donde $S=S_1$, $S_{i+1}$ es un subconjunto propio de $S_i$, $S_{k}$ es igual a $\{d\}$ y cada $S_i$ satisface la propiedad anterior. Finalmente sea $b$ algún solicitante asignado a $d$ en $M'$ pero no en $M^*$. Se sigue de la construcción que $d$ es libre en $M^*$ y que $b$ está mejor calificada que $a$. Por lo tanto, $b$ debe de estar emparejada en $M^*$ con una universidad $e$ a la que prefiere sobre $d$. Por lo tanto, $d$ recibió una oferta de $e$ antes que $a$ de $c$, lo que contradice el supuesto de que fue el primer solicitante que recibió una oferta que era mejor a su estatus en otra asignación estable. Podemos concluir que $a$ no está asignado a una peor universidad que $c$ en ningún otro emparejamiento estable y que no existe algún emparejamiento estable en el que $a$ no esté asignado. 
 
-Finalmente, supongamos ahora que a está asignado a $c$ en $M$ y que $b$ no esta asignado a $c$ en $M$ pero si en otro emparejamiento estable $M'$ y que $b$ está más arriba en la lista de preferencias que $a$. Entonces por el argumento de arriba $b$ debe de preferir a $c$ sobre su asignación en $M$ o no está asignada, de aquí sigue que $(b,c)$ bloquea la estabilidad de $M$ y por lo tanto llegamos a una contradicción. 
+Finalmente, supongamos ahora que $a$ está asignado a $c$ en $M$ y que $b$ no está asignado a $c$ en $M$ pero si en otro emparejamiento estable $M'$ y que $b$ está más arriba en la lista de preferencias que $a$. Entonces por el argumento de arriba $b$ debe de preferir a $c$ sobre su asignación en $M$ o no está asignada, de aquí se sigue que $(b,c)$ bloquea la estabilidad de $M$ y por lo tanto llegamos a una contradicción. 
 \end{proof}
 
 La complejidad del algoritmo se entiende a partir del siguiente resultado, al igual que en el caso del algoritmo orientado a los solicitantes podemos ver que en este caso nos encontramos en una mejor situación que cuando las cotas no eran anidadas. 
@@ -273,7 +273,7 @@ El orden del algoritmo orientado a las universidades es de $mL$ donde $L$ es el 
 \end{teo}
 
 \begin{proof}
-Los ciclos del algoritmo se realizan a lo más $L$ veces. En cada iteración se debe de escoger que universidad realiza la solicitud a un solicitante, para hacer esto es necesario escanear un árbol, esto a lo más se realiza en $m$ pasos. Como las universidades nunca están llenas y cada universidad le propone a su siguiente solicitante en su lista (esta operación tiene un paso). El orden del algoritmo es de $mL$.
+Los ciclos del algoritmo se realizan a lo más $L$ veces. En cada iteración se debe de escoger qué universidad realiza la solicitud a un solicitante, para hacer esto es necesario escanear un árbol, esto a lo más se realiza en $m$ pasos. Como las universidades nunca están llenas y cada universidad le propone a su siguiente solicitante en su lista (esta operación tiene un paso). El orden del algoritmo es de $mL$.
 \end{proof}
 
 Para dejar más clara la diferencia entre los dos algoritmos mostramos el siguiente ejemplo.
@@ -301,7 +301,7 @@ $$P(a_4)=c_2 c_4$$ \\
 $$P(a_8)=c_2 c_1$$ 
 \end{minipage}
 
-El algoritmo orientado a los aplicantes sigue de acuerdo a los siguientes pasos \footnote{Se modifico un poco el orden con respecto al código para efectos de la explicación}.
+El algoritmo orientado a los aplicantes sigue de acuerdo a los siguientes pasos \footnote{Se modificó un poco el orden con respecto al código para efectos de la explicación}.
 \begin{figure}[H]
 \begin{minipage}{.5\linewidth}
 \begin{figure}[H]\centering
@@ -555,9 +555,9 @@ Los 10 aspirantes solicitan a su mejor universidad, $a_7$ y $a_{10}$ son rechaza
 %\caption{Aginaciones estables.}
 \end{figure}
 
-$a_10$ solicita a $c_5$, $c_5$ acepta a $a_{10}$ y rechaza a $a_5$ porque $\{c_4,c_5\}$ queda lleno. $a_5$ solicita a $c_3$ y es aceptada. El algoritmo finaliza.
+$a_{10}$ solicita a $c_5$, $c_5$ acepta a $a_{10}$ y rechaza a $a_5$ porque $\{c_4,c_5\}$ queda lleno. $a_5$ solicita a $c_3$ y es aceptada. El algoritmo finaliza.
 
-El algoritmo orientado a las universidades sigue de acuerdo a los siguientes pasos \footnote{se modifico un poco el orden con respecto al codigo para efectos de la explicación}.
+El algoritmo orientado a las universidades sigue de acuerdo a los siguientes pasos \footnote{se modificó un poco el orden con respecto al código para efectos de la explicación}.
 
 \begin{figure}[H]
 \begin{minipage}{.5\linewidth}
